@@ -1,0 +1,230 @@
+schema_version: 2
+milestone: v0.2
+verified_at: '2026-08-31'
+target_modules: 14
+expected_categories:
+  tool: 14
+entries:
+- category: tool
+  id: github-actions
+  name: GitHub Actions
+  summary: GitHub-native automation platform for continuous integration, delivery, scheduled jobs, and repository workflows defined as versioned YAML files.
+  homepage: https://docs.github.com/actions
+  repository: https://github.com/actions/runner
+  tags: [ci, cd, automation]
+  sources:
+  - {title: GitHub Actions documentation, url: https://docs.github.com/actions, type: documentation}
+  - {title: GitHub Actions runner repository, url: https://github.com/actions/runner, type: repository}
+  use_cases: [Build and test pull requests, Publish packages and releases, Automate repository maintenance and scheduled tasks]
+  key_points: [Workflows are defined in .github/workflows YAML files, Jobs run on hosted or self-hosted runners, Permissions should be minimized for workflow tokens]
+  kind: tool
+  domains: [devops, ci-cd]
+  license: MIT
+  deployment_types: [saas, self-hosted]
+- category: tool
+  id: jenkins
+  name: Jenkins
+  summary: Extensible automation server used to orchestrate continuous integration and delivery pipelines across self-hosted infrastructure and diverse toolchains.
+  homepage: https://www.jenkins.io/
+  repository: https://github.com/jenkinsci/jenkins
+  tags: [ci, cd, automation]
+  sources:
+  - {title: Jenkins official site, url: https://www.jenkins.io/, type: official}
+  - {title: Jenkins repository, url: https://github.com/jenkinsci/jenkins, type: repository}
+  use_cases: [Run continuous integration pipelines, Coordinate build and release automation, Integrate heterogeneous development tools through plugins]
+  key_points: [Jenkins is commonly operated as self-hosted infrastructure, Pipeline definitions can be stored as Jenkinsfiles, A large plugin ecosystem extends integrations]
+  kind: tool
+  domains: [devops, ci-cd]
+  license: MIT
+  deployment_types: [self-hosted]
+- category: tool
+  id: bat
+  name: bat
+  summary: Command-line text viewer inspired by cat that adds syntax highlighting, Git-aware changes, line numbers, and paging while remaining pipeline friendly.
+  homepage: https://github.com/sharkdp/bat
+  repository: https://github.com/sharkdp/bat
+  tags: [cli, terminal, rust]
+  sources:
+  - {title: bat repository, url: https://github.com/sharkdp/bat, type: repository}
+  - {title: bat documentation, url: https://github.com/sharkdp/bat#readme, type: documentation}
+  use_cases: [Inspect source files in terminals, Preview text with syntax highlighting, Replace common interactive cat usage while preserving piping]
+  key_points: [Written in Rust, Integrates with Git metadata for change markers, Can fall back to plain output when piped]
+  kind: tool
+  domains: [developer-experience, cli]
+  license: Apache-2.0 OR MIT
+  deployment_types: [cli, local]
+- category: tool
+  id: eza
+  name: eza
+  summary: Modern command-line directory listing utility derived from exa, adding readable defaults, colors, Git metadata, tree views, and structured file information.
+  homepage: https://eza.rocks/
+  repository: https://github.com/eza-community/eza
+  tags: [cli, filesystem, rust]
+  sources:
+  - {title: eza official site, url: https://eza.rocks/, type: official}
+  - {title: eza repository, url: https://github.com/eza-community/eza, type: repository}
+  use_cases: [Browse directories with richer metadata, Display tree-oriented filesystem views, Show Git status alongside file listings]
+  key_points: [Designed as a modern alternative to ls, Supports icons and colorized metadata when configured, Written in Rust]
+  kind: tool
+  domains: [developer-experience, cli]
+  license: MIT
+  deployment_types: [cli, local]
+- category: tool
+  id: bruno
+  name: Bruno
+  summary: API client focused on local, Git-friendly collections stored as plain text, providing an alternative workflow to cloud-centric API testing tools.
+  homepage: https://www.usebruno.com/
+  repository: https://github.com/usebruno/bruno
+  tags: [api, testing, developer-tools]
+  sources:
+  - {title: Bruno official site, url: https://www.usebruno.com/, type: official}
+  - {title: Bruno repository, url: https://github.com/usebruno/bruno, type: repository}
+  use_cases: [Test HTTP APIs during development, Version API collections alongside source code, Share reproducible request collections with teams]
+  key_points: [Collections are designed to live in source control, Desktop and command-line workflows are available, Local-first storage reduces dependence on a hosted workspace]
+  kind: tool
+  domains: [api, testing, developer-experience]
+  license: MIT
+  deployment_types: [desktop, cli, local]
+- category: tool
+  id: ffmpeg
+  name: FFmpeg
+  summary: Cross-platform multimedia toolkit for decoding, encoding, transcoding, filtering, streaming, probing, and transforming audio and video formats.
+  homepage: https://ffmpeg.org/
+  repository: https://github.com/FFmpeg/FFmpeg
+  tags: [media, audio, video]
+  sources:
+  - {title: FFmpeg official site, url: https://ffmpeg.org/, type: official}
+  - {title: FFmpeg documentation, url: https://ffmpeg.org/documentation.html, type: documentation}
+  - {title: FFmpeg repository mirror, url: https://github.com/FFmpeg/FFmpeg, type: repository}
+  use_cases: [Transcode audio and video files, Build media-processing pipelines, Inspect and stream multimedia content]
+  key_points: [Supports a very broad codec and container ecosystem, Command-line tools are backed by reusable libraries, Licensing of a particular build depends on enabled components]
+  kind: tool
+  domains: [media, multimedia]
+  deployment_types: [cli, library, local]
+- category: tool
+  id: dbt
+  name: dbt Core
+  summary: Open-source transformation framework for analytics engineering that applies software-development practices to SQL-based data models and data pipelines.
+  homepage: https://docs.getdbt.com/docs/core
+  repository: https://github.com/dbt-labs/dbt-core
+  tags: [data, analytics, sql]
+  sources:
+  - {title: dbt Core documentation, url: https://docs.getdbt.com/docs/core, type: documentation}
+  - {title: dbt Core repository, url: https://github.com/dbt-labs/dbt-core, type: repository}
+  use_cases: [Transform warehouse data with versioned SQL models, Test assumptions about analytics datasets, Document lineage and dependencies between models]
+  key_points: [Models form a dependency graph, Testing and documentation are first-class workflow concepts, Adapters connect dbt Core to supported data platforms]
+  kind: tool
+  domains: [data, analytics]
+  license: Apache-2.0
+  deployment_types: [cli, local, self-hosted]
+- category: tool
+  id: apache-airflow
+  name: Apache Airflow
+  summary: Workflow orchestration platform for defining, scheduling, and monitoring data pipelines as code using Python-based directed acyclic graphs.
+  homepage: https://airflow.apache.org/
+  repository: https://github.com/apache/airflow
+  tags: [data, orchestration, python]
+  sources:
+  - {title: Apache Airflow official site, url: https://airflow.apache.org/, type: official}
+  - {title: Apache Airflow repository, url: https://github.com/apache/airflow, type: repository}
+  use_cases: [Schedule recurring data workflows, Coordinate multi-step ETL and ELT pipelines, Monitor task execution and retry failures]
+  key_points: [Workflows are represented as DAGs, Python is used to define orchestration logic, The scheduler and executors can scale across distributed environments]
+  kind: tool
+  domains: [data, devops]
+  license: Apache-2.0
+  deployment_types: [self-hosted]
+- category: tool
+  id: kong
+  name: Kong Gateway
+  summary: API gateway and reverse-proxy platform built around extensible traffic policies for routing, authentication, observability, and service connectivity.
+  homepage: https://konghq.com/products/kong-gateway
+  repository: https://github.com/Kong/kong
+  tags: [api, gateway, proxy]
+  sources:
+  - {title: Kong Gateway product page, url: https://konghq.com/products/kong-gateway, type: official}
+  - {title: Kong Gateway repository, url: https://github.com/Kong/kong, type: repository}
+  use_cases: [Route traffic to backend APIs and services, Apply authentication and rate-limiting policies, Collect API gateway observability data]
+  key_points: [Built on NGINX and OpenResty foundations, Extensible through plugins, Can be deployed in self-managed environments]
+  kind: tool
+  domains: [api, cloud, networking]
+  license: Apache-2.0
+  deployment_types: [self-hosted, hybrid]
+- category: tool
+  id: traefik
+  name: Traefik Proxy
+  summary: Cloud-native reverse proxy and application proxy that discovers services dynamically and configures routing for containers and orchestration platforms.
+  homepage: https://traefik.io/traefik
+  repository: https://github.com/traefik/traefik
+  tags: [proxy, cloud, containers]
+  sources:
+  - {title: Traefik Proxy official site, url: https://traefik.io/traefik, type: official}
+  - {title: Traefik repository, url: https://github.com/traefik/traefik, type: repository}
+  use_cases: [Route HTTP and TCP traffic to services, Integrate ingress routing with container platforms, Terminate TLS and apply middleware policies]
+  key_points: [Supports dynamic service discovery providers, Frequently used with Kubernetes and container environments, Configuration can combine static and dynamic sources]
+  kind: tool
+  domains: [cloud, networking, devops]
+  license: MIT
+  deployment_types: [self-hosted]
+- category: tool
+  id: continue
+  name: Continue
+  summary: Open-source AI coding assistant platform for integrating language models into developer workflows with configurable models, context providers, and editor integrations.
+  homepage: https://www.continue.dev/
+  repository: https://github.com/continuedev/continue
+  tags: [ai, coding-assistant, developer-tools]
+  sources:
+  - {title: Continue official site, url: https://www.continue.dev/, type: official}
+  - {title: Continue repository, url: https://github.com/continuedev/continue, type: repository}
+  use_cases: [Use AI assistance while editing code, Connect local or hosted language models to development workflows, Customize context and model configurations]
+  key_points: [Supports multiple model providers, Designed around configurable developer workflows, Editor integrations are a primary interaction surface]
+  kind: tool
+  domains: [ai, developer-experience]
+  license: Apache-2.0
+  deployment_types: [desktop, local, saas]
+- category: tool
+  id: lm-studio
+  name: LM Studio
+  summary: Desktop application and local inference environment for discovering, downloading, running, and serving supported language models on personal computers.
+  homepage: https://lmstudio.ai/
+  tags: [ai, llm, local]
+  sources:
+  - {title: LM Studio official site, url: https://lmstudio.ai/, type: official}
+  - {title: LM Studio documentation, url: https://lmstudio.ai/docs, type: documentation}
+  use_cases: [Run supported language models locally, Expose local models through an API-compatible server, Experiment with model files from a desktop interface]
+  key_points: [Designed for local model inference, Provides both graphical and local-server workflows, Availability and licensing of downloaded models vary by model]
+  kind: tool
+  domains: [ai, developer-experience]
+  license: Proprietary
+  deployment_types: [desktop, local]
+- category: tool
+  id: lighthouse
+  name: Lighthouse
+  summary: Automated auditing tool for web pages that evaluates performance, accessibility, best practices, and related quality signals in browser-based workflows.
+  homepage: https://developer.chrome.com/docs/lighthouse/overview/
+  repository: https://github.com/GoogleChrome/lighthouse
+  tags: [web, accessibility, performance]
+  sources:
+  - {title: Lighthouse documentation, url: https://developer.chrome.com/docs/lighthouse/overview/, type: documentation}
+  - {title: Lighthouse repository, url: https://github.com/GoogleChrome/lighthouse, type: repository}
+  use_cases: [Audit web performance, Detect common accessibility problems, Integrate repeatable page-quality checks into development]
+  key_points: [Can run from Chrome DevTools or the command line, Produces category scores and detailed audit findings, Automated accessibility checks complement rather than replace manual review]
+  kind: tool
+  domains: [web, accessibility, testing]
+  license: Apache-2.0
+  deployment_types: [cli, desktop, local]
+- category: tool
+  id: scaphandre
+  name: Scaphandre
+  summary: Open-source energy-consumption monitoring agent designed to expose power-related metrics for processes and hosts, supporting sustainable software measurement.
+  homepage: https://github.com/hubblo-org/scaphandre
+  repository: https://github.com/hubblo-org/scaphandre
+  tags: [sustainability, energy, observability]
+  sources:
+  - {title: Scaphandre repository, url: https://github.com/hubblo-org/scaphandre, type: repository}
+  - {title: Scaphandre documentation, url: https://hubblo-org.github.io/scaphandre-documentation/, type: documentation}
+  use_cases: [Measure host and process energy usage, Export power metrics for observability systems, Study software energy-efficiency changes]
+  key_points: [Targets software energy measurement rather than generic performance alone, Can expose metrics to monitoring backends, Hardware and operating-system support affect available measurements]
+  kind: tool
+  domains: [sustainability, observability]
+  license: Apache-2.0
+  deployment_types: [self-hosted, local]
