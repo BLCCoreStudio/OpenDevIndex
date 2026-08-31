@@ -1,0 +1,20 @@
+schema_version: 1
+id: mysql
+name: MySQL
+category: database
+summary: Widely used relational database management system implementing SQL for transactional and web workloads with a large ecosystem of tools and integrations.
+homepage: https://www.mysql.com/
+repository: https://github.com/mysql/mysql-server
+status: active
+verified_at: '2026-08-31'
+tags:
+- sql
+- relational
+- database
+sources:
+- title: MySQL official site
+  url: https://www.mysql.com/
+  type: official
+- title: MySQL server repository
+  url: https://github.com/mysql/mysql-server
+  type: repository
