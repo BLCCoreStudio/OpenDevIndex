@@ -6,9 +6,13 @@ on:
       - main
     paths:
       - 'catalog/**'
+      - 'taxonomy/**'
+      - 'schema/**'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/search_index.py'
+      - 'scripts/taxonomy.py'
+      - 'scripts/audit_quality.py'
       - 'scripts/url_safety.py'
       - 'scripts/validate_catalog.py'
       - 'tests/**'
@@ -18,9 +22,13 @@ on:
       - main
     paths:
       - 'catalog/**'
+      - 'taxonomy/**'
+      - 'schema/**'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/search_index.py'
+      - 'scripts/taxonomy.py'
+      - 'scripts/audit_quality.py'
       - 'scripts/url_safety.py'
       - 'scripts/validate_catalog.py'
       - 'tests/**'
@@ -37,7 +45,7 @@ concurrency:
 jobs:
   build-search-index:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
@@ -58,10 +66,14 @@ jobs:
       - name: Build deterministic catalog and search artifacts
         run: python scripts/build_index.py --catalog-dir catalog --output-dir dist/index
 
-      - name: Smoke-test search
+      - name: Audit editorial quality
+        run: python scripts/audit_quality.py --catalog-dir catalog --minimum 80
+
+      - name: Smoke-test search facets
         run: |
-          python scripts/search_index.py "container development" --index dist/index/search.json --limit 5
-          python scripts/search_index.py "machine learning" --index dist/index/search.json --limit 5
+          python scripts/search_index.py "machine learning" --index dist/index/search.json --kind framework --limit 5
+          python scripts/search_index.py "api testing" --index dist/index/search.json --domain api --limit 5
+          python scripts/search_index.py "web accessibility" --index dist/index/search.json --domain accessibility --limit 5
 
       - name: Publish build summary
         run: |
@@ -73,16 +85,20 @@ jobs:
           print()
           print(f"Generated **{data['module_count']}** validated modules.")
           print()
-          print('| Category | Modules |')
+          print('| Kind | Modules |')
           print('| --- | ---: |')
-          for category, count in data['category_counts'].items():
-              print(f'| `{category}` | {count} |')
+          for kind, count in data['kind_counts'].items():
+              print(f'| `{kind}` | {count} |')
+          print()
+          print(Path('dist/quality/quality-report.md').read_text(encoding='utf-8'))
           PY
 
-      - name: Upload generated search artifacts
+      - name: Upload generated discovery artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: opendevindex-search-index
-          path: dist/index
+          name: opendevindex-discovery-artifacts
+          path: |
+            dist/index
+            dist/quality
           if-no-files-found: error
           retention-days: 30
