@@ -65,9 +65,22 @@ The first milestone is defined in [`catalog/v0.1.yaml`](catalog/v0.1.yaml):
 
 Every catalog record has a stable slug, a human-written summary, tags, curated use cases, key points, and authoritative HTTPS sources.
 
-The trusted seeding pipeline is **idempotent**: it skips modules that already exist, renders missing modules from the reviewed catalog, runs the entry validator before every commit, and only then publishes the validated module. Pull requests never receive seed write permission.
+The trusted publication pipeline is **idempotent**: it preserves modules that already exist, renders missing modules from reviewed catalog data, runs validation before publication, and does not grant publication write permission to pull requests.
 
 See [`catalog/README.md`](catalog/README.md) and [`docs/SEEDING.md`](docs/SEEDING.md).
+
+## Search and source health
+
+OpenDevIndex includes reproducible tooling for turning validated catalogs into machine-readable search artifacts:
+
+```bash
+python scripts/build_index.py --catalog-dir catalog --output-dir dist/index
+python scripts/search_index.py "local ai" --index dist/index/search.json
+```
+
+The generated output includes a full JSON catalog, a compact search index, and a human-readable catalog. GitHub Actions builds and smoke-tests these artifacts and publishes them as workflow artifacts for downstream tools.
+
+A separate **Source Health** workflow checks canonical homepages, repositories, and source references on a schedule. Permanent missing-link responses fail the health check, while rate limits, anti-bot responses, and temporary network failures are reported separately to avoid turning transient external outages into false data-quality failures.
 
 ## Categories
 
@@ -101,7 +114,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/ARCHITECTURE.md](docs/ARCHITECT
 
 ## Validation and supply-chain hygiene
 
-OpenDevIndex validates both the curated catalog and individual knowledge modules in GitHub Actions. Third-party Actions used by the core workflows are pinned to exact commit SHAs.
+OpenDevIndex validates curated catalogs and individual knowledge modules in GitHub Actions. Source URLs are restricted to public HTTPS destinations, and third-party Actions used by core workflows are pinned to exact commit SHAs.
 
 A module is included in a milestone only when its required files and metadata pass validation.
 
