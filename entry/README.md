@@ -4,7 +4,7 @@
 
 ## What it is
 
-Debian is indexed as a **platform**. Its stable OpenDevIndex address is `opensource/debian`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+Debian is indexed as a **operating-system**. Its stable OpenDevIndex address is `opensource/debian`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
 
 ## Why it matters
 
@@ -23,8 +23,8 @@ The module focuses on the technology's practical role, high-signal characteristi
 
 ## Taxonomy
 
-- Kind: `platform`
-- Domains: `open-source`, `systems`
+- Kind: `operating-system`
+- Domains: `open-source`, `operating-systems`
 - Deployment: not yet curated
 - License metadata: `not yet curated`
 
