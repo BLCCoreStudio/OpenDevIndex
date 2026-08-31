@@ -1,0 +1,27 @@
+schema_version: 2
+id: git-lfs
+name: Git LFS
+category: tool
+kind: tool
+domains:
+- data
+- developer-tools
+summary: Git extension that stores large file contents outside normal Git object history while keeping lightweight pointer files in repositories.
+homepage: https://git-lfs.com/
+repository: https://github.com/git-lfs/git-lfs
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- git
+- version-control
+- storage
+sources:
+- title: Git LFS official site
+  url: https://git-lfs.com/
+  type: official
+- title: Git LFS source repository
+  url: https://github.com/git-lfs/git-lfs
+  type: repository
