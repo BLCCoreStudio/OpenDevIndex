@@ -1,0 +1,27 @@
+schema_version: 2
+id: tokio
+name: Tokio
+category: library
+kind: runtime
+domains:
+- networking
+- systems
+summary: Asynchronous runtime and library ecosystem for Rust that provides task scheduling, networking primitives, timers, synchronization tools, and foundations for async applications.
+homepage: https://tokio.rs/
+repository: https://github.com/tokio-rs/tokio
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- rust
+- async
+- networking
+sources:
+- title: Tokio official site
+  url: https://tokio.rs/
+  type: official
+- title: Tokio source repository
+  url: https://github.com/tokio-rs/tokio
+  type: repository
