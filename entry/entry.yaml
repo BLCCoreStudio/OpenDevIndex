@@ -1,0 +1,20 @@
+schema_version: 1
+id: fastapi
+name: FastAPI
+category: framework
+summary: Python framework for building typed HTTP APIs using standard type hints, automatic validation, OpenAPI generation, and asynchronous server support.
+homepage: https://fastapi.tiangolo.com/
+repository: https://github.com/fastapi/fastapi
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- api
+- async
+sources:
+- title: FastAPI documentation
+  url: https://fastapi.tiangolo.com/
+  type: documentation
+- title: FastAPI repository
+  url: https://github.com/fastapi/fastapi
+  type: repository
