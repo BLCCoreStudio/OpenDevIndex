@@ -1,0 +1,27 @@
+schema_version: 2
+id: sveltekit
+name: SvelteKit
+category: framework
+kind: framework
+domains:
+- software-development
+- web
+summary: Application framework for building production web applications with Svelte, providing routing, server rendering, data loading, adapters, and deployment integrations.
+homepage: https://svelte.dev/docs/kit
+repository: https://github.com/sveltejs/kit
+deployment_types:
+- web
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- svelte
+- fullstack
+sources:
+- title: SvelteKit documentation
+  url: https://svelte.dev/docs/kit
+  type: documentation
+- title: SvelteKit source repository
+  url: https://github.com/sveltejs/kit
+  type: repository
