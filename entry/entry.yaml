@@ -2,6 +2,10 @@ schema_version: 1
 id: make
 name: GNU Make
 category: tool
+kind: tool
+domains:
+- build
+- developer-tools
 summary: Classic build automation tool that evaluates dependency rules and shell recipes to update files and targets when their inputs change.
 homepage: https://www.gnu.org/software/make/
 status: active
