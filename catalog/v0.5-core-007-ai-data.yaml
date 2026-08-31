@@ -1,0 +1,157 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  library: 10
+entries:
+- category: library
+  id: matplotlib
+  name: Matplotlib
+  summary: Python plotting library for creating static, animated, and interactive visualizations with fine-grained control over figures, axes, styles, and output formats.
+  homepage: https://matplotlib.org/
+  repository: https://github.com/matplotlib/matplotlib
+  tags: [python, visualization, data]
+  sources:
+  - {title: Matplotlib official site, url: https://matplotlib.org/, type: official}
+  - {title: Matplotlib source repository, url: https://github.com/matplotlib/matplotlib, type: repository}
+  use_cases: [Create publication-quality scientific plots, Visualize data in notebooks and Python applications, Export charts to common raster and vector formats]
+  key_points: [Matplotlib Figure and Axes model provides detailed plotting control, The library supports many backends for notebooks GUIs and files, A large part of the Python visualization ecosystem interoperates with Matplotlib]
+  kind: library
+  domains: [data, analytics, python]
+  deployment_types: [library, local]
+- category: library
+  id: polars
+  name: Polars
+  summary: High-performance DataFrame library written in Rust with Python and other language bindings, built around columnar execution, query optimization, and Apache Arrow concepts.
+  homepage: https://pola.rs/
+  repository: https://github.com/pola-rs/polars
+  tags: [dataframe, rust, analytics]
+  sources:
+  - {title: Polars official site, url: https://pola.rs/, type: official}
+  - {title: Polars source repository, url: https://github.com/pola-rs/polars, type: repository}
+  use_cases: [Transform large tabular datasets efficiently, Build lazy query pipelines with optimizer support, Use DataFrame workflows from Python or native Rust]
+  key_points: [Polars uses a columnar execution model, Lazy queries allow optimization before execution, The core engine is implemented in Rust]
+  kind: library
+  domains: [data, analytics]
+  deployment_types: [library, local]
+- category: library
+  id: sqlalchemy
+  name: SQLAlchemy
+  summary: Python SQL toolkit and object-relational mapper that provides a composable SQL expression language, database connection management, and ORM patterns.
+  homepage: https://www.sqlalchemy.org/
+  repository: https://github.com/sqlalchemy/sqlalchemy
+  tags: [python, database, orm]
+  sources:
+  - {title: SQLAlchemy official site, url: https://www.sqlalchemy.org/, type: official}
+  - {title: SQLAlchemy source repository, url: https://github.com/sqlalchemy/sqlalchemy, type: repository}
+  use_cases: [Build database-backed Python applications, Compose SQL queries through a Python expression system, Map relational database tables to application objects with an ORM]
+  key_points: [SQLAlchemy separates its Core SQL toolkit from higher-level ORM features, It supports many relational database dialects, Connection pooling and transaction handling are central parts of the library]
+  kind: library
+  domains: [data, python]
+  deployment_types: [library, local]
+- category: library
+  id: pydantic
+  name: Pydantic
+  summary: Python data validation library that uses type annotations to parse, validate, serialize, and document structured application data with explicit models.
+  homepage: https://docs.pydantic.dev/
+  repository: https://github.com/pydantic/pydantic
+  tags: [python, validation, typing]
+  sources:
+  - {title: Pydantic documentation, url: https://docs.pydantic.dev/, type: documentation}
+  - {title: Pydantic source repository, url: https://github.com/pydantic/pydantic, type: repository}
+  use_cases: [Validate API request and response models, Parse configuration and structured external data, Generate typed schemas for Python applications and frameworks]
+  key_points: [Pydantic models are defined primarily from Python type annotations, Validation errors are structured and machine-readable, The library is widely integrated with modern Python web frameworks]
+  kind: library
+  domains: [python, software-development]
+  deployment_types: [library, local]
+- category: library
+  id: xgboost
+  name: XGBoost
+  summary: Optimized gradient-boosting library for decision-tree models with distributed, GPU, and language-binding support across common machine-learning workflows.
+  homepage: https://xgboost.ai/
+  repository: https://github.com/dmlc/xgboost
+  tags: [machine-learning, gradient-boosting, data]
+  sources:
+  - {title: XGBoost official site, url: https://xgboost.ai/, type: official}
+  - {title: XGBoost source repository, url: https://github.com/dmlc/xgboost, type: repository}
+  use_cases: [Train gradient-boosted tree models, Build ranking classification and regression systems, Use CPU GPU and distributed training for tabular machine learning]
+  key_points: [XGBoost implements regularized gradient-boosted decision trees, It supports sparse data and multiple execution backends, Bindings are available for several common data-science languages]
+  kind: library
+  domains: [ai, machine-learning, data]
+  deployment_types: [library, local]
+- category: library
+  id: lightgbm
+  name: LightGBM
+  summary: Gradient-boosting framework from Microsoft designed for efficient tree-based learning on large datasets, with support for classification, regression, and ranking.
+  homepage: https://lightgbm.readthedocs.io/
+  repository: https://github.com/microsoft/LightGBM
+  tags: [machine-learning, gradient-boosting, data]
+  sources:
+  - {title: LightGBM documentation, url: https://lightgbm.readthedocs.io/, type: documentation}
+  - {title: LightGBM source repository, url: https://github.com/microsoft/LightGBM, type: repository}
+  use_cases: [Train boosted-tree models on large tabular datasets, Build classification regression and ranking pipelines, Use CPU or GPU acceleration where supported]
+  key_points: [LightGBM grows histogram-based decision trees, It is designed for memory-efficient training on large datasets, The project provides Python R and command-line interfaces]
+  kind: library
+  domains: [ai, machine-learning, data]
+  deployment_types: [library, local]
+- category: library
+  id: onnxruntime
+  name: ONNX Runtime
+  summary: Cross-platform inference and training accelerator for models represented in ONNX, with execution providers targeting CPUs, GPUs, mobile devices, and specialized hardware.
+  homepage: https://onnxruntime.ai/
+  repository: https://github.com/microsoft/onnxruntime
+  tags: [ai, inference, onnx]
+  sources:
+  - {title: ONNX Runtime official site, url: https://onnxruntime.ai/, type: official}
+  - {title: ONNX Runtime source repository, url: https://github.com/microsoft/onnxruntime, type: repository}
+  use_cases: [Run ONNX models across heterogeneous hardware, Optimize production inference pipelines, Embed machine-learning inference in server desktop and mobile applications]
+  key_points: [ONNX Runtime uses pluggable execution providers for hardware backends, Graph optimizations are applied before and during execution, The runtime decouples model format from vendor-specific inference engines]
+  kind: runtime
+  domains: [ai, machine-learning, systems]
+  deployment_types: [library, local, mobile]
+- category: library
+  id: deepspeed
+  name: DeepSpeed
+  summary: Deep-learning optimization library from Microsoft that provides memory, parallelism, communication, and training techniques for large neural-network workloads.
+  homepage: https://www.deepspeed.ai/
+  repository: https://github.com/microsoft/DeepSpeed
+  tags: [ai, deep-learning, distributed]
+  sources:
+  - {title: DeepSpeed official site, url: https://www.deepspeed.ai/, type: official}
+  - {title: DeepSpeed source repository, url: https://github.com/microsoft/DeepSpeed, type: repository}
+  use_cases: [Train large neural networks across multiple accelerators, Reduce optimizer and model-state memory pressure, Experiment with distributed training and inference optimizations]
+  key_points: [DeepSpeed includes ZeRO memory-optimization techniques, It integrates with common PyTorch training workflows, The library targets efficient execution of large distributed models]
+  kind: library
+  domains: [ai, machine-learning, distributed-systems]
+  deployment_types: [library, local]
+- category: library
+  id: sentence-transformers
+  name: Sentence Transformers
+  summary: Python framework for producing and training text and multimodal embeddings, commonly used for semantic search, clustering, retrieval, and similarity tasks.
+  homepage: https://www.sbert.net/
+  repository: https://github.com/UKPLab/sentence-transformers
+  tags: [ai, embeddings, nlp]
+  sources:
+  - {title: Sentence Transformers documentation, url: https://www.sbert.net/, type: documentation}
+  - {title: Sentence Transformers source repository, url: https://github.com/UKPLab/sentence-transformers, type: repository}
+  use_cases: [Generate embeddings for semantic search, Train or fine-tune embedding models, Build clustering retrieval and similarity systems for text data]
+  key_points: [The library provides a high-level interface for embedding models, It supports bi-encoder and cross-encoder workflows, Sentence Transformers integrates closely with the Hugging Face model ecosystem]
+  kind: library
+  domains: [ai, machine-learning, data]
+  deployment_types: [library, local]
+- category: library
+  id: spacy
+  name: spaCy
+  summary: Industrial natural-language-processing library for Python offering tokenization, linguistic pipelines, named-entity recognition, text classification, and extensible components.
+  homepage: https://spacy.io/
+  repository: https://github.com/explosion/spaCy
+  tags: [ai, nlp, python]
+  sources:
+  - {title: spaCy official site, url: https://spacy.io/, type: official}
+  - {title: spaCy source repository, url: https://github.com/explosion/spaCy, type: repository}
+  use_cases: [Build production NLP pipelines, Perform tokenization tagging parsing and entity recognition, Train and package custom text-processing components]
+  key_points: [spaCy organizes processing as configurable pipelines, It ships language-specific models separately from the core library, Custom components can combine trained and rule-based processing]
+  kind: library
+  domains: [ai, machine-learning, python]
+  deployment_types: [library, local]
