@@ -1,0 +1,27 @@
+schema_version: 2
+id: graphql
+name: GraphQL
+category: protocol
+kind: protocol
+domains:
+- api
+- web
+summary: Query language and execution specification for APIs that lets clients request typed fields from a schema and supports queries, mutations, subscriptions, and introspection.
+homepage: https://graphql.org/
+repository: https://github.com/graphql/graphql-spec
+deployment_types:
+- service
+- library
+status: active
+verified_at: '2026-08-31'
+tags:
+- api
+- graphql
+- schema
+sources:
+- title: GraphQL official site
+  url: https://graphql.org/
+  type: official
+- title: GraphQL specification repository
+  url: https://github.com/graphql/graphql-spec
+  type: repository
