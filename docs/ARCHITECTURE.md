@@ -35,9 +35,9 @@ The schema lives at `schema/entry.schema.json`. CI performs additional semantic 
 
 ## 4. Generated catalog
 
-The long-term catalog process will enumerate valid knowledge branches, validate each module, normalize metadata, and publish searchable JSON/index artifacts back to `main`.
+The long-term catalog process will enumerate available knowledge modules, validate each one, normalize metadata, and publish searchable JSON/index artifacts back to `main`.
 
-The generated catalog must never count a branch merely because it exists. A branch only becomes a module after validation succeeds.
+Only modules whose required content, metadata, and source references pass validation are published into the searchable index.
 
 ## 5. Branch lifecycle
 
@@ -45,6 +45,6 @@ Knowledge modules may be updated in place when facts, releases, ownership, suppo
 
 Core infrastructure uses normal branches such as `feat/*`, `fix/*`, and `docs/*` and is merged into `main` through pull requests.
 
-## 6. Quality over raw scale
+## 6. Quality at scale
 
-OpenDevIndex aims for 10,000 modules, but the architecture intentionally makes empty, duplicate, placeholder, or number-only branches invalid. Scale is useful only when the content remains searchable, source-backed, and maintainable.
+OpenDevIndex is designed to grow into a broad, searchable software knowledge base while keeping every module useful, source-backed, and maintainable. Empty, duplicate, placeholder, or low-value modules are invalid.
