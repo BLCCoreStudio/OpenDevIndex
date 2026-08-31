@@ -1,0 +1,27 @@
+schema_version: 2
+id: webauthn
+name: WebAuthn
+category: standard
+kind: standard
+domains:
+- security
+- web
+summary: W3C web authentication standard that enables public-key credentials and passkeys for phishing-resistant sign-in through browser and platform authenticator APIs.
+homepage: https://www.w3.org/TR/webauthn-3/
+repository: https://github.com/w3c/webauthn
+deployment_types:
+- web
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- security
+- authentication
+- passkeys
+sources:
+- title: WebAuthn Level 3 specification
+  url: https://www.w3.org/TR/webauthn-3/
+  type: standard
+- title: WebAuthn specification repository
+  url: https://github.com/w3c/webauthn
+  type: repository
