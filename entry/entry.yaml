@@ -2,6 +2,10 @@ schema_version: 1
 id: kde
 name: KDE
 category: opensource
+kind: platform
+domains:
+- open-source
+- systems
 summary: Open-source community and software ecosystem producing the Plasma desktop, application frameworks, developer libraries, and a broad set of Linux desktop applications.
 homepage: https://kde.org/
 repository: https://invent.kde.org/
