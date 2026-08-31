@@ -87,7 +87,7 @@ class IndexTests(unittest.TestCase):
             self.assertEqual(payload["module_count"], 1)
             self.assertEqual(payload["address_category_counts"], {"tool": 1})
             self.assertEqual(payload["kind_counts"], {"tool": 1})
-            self.assertEqual(payload["domain_counts"], {"developer-tools": 1})
+            self.assertEqual(payload["domain_counts"], {"cli": 1, "developer-tools": 1})
             self.assertEqual(payload["coverage_area_counts"], {"developer-tools": 1})
             self.assertEqual(payload["coverage_topic_counts"], {"developer-tools/developer-experience": 1})
             self.assertIn("/tree/tool/example-tool/entry", public_index.read_text(encoding="utf-8"))
