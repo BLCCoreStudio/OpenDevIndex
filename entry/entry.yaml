@@ -1,0 +1,28 @@
+schema_version: 2
+id: nats
+name: NATS
+category: platform
+kind: platform
+domains:
+- data
+- distributed-systems
+- networking
+summary: High-performance messaging system for distributed applications, providing publish-subscribe, request-reply, queueing, persistence, and streaming through JetStream.
+homepage: https://nats.io/
+repository: https://github.com/nats-io/nats-server
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- messaging
+- distributed
+- streaming
+sources:
+- title: NATS official site
+  url: https://nats.io/
+  type: official
+- title: NATS server source repository
+  url: https://github.com/nats-io/nats-server
+  type: repository
