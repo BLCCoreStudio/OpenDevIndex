@@ -1,0 +1,28 @@
+schema_version: 2
+id: opentofu
+name: OpenTofu
+category: tool
+kind: tool
+domains:
+- cloud
+- developer-tools
+- devops
+summary: Open-source infrastructure-as-code tool created as a community-driven Terraform-compatible implementation for declaratively managing infrastructure through providers.
+homepage: https://opentofu.org/
+repository: https://github.com/opentofu/opentofu
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- iac
+- cloud
+- devops
+sources:
+- title: OpenTofu official site
+  url: https://opentofu.org/
+  type: official
+- title: OpenTofu source repository
+  url: https://github.com/opentofu/opentofu
+  type: repository
