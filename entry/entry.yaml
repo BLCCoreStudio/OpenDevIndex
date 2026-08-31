@@ -2,6 +2,11 @@ schema_version: 1
 id: virtualization
 name: Virtualization
 category: concept
+kind: concept
+domains:
+- software-development
+- systems
+- virtualization
 summary: Technique for presenting virtual hardware or execution environments so multiple or foreign operating systems and workloads can run on shared physical machines.
 homepage: https://www.kernel.org/doc/html/latest/virt/kvm/index.html
 status: active
