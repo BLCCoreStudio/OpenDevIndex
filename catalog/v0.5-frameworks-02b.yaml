@@ -1,0 +1,289 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 9
+expected_categories:
+  framework: 9
+entries:
+- category: framework
+  id: rocket
+  name: Rocket
+  homepage: https://rocket.rs/
+  repository: https://github.com/rwf2/Rocket
+  tags:
+  - rust
+  - web
+  - type-safe
+  kind: framework
+  domains:
+  - web
+  - api
+  - systems
+  deployment_types:
+  - web
+  summary: Rocket is a Rust web framework focused on type-safe request handling, declarative routing, forms, request guards, and productive server-side application development.
+  sources:
+  - title: Rocket official site or documentation
+    url: https://rocket.rs/
+    type: official
+  - title: Rocket source repository
+    url: https://github.com/rwf2/Rocket
+    type: repository
+  use_cases:
+  - Build applications with Rocket using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Rocket's documented APIs and tooling
+  - Evaluate Rocket against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Rocket is a Rust web framework focused on type-safe request handling, declarative routing, forms, request guards, and productive server-side application development.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: ktor
+  name: Ktor
+  homepage: https://ktor.io/
+  repository: https://github.com/ktorio/ktor
+  tags:
+  - kotlin
+  - web
+  - async
+  kind: framework
+  domains:
+  - web
+  - api
+  - software-development
+  deployment_types:
+  - web
+  summary: Ktor is a Kotlin framework from JetBrains for asynchronous server applications and HTTP clients using coroutine-based APIs, plugins, and multiplatform support.
+  sources:
+  - title: Ktor official site or documentation
+    url: https://ktor.io/
+    type: official
+  - title: Ktor source repository
+    url: https://github.com/ktorio/ktor
+    type: repository
+  use_cases:
+  - Build applications with Ktor using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Ktor's documented APIs and tooling
+  - Evaluate Ktor against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Ktor is a Kotlin framework from JetBrains for asynchronous server applications and HTTP clients using coroutine-based APIs, plugins, and multiplatform support.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: qt
+  name: Qt
+  homepage: https://www.qt.io/
+  repository: https://github.com/qt/qtbase
+  tags:
+  - cpp
+  - gui
+  - cross-platform
+  kind: framework
+  domains:
+  - graphics
+  - software-development
+  - mobile
+  deployment_types:
+  - local
+  summary: Qt is a cross-platform C++ application framework for graphical interfaces, networking, multimedia, embedded systems, and native desktop or mobile software.
+  sources:
+  - title: Qt official site or documentation
+    url: https://www.qt.io/
+    type: official
+  - title: Qt source repository
+    url: https://github.com/qt/qtbase
+    type: repository
+  use_cases:
+  - Build applications with Qt using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Qt's documented APIs and tooling
+  - Evaluate Qt against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Qt is a cross-platform C++ application framework for graphical interfaces, networking, multimedia, embedded systems, and native desktop or mobile software.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: jetpack-compose
+  name: Jetpack Compose
+  homepage: https://developer.android.com/compose
+  repository: https://android.googlesource.com/platform/frameworks/support/
+  tags:
+  - android
+  - kotlin
+  - ui
+  kind: framework
+  domains:
+  - mobile
+  - software-development
+  deployment_types:
+  - local
+  summary: Jetpack Compose is Android's declarative user-interface toolkit for native applications using Kotlin, state-driven rendering, reusable composables, and Jetpack integration.
+  sources:
+  - title: Jetpack Compose official site or documentation
+    url: https://developer.android.com/compose
+    type: official
+  - title: Jetpack Compose source repository
+    url: https://android.googlesource.com/platform/frameworks/support/
+    type: repository
+  use_cases:
+  - Build applications with Jetpack Compose using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Jetpack Compose's documented APIs and tooling
+  - Evaluate Jetpack Compose against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Jetpack Compose is Android's declarative user-interface toolkit for native applications using Kotlin, state-driven rendering, reusable composables, and Jetpack integration.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: dotnet-maui
+  name: .NET MAUI
+  homepage: https://dotnet.microsoft.com/apps/maui
+  repository: https://github.com/dotnet/maui
+  tags:
+  - dotnet
+  - mobile
+  - cross-platform
+  kind: framework
+  domains:
+  - mobile
+  - software-development
+  deployment_types:
+  - local
+  summary: .NET MAUI is a cross-platform .NET framework for native mobile and desktop applications sharing C# and XAML code across Android, iOS, macOS, and Windows.
+  sources:
+  - title: .NET MAUI official site or documentation
+    url: https://dotnet.microsoft.com/apps/maui
+    type: official
+  - title: .NET MAUI source repository
+    url: https://github.com/dotnet/maui
+    type: repository
+  use_cases:
+  - Build applications with .NET MAUI using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around .NET MAUI's documented APIs and tooling
+  - Evaluate .NET MAUI against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - .NET MAUI is a cross-platform .NET framework for native mobile and desktop applications sharing C# and XAML code across Android, iOS, macOS, and Windows.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: godot
+  name: Godot Engine
+  homepage: https://godotengine.org/
+  repository: https://github.com/godotengine/godot
+  tags:
+  - game-development
+  - graphics
+  - open-source
+  kind: framework
+  domains:
+  - graphics
+  - software-development
+  deployment_types:
+  - local
+  summary: Godot Engine is an open-source game engine and application framework with a scene-based architecture, integrated editor, scripting, 2D and 3D rendering, and cross-platform export.
+  sources:
+  - title: Godot Engine official site or documentation
+    url: https://godotengine.org/
+    type: official
+  - title: Godot Engine source repository
+    url: https://github.com/godotengine/godot
+    type: repository
+  use_cases:
+  - Build applications with Godot Engine using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Godot Engine's documented APIs and tooling
+  - Evaluate Godot Engine against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Godot Engine is an open-source game engine and application framework with a scene-based architecture, integrated editor, scripting, 2D and 3D rendering, and cross-platform export.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: threejs
+  name: Three.js
+  homepage: https://threejs.org/
+  repository: https://github.com/mrdoob/three.js
+  tags:
+  - javascript
+  - 3d
+  - graphics
+  kind: framework
+  domains:
+  - graphics
+  - web
+  deployment_types:
+  - web
+  summary: Three.js is a JavaScript 3D graphics library and framework ecosystem that simplifies browser rendering with scenes, cameras, materials, loaders, animation, WebGL, and WebGPU support.
+  sources:
+  - title: Three.js official site or documentation
+    url: https://threejs.org/
+    type: official
+  - title: Three.js source repository
+    url: https://github.com/mrdoob/three.js
+    type: repository
+  use_cases:
+  - Build applications with Three.js using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Three.js's documented APIs and tooling
+  - Evaluate Three.js against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Three.js is a JavaScript 3D graphics library and framework ecosystem that simplifies browser rendering with scenes, cameras, materials, loaders, animation, WebGL, and WebGPU support.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: tailwindcss
+  name: Tailwind CSS
+  homepage: https://tailwindcss.com/
+  repository: https://github.com/tailwindlabs/tailwindcss
+  tags:
+  - css
+  - web
+  - ui
+  kind: framework
+  domains:
+  - web
+  - developer-experience
+  deployment_types:
+  - web
+  summary: Tailwind CSS is a utility-first CSS framework for composing custom interfaces directly in markup with generated utility classes, responsive variants, and configurable design tokens.
+  sources:
+  - title: Tailwind CSS official site or documentation
+    url: https://tailwindcss.com/
+    type: official
+  - title: Tailwind CSS source repository
+    url: https://github.com/tailwindlabs/tailwindcss
+    type: repository
+  use_cases:
+  - Build applications with Tailwind CSS using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Tailwind CSS's documented APIs and tooling
+  - Evaluate Tailwind CSS against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Tailwind CSS is a utility-first CSS framework for composing custom interfaces directly in markup with generated utility classes, responsive variants, and configurable design tokens.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: solidjs
+  name: SolidJS
+  homepage: https://www.solidjs.com/
+  repository: https://github.com/solidjs/solid
+  tags:
+  - javascript
+  - web
+  - reactive
+  kind: framework
+  domains:
+  - web
+  - software-development
+  deployment_types:
+  - web
+  summary: SolidJS is a reactive JavaScript UI framework using fine-grained reactivity and JSX to update affected DOM nodes directly without a virtual DOM reconciliation cycle.
+  sources:
+  - title: SolidJS official site or documentation
+    url: https://www.solidjs.com/
+    type: official
+  - title: SolidJS source repository
+    url: https://github.com/solidjs/solid
+    type: repository
+  use_cases:
+  - Build applications with SolidJS using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around SolidJS's documented APIs and tooling
+  - Evaluate SolidJS against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - SolidJS is a reactive JavaScript UI framework using fine-grained reactivity and JSX to update affected DOM nodes directly without a virtual DOM reconciliation cycle.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
