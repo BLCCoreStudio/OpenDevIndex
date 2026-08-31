@@ -6,6 +6,7 @@ kind: library
 domains:
 - ai
 - machine-learning
+- python
 summary: Python machine-learning library offering classical supervised and unsupervised algorithms, preprocessing, model selection, and evaluation utilities.
 homepage: https://scikit-learn.org/
 repository: https://github.com/scikit-learn/scikit-learn
