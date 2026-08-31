@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 from catalog_utils import category_counts, collect_entries, discover_catalogs, domain_counts, kind_counts
@@ -23,7 +24,29 @@ def module_url(module_ref: str) -> str:
     return f"{REPOSITORY_URL}/tree/{module_ref}/entry"
 
 
+def coverage_area_counts(entries: list[dict]) -> dict[str, int]:
+    counts: Counter[str] = Counter()
+    for entry in entries:
+        coverage = entry.get("coverage") or {}
+        area = coverage.get("area")
+        if isinstance(area, str) and area:
+            counts[area] += 1
+    return dict(sorted(counts.items()))
+
+
+def coverage_topic_counts(entries: list[dict]) -> dict[str, int]:
+    counts: Counter[str] = Counter()
+    for entry in entries:
+        coverage = entry.get("coverage") or {}
+        area = coverage.get("area")
+        for topic in coverage.get("topics", []):
+            if isinstance(area, str) and isinstance(topic, str):
+                counts[f"{area}/{topic}"] += 1
+    return dict(sorted(counts.items()))
+
+
 def search_text(entry: dict) -> str:
+    coverage = entry.get("coverage") or {}
     values: list[str] = [
         entry["module_ref"],
         entry["id"],
@@ -35,6 +58,8 @@ def search_text(entry: dict) -> str:
         *entry.get("tags", []),
         *entry.get("deployment_types", []),
         entry.get("license", ""),
+        coverage.get("area", ""),
+        *coverage.get("topics", []),
         *entry.get("use_cases", []),
         *entry.get("key_points", []),
     ]
@@ -42,6 +67,7 @@ def search_text(entry: dict) -> str:
 
 
 def public_record(entry: dict) -> dict:
+    coverage = entry.get("coverage") or {}
     return {
         "ref": entry["module_ref"],
         "url": module_url(entry["module_ref"]),
@@ -50,6 +76,8 @@ def public_record(entry: dict) -> dict:
         "address_category": entry["category"],
         "kind": entry["kind"],
         "domains": entry.get("domains", []),
+        "coverage_area": coverage.get("area"),
+        "coverage_topics": coverage.get("topics", []),
         "summary": entry["summary"],
         "tags": entry.get("tags", []),
         "deployment_types": entry.get("deployment_types", []),
@@ -70,7 +98,7 @@ def search_record(entry: dict) -> dict:
     return record
 
 
-def render_markdown(entries: list[dict], kinds: dict[str, int], domains: dict[str, int]) -> str:
+def render_markdown(entries: list[dict], kinds: dict[str, int], domains: dict[str, int], coverage_areas: dict[str, int]) -> str:
     lines = [
         "# OpenDevIndex — Browse the Index",
         "",
@@ -89,6 +117,11 @@ def render_markdown(entries: list[dict], kinds: dict[str, int], domains: dict[st
     lines.extend(["", "## Domain coverage", "", "| Domain | Modules |", "| --- | ---: |"])
     for domain, count in domains.items():
         lines.append(f"| `{domain}` | {count} |")
+
+    if coverage_areas:
+        lines.extend(["", "## Technology Universe coverage", "", "| Area | Mapped modules |", "| --- | ---: |"])
+        for area, count in coverage_areas.items():
+            lines.append(f"| `{area}` | {count} |")
 
     current: str | None = None
     for entry in entries:
@@ -114,7 +147,7 @@ def render_markdown(entries: list[dict], kinds: dict[str, int], domains: dict[st
             "",
             "---",
             "",
-            "OpenDevIndex separates stable module addresses from taxonomy facets. Legacy addresses remain valid while `kind` and `domains` provide consistent discovery and filtering.",
+            "OpenDevIndex separates stable module addresses from taxonomy facets. Legacy addresses remain valid while `kind`, `domains`, and schema v3 coverage metadata provide consistent discovery and filtering.",
             "",
         ]
     )
@@ -134,26 +167,32 @@ def build(catalog_dir: Path, output_dir: Path, public_index: Path | None = None)
     categories = category_counts(entries)
     kinds = kind_counts(entries)
     domains = domain_counts(entries)
+    coverage_areas = coverage_area_counts(entries)
+    coverage_topics = coverage_topic_counts(entries)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     catalog_payload = {
-        "schema_version": 2,
+        "schema_version": 3,
         "module_count": len(entries),
         "address_category_counts": categories,
         "kind_counts": kinds,
         "domain_counts": domains,
+        "coverage_area_counts": coverage_areas,
+        "coverage_topic_counts": coverage_topics,
         "catalogs": catalogs,
         "entries": [public_record(entry) for entry in entries],
     }
     search_payload = {
-        "schema_version": 2,
+        "schema_version": 3,
         "module_count": len(entries),
         "kind_counts": kinds,
         "domain_counts": domains,
+        "coverage_area_counts": coverage_areas,
+        "coverage_topic_counts": coverage_topics,
         "entries": [search_record(entry) for entry in entries],
     }
 
-    markdown = render_markdown(entries, kinds, domains)
+    markdown = render_markdown(entries, kinds, domains, coverage_areas)
     write_json(output_dir / "catalog.json", catalog_payload)
     write_json(output_dir / "search.json", search_payload)
     (output_dir / "catalog.md").write_text(markdown, encoding="utf-8")
@@ -165,6 +204,8 @@ def build(catalog_dir: Path, output_dir: Path, public_index: Path | None = None)
         "address_category_counts": categories,
         "kind_counts": kinds,
         "domain_counts": domains,
+        "coverage_area_counts": coverage_areas,
+        "coverage_topic_counts": coverage_topics,
         "catalogs": [item["path"] for item in catalogs],
         "output_dir": output_dir.as_posix(),
     }

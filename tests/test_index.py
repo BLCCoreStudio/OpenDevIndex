@@ -15,7 +15,7 @@ from build_index import build  # noqa: E402
 from search_index import load_index, search  # noqa: E402
 
 
-CATALOG = """schema_version: 1
+CATALOG = """schema_version: 3
 milestone: test
 verified_at: '2026-08-31'
 target_modules: 1
@@ -25,22 +25,33 @@ entries:
 - category: tool
   id: example-tool
   name: Example Tool
+  kind: tool
+  domains: [developer-tools]
+  coverage:
+    area: developer-tools
+    topics: [developer-experience]
   summary: Example developer tool used to verify deterministic OpenDevIndex search artifact generation.
   homepage: https://example.com/
   repository: https://github.com/example/example
   tags:
   - developer-tools
   - example
+  - cli
   sources:
   - title: Example documentation
     url: https://example.com/docs
     type: documentation
+  - title: Example repository
+    url: https://github.com/example/example
+    type: repository
   use_cases:
   - Demonstrate deterministic index generation
   - Exercise the local search ranking implementation
+  - Verify Technology Universe coverage filtering
   key_points:
   - Provides a compact fixture for repository tests
   - Keeps index tests independent from the production catalog
+  - Carries explicit area and topic coverage metadata
 """
 
 
@@ -67,14 +78,18 @@ class IndexTests(unittest.TestCase):
             self.assertEqual(matches[0]["ref"], "tool/example-tool")
             self.assertEqual(matches[0]["kind"], "tool")
             self.assertIn("developer-tools", matches[0]["domains"])
+            self.assertEqual(matches[0]["coverage_area"], "developer-tools")
+            self.assertEqual(matches[0]["coverage_topics"], ["developer-experience"])
             self.assertGreater(matches[0]["score"], 0)
 
             payload = json.loads((output_dir / "catalog.json").read_text(encoding="utf-8"))
-            self.assertEqual(payload["schema_version"], 2)
+            self.assertEqual(payload["schema_version"], 3)
             self.assertEqual(payload["module_count"], 1)
             self.assertEqual(payload["address_category_counts"], {"tool": 1})
             self.assertEqual(payload["kind_counts"], {"tool": 1})
-            self.assertEqual(payload["domain_counts"], {"developer-tools": 1})
+            self.assertEqual(payload["domain_counts"], {"cli": 1, "developer-tools": 1})
+            self.assertEqual(payload["coverage_area_counts"], {"developer-tools": 1})
+            self.assertEqual(payload["coverage_topic_counts"], {"developer-tools/developer-experience": 1})
             self.assertIn("/tree/tool/example-tool/entry", public_index.read_text(encoding="utf-8"))
 
     def test_search_filters(self) -> None:
@@ -86,13 +101,15 @@ class IndexTests(unittest.TestCase):
                 "address_category": "tool",
                 "kind": "tool",
                 "domains": ["security", "developer-tools"],
+                "coverage_area": "cybersecurity-privacy",
+                "coverage_topics": ["security-tools"],
                 "deployment_types": ["cli"],
                 "license": "MIT",
                 "summary": "A demo security tool for testing search behavior.",
                 "tags": ["demo", "security"],
                 "use_cases": [],
                 "key_points": [],
-                "search_text": "tool demo security developer-tools cli mit testing search behavior",
+                "search_text": "tool demo security developer-tools cybersecurity-privacy security-tools cli mit testing search behavior",
             }
         ]
         self.assertEqual(search(entries, "demo", "security", 5), [])
@@ -101,6 +118,10 @@ class IndexTests(unittest.TestCase):
         self.assertEqual(search(entries, "demo", domain="security")[0]["ref"], "tool/demo")
         self.assertEqual(search(entries, "demo", deployment="cli")[0]["ref"], "tool/demo")
         self.assertEqual(search(entries, "demo", license_value="mit")[0]["ref"], "tool/demo")
+        self.assertEqual(search(entries, "demo", coverage_area="cybersecurity-privacy")[0]["ref"], "tool/demo")
+        self.assertEqual(search(entries, "demo", coverage_topic="security-tools")[0]["ref"], "tool/demo")
+        self.assertEqual(search(entries, "demo", coverage_area="ai-ml"), [])
+        self.assertEqual(search(entries, "demo", coverage_topic="cryptography"), [])
 
 
 if __name__ == "__main__":
