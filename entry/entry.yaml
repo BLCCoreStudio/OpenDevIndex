@@ -2,6 +2,10 @@ schema_version: 1
 id: rails
 name: Ruby on Rails
 category: framework
+kind: framework
+domains:
+- software-development
+- web
 summary: Full-stack Ruby web framework emphasizing convention over configuration and integrated patterns for routing, databases, views, jobs, and testing.
 homepage: https://rubyonrails.org/
 repository: https://github.com/rails/rails
