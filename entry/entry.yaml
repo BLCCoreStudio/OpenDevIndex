@@ -1,0 +1,28 @@
+schema_version: 2
+id: pandas
+name: pandas
+category: library
+kind: library
+domains:
+- analytics
+- data
+- python
+summary: Python data analysis library centered on Series and DataFrame structures for labeled tabular data, cleaning, transformation, aggregation, and time-series workflows.
+homepage: https://pandas.pydata.org/
+repository: https://github.com/pandas-dev/pandas
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- dataframe
+- analytics
+sources:
+- title: pandas documentation
+  url: https://pandas.pydata.org/
+  type: documentation
+- title: pandas source repository
+  url: https://github.com/pandas-dev/pandas
+  type: repository
