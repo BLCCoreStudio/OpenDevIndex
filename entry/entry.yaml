@@ -1,0 +1,20 @@
+schema_version: 1
+id: grafana
+name: Grafana
+category: cloud
+summary: Observability visualization platform used to query, explore, dashboard, and alert on metrics, logs, traces, and other operational data sources.
+homepage: https://grafana.com/
+repository: https://github.com/grafana/grafana
+status: active
+verified_at: '2026-08-31'
+tags:
+- observability
+- dashboards
+- monitoring
+sources:
+- title: Grafana official site
+  url: https://grafana.com/
+  type: official
+- title: Grafana repository
+  url: https://github.com/grafana/grafana
+  type: repository
