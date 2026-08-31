@@ -2,6 +2,10 @@ schema_version: 1
 id: terraform
 name: Terraform
 category: cloud
+kind: tool
+domains:
+- cloud
+- devops
 summary: Infrastructure-as-code tool for declaring and applying resource graphs through provider plugins across cloud, SaaS, and infrastructure platforms.
 homepage: https://developer.hashicorp.com/terraform
 repository: https://github.com/hashicorp/terraform

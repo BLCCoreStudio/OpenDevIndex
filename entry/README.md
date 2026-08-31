@@ -2,9 +2,13 @@
 
 > Infrastructure-as-code tool for declaring and applying resource graphs through provider plugins across cloud, SaaS, and infrastructure platforms.
 
+## What it is
+
+Terraform is indexed as a **tool**. Its stable OpenDevIndex address is `cloud/terraform`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-Terraform is indexed by OpenDevIndex as a `cloud` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ Terraform is indexed by OpenDevIndex as a `cloud` knowledge module. This page is
 - State tracks managed resource mappings
 - Configuration describes dependency relationships among resources
 
+## Taxonomy
+
+- Kind: `tool`
+- Domains: `cloud`, `devops`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://developer.hashicorp.com/terraform
@@ -27,6 +38,10 @@ Terraform is indexed by OpenDevIndex as a `cloud` knowledge module. This page is
 - [Terraform documentation](https://developer.hashicorp.com/terraform) — `documentation`
 - [Terraform repository](https://github.com/hashicorp/terraform) — `repository`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `cloud/terraform`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
