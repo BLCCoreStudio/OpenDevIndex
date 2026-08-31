@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Prometheus official site** — https://prometheus.io/ (`official`)
 - **Prometheus repository** — https://github.com/prometheus/prometheus (`repository`)
