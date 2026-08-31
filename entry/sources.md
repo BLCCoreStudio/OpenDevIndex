@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Ansible documentation** — https://docs.ansible.com/ (`documentation`)
 - **Ansible repository** — https://github.com/ansible/ansible (`repository`)
