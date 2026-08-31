@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Redis official site** — https://redis.io/ (`official`)
 - **Redis repository** — https://github.com/redis/redis (`repository`)

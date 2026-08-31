@@ -2,6 +2,9 @@ schema_version: 1
 id: redis
 name: Redis
 category: database
+kind: database
+domains:
+- data
 summary: In-memory data platform centered on key-value structures and low-latency operations, commonly used for caching, messaging, counters, and real-time state.
 homepage: https://redis.io/
 repository: https://github.com/redis/redis
