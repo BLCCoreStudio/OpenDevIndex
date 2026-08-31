@@ -1,0 +1,20 @@
+schema_version: 1
+id: electron
+name: Electron
+category: framework
+summary: Framework for building cross-platform desktop applications using web technologies by packaging Chromium and Node.js with an application runtime.
+homepage: https://www.electronjs.org/
+repository: https://github.com/electron/electron
+status: active
+verified_at: '2026-08-31'
+tags:
+- desktop
+- javascript
+- chromium
+sources:
+- title: Electron official site
+  url: https://www.electronjs.org/
+  type: official
+- title: Electron repository
+  url: https://github.com/electron/electron
+  type: repository
