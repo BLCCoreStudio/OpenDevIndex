@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Browse OpenDevIndex
+    url: https://github.com/BLCCoreStudio/OpenDevIndex/blob/main/INDEX.md
+    about: Check the generated module index before requesting new content.
