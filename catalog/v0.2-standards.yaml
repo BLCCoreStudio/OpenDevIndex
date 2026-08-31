@@ -1,0 +1,36 @@
+schema_version: 2
+milestone: v0.2
+verified_at: '2026-08-31'
+target_modules: 2
+expected_categories:
+  standard: 2
+entries:
+- category: standard
+  id: webgpu
+  name: WebGPU
+  summary: Web standard and API family for modern GPU access from web applications, providing programmable rendering and general-purpose compute capabilities.
+  homepage: https://www.w3.org/TR/webgpu/
+  repository: https://github.com/gpuweb/gpuweb
+  tags: [graphics, gpu, web]
+  sources:
+  - {title: W3C WebGPU specification, url: https://www.w3.org/TR/webgpu/, type: standard}
+  - {title: GPU for the Web repository, url: https://github.com/gpuweb/gpuweb, type: repository}
+  use_cases: [Render advanced graphics in web applications, Run GPU compute workloads from web environments, Build portable browser-based visualization engines]
+  key_points: [Designed around modern explicit GPU APIs, Includes a shading language called WGSL, Browser implementations mediate access for safety and portability]
+  kind: standard
+  domains: [graphics, web]
+- category: standard
+  id: vulkan
+  name: Vulkan
+  summary: Cross-platform graphics and compute API standard from Khronos that exposes explicit control over GPU resources, synchronization, and command submission.
+  homepage: https://www.vulkan.org/
+  repository: https://github.com/KhronosGroup/Vulkan-Docs
+  tags: [graphics, gpu, api]
+  sources:
+  - {title: Vulkan official site, url: https://www.vulkan.org/, type: official}
+  - {title: Vulkan specification repository, url: https://github.com/KhronosGroup/Vulkan-Docs, type: repository}
+  use_cases: [Build high-performance graphics engines, Run general-purpose GPU compute, Develop cross-platform rendering backends]
+  key_points: [Uses explicit resource and synchronization management, Designed for low-overhead command submission, The Khronos specification defines the portable API contract]
+  kind: standard
+  domains: [graphics, systems]
+  license: Apache-2.0
