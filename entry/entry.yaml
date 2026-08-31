@@ -1,0 +1,28 @@
+schema_version: 2
+id: bat
+name: bat
+category: tool
+kind: tool
+domains:
+- cli
+- developer-experience
+summary: Command-line text viewer inspired by cat that adds syntax highlighting, Git-aware changes, line numbers, and paging while remaining pipeline friendly.
+homepage: https://github.com/sharkdp/bat
+repository: https://github.com/sharkdp/bat
+license: Apache-2.0 OR MIT
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- cli
+- terminal
+- rust
+sources:
+- title: bat repository
+  url: https://github.com/sharkdp/bat
+  type: repository
+- title: bat documentation
+  url: https://github.com/sharkdp/bat#readme
+  type: documentation
