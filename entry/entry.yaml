@@ -1,0 +1,29 @@
+schema_version: 2
+id: ruff
+name: Ruff
+category: tool
+kind: tool
+domains:
+- developer-experience
+- developer-tools
+- python
+summary: High-performance Python linter and formatter from Astral implemented in Rust, designed to replace or consolidate many common Python code-quality checks in one tool.
+homepage: https://docs.astral.sh/ruff/
+repository: https://github.com/astral-sh/ruff
+license: MIT
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- linting
+- developer-tools
+sources:
+- title: Ruff documentation
+  url: https://docs.astral.sh/ruff/
+  type: documentation
+- title: Ruff source repository
+  url: https://github.com/astral-sh/ruff
+  type: repository
