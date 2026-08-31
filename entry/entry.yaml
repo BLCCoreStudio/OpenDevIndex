@@ -1,0 +1,28 @@
+schema_version: 2
+id: nodejs
+name: Node.js
+category: runtime
+kind: runtime
+domains:
+- programming-languages
+- web
+summary: Cross-platform JavaScript runtime built on the V8 engine for server applications, command-line tools, networking services, and development automation.
+homepage: https://nodejs.org/
+repository: https://github.com/nodejs/node
+license: MIT
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- javascript
+- runtime
+- server
+sources:
+- title: Node.js official site
+  url: https://nodejs.org/
+  type: official
+- title: Node.js repository
+  url: https://github.com/nodejs/node
+  type: repository
