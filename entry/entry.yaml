@@ -1,0 +1,27 @@
+schema_version: 2
+id: fsharp
+name: F#
+category: language
+kind: language
+domains:
+- programming-languages
+- software-development
+summary: Functional-first .NET programming language that combines concise immutable-by-default code with strong typing and seamless interoperability across the .NET ecosystem.
+homepage: https://fsharp.org/
+repository: https://github.com/dotnet/fsharp
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- dotnet
+- functional
+sources:
+- title: F# official site
+  url: https://fsharp.org/
+  type: official
+- title: F# source repository
+  url: https://github.com/dotnet/fsharp
+  type: repository
