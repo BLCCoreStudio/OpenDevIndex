@@ -1,0 +1,20 @@
+schema_version: 1
+id: containers
+name: Containers
+category: concept
+summary: Operating-system-level isolation model that packages applications with dependencies while sharing a host kernel and using standardized image and runtime formats.
+homepage: https://opencontainers.org/
+repository: https://github.com/opencontainers/runtime-spec
+status: active
+verified_at: '2026-08-31'
+tags:
+- containers
+- isolation
+- oci
+sources:
+- title: Open Container Initiative
+  url: https://opencontainers.org/
+  type: official
+- title: OCI Runtime Specification
+  url: https://github.com/opencontainers/runtime-spec
+  type: standard
