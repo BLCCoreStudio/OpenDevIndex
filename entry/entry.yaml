@@ -1,0 +1,20 @@
+schema_version: 1
+id: opentelemetry
+name: OpenTelemetry
+category: cloud
+summary: Vendor-neutral observability project defining APIs, SDKs, semantic conventions, and protocols for producing and transporting traces, metrics, and logs.
+homepage: https://opentelemetry.io/
+repository: https://github.com/open-telemetry/opentelemetry-specification
+status: active
+verified_at: '2026-08-31'
+tags:
+- observability
+- tracing
+- standards
+sources:
+- title: OpenTelemetry official site
+  url: https://opentelemetry.io/
+  type: official
+- title: OpenTelemetry specification
+  url: https://github.com/open-telemetry/opentelemetry-specification
+  type: standard
