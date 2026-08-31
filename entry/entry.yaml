@@ -1,0 +1,29 @@
+schema_version: 2
+id: bun
+name: Bun
+category: runtime
+kind: runtime
+domains:
+- developer-experience
+- programming-languages
+- web
+summary: JavaScript and TypeScript runtime, package manager, bundler, and test runner focused on fast startup and an integrated developer-tooling experience.
+homepage: https://bun.sh/
+repository: https://github.com/oven-sh/bun
+license: MIT
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- javascript
+- typescript
+- runtime
+sources:
+- title: Bun official site
+  url: https://bun.sh/
+  type: official
+- title: Bun repository
+  url: https://github.com/oven-sh/bun
+  type: repository
