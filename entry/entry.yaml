@@ -1,0 +1,27 @@
+schema_version: 2
+id: prettier
+name: Prettier
+category: tool
+kind: tool
+domains:
+- developer-tools
+- web
+summary: Opinionated code formatter that parses source files and reprints them consistently, reducing style debates across JavaScript and many other supported languages.
+homepage: https://prettier.io/
+repository: https://github.com/prettier/prettier
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- formatting
+- javascript
+- developer-tools
+sources:
+- title: Prettier official site
+  url: https://prettier.io/
+  type: official
+- title: Prettier source repository
+  url: https://github.com/prettier/prettier
+  type: repository
