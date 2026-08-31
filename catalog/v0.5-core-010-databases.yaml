@@ -1,0 +1,157 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  database: 10
+entries:
+- category: database
+  id: mariadb
+  name: MariaDB
+  summary: Open-source relational database server compatible with much of the MySQL ecosystem and developed independently with its own storage engines, features, and release lifecycle.
+  homepage: https://mariadb.org/
+  repository: https://github.com/MariaDB/server
+  tags: [database, sql, relational]
+  sources:
+  - {title: MariaDB official site, url: https://mariadb.org/, type: official}
+  - {title: MariaDB source repository, url: https://github.com/MariaDB/server, type: repository}
+  use_cases: [Run transactional relational applications, Operate workloads in the MySQL-compatible ecosystem, Build self-hosted SQL services with replication and storage-engine options]
+  key_points: [MariaDB uses SQL and a client protocol compatible with many MySQL tools, The server supports pluggable storage engines, The project maintains an independent feature and release roadmap]
+  kind: database
+  domains: [data]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: cockroachdb
+  name: CockroachDB
+  summary: Distributed SQL database designed for horizontal scale and resilience while presenting a PostgreSQL-compatible SQL interface and transactional consistency model.
+  homepage: https://www.cockroachlabs.com/docs/
+  repository: https://github.com/cockroachdb/cockroach
+  tags: [database, sql, distributed]
+  sources:
+  - {title: CockroachDB documentation, url: https://www.cockroachlabs.com/docs/, type: documentation}
+  - {title: CockroachDB source repository, url: https://github.com/cockroachdb/cockroach, type: repository}
+  use_cases: [Run globally distributed transactional applications, Scale SQL workloads across multiple nodes, Build services that need automatic replication and node-failure tolerance]
+  key_points: [CockroachDB distributes ranges of data across cluster nodes, It provides serializable transactions by default, Its SQL surface is intentionally compatible with many PostgreSQL tools and drivers]
+  kind: database
+  domains: [data, distributed-systems]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: timescaledb
+  name: TimescaleDB
+  summary: PostgreSQL extension for time-series and analytical workloads, adding hypertables, compression, continuous aggregates, and time-oriented query optimizations.
+  homepage: https://www.timescale.com/
+  repository: https://github.com/timescale/timescaledb
+  tags: [database, timeseries, postgresql]
+  sources:
+  - {title: Timescale official site, url: https://www.timescale.com/, type: official}
+  - {title: TimescaleDB source repository, url: https://github.com/timescale/timescaledb, type: repository}
+  use_cases: [Store high-volume time-series data in PostgreSQL, Build observability and IoT data pipelines, Run time-window analytics with SQL and continuous aggregates]
+  key_points: [TimescaleDB extends PostgreSQL rather than replacing its SQL engine, Hypertables partition time-series data automatically, Compression and continuous aggregates target large time-oriented datasets]
+  kind: database
+  domains: [data, analytics]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: influxdb
+  name: InfluxDB
+  summary: Time-series database designed for metrics, events, observability, and sensor workloads, with specialized storage and query capabilities for timestamped data.
+  homepage: https://www.influxdata.com/products/influxdb-overview/
+  repository: https://github.com/influxdata/influxdb
+  tags: [database, timeseries, observability]
+  sources:
+  - {title: InfluxDB official site, url: https://www.influxdata.com/products/influxdb-overview/, type: official}
+  - {title: InfluxDB source repository, url: https://github.com/influxdata/influxdb, type: repository}
+  use_cases: [Store application and infrastructure metrics, Collect sensor and IoT time-series data, Build dashboards and alerting pipelines around timestamped measurements]
+  key_points: [InfluxDB is specialized for time-indexed data, The project provides ingestion storage and query components, It is frequently used in monitoring and telemetry stacks]
+  kind: database
+  domains: [data, observability]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: elasticsearch
+  name: Elasticsearch
+  summary: Distributed search and analytics engine built around Lucene, used for full-text search, log analytics, observability data, and document-oriented querying.
+  homepage: https://www.elastic.co/elasticsearch
+  repository: https://github.com/elastic/elasticsearch
+  tags: [search, database, analytics]
+  sources:
+  - {title: Elasticsearch official site, url: https://www.elastic.co/elasticsearch, type: official}
+  - {title: Elasticsearch source repository, url: https://github.com/elastic/elasticsearch, type: repository}
+  use_cases: [Build full-text search experiences, Analyze logs and operational data, Index JSON documents for distributed querying and aggregation]
+  key_points: [Elasticsearch uses Apache Lucene for core indexing and search, Data is distributed across shards in a cluster, The engine supports full-text queries and analytical aggregations]
+  kind: database
+  domains: [data, analytics, observability]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: opensearch
+  name: OpenSearch
+  summary: Open-source distributed search and analytics suite derived from Elasticsearch and Kibana, providing document indexing, querying, dashboards, and observability capabilities.
+  homepage: https://opensearch.org/
+  repository: https://github.com/opensearch-project/OpenSearch
+  tags: [search, database, analytics]
+  sources:
+  - {title: OpenSearch official site, url: https://opensearch.org/, type: official}
+  - {title: OpenSearch source repository, url: https://github.com/opensearch-project/OpenSearch, type: repository}
+  use_cases: [Build full-text and application search, Analyze logs traces and security data, Run self-hosted distributed document-search clusters]
+  key_points: [OpenSearch uses Lucene as its search engine foundation, It supports clustered indexing queries and aggregations, The broader project includes dashboard and observability components]
+  kind: database
+  domains: [data, analytics, observability]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: milvus
+  name: Milvus
+  summary: Open-source vector database built for large-scale similarity search over embeddings, with indexing, filtering, distributed deployment, and AI retrieval workflows.
+  homepage: https://milvus.io/
+  repository: https://github.com/milvus-io/milvus
+  tags: [vector-database, ai, search]
+  sources:
+  - {title: Milvus official site, url: https://milvus.io/, type: official}
+  - {title: Milvus source repository, url: https://github.com/milvus-io/milvus, type: repository}
+  use_cases: [Store and search high-dimensional embeddings, Build retrieval systems for generative AI applications, Run large-scale approximate-nearest-neighbor search]
+  key_points: [Milvus supports multiple vector indexing strategies, Metadata filtering can be combined with similarity search, The system supports distributed deployments for larger workloads]
+  kind: database
+  domains: [data, ai]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: qdrant
+  name: Qdrant
+  summary: Vector similarity search engine and database written in Rust, providing filtered nearest-neighbor search, persistence, payload metadata, and APIs for embedding workloads.
+  homepage: https://qdrant.tech/
+  repository: https://github.com/qdrant/qdrant
+  tags: [vector-database, ai, rust]
+  sources:
+  - {title: Qdrant official site, url: https://qdrant.tech/, type: official}
+  - {title: Qdrant source repository, url: https://github.com/qdrant/qdrant, type: repository}
+  use_cases: [Build semantic and recommendation search, Store embeddings with associated metadata, Use filtered vector retrieval in AI and search applications]
+  key_points: [Qdrant is implemented primarily in Rust, Vector points can include filterable payload metadata, The service exposes HTTP and gRPC APIs for search and management]
+  kind: database
+  domains: [data, ai]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: weaviate
+  name: Weaviate
+  summary: Open-source vector database that combines vector search with structured filtering, hybrid retrieval, modules, and APIs for semantic-search and AI applications.
+  homepage: https://weaviate.io/
+  repository: https://github.com/weaviate/weaviate
+  tags: [vector-database, ai, search]
+  sources:
+  - {title: Weaviate official site, url: https://weaviate.io/, type: official}
+  - {title: Weaviate source repository, url: https://github.com/weaviate/weaviate, type: repository}
+  use_cases: [Build semantic search applications, Combine keyword and vector retrieval, Store application objects alongside embedding vectors and metadata]
+  key_points: [Weaviate stores structured objects with vector representations, Hybrid search can combine lexical and vector signals, The project supports pluggable vectorization and integration modules]
+  kind: database
+  domains: [data, ai]
+  deployment_types: [self-hosted, service]
+- category: database
+  id: chroma
+  name: Chroma
+  summary: Open-source embedding database designed for AI applications, providing simple APIs for storing documents, metadata, embeddings, and similarity queries.
+  homepage: https://www.trychroma.com/
+  repository: https://github.com/chroma-core/chroma
+  tags: [vector-database, ai, embeddings]
+  sources:
+  - {title: Chroma official site, url: https://www.trychroma.com/, type: official}
+  - {title: Chroma source repository, url: https://github.com/chroma-core/chroma, type: repository}
+  use_cases: [Prototype retrieval-augmented generation systems, Store and query document embeddings, Attach metadata and documents to vector collections]
+  key_points: [Chroma focuses on developer-friendly embedding storage APIs, Collections group embeddings documents and metadata, The project is commonly used in local and application-level AI retrieval workflows]
+  kind: database
+  domains: [data, ai]
+  deployment_types: [local, self-hosted]
