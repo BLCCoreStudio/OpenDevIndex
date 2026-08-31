@@ -1,0 +1,20 @@
+schema_version: 1
+id: age
+name: age
+category: security
+summary: Simple file-encryption format and tool designed as a modern, composable way to encrypt files to public-key or passphrase recipients.
+homepage: https://age-encryption.org/
+repository: https://github.com/FiloSottile/age
+status: active
+verified_at: '2026-08-31'
+tags:
+- encryption
+- files
+- cli
+sources:
+- title: age official site
+  url: https://age-encryption.org/
+  type: official
+- title: age repository
+  url: https://github.com/FiloSottile/age
+  type: repository
