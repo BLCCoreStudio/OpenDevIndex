@@ -2,9 +2,13 @@
 
 > Application-layer protocol underlying the Web and many APIs, defining request and response semantics, methods, status codes, fields, caching, and representation transfer.
 
+## What it is
+
+HTTP is indexed as a **protocol**. Its stable OpenDevIndex address is `protocol/http`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-HTTP is indexed by OpenDevIndex as a `protocol` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ HTTP is indexed by OpenDevIndex as a `protocol` knowledge module. This page is i
 - Methods such as GET and POST have standardized semantics
 - Status codes communicate response outcomes
 
+## Taxonomy
+
+- Kind: `protocol`
+- Domains: `networking`, `web`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://www.rfc-editor.org/rfc/rfc9110
@@ -25,6 +36,10 @@ HTTP is indexed by OpenDevIndex as a `protocol` knowledge module. This page is i
 
 - [HTTP Semantics RFC 9110](https://www.rfc-editor.org/rfc/rfc9110) — `standard`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `protocol/http`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
