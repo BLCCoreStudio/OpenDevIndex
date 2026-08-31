@@ -3,6 +3,14 @@
 ## 2026-08-31 — v0.1
 
 - Reviewed `ai/ray` against the current OpenDevIndex catalog and taxonomy.
+- Recorded canonical kind `framework` and domain facets: ai, distributed-systems, python.
+- Re-rendered module documentation from validated source-backed metadata.
+
+## Earlier history
+
+## 2026-08-31 — v0.1
+
+- Reviewed `ai/ray` against the current OpenDevIndex catalog and taxonomy.
 - Recorded canonical kind `framework` and domain facets: ai, distributed-systems.
 - Re-rendered module documentation from validated source-backed metadata.
 
