@@ -1,0 +1,19 @@
+schema_version: 1
+id: sqlite
+name: SQLite
+category: database
+summary: Embedded relational database engine that stores a complete database in ordinary files and requires no separate database server process.
+homepage: https://www.sqlite.org/
+status: active
+verified_at: '2026-08-31'
+tags:
+- sql
+- embedded
+- database
+sources:
+- title: SQLite official site
+  url: https://www.sqlite.org/
+  type: official
+- title: SQLite documentation
+  url: https://www.sqlite.org/docs.html
+  type: documentation
