@@ -1,0 +1,28 @@
+schema_version: 2
+id: nomad
+name: HashiCorp Nomad
+category: platform
+kind: platform
+domains:
+- cloud
+- devops
+- distributed-systems
+summary: Workload orchestrator for deploying and managing containerized and non-containerized applications across clusters with a comparatively small operational footprint.
+homepage: https://developer.hashicorp.com/nomad
+repository: https://github.com/hashicorp/nomad
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- orchestration
+- cloud
+- scheduler
+sources:
+- title: Nomad documentation
+  url: https://developer.hashicorp.com/nomad
+  type: documentation
+- title: Nomad source repository
+  url: https://github.com/hashicorp/nomad
+  type: repository
