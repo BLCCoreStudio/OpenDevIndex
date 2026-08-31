@@ -1,0 +1,20 @@
+schema_version: 1
+id: react
+name: React
+category: framework
+summary: Library for building component-based user interfaces with declarative rendering and a broad ecosystem for web and cross-platform applications.
+homepage: https://react.dev/
+repository: https://github.com/facebook/react
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- ui
+- javascript
+sources:
+- title: React documentation
+  url: https://react.dev/
+  type: documentation
+- title: React repository
+  url: https://github.com/facebook/react
+  type: repository
