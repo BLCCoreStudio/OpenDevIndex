@@ -1,33 +1,47 @@
-# Model Context Protocol (MCP)
+# Model Context Protocol
 
-Model Context Protocol (MCP) is an open protocol for connecting AI applications with external tools, data sources, and contextual capabilities through standardized client/server interactions.
+> Open protocol for connecting AI applications to tools, resources, prompts, and external context through a standardized client-server interface.
+
+## What it is
+
+Model Context Protocol is indexed as a **protocol**. Its stable OpenDevIndex address is `protocol/mcp`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
 
 ## Why it matters
 
-Without a common protocol, every AI application and external service needs custom integration glue. MCP defines shared message formats and capability models so an AI host can connect to compatible servers using a consistent interface rather than a unique API adapter for every tool.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
-## Core model
+## Typical use cases
 
-MCP distinguishes between hosts, clients, and servers. A host is the AI application. Clients manage connections from that host, while servers expose capabilities. The protocol uses JSON-RPC messages and defines interoperable features around tools, resources, prompts, authorization, and other capabilities depending on the negotiated protocol version.
+- Expose tools and resources to AI applications
+- Connect model clients to external systems
+- Standardize context-provider integrations
 
-The protocol evolves through dated specification revisions, so implementers must pay attention to version negotiation instead of assuming every MCP implementation supports the same feature set.
+## Key points
 
-## Good fit
+- Uses a client-server architecture
+- Defines structured capabilities for tools, resources, and prompts
 
-- AI assistants that need controlled access to external tools
-- IDE and coding-agent integrations
-- Connecting LLM applications to local or remote data
-- Reusable integrations that should work across multiple AI hosts
-- Building composable agent/tool ecosystems
+## Taxonomy
 
-## Trade-offs
+- Kind: `protocol`
+- Domains: `ai`, `api`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
 
-MCP standardizes the interface but does not automatically make a tool safe. Hosts and servers still need strong authorization, input validation, least-privilege design, and careful handling of untrusted tool output. Protocol revisions and varying SDK support can also create compatibility gaps.
+## Primary links
 
-## Alternatives and related approaches
+- Homepage: https://modelcontextprotocol.io/
+- Repository: https://github.com/modelcontextprotocol/modelcontextprotocol
 
-Direct REST/GraphQL APIs, custom function-calling adapters, plugin systems, and vendor-specific tool protocols can solve similar integration problems. MCP's advantage is interoperability across independently developed hosts and servers when both sides implement compatible revisions.
+## Verified sources
+
+- [Model Context Protocol documentation](https://modelcontextprotocol.io/) — `documentation`
+- [MCP specification repository](https://github.com/modelcontextprotocol/modelcontextprotocol) — `repository`
 
 ## Verification
 
-Reviewed against the official MCP specification, repository, and July 2026 specification update on 2026-08-31.
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
+## Maintenance
+
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.

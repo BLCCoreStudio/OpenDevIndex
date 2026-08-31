@@ -1,8 +1,8 @@
 # Sources
 
-- [Model Context Protocol specification](https://modelcontextprotocol.io/specification) — authoritative protocol documentation and versioned requirements.
-- [MCP specification repository](https://github.com/modelcontextprotocol/modelcontextprotocol) — specification, schema, documentation, and project history.
-- [2026-07-28 specification announcement](https://blog.modelcontextprotocol.io/posts/2026-07-28/) — official overview of the July 2026 protocol revision.
-- [MCP organization](https://github.com/modelcontextprotocol) — official SDK and ecosystem repositories.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
-Verified: 2026-08-31.
+- **Model Context Protocol documentation** — https://modelcontextprotocol.io/ (`documentation`)
+- **MCP specification repository** — https://github.com/modelcontextprotocol/modelcontextprotocol (`repository`)
+
+Sources are selected to prefer official project pages, canonical documentation, standards, primary repositories, advisories, or original research.
