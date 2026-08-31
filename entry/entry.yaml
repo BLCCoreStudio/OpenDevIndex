@@ -2,6 +2,11 @@ schema_version: 1
 id: mlflow
 name: MLflow
 category: ai
+kind: platform
+domains:
+- ai
+- devops
+- machine-learning
 summary: Open-source platform for managing machine-learning experiments, model artifacts, evaluation, registries, and deployment-oriented lifecycle workflows.
 homepage: https://mlflow.org/
 repository: https://github.com/mlflow/mlflow
