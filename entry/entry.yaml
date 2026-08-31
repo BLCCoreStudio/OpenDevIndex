@@ -1,0 +1,29 @@
+schema_version: 2
+id: zig
+name: Zig
+category: language
+kind: language
+domains:
+- build
+- programming-languages
+- systems
+summary: General-purpose systems programming language focused on explicit control, predictable performance, cross-compilation, and straightforward interoperability with C code.
+homepage: https://ziglang.org/
+repository: https://github.com/ziglang/zig
+license: MIT
+deployment_types:
+- local
+- system
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- systems
+- compiler
+sources:
+- title: Zig official site
+  url: https://ziglang.org/
+  type: official
+- title: Zig source repository
+  url: https://github.com/ziglang/zig
+  type: repository
