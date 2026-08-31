@@ -24,7 +24,7 @@ The module focuses on the technology's practical role, high-signal characteristi
 ## Taxonomy
 
 - Kind: `toolchain`
-- Domains: `build`, `open-source`, `systems`
+- Domains: `compilers`, `open-source`, `systems`
 - Deployment: not yet curated
 - License metadata: `not yet curated`
 
