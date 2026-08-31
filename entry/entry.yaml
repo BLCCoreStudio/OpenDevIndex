@@ -1,0 +1,29 @@
+schema_version: 2
+id: erlang
+name: Erlang
+category: language
+kind: language
+domains:
+- distributed-systems
+- programming-languages
+summary: Functional concurrent programming language and runtime ecosystem designed for fault-tolerant, distributed, soft-real-time systems that can run continuously.
+homepage: https://www.erlang.org/
+repository: https://github.com/erlang/otp
+license: Apache-2.0
+deployment_types:
+- local
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- distributed-systems
+- concurrency
+sources:
+- title: Erlang official site
+  url: https://www.erlang.org/
+  type: official
+- title: Erlang/OTP source repository
+  url: https://github.com/erlang/otp
+  type: repository
