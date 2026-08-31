@@ -30,15 +30,38 @@ Current growth model: reviewed catalog shards published from trusted `main`. The
 - Staleness detection based on `verified_at`
 - Automated source/link health reporting
 - Contributor quality dashboard
+- Introduce deeper module sections for architecture, concepts, tools, examples, alternatives, risks and learning paths
 
-## v1.0 — Open software map / 10,000 modules
+## v1.0 — Open technology map / 10,000 modules
 
-- 10,000 validated modules
+- 10,000 validated knowledge modules
 - Public searchable web index
 - API-friendly catalog artifacts
-- Topic relationships and alternatives graph
+- Topic relationships, dependencies and alternatives graph
+- Technology comparison views
+- Learning-path generation from prerequisites and relationships
+- Security, privacy and operational-risk facets
 - Trend/change feeds for fast-moving technologies
 - Translation-ready content model
+- Broad coverage across software, systems, infrastructure, security, AI, hardware and emerging technology
+
+## Beyond v1 — Technology knowledge graph
+
+- Expand from a software-centric catalog into a comprehensive map of computing and technology
+- Connect concepts, implementations, tools, standards, protocols, ecosystems and historical lineage
+- Support graph navigation such as `built-with`, `depends-on`, `alternative-to`, `implements`, `successor-of`, `used-by` and `related-to`
+- Add generated comparison matrices without vendor-sponsored ranking
+- Add curated beginner-to-advanced learning journeys
+- Add structured architecture and data-flow representations where appropriate
+- Add stronger provenance, freshness and confidence metadata
+- Add historical snapshots for fast-changing technologies
+- Make the reviewed catalog reusable by websites, CLIs, educational tools and other open-source applications
+
+## Coverage domains
+
+OpenDevIndex is designed to include programming languages, computer-science foundations, operating systems, hardware and computer architecture, networking and internet infrastructure, cybersecurity and privacy, web and mobile development, databases and data engineering, cloud and DevOps, observability and reliability, AI and machine learning, graphics and games, embedded systems and IoT, robotics, open-source ecosystems, standards and protocols, developer tooling, software architecture, testing and debugging, supply-chain engineering, and emerging technology.
+
+See [`docs/VISION.md`](docs/VISION.md) for the full long-term scope.
 
 ## Non-goals
 
@@ -46,6 +69,6 @@ Current growth model: reviewed catalog shards published from trusted `main`. The
 - Mirroring proprietary documentation
 - Ranking products based on sponsorship
 - Treating generated AI text as a source
-- Inflating branch count without useful knowledge content
+- Sacrificing accuracy, provenance or usefulness merely to increase raw content volume
 
 Each knowledge module is independently validated for structure, accuracy, and quality before being included in the index.

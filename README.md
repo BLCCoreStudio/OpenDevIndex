@@ -1,10 +1,12 @@
 # OpenDevIndex
 
-> **Search the software world.**
+> **Search the technology world. Understand how it works.**
 
-OpenDevIndex is an open, structured, source-backed index of software, developer tools, AI, security, open source, infrastructure, standards, and emerging technology.
+OpenDevIndex is an open, structured, source-backed knowledge map of software, systems, hardware, AI, security, networking, infrastructure, standards, tools, open source, and emerging technology.
 
-Instead of keeping thousands of unrelated notes in one giant document, OpenDevIndex treats each subject as an independently versioned **knowledge module**.
+It is designed to go beyond a traditional awesome list, cheatsheet collection, glossary, tutorial index, or tool directory. Each subject is represented as an independently validated **knowledge module** that can explain what a technology is, why it exists, how it works, how it is built, what tools belong around it, what alternatives exist, what risks matter, and where to learn more.
+
+See [`docs/VISION.md`](docs/VISION.md) for the long-term scope.
 
 ## Browse the index
 
@@ -19,12 +21,14 @@ python scripts/search_index.py "local ai" --index dist/index/search.json
 
 ## What makes it different?
 
-- **Structured + human-readable** — every module has machine-readable metadata and a concise guide.
+- **Structured + human-readable** — every module has machine-readable metadata and a useful guide.
 - **Source-backed** — important claims should point to primary or reputable sources.
 - **Independently versioned** — one subject can evolve without rewriting the entire index.
 - **Facet-based taxonomy** — stable module addresses are separated from canonical kinds and multi-domain classification.
-- **Broad by design** — tools, languages, frameworks, AI, security, cloud, databases, protocols, concepts, and open-source ecosystems belong here.
-- **Automation-friendly** — catalogs, schemas, and CI make the index usable by humans, scripts, search engines, and future applications.
+- **Technology-wide scope** — programming, systems, hardware, networking, AI, security, cloud, databases, protocols, open source, developer tooling and emerging technology belong here.
+- **Explain, don't just list** — modules can cover architecture, concepts, tools, examples, alternatives, trade-offs, risks, operations and learning paths.
+- **Relationship-aware** — the catalog is designed to connect dependencies, alternatives, implementations, standards and related concepts.
+- **Automation-friendly** — catalogs, schemas, and CI make the index usable by humans, scripts, search engines, educational tools and future applications.
 - **Quality-gated** — modules are included only after structure, metadata, source, and editorial checks pass.
 
 ## Knowledge modules
@@ -56,6 +60,31 @@ entry/
 ```
 
 Modules must contain real, useful information and pass validation before inclusion in the index.
+
+### What a mature module should answer
+
+Where applicable, a mature module should cover:
+
+1. What is it?
+2. Why does it exist?
+3. How does it work?
+4. What does its architecture look like?
+5. What concepts are important?
+6. What technologies, standards or dependencies does it rely on?
+7. What tools are commonly used with it?
+8. What do practical examples look like?
+9. What are its common use cases?
+10. What are the important alternatives and trade-offs?
+11. What are its performance characteristics and limitations?
+12. What are its security and privacy risks?
+13. How is it deployed, observed and maintained where relevant?
+14. What ecosystem surrounds it?
+15. What should someone learn before and after it?
+16. What are the primary or authoritative sources?
+17. When was the information last verified?
+18. How does it relate to the rest of the technology graph?
+
+Not every module needs every section. Requirements can vary by module kind while preserving a consistent experience.
 
 ### Stable addresses vs. taxonomy
 
@@ -125,18 +154,9 @@ New modules use canonical taxonomy metadata even when a stable address prefix is
 
 ## Quality bar
 
-Every module should answer, where applicable:
+Each knowledge module is independently validated for structure, accuracy, provenance, usefulness and quality before being included in the index.
 
-1. What is it?
-2. What problem does it solve?
-3. Who should use it?
-4. How does it work at a high level?
-5. What are its common use cases?
-6. What are its important characteristics and trade-offs?
-7. Where are the primary sources?
-8. When was the information last verified?
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and [docs/VISION.md](docs/VISION.md).
 
 ## Validation and supply-chain hygiene
 
@@ -148,9 +168,10 @@ A module is included in a milestone only when its required files and metadata pa
 
 - **v0.1:** 100 verified knowledge modules
 - **v0.5:** 1,000 verified knowledge modules + generated search catalog
-- **v1.0:** 10,000 verified knowledge modules + public searchable index
+- **v1.0:** 10,000 verified knowledge modules + public searchable technology map
+- **Beyond v1:** a relationship-aware technology knowledge graph spanning the computing ecosystem
 
-Each knowledge module is independently validated for structure, accuracy, and quality before being included in the index.
+See [`ROADMAP.md`](ROADMAP.md) for the detailed plan.
 
 ## License
 
