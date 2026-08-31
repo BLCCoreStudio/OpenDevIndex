@@ -1,0 +1,28 @@
+schema_version: 2
+id: deepspeed
+name: DeepSpeed
+category: library
+kind: library
+domains:
+- ai
+- distributed-systems
+- machine-learning
+summary: Deep-learning optimization library from Microsoft that provides memory, parallelism, communication, and training techniques for large neural-network workloads.
+homepage: https://www.deepspeed.ai/
+repository: https://github.com/microsoft/DeepSpeed
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- ai
+- deep-learning
+- distributed
+sources:
+- title: DeepSpeed official site
+  url: https://www.deepspeed.ai/
+  type: official
+- title: DeepSpeed source repository
+  url: https://github.com/microsoft/DeepSpeed
+  type: repository
