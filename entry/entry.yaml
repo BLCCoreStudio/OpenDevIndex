@@ -1,0 +1,20 @@
+schema_version: 1
+id: flutter
+name: Flutter
+category: framework
+summary: Cross-platform application UI toolkit using Dart to build natively compiled mobile, web, desktop, and embedded interfaces from shared code.
+homepage: https://flutter.dev/
+repository: https://github.com/flutter/flutter
+status: active
+verified_at: '2026-08-31'
+tags:
+- mobile
+- cross-platform
+- dart
+sources:
+- title: Flutter official site
+  url: https://flutter.dev/
+  type: official
+- title: Flutter repository
+  url: https://github.com/flutter/flutter
+  type: repository
