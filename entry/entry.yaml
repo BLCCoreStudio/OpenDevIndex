@@ -1,0 +1,27 @@
+schema_version: 2
+id: numpy
+name: NumPy
+category: library
+kind: library
+domains:
+- data
+- python
+summary: Core Python library for multidimensional arrays, vectorized numerical operations, linear algebra, random sampling, and interoperability across scientific computing tools.
+homepage: https://numpy.org/
+repository: https://github.com/numpy/numpy
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- numerical
+- data
+sources:
+- title: NumPy official site
+  url: https://numpy.org/
+  type: official
+- title: NumPy source repository
+  url: https://github.com/numpy/numpy
+  type: repository
