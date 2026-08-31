@@ -2,6 +2,10 @@ schema_version: 1
 id: astro
 name: Astro
 category: framework
+kind: framework
+domains:
+- software-development
+- web
 summary: Web framework focused on content-driven sites and server-rendered applications, with island architecture and support for multiple UI component frameworks.
 homepage: https://astro.build/
 repository: https://github.com/withastro/astro
