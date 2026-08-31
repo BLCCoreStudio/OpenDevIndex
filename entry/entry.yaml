@@ -1,0 +1,30 @@
+schema_version: 2
+id: dart
+name: Dart
+category: language
+kind: language
+domains:
+- mobile
+- programming-languages
+- web
+summary: Client-optimized programming language from Google used for cross-platform applications, especially with Flutter, with ahead-of-time and just-in-time compilation modes.
+homepage: https://dart.dev/
+repository: https://github.com/dart-lang/sdk
+license: BSD-3-Clause
+deployment_types:
+- local
+- mobile
+- web
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- mobile
+- web
+sources:
+- title: Dart official site
+  url: https://dart.dev/
+  type: official
+- title: Dart SDK repository
+  url: https://github.com/dart-lang/sdk
+  type: repository
