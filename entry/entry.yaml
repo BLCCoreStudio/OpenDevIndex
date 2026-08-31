@@ -1,0 +1,20 @@
+schema_version: 1
+id: python
+name: Python
+category: language
+summary: High-level general-purpose programming language known for readable syntax and a broad ecosystem spanning automation, web development, science, and AI.
+homepage: https://www.python.org/
+repository: https://github.com/python/cpython
+status: active
+verified_at: '2026-08-31'
+tags:
+- general-purpose
+- scripting
+- data
+sources:
+- title: Python official site
+  url: https://www.python.org/
+  type: official
+- title: Python documentation
+  url: https://docs.python.org/3/
+  type: documentation
