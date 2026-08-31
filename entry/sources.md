@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **WireGuard official site** — https://www.wireguard.com/ (`official`)
 - **WireGuard tools repository** — https://github.com/WireGuard/wireguard-tools (`repository`)

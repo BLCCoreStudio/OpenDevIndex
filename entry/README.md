@@ -2,9 +2,13 @@
 
 > Modern VPN protocol and implementation designed around a small codebase, contemporary cryptography, and simple peer-to-peer configuration.
 
+## What it is
+
+WireGuard is indexed as a **protocol**. Its stable OpenDevIndex address is `security/wireguard`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-WireGuard is indexed by OpenDevIndex as a `security` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ WireGuard is indexed by OpenDevIndex as a `security` knowledge module. This page
 - Peers are identified by public keys
 - Uses a deliberately small set of cryptographic primitives
 
+## Taxonomy
+
+- Kind: `protocol`
+- Domains: `networking`, `security`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://www.wireguard.com/
@@ -27,6 +38,10 @@ WireGuard is indexed by OpenDevIndex as a `security` knowledge module. This page
 - [WireGuard official site](https://www.wireguard.com/) — `official`
 - [WireGuard tools repository](https://github.com/WireGuard/wireguard-tools) — `repository`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `security/wireguard`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
