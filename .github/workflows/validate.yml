@@ -13,13 +13,13 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
           cache: pip
@@ -28,7 +28,18 @@ jobs:
       - name: Install validator dependencies
         run: python -m pip install -r requirements-ci.txt
 
+      - name: Validate curated catalog
+        run: python scripts/validate_catalog.py catalog/v0.1.yaml
+
       - name: Validate branch/module
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         run: python scripts/validate_entry.py --branch "$BRANCH_NAME"
+
+      - name: Smoke-test module generator without pushing
+        if: github.event_name == 'pull_request' || github.ref_name == 'main'
+        run: |
+          python scripts/seed_modules.py \
+            --catalog catalog/v0.1.yaml \
+            --base-ref HEAD \
+            --limit 1
