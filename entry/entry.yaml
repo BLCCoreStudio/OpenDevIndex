@@ -1,0 +1,16 @@
+schema_version: 1
+id: anthropic-api
+name: Anthropic API
+category: ai
+summary: Developer API for integrating Anthropic Claude models into applications, including message-based model interaction and tool-oriented workflows.
+homepage: https://docs.anthropic.com/
+status: active
+verified_at: '2026-08-31'
+tags:
+- api
+- claude
+- ai
+sources:
+- title: Anthropic developer documentation
+  url: https://docs.anthropic.com/
+  type: documentation
