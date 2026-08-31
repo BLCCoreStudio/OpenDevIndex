@@ -1,0 +1,27 @@
+schema_version: 2
+id: scipy
+name: SciPy
+category: library
+kind: library
+domains:
+- data
+- python
+summary: Scientific computing library for Python that adds optimization, integration, interpolation, signal processing, statistics, sparse matrices, and other numerical algorithms.
+homepage: https://scipy.org/
+repository: https://github.com/scipy/scipy
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- scientific
+- numerical
+sources:
+- title: SciPy official site
+  url: https://scipy.org/
+  type: official
+- title: SciPy source repository
+  url: https://github.com/scipy/scipy
+  type: repository
