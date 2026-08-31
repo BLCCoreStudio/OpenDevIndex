@@ -31,13 +31,16 @@ def score_entry(entry: dict, query: str) -> int:
     name = normalize(entry.get("name"))
     slug = normalize(entry.get("slug"))
     ref = normalize(entry.get("ref"))
-    category = normalize(entry.get("category"))
+    category = normalize(entry.get("address_category") or entry.get("category"))
+    kind = normalize(entry.get("kind"))
+    domains = [normalize(value) for value in entry.get("domains", [])]
     summary = normalize(entry.get("summary"))
     tags = [normalize(tag) for tag in entry.get("tags", [])]
+    deployment = [normalize(value) for value in entry.get("deployment_types", [])]
     use_cases = normalize(" ".join(entry.get("use_cases", [])))
     key_points = normalize(" ".join(entry.get("key_points", [])))
     haystack = entry.get("search_text") or normalize(
-        " ".join([ref, slug, name, category, summary, *tags, use_cases, key_points])
+        " ".join([ref, slug, name, category, kind, summary, *domains, *tags, *deployment, use_cases, key_points])
     )
 
     if any(token not in haystack for token in query_tokens):
@@ -56,8 +59,12 @@ def score_entry(entry: dict, query: str) -> int:
             score += 35
         if token in name:
             score += 22
+        if token == kind:
+            score += 20
         if token == category:
-            score += 16
+            score += 12
+        if token in domains:
+            score += 20
         if token in tags:
             score += 18
         elif any(token in tag for tag in tags):
@@ -72,10 +79,29 @@ def score_entry(entry: dict, query: str) -> int:
     return score
 
 
-def search(entries: list[dict], query: str, category: str | None, limit: int) -> list[dict]:
+def search(
+    entries: list[dict],
+    query: str,
+    category: str | None = None,
+    limit: int = 10,
+    *,
+    kind: str | None = None,
+    domain: str | None = None,
+    deployment: str | None = None,
+    license_value: str | None = None,
+) -> list[dict]:
     ranked: list[tuple[int, dict]] = []
     for entry in entries:
-        if category and entry.get("category") != category:
+        address_category = entry.get("address_category") or entry.get("category")
+        if category and address_category != category:
+            continue
+        if kind and entry.get("kind") != kind:
+            continue
+        if domain and domain not in entry.get("domains", []):
+            continue
+        if deployment and deployment not in entry.get("deployment_types", []):
+            continue
+        if license_value and normalize(entry.get("license")) != normalize(license_value):
             continue
         score = score_entry(entry, query)
         if score:
@@ -101,7 +127,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("query", help="Search terms")
     parser.add_argument("--index", default="dist/index/search.json")
-    parser.add_argument("--category")
+    parser.add_argument("--category", help="Legacy/stable address namespace filter")
+    parser.add_argument("--kind", help="Canonical taxonomy kind filter")
+    parser.add_argument("--domain", help="Domain facet filter")
+    parser.add_argument("--deployment", help="Deployment-type filter")
+    parser.add_argument("--license", dest="license_value", help="Exact license metadata filter")
     parser.add_argument("--limit", type=int, default=10)
     parser.add_argument("--json", action="store_true", dest="as_json")
     args = parser.parse_args()
@@ -115,7 +145,16 @@ def main() -> int:
         print(f"OpenDevIndex search failed: {exc}", file=sys.stderr)
         return 2
 
-    results = search(entries, args.query, args.category, args.limit)
+    results = search(
+        entries,
+        args.query,
+        args.category,
+        args.limit,
+        kind=args.kind,
+        domain=args.domain,
+        deployment=args.deployment,
+        license_value=args.license_value,
+    )
     if args.as_json:
         print(json.dumps(results, indent=2, ensure_ascii=False, sort_keys=True))
         return 0
@@ -125,13 +164,14 @@ def main() -> int:
         return 0
 
     for number, entry in enumerate(results, start=1):
-        tags = ", ".join(entry.get("tags", []))
+        domains = ", ".join(entry.get("domains", []))
         print(f"{number}. {entry['name']} [{entry['ref']}] — score {entry['score']}")
+        print(f"   kind: {entry.get('kind', 'unknown')} | domains: {domains or 'none'}")
         print(f"   {entry['summary']}")
-        if tags:
-            print(f"   tags: {tags}")
+        if entry.get("url"):
+            print(f"   module: {entry['url']}")
         if entry.get("homepage"):
-            print(f"   {entry['homepage']}")
+            print(f"   homepage: {entry['homepage']}")
     return 0
 
 
