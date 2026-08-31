@@ -1,0 +1,20 @@
+schema_version: 1
+id: rails
+name: Ruby on Rails
+category: framework
+summary: Full-stack Ruby web framework emphasizing convention over configuration and integrated patterns for routing, databases, views, jobs, and testing.
+homepage: https://rubyonrails.org/
+repository: https://github.com/rails/rails
+status: active
+verified_at: '2026-08-31'
+tags:
+- ruby
+- web
+- full-stack
+sources:
+- title: Ruby on Rails official site
+  url: https://rubyonrails.org/
+  type: official
+- title: Rails repository
+  url: https://github.com/rails/rails
+  type: repository
