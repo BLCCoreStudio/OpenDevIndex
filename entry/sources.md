@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Python official site** — https://www.python.org/ (`official`)
 - **Python documentation** — https://docs.python.org/3/ (`documentation`)

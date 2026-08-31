@@ -2,6 +2,10 @@ schema_version: 1
 id: python
 name: Python
 category: language
+kind: language
+domains:
+- data
+- programming-languages
 summary: High-level general-purpose programming language known for readable syntax and a broad ecosystem spanning automation, web development, science, and AI.
 homepage: https://www.python.org/
 repository: https://github.com/python/cpython
