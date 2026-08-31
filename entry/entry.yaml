@@ -1,0 +1,20 @@
+schema_version: 1
+id: envoy
+name: Envoy
+category: cloud
+summary: High-performance open-source edge and service proxy designed for cloud-native networking, traffic management, observability, and service-mesh architectures.
+homepage: https://www.envoyproxy.io/
+repository: https://github.com/envoyproxy/envoy
+status: active
+verified_at: '2026-08-31'
+tags:
+- proxy
+- networking
+- service-mesh
+sources:
+- title: Envoy official site
+  url: https://www.envoyproxy.io/
+  type: official
+- title: Envoy repository
+  url: https://github.com/envoyproxy/envoy
+  type: repository
