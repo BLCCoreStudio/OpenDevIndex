@@ -16,21 +16,25 @@
     "sources"
   ],
   "properties": {
-    "schema_version": { "enum": [1, 2] },
+    "schema_version": { "enum": [1, 2, 3] },
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
     "name": { "type": "string", "minLength": 1, "maxLength": 100 },
     "category": {
       "enum": [
         "tool", "language", "framework", "library", "runtime", "platform",
         "database", "protocol", "standard", "system", "toolchain", "service",
-        "project", "concept", "ai", "security", "cloud", "opensource"
+        "project", "concept", "hardware", "architecture", "algorithm", "model",
+        "format", "device", "dataset", "technique", "ai", "security", "cloud",
+        "opensource"
       ]
     },
     "kind": {
       "enum": [
         "tool", "language", "framework", "library", "runtime", "platform",
         "database", "protocol", "standard", "system", "toolchain", "service",
-        "project", "concept"
+        "project", "concept", "hardware", "architecture", "algorithm", "model",
+        "format", "device", "dataset", "technique", "operating-system", "kernel",
+        "specification"
       ]
     },
     "domains": {
@@ -48,7 +52,10 @@
       "minItems": 1,
       "uniqueItems": true,
       "items": {
-        "enum": ["cli", "desktop", "embedded", "hybrid", "library", "local", "mobile", "saas", "self-hosted", "service", "system", "web"]
+        "enum": [
+          "cli", "desktop", "device", "embedded", "firmware", "hardware", "hybrid",
+          "library", "local", "mobile", "saas", "self-hosted", "service", "system", "web"
+        ]
       }
     },
     "status": { "enum": ["active", "maintenance", "deprecated", "historical"] },
@@ -63,6 +70,29 @@
       "type": "array",
       "uniqueItems": true,
       "items": { "type": "string" }
+    },
+    "relationships": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "target"],
+        "properties": {
+          "type": {
+            "enum": [
+              "alternative-to", "based-on", "built-with", "compatible-with", "depends-on",
+              "extends", "implements", "integrates-with", "part-of", "predecessor-of",
+              "related-to", "replaces", "secures", "successor-of", "used-by", "uses"
+            ]
+          },
+          "target": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9._-]*$"
+          },
+          "note": { "type": "string", "minLength": 1, "maxLength": 240 }
+        }
+      }
     },
     "sources": {
       "type": "array",
@@ -81,7 +111,7 @@
   },
   "allOf": [
     {
-      "if": { "properties": { "schema_version": { "const": 2 } } },
+      "if": { "properties": { "schema_version": { "enum": [2, 3] } } },
       "then": { "required": ["kind", "domains"] }
     }
   ]
