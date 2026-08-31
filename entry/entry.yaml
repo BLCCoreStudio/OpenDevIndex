@@ -1,0 +1,20 @@
+schema_version: 1
+id: java
+name: Java
+category: language
+summary: Class-based general-purpose programming language and platform centered on the Java Virtual Machine, with a large server and enterprise ecosystem.
+homepage: https://openjdk.org/
+repository: https://github.com/openjdk/jdk
+status: active
+verified_at: '2026-08-31'
+tags:
+- jvm
+- enterprise
+- compiled
+sources:
+- title: OpenJDK project
+  url: https://openjdk.org/
+  type: official
+- title: Java language specifications
+  url: https://docs.oracle.com/javase/specs/
+  type: documentation
