@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Debian official site** — https://www.debian.org/ (`official`)
 - **Debian documentation** — https://www.debian.org/doc/ (`documentation`)
