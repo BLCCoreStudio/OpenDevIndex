@@ -1,0 +1,20 @@
+schema_version: 1
+id: onnx
+name: ONNX
+category: ai
+summary: Open Neural Network Exchange format and ecosystem for representing machine-learning graphs so models can move between compatible frameworks and runtimes.
+homepage: https://onnx.ai/
+repository: https://github.com/onnx/onnx
+status: active
+verified_at: '2026-08-31'
+tags:
+- model-format
+- interoperability
+- ml
+sources:
+- title: ONNX official site
+  url: https://onnx.ai/
+  type: official
+- title: ONNX repository
+  url: https://github.com/onnx/onnx
+  type: repository
