@@ -2,6 +2,10 @@ schema_version: 1
 id: retrieval-augmented-generation
 name: Retrieval-Augmented Generation
 category: concept
+kind: concept
+domains:
+- ai
+- data
 summary: AI pattern that retrieves external information at inference time and provides it to a generative model so answers can use data beyond model parameters.
 homepage: https://arxiv.org/abs/2005.11401
 status: active

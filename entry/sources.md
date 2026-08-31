@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Retrieval-Augmented Generation paper** — https://arxiv.org/abs/2005.11401 (`research`)
 
