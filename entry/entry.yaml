@@ -1,0 +1,20 @@
+schema_version: 1
+id: kde
+name: KDE
+category: opensource
+summary: Open-source community and software ecosystem producing the Plasma desktop, application frameworks, developer libraries, and a broad set of Linux desktop applications.
+homepage: https://kde.org/
+repository: https://invent.kde.org/
+status: active
+verified_at: '2026-08-31'
+tags:
+- linux
+- desktop
+- qt
+sources:
+- title: KDE official site
+  url: https://kde.org/
+  type: official
+- title: KDE developer platform
+  url: https://develop.kde.org/
+  type: documentation
