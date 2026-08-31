@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Swift official site** — https://www.swift.org/ (`official`)
 - **Swift repository** — https://github.com/swiftlang/swift (`repository`)
