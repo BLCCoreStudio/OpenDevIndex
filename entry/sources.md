@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **vLLM documentation** — https://docs.vllm.ai/ (`documentation`)
 - **vLLM repository** — https://github.com/vllm-project/vllm (`repository`)
