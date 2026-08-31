@@ -1,0 +1,180 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 5
+expected_categories:
+  language: 3
+  framework: 2
+entries:
+- category: language
+  id: scala
+  name: Scala
+  summary: Statically typed language for the JVM that combines object-oriented and functional programming and is widely used in distributed systems and data platforms.
+  homepage: https://www.scala-lang.org/
+  repository: https://github.com/scala/scala3
+  license: Apache-2.0
+  tags:
+  - programming-language
+  - jvm
+  - functional
+  sources:
+  - title: Scala official site
+    url: https://www.scala-lang.org/
+    type: official
+  - title: Scala 3 source repository
+    url: https://github.com/scala/scala3
+    type: repository
+  use_cases:
+  - Build JVM backend services using functional or object-oriented styles
+  - Develop distributed data applications in ecosystems such as Apache Spark
+  - Create reusable libraries that interoperate with Java code
+  key_points:
+  - Scala targets the JVM and can call Java libraries directly
+  - The language combines classes and traits with pattern matching and functional abstractions
+  - Scala 3 introduced a redesigned type system and updated syntax while retaining JVM interoperability
+  kind: language
+  domains:
+  - programming-languages
+  - distributed-systems
+  - data
+  deployment_types:
+  - local
+  - self-hosted
+  - service
+- category: language
+  id: dart
+  name: Dart
+  summary: Client-optimized programming language from Google used for cross-platform applications, especially with Flutter, with ahead-of-time and just-in-time compilation modes.
+  homepage: https://dart.dev/
+  repository: https://github.com/dart-lang/sdk
+  license: BSD-3-Clause
+  tags:
+  - programming-language
+  - mobile
+  - web
+  sources:
+  - title: Dart official site
+    url: https://dart.dev/
+    type: official
+  - title: Dart SDK repository
+    url: https://github.com/dart-lang/sdk
+    type: repository
+  use_cases:
+  - Build cross-platform mobile and desktop applications with Flutter
+  - Create web applications compiled to JavaScript or WebAssembly-capable targets
+  - Develop command-line tools and server-side Dart services
+  key_points:
+  - Dart supports sound null safety and a class-based object model
+  - Its runtime supports fast development with JIT compilation and production builds with AOT compilation
+  - The language and tooling are tightly integrated with the Flutter application framework
+  kind: language
+  domains:
+  - programming-languages
+  - mobile
+  - web
+  deployment_types:
+  - local
+  - mobile
+  - web
+- category: language
+  id: julia
+  name: Julia
+  summary: High-level dynamic programming language designed for numerical and scientific computing while providing multiple dispatch and native-code performance through JIT compilation.
+  homepage: https://julialang.org/
+  repository: https://github.com/JuliaLang/julia
+  license: MIT
+  tags:
+  - programming-language
+  - data
+  - scientific-computing
+  sources:
+  - title: Julia official site
+    url: https://julialang.org/
+    type: official
+  - title: Julia source repository
+    url: https://github.com/JuliaLang/julia
+    type: repository
+  use_cases:
+  - Perform numerical, scientific, and statistical computing
+  - Develop optimization, simulation, and machine-learning workloads
+  - Create high-performance technical software without splitting prototypes and native kernels across languages
+  key_points:
+  - Multiple dispatch is a core language mechanism for selecting behavior by argument types
+  - Julia uses LLVM-based compilation to generate native machine code
+  - The package ecosystem focuses heavily on mathematics, science, data, optimization, and machine learning
+  kind: language
+  domains:
+  - programming-languages
+  - data
+  - machine-learning
+  deployment_types:
+  - local
+  - self-hosted
+- category: framework
+  id: angular
+  name: Angular
+  summary: Full-featured web application framework maintained by Google with components, dependency injection, routing, forms, testing support, and an integrated development toolchain.
+  homepage: https://angular.dev/
+  repository: https://github.com/angular/angular
+  license: MIT
+  tags:
+  - web
+  - typescript
+  - frontend
+  sources:
+  - title: Angular documentation
+    url: https://angular.dev/
+    type: documentation
+  - title: Angular source repository
+    url: https://github.com/angular/angular
+    type: repository
+  use_cases:
+  - Build large client-side web applications with structured architecture
+  - Create reusable component libraries and design systems
+  - Develop enterprise front ends that need routing, forms, dependency injection, and testing conventions
+  key_points:
+  - Angular uses TypeScript as its primary application language
+  - The framework includes first-party solutions for many common application concerns
+  - Modern Angular supports standalone components and reactive primitives alongside established dependency-injection patterns
+  kind: framework
+  domains:
+  - web
+  - software-development
+  deployment_types:
+  - web
+  - local
+- category: framework
+  id: flask
+  name: Flask
+  summary: Lightweight Python web framework built around Werkzeug and Jinja that provides routing and request handling while leaving many architectural choices to extensions and applications.
+  homepage: https://flask.palletsprojects.com/
+  repository: https://github.com/pallets/flask
+  license: BSD-3-Clause
+  tags:
+  - python
+  - web
+  - backend
+  sources:
+  - title: Flask documentation
+    url: https://flask.palletsprojects.com/
+    type: documentation
+  - title: Flask source repository
+    url: https://github.com/pallets/flask
+    type: repository
+  use_cases:
+  - Build small and medium Python web applications
+  - Create HTTP APIs and internal backend services
+  - Prototype web services while selecting database, authentication, and extension layers independently
+  key_points:
+  - Flask intentionally provides a small core rather than a batteries-included application stack
+  - Werkzeug supplies WSGI and HTTP utilities while Jinja provides templating
+  - A large extension ecosystem adds database, authentication, validation, and other application features
+  kind: framework
+  domains:
+  - web
+  - python
+  - software-development
+  deployment_types:
+  - local
+  - self-hosted
+  - service
