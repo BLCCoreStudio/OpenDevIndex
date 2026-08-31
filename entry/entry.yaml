@@ -1,0 +1,20 @@
+schema_version: 1
+id: nmap
+name: Nmap
+category: security
+summary: Network exploration and security-auditing tool for discovering hosts, identifying open ports, fingerprinting services, and running scriptable network probes.
+homepage: https://nmap.org/
+repository: https://github.com/nmap/nmap
+status: active
+verified_at: '2026-08-31'
+tags:
+- network
+- scanner
+- audit
+sources:
+- title: Nmap official site
+  url: https://nmap.org/
+  type: official
+- title: Nmap reference guide
+  url: https://nmap.org/book/man.html
+  type: documentation
