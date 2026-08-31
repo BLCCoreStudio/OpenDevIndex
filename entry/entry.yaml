@@ -1,0 +1,28 @@
+schema_version: 2
+id: scaphandre
+name: Scaphandre
+category: tool
+kind: tool
+domains:
+- observability
+- sustainability
+summary: Open-source energy-consumption monitoring agent designed to expose power-related metrics for processes and hosts, supporting sustainable software measurement.
+homepage: https://github.com/hubblo-org/scaphandre
+repository: https://github.com/hubblo-org/scaphandre
+license: Apache-2.0
+deployment_types:
+- self-hosted
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- sustainability
+- energy
+- observability
+sources:
+- title: Scaphandre repository
+  url: https://github.com/hubblo-org/scaphandre
+  type: repository
+- title: Scaphandre documentation
+  url: https://hubblo-org.github.io/scaphandre-documentation/
+  type: documentation
