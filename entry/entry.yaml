@@ -1,0 +1,28 @@
+schema_version: 2
+id: apache-spark
+name: Apache Spark
+category: framework
+kind: framework
+domains:
+- analytics
+- data
+- distributed-systems
+summary: Distributed data-processing engine for large-scale analytics with APIs for SQL, batch processing, streaming, machine learning, and graph workloads.
+homepage: https://spark.apache.org/
+repository: https://github.com/apache/spark
+license: Apache-2.0
+deployment_types:
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- data
+- analytics
+- distributed-computing
+sources:
+- title: Apache Spark official site
+  url: https://spark.apache.org/
+  type: official
+- title: Apache Spark repository
+  url: https://github.com/apache/spark
+  type: repository
