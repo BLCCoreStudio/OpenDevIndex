@@ -1,0 +1,28 @@
+schema_version: 2
+id: argocd
+name: Argo CD
+category: platform
+kind: platform
+domains:
+- ci-cd
+- cloud
+- devops
+summary: Declarative continuous-delivery platform for Kubernetes that reconciles cluster applications from Git repositories and provides synchronization, health, and rollout visibility.
+homepage: https://argo-cd.readthedocs.io/
+repository: https://github.com/argoproj/argo-cd
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- kubernetes
+- gitops
+- ci
+sources:
+- title: Argo CD documentation
+  url: https://argo-cd.readthedocs.io/
+  type: documentation
+- title: Argo CD source repository
+  url: https://github.com/argoproj/argo-cd
+  type: repository
