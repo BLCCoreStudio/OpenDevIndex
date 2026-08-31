@@ -1,10 +1,10 @@
-name: Seed OpenDevIndex v0.1
+name: Publish OpenDevIndex v0.1
 
 on:
   workflow_dispatch:
     inputs:
       limit:
-        description: Maximum number of missing modules to create; 0 creates all
+        description: Maximum number of missing modules to publish; 0 publishes all
         required: false
         default: '0'
   push:
@@ -13,19 +13,19 @@ on:
     paths:
       - 'catalog/v0.1.yaml'
       - 'scripts/seed_modules.py'
-      - 'scripts/validate_catalog.py'
       - '.github/workflows/seed-v0.1.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: opendevindex-v0.1-seed
+  group: opendevindex-v0.1-publication
   cancel-in-progress: false
 
 jobs:
-  seed:
+  publish:
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
       - name: Check out main with history
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
@@ -40,18 +40,18 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-ci.txt
 
-      - name: Install generator dependencies
+      - name: Install publication dependencies
         run: python -m pip install -r requirements-ci.txt
 
-      - name: Configure seed identity
+      - name: Configure publication identity
         run: |
-          git config user.name "OpenDevIndex Seeder"
+          git config user.name "OpenDevIndex Publisher"
           git config user.email "207100624+BLCCoreStudio@users.noreply.github.com"
 
-      - name: Validate catalog
+      - name: Validate v0.1 catalog
         run: python scripts/validate_catalog.py catalog/v0.1.yaml
 
-      - name: Create validated knowledge branches
+      - name: Publish validated knowledge modules
         env:
           INPUT_LIMIT: ${{ github.event.inputs.limit || '0' }}
         run: |
