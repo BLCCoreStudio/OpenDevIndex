@@ -2,9 +2,13 @@
 
 > Authorization framework that lets applications obtain scoped access to protected resources using tokens instead of directly handling a user's credentials.
 
+## What it is
+
+OAuth 2.0 is indexed as a **protocol**. Its stable OpenDevIndex address is `protocol/oauth2`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-OAuth 2.0 is indexed by OpenDevIndex as a `protocol` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ OAuth 2.0 is indexed by OpenDevIndex as a `protocol` knowledge module. This page
 - Access tokens represent delegated authorization
 - Different grant patterns serve different client types and trust models
 
+## Taxonomy
+
+- Kind: `protocol`
+- Domains: `api`, `security`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://www.rfc-editor.org/rfc/rfc6749
@@ -26,6 +37,10 @@ OAuth 2.0 is indexed by OpenDevIndex as a `protocol` knowledge module. This page
 - [OAuth 2.0 RFC 6749](https://www.rfc-editor.org/rfc/rfc6749) — `standard`
 - [OAuth 2.0 Security Best Current Practice](https://www.rfc-editor.org/rfc/rfc9700) — `standard`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `protocol/oauth2`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
