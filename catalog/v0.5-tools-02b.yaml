@@ -1,0 +1,271 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 8
+expected_categories:
+  tool: 8
+entries:
+- category: tool
+  id: kind
+  name: kind
+  homepage: https://kind.sigs.k8s.io/
+  repository: https://github.com/kubernetes-sigs/kind
+  tags:
+  - kubernetes
+  - testing
+  - containers
+  kind: tool
+  domains:
+  - containers
+  - testing
+  - developer-experience
+  deployment_types:
+  - cli
+  - local
+  summary: kind is a tool for running local Kubernetes clusters using container nodes, commonly used for development, Kubernetes integration testing, and repeatable CI environments.
+  sources:
+  - title: kind official site or documentation
+    url: https://kind.sigs.k8s.io/
+    type: official
+  - title: kind source repository
+    url: https://github.com/kubernetes-sigs/kind
+    type: repository
+  use_cases:
+  - Use kind in development or operations workflows where its kubernetes capabilities match the task
+  - Integrate kind into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate kind against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - kind is a tool for running local Kubernetes clusters using container nodes, commonly used for development, Kubernetes integration testing, and repeatable CI environments.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: skaffold
+  name: Skaffold
+  homepage: https://skaffold.dev/
+  repository: https://github.com/GoogleContainerTools/skaffold
+  tags:
+  - kubernetes
+  - developer-workflow
+  - containers
+  kind: tool
+  domains:
+  - containers
+  - devops
+  - developer-experience
+  deployment_types:
+  - cli
+  - local
+  summary: Skaffold is a command-line workflow tool for iterative Kubernetes development that automates building, tagging, deploying, watching, and debugging applications as source code changes.
+  sources:
+  - title: Skaffold official site or documentation
+    url: https://skaffold.dev/
+    type: official
+  - title: Skaffold source repository
+    url: https://github.com/GoogleContainerTools/skaffold
+    type: repository
+  use_cases:
+  - Use Skaffold in development or operations workflows where its kubernetes capabilities match the task
+  - Integrate Skaffold into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Skaffold against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Skaffold is a command-line workflow tool for iterative Kubernetes development that automates building, tagging, deploying, watching, and debugging applications as source code changes.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: argocd
+  name: Argo CD
+  homepage: https://argo-cd.readthedocs.io/en/stable/
+  repository: https://github.com/argoproj/argo-cd
+  tags:
+  - gitops
+  - kubernetes
+  - continuous-delivery
+  kind: tool
+  domains:
+  - ci-cd
+  - containers
+  - devops
+  deployment_types:
+  - cli
+  - local
+  summary: Argo CD is a declarative GitOps continuous-delivery controller for Kubernetes that reconciles cluster application state with version-controlled manifests and exposes synchronization and drift.
+  sources:
+  - title: Argo CD official site or documentation
+    url: https://argo-cd.readthedocs.io/en/stable/
+    type: official
+  - title: Argo CD source repository
+    url: https://github.com/argoproj/argo-cd
+    type: repository
+  use_cases:
+  - Use Argo CD in development or operations workflows where its gitops capabilities match the task
+  - Integrate Argo CD into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Argo CD against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Argo CD is a declarative GitOps continuous-delivery controller for Kubernetes that reconciles cluster application state with version-controlled manifests and exposes synchronization and drift.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: flux
+  name: Flux
+  homepage: https://fluxcd.io/
+  repository: https://github.com/fluxcd/flux2
+  tags:
+  - gitops
+  - kubernetes
+  - continuous-delivery
+  kind: tool
+  domains:
+  - ci-cd
+  - containers
+  - devops
+  deployment_types:
+  - cli
+  - local
+  summary: Flux is a GitOps toolkit for Kubernetes that continuously reconciles cluster resources and application delivery from Git repositories and other declarative artifact sources.
+  sources:
+  - title: Flux official site or documentation
+    url: https://fluxcd.io/
+    type: official
+  - title: Flux source repository
+    url: https://github.com/fluxcd/flux2
+    type: repository
+  use_cases:
+  - Use Flux in development or operations workflows where its gitops capabilities match the task
+  - Integrate Flux into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Flux against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Flux is a GitOps toolkit for Kubernetes that continuously reconciles cluster resources and application delivery from Git repositories and other declarative artifact sources.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: k6
+  name: Grafana k6
+  homepage: https://grafana.com/oss/k6/
+  repository: https://github.com/grafana/k6
+  tags:
+  - load-testing
+  - performance
+  - testing
+  kind: tool
+  domains:
+  - testing
+  - observability
+  - developer-tools
+  deployment_types:
+  - cli
+  - local
+  summary: Grafana k6 is an open-source load-testing tool for defining performance tests in JavaScript and executing them locally or in automated and distributed testing environments.
+  sources:
+  - title: Grafana k6 official site or documentation
+    url: https://grafana.com/oss/k6/
+    type: official
+  - title: Grafana k6 source repository
+    url: https://github.com/grafana/k6
+    type: repository
+  use_cases:
+  - Use Grafana k6 in development or operations workflows where its load testing capabilities match the task
+  - Integrate Grafana k6 into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Grafana k6 against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Grafana k6 is an open-source load-testing tool for defining performance tests in JavaScript and executing them locally or in automated and distributed testing environments.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: playwright
+  name: Playwright
+  homepage: https://playwright.dev/
+  repository: https://github.com/microsoft/playwright
+  tags:
+  - testing
+  - browser
+  - automation
+  kind: tool
+  domains:
+  - testing
+  - web
+  - developer-tools
+  deployment_types:
+  - cli
+  - local
+  summary: Playwright is a browser automation and end-to-end testing framework from Microsoft supporting Chromium, Firefox, and WebKit through a unified API with isolation and debugging tooling.
+  sources:
+  - title: Playwright official site or documentation
+    url: https://playwright.dev/
+    type: official
+  - title: Playwright source repository
+    url: https://github.com/microsoft/playwright
+    type: repository
+  use_cases:
+  - Use Playwright in development or operations workflows where its testing capabilities match the task
+  - Integrate Playwright into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Playwright against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Playwright is a browser automation and end-to-end testing framework from Microsoft supporting Chromium, Firefox, and WebKit through a unified API with isolation and debugging tooling.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: cypress
+  name: Cypress
+  homepage: https://www.cypress.io/
+  repository: https://github.com/cypress-io/cypress
+  tags:
+  - testing
+  - browser
+  - e2e
+  kind: tool
+  domains:
+  - testing
+  - web
+  - developer-tools
+  deployment_types:
+  - cli
+  - local
+  summary: Cypress is a web testing framework and interactive runner for end-to-end and component testing with browser-focused debugging, command history, and developer tooling.
+  sources:
+  - title: Cypress official site or documentation
+    url: https://www.cypress.io/
+    type: official
+  - title: Cypress source repository
+    url: https://github.com/cypress-io/cypress
+    type: repository
+  use_cases:
+  - Use Cypress in development or operations workflows where its testing capabilities match the task
+  - Integrate Cypress into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Cypress against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Cypress is a web testing framework and interactive runner for end-to-end and component testing with browser-focused debugging, command history, and developer tooling.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: selenium
+  name: Selenium
+  homepage: https://www.selenium.dev/
+  repository: https://github.com/SeleniumHQ/selenium
+  tags:
+  - testing
+  - browser
+  - webdriver
+  kind: tool
+  domains:
+  - testing
+  - web
+  - developer-tools
+  deployment_types:
+  - cli
+  - local
+  summary: Selenium is a browser automation project centered on the WebDriver standard for controlling browsers across languages, platforms, remote grids, and end-to-end testing environments.
+  sources:
+  - title: Selenium official site or documentation
+    url: https://www.selenium.dev/
+    type: official
+  - title: Selenium source repository
+    url: https://github.com/SeleniumHQ/selenium
+    type: repository
+  use_cases:
+  - Use Selenium in development or operations workflows where its testing capabilities match the task
+  - Integrate Selenium into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Selenium against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Selenium is a browser automation project centered on the WebDriver standard for controlling browsers across languages, platforms, remote grids, and end-to-end testing environments.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
