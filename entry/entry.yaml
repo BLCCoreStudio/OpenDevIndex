@@ -1,0 +1,26 @@
+schema_version: 2
+id: mariadb
+name: MariaDB
+category: database
+kind: database
+domains:
+- data
+summary: Open-source relational database server compatible with much of the MySQL ecosystem and developed independently with its own storage engines, features, and release lifecycle.
+homepage: https://mariadb.org/
+repository: https://github.com/MariaDB/server
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- database
+- sql
+- relational
+sources:
+- title: MariaDB official site
+  url: https://mariadb.org/
+  type: official
+- title: MariaDB source repository
+  url: https://github.com/MariaDB/server
+  type: repository
