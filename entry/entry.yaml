@@ -1,0 +1,29 @@
+schema_version: 2
+id: uv
+name: uv
+category: tool
+kind: tool
+domains:
+- cli
+- developer-tools
+- python
+summary: Fast Python package and project manager from Astral that combines environment creation, dependency installation, lockfiles, tool execution, and Python version management.
+homepage: https://docs.astral.sh/uv/
+repository: https://github.com/astral-sh/uv
+license: Apache-2.0 OR MIT
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- developer-tools
+- cli
+sources:
+- title: uv documentation
+  url: https://docs.astral.sh/uv/
+  type: documentation
+- title: uv source repository
+  url: https://github.com/astral-sh/uv
+  type: repository
