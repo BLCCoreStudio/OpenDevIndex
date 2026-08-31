@@ -1,0 +1,20 @@
+schema_version: 1
+id: vscode
+name: Visual Studio Code
+category: tool
+summary: Open-source-based code editor from Microsoft with extension support, integrated debugging, language tooling, terminals, and remote development features.
+homepage: https://code.visualstudio.com/
+repository: https://github.com/microsoft/vscode
+status: active
+verified_at: '2026-08-31'
+tags:
+- editor
+- ide
+- extensions
+sources:
+- title: VS Code documentation
+  url: https://code.visualstudio.com/docs
+  type: documentation
+- title: VS Code repository
+  url: https://github.com/microsoft/vscode
+  type: repository
