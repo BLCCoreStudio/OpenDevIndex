@@ -1,0 +1,20 @@
+schema_version: 1
+id: transformers
+name: Transformers
+category: ai
+summary: Hugging Face library providing pretrained transformer models, tokenizers, configuration, training utilities, and pipelines across major ML backends.
+homepage: https://huggingface.co/docs/transformers/
+repository: https://github.com/huggingface/transformers
+status: active
+verified_at: '2026-08-31'
+tags:
+- llm
+- nlp
+- huggingface
+sources:
+- title: Transformers documentation
+  url: https://huggingface.co/docs/transformers/
+  type: documentation
+- title: Transformers repository
+  url: https://github.com/huggingface/transformers
+  type: repository
