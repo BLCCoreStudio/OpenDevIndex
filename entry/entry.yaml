@@ -1,0 +1,27 @@
+schema_version: 2
+id: openapi
+name: OpenAPI Specification
+category: standard
+kind: standard
+domains:
+- api
+- software-development
+summary: Vendor-neutral specification for describing HTTP APIs in machine-readable form, enabling documentation, client generation, validation, testing, and tooling interoperability.
+homepage: https://www.openapis.org/
+repository: https://github.com/OAI/OpenAPI-Specification
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- api
+- standard
+- http
+sources:
+- title: OpenAPI Initiative
+  url: https://www.openapis.org/
+  type: official
+- title: OpenAPI Specification repository
+  url: https://github.com/OAI/OpenAPI-Specification
+  type: repository
