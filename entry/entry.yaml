@@ -4,6 +4,7 @@ name: OpenSSL
 category: security
 kind: library
 domains:
+- cryptography
 - security
 summary: Open-source cryptography and TLS toolkit providing widely used libraries and command-line utilities for secure transport, certificates, and cryptographic operations.
 homepage: https://www.openssl.org/
