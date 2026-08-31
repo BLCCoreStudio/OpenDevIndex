@@ -2,6 +2,11 @@ schema_version: 1
 id: continuous-integration
 name: Continuous Integration
 category: concept
+kind: concept
+domains:
+- ci-cd
+- software-development
+- testing
 summary: Development practice in which changes are integrated frequently and automatically built or tested to surface regressions and integration problems quickly.
 homepage: https://docs.github.com/actions
 status: active
