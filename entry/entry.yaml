@@ -1,0 +1,30 @@
+schema_version: 2
+id: containerd
+name: containerd
+category: tool
+kind: tool
+domains:
+- cloud
+- containers
+- systems
+summary: Industry-standard container runtime focused on managing the complete container lifecycle, including image transfer, storage, execution, supervision, and low-level runtime integration.
+homepage: https://containerd.io/
+repository: https://github.com/containerd/containerd
+license: Apache-2.0
+deployment_types:
+- service
+- system
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- containers
+- runtime
+- systems
+sources:
+- title: containerd official site
+  url: https://containerd.io/
+  type: official
+- title: containerd source repository
+  url: https://github.com/containerd/containerd
+  type: repository
