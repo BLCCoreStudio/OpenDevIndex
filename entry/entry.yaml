@@ -5,6 +5,7 @@ category: framework
 kind: framework
 domains:
 - api
+- python
 - software-development
 summary: Python framework for building typed HTTP APIs using standard type hints, automatic validation, OpenAPI generation, and asynchronous server support.
 homepage: https://fastapi.tiangolo.com/
