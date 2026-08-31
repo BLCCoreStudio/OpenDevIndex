@@ -1,0 +1,84 @@
+schema_version: 3
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 2
+expected_categories:
+  format: 2
+entries:
+  - category: format
+    id: json
+    name: JSON
+    kind: format
+    domains:
+      - data
+      - api
+      - web
+    coverage:
+      area: standards-protocols-formats
+      topics:
+        - data-formats
+        - serialization
+    summary: A lightweight, text-based, language-independent data interchange format standardized by IETF RFC 8259 and ECMA-404 for portable structured data exchange.
+    homepage: https://www.rfc-editor.org/info/rfc8259/
+    tags:
+      - json
+      - data
+      - serialization
+      - web
+    sources:
+      - title: RFC 8259 — The JavaScript Object Notation Data Interchange Format
+        url: https://www.rfc-editor.org/rfc/rfc8259.html
+        type: standard
+      - title: ECMA-404 — The JSON data interchange syntax
+        url: https://ecma-international.org/publications-and-standards/standards/ecma-404/
+        type: standard
+    use_cases:
+      - Exchange structured request and response payloads between web APIs and distributed applications
+      - Store human-readable configuration metadata and structured logs across programming ecosystems
+      - Serialize language-independent objects arrays strings numbers booleans and null values for data interchange
+    key_points:
+      - JSON is a text-based interchange syntax whose application semantics are defined outside the core format
+      - RFC 8259 provides Internet interoperability guidance while ECMA-404 specifies the JSON syntax
+      - Valid JSON syntax does not by itself provide schema validation authentication compression or business-level meaning
+
+  - category: format
+    id: apache-parquet
+    name: Apache Parquet
+    kind: format
+    domains:
+      - data
+      - data-engineering
+      - storage
+      - analytics
+    coverage:
+      area: databases-data
+      topics:
+        - data-formats
+        - analytics
+    summary: An open, column-oriented data file format designed for efficient storage, compression, selective reads, and analytics across large structured datasets.
+    homepage: https://parquet.apache.org/
+    repository: https://github.com/apache/parquet-format
+    license: Apache-2.0
+    tags:
+      - parquet
+      - data
+      - storage
+      - analytics
+    sources:
+      - title: Apache Parquet overview
+        url: https://parquet.apache.org/docs/overview/
+        type: official
+      - title: Apache Parquet file format documentation
+        url: https://parquet.apache.org/docs/file-format/
+        type: documentation
+      - title: Apache Parquet format repository
+        url: https://github.com/apache/parquet-format
+        type: repository
+    use_cases:
+      - Store large analytical datasets in a column-oriented format that supports selective column reads
+      - Exchange structured analytical data between query engines processing frameworks and programming languages
+      - Improve compression and scan efficiency for batch analytics data lakes and machine-learning data preparation
+    key_points:
+      - Parquet organizes data into row groups column chunks and pages rather than storing complete rows sequentially
+      - File metadata helps readers locate relevant column chunks and supports selective reads and optimization features
+      - Feature support varies across Parquet implementations so real pipelines should test the reader and writer combinations they depend on
