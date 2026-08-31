@@ -1,0 +1,20 @@
+schema_version: 1
+id: nextjs
+name: Next.js
+category: framework
+summary: React framework for full-stack web applications with routing, server rendering, static generation, data loading, and deployment-oriented tooling.
+homepage: https://nextjs.org/
+repository: https://github.com/vercel/next.js
+status: active
+verified_at: '2026-08-31'
+tags:
+- react
+- web
+- full-stack
+sources:
+- title: Next.js official site
+  url: https://nextjs.org/
+  type: official
+- title: Next.js repository
+  url: https://github.com/vercel/next.js
+  type: repository
