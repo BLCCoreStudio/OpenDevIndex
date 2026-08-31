@@ -1,0 +1,28 @@
+schema_version: 2
+id: webpack
+name: webpack
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+- web
+summary: Highly configurable JavaScript module bundler that builds dependency graphs and transforms application assets through loaders and plugins.
+homepage: https://webpack.js.org/
+repository: https://github.com/webpack/webpack
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- javascript
+- web
+sources:
+- title: webpack official site
+  url: https://webpack.js.org/
+  type: official
+- title: webpack source repository
+  url: https://github.com/webpack/webpack
+  type: repository
