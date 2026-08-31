@@ -1,0 +1,27 @@
+schema_version: 2
+id: lldb
+name: LLDB
+category: tool
+kind: tool
+domains:
+- developer-tools
+- systems
+summary: Debugger from the LLVM project designed for native programs, offering command-line, scripting, and IDE integration across several operating systems and architectures.
+homepage: https://lldb.llvm.org/
+repository: https://github.com/llvm/llvm-project
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- debugger
+- llvm
+- native
+sources:
+- title: LLDB official site
+  url: https://lldb.llvm.org/
+  type: official
+- title: LLVM project repository
+  url: https://github.com/llvm/llvm-project
+  type: repository
