@@ -1,0 +1,29 @@
+schema_version: 2
+id: pnpm
+name: pnpm
+category: tool
+kind: tool
+domains:
+- developer-experience
+- developer-tools
+- web
+summary: JavaScript package manager that uses a content-addressable store and linked dependency layout to reduce duplicated files while supporting workspaces and modern Node.js projects.
+homepage: https://pnpm.io/
+repository: https://github.com/pnpm/pnpm
+license: MIT
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- javascript
+- package-manager
+- developer-tools
+sources:
+- title: pnpm documentation
+  url: https://pnpm.io/
+  type: documentation
+- title: pnpm source repository
+  url: https://github.com/pnpm/pnpm
+  type: repository
