@@ -2,6 +2,9 @@ schema_version: 1
 id: just
 name: just
 category: tool
+kind: tool
+domains:
+- developer-tools
 summary: Command runner for project-specific recipes, offering a focused alternative to using Makefiles for development commands that are not build graphs.
 homepage: https://just.systems/
 repository: https://github.com/casey/just
