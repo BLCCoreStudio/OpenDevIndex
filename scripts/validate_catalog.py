@@ -9,9 +9,10 @@ import re
 import sys
 from collections import Counter
 from pathlib import Path
-from urllib.parse import urlparse
 
 import yaml
+
+from url_safety import is_safe_https_url
 
 CATEGORIES = {
     "tool", "language", "framework", "ai", "security",
@@ -20,13 +21,6 @@ CATEGORIES = {
 SOURCE_TYPES = {"official", "repository", "standard", "advisory", "research", "documentation"}
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
 TAG_RE = re.compile(r"^[a-z0-9][a-z0-9.+_-]*$")
-
-
-def https_url(value: object) -> bool:
-    if not isinstance(value, str):
-        return False
-    parsed = urlparse(value)
-    return parsed.scheme == "https" and bool(parsed.netloc)
 
 
 def validate(path: Path) -> list[str]:
@@ -74,7 +68,7 @@ def validate(path: Path) -> list[str]:
         slug = entry.get("id")
         name = entry.get("name")
         summary = entry.get("summary")
-        branch = f"{category}/{slug}"
+        module_ref = f"{category}/{slug}"
 
         if category not in CATEGORIES:
             errors.append(f"{prefix}: unsupported category {category!r}")
@@ -84,9 +78,9 @@ def validate(path: Path) -> list[str]:
         if not isinstance(slug, str) or not SLUG_RE.fullmatch(slug):
             errors.append(f"{prefix}: invalid id {slug!r}")
 
-        if branch in seen:
-            errors.append(f"{prefix}: duplicate branch {branch}")
-        seen.add(branch)
+        if module_ref in seen:
+            errors.append(f"{prefix}: duplicate module {module_ref}")
+        seen.add(module_ref)
 
         if not isinstance(name, str) or not name.strip() or len(name) > 100:
             errors.append(f"{prefix}: name must be 1..100 characters")
@@ -104,8 +98,8 @@ def validate(path: Path) -> list[str]:
 
         for field in ("homepage", "repository"):
             value = entry.get(field)
-            if value is not None and not https_url(value):
-                errors.append(f"{prefix}: {field} must use HTTPS")
+            if value is not None and not is_safe_https_url(value):
+                errors.append(f"{prefix}: {field} must be a public HTTPS URL")
 
         sources = entry.get("sources")
         if not isinstance(sources, list) or not sources:
@@ -117,8 +111,8 @@ def validate(path: Path) -> list[str]:
                     continue
                 if not source.get("title"):
                     errors.append(f"{prefix}: source #{i} missing title")
-                if not https_url(source.get("url")):
-                    errors.append(f"{prefix}: source #{i} must use HTTPS")
+                if not is_safe_https_url(source.get("url")):
+                    errors.append(f"{prefix}: source #{i} must use a public HTTPS URL")
                 if source.get("type") not in SOURCE_TYPES:
                     errors.append(f"{prefix}: source #{i} has invalid type")
 
@@ -132,13 +126,17 @@ def validate(path: Path) -> list[str]:
     if not isinstance(expected, dict):
         errors.append("expected_categories must be a mapping")
     else:
-        normalized = {str(k): int(v) for k, v in expected.items()}
-        if normalized != dict(counts):
+        try:
+            normalized = {str(k): int(v) for k, v in expected.items()}
+        except (TypeError, ValueError):
+            errors.append("expected_categories values must be integers")
+            normalized = {}
+        if normalized and normalized != dict(counts):
             errors.append(
                 "category distribution mismatch: "
                 f"expected {normalized}, actual {dict(counts)}"
             )
-        if sum(normalized.values()) != target:
+        if normalized and isinstance(target, int) and sum(normalized.values()) != target:
             errors.append("expected_categories must sum to target_modules")
 
     return errors
