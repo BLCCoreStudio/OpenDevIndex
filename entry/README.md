@@ -24,7 +24,7 @@ The module focuses on the technology's practical role, high-signal characteristi
 ## Taxonomy
 
 - Kind: `tool`
-- Domains: `api`, `cli`, `developer-tools`, `networking`
+- Domains: `cli`, `developer-tools`, `internet`, `networking`
 - Deployment: not yet curated
 - License metadata: `not yet curated`
 

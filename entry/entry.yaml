@@ -4,9 +4,9 @@ name: curl
 category: tool
 kind: tool
 domains:
-- api
 - cli
 - developer-tools
+- internet
 - networking
 summary: Command-line tool and transfer library for moving data using URLs across many network protocols, commonly used for HTTP automation and debugging.
 homepage: https://curl.se/
