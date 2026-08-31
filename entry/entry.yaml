@@ -1,0 +1,26 @@
+schema_version: 2
+id: mqtt
+name: MQTT
+category: standard
+kind: standard
+domains:
+- distributed-systems
+- networking
+summary: Lightweight publish-subscribe messaging protocol standardized by OASIS, designed for constrained devices, unreliable networks, telemetry, and machine-to-machine communication.
+homepage: https://mqtt.org/
+deployment_types:
+- embedded
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- protocol
+- iot
+- messaging
+sources:
+- title: MQTT official site
+  url: https://mqtt.org/
+  type: official
+- title: MQTT Version 5.0 standard
+  url: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html
+  type: standard
