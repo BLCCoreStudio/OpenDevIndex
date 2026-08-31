@@ -1,0 +1,62 @@
+name: Seed OpenDevIndex v0.1
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: Maximum number of missing modules to create; 0 creates all
+        required: false
+        default: '0'
+  push:
+    branches:
+      - main
+    paths:
+      - 'catalog/v0.1.yaml'
+      - 'scripts/seed_modules.py'
+      - 'scripts/validate_catalog.py'
+      - '.github/workflows/seed-v0.1.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: opendevindex-v0.1-seed
+  cancel-in-progress: false
+
+jobs:
+  seed:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out main with history
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Install generator dependencies
+        run: python3 -m pip install --break-system-packages -r requirements-ci.txt
+
+      - name: Configure seed identity
+        run: |
+          git config user.name "OpenDevIndex Seeder"
+          git config user.email "207100624+BLCCoreStudio@users.noreply.github.com"
+
+      - name: Validate catalog
+        run: python3 scripts/validate_catalog.py catalog/v0.1.yaml
+
+      - name: Create validated knowledge branches
+        env:
+          INPUT_LIMIT: ${{ github.event.inputs.limit || '0' }}
+        run: |
+          python3 scripts/seed_modules.py \
+            --catalog catalog/v0.1.yaml \
+            --base-ref origin/main \
+            --limit "$INPUT_LIMIT" \
+            --push
+
+      - name: Publish run summary
+        if: always()
+        run: |
+          if [ -f seed-report.md ]; then
+            cat seed-report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
