@@ -2,6 +2,9 @@ schema_version: 1
 id: sigstore
 name: Sigstore
 category: security
+kind: tool
+domains:
+- security
 summary: Open-source ecosystem for signing and verifying software artifacts using short-lived identities, transparency logs, and supply-chain security tooling.
 homepage: https://www.sigstore.dev/
 repository: https://github.com/sigstore/sigstore
