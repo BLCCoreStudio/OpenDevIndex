@@ -1,0 +1,43 @@
+schema_version: 3
+id: risc-v
+name: RISC-V
+category: architecture
+kind: architecture
+domains:
+  - computer-architecture
+  - hardware
+  - systems
+summary: An open-standard instruction set architecture built around a small base ISA plus optional extensions for processors ranging from embedded systems to general-purpose computing.
+homepage: https://riscv.org/
+repository: https://github.com/riscv/riscv-isa-manual
+license: CC-BY-4.0
+deployment_types:
+  - hardware
+  - embedded
+  - system
+status: active
+verified_at: 2026-08-31
+tags:
+  - risc-v
+  - isa
+  - hardware
+  - computer-architecture
+coverage:
+  area: hardware-architecture
+  topics:
+    - instruction-sets
+    - computer-architecture
+relationships:
+  - type: compatible-with
+    target: tool/qemu
+    note: QEMU supports RISC-V system and user-mode emulation, making it useful for development and testing without physical RISC-V hardware.
+sources:
+  - title: RISC-V Ratified Specifications Library
+    url: https://docs.riscv.org/reference/home/index.html
+    type: standard
+  - title: RISC-V ISA Manual repository
+    url: https://github.com/riscv/riscv-isa-manual
+    type: repository
+  - title: RISC-V International ratified specifications
+    url: https://riscv.org/specifications/ratified/
+    type: official
