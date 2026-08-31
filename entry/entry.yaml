@@ -1,0 +1,26 @@
+schema_version: 1
+id: mcp
+name: Model Context Protocol (MCP)
+category: protocol
+summary: An open protocol that standardizes how AI applications connect to external tools, data sources, prompts, and other contextual capabilities.
+homepage: https://modelcontextprotocol.io
+repository: https://github.com/modelcontextprotocol/modelcontextprotocol
+license: MIT
+status: active
+verified_at: 2026-08-31
+tags:
+  - ai
+  - interoperability
+  - json-rpc
+platforms:
+  - Cross-platform
+sources:
+  - title: Model Context Protocol specification
+    url: https://modelcontextprotocol.io/specification
+    type: standard
+  - title: MCP specification repository
+    url: https://github.com/modelcontextprotocol/modelcontextprotocol
+    type: repository
+  - title: MCP 2026-07-28 specification announcement
+    url: https://blog.modelcontextprotocol.io/posts/2026-07-28/
+    type: official
