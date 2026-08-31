@@ -1,0 +1,29 @@
+schema_version: 1
+id: rust
+name: Rust
+category: language
+summary: A systems programming language using ownership and strong static checks to combine native performance with memory and thread safety in safe code.
+homepage: https://rust-lang.org
+repository: https://github.com/rust-lang/rust
+license: MIT OR Apache-2.0
+status: active
+verified_at: 2026-08-31
+tags:
+  - systems-programming
+  - memory-safety
+  - native
+platforms:
+  - Linux
+  - macOS
+  - Windows
+  - WebAssembly
+sources:
+  - title: Rust official website
+    url: https://rust-lang.org/
+    type: official
+  - title: Rust Reference - Unsafety
+    url: https://doc.rust-lang.org/stable/reference/unsafety.html
+    type: documentation
+  - title: Rust compiler repository
+    url: https://github.com/rust-lang/rust
+    type: repository
