@@ -392,4 +392,4 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 
 ---
 
-OpenDevIndex separates stable module addresses from taxonomy facets. Legacy addresses remain valid while `kind` and `domains` provide consistent discovery and filtering.
+OpenDevIndex separates stable module addresses from taxonomy facets. Legacy addresses remain valid while `kind`, `domains`, and schema v3 coverage metadata provide consistent discovery and filtering.
