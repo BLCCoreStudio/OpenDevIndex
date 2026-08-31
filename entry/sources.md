@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Pulumi official site** — https://www.pulumi.com/ (`official`)
 - **Pulumi repository** — https://github.com/pulumi/pulumi (`repository`)
