@@ -6,10 +6,13 @@ on:
       - main
     paths:
       - 'catalog/**'
+      - 'coverage/**'
       - 'taxonomy/**'
       - 'schema/**'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
+      - 'scripts/coverage_metadata.py'
+      - 'scripts/coverage_progress.py'
       - 'scripts/search_index.py'
       - 'scripts/taxonomy.py'
       - 'scripts/audit_quality.py'
@@ -22,10 +25,13 @@ on:
       - main
     paths:
       - 'catalog/**'
+      - 'coverage/**'
       - 'taxonomy/**'
       - 'schema/**'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
+      - 'scripts/coverage_metadata.py'
+      - 'scripts/coverage_progress.py'
       - 'scripts/search_index.py'
       - 'scripts/taxonomy.py'
       - 'scripts/audit_quality.py'
@@ -66,6 +72,15 @@ jobs:
       - name: Build deterministic catalog and search artifacts
         run: python scripts/build_index.py --catalog-dir catalog --output-dir dist/index
 
+      - name: Build Technology Universe coverage progress
+        run: |
+          mkdir -p dist/coverage
+          python scripts/coverage_progress.py \
+            --catalog-dir catalog \
+            --allocation coverage/topic-allocation-v1.yaml \
+            --json-output dist/coverage/coverage.json \
+            --markdown-output dist/coverage/coverage.md
+
       - name: Audit editorial quality
         run: python scripts/audit_quality.py --catalog-dir catalog --minimum 80
 
@@ -81,14 +96,18 @@ jobs:
           import json
           from pathlib import Path
           data = json.loads(Path('dist/index/catalog.json').read_text(encoding='utf-8'))
+          coverage = json.loads(Path('dist/coverage/coverage.json').read_text(encoding='utf-8'))
           print('# OpenDevIndex Search Index')
           print()
           print(f"Generated **{data['module_count']}** validated modules.")
+          print(f"Coverage-mapped modules: **{coverage['mapped_modules']} / {coverage['target_modules']}**.")
           print()
           print('| Kind | Modules |')
           print('| --- | ---: |')
           for kind, count in data['kind_counts'].items():
               print(f'| `{kind}` | {count} |')
+          print()
+          print(Path('dist/coverage/coverage.md').read_text(encoding='utf-8'))
           print()
           print(Path('dist/quality/quality-report.md').read_text(encoding='utf-8'))
           PY
@@ -99,6 +118,7 @@ jobs:
           name: opendevindex-discovery-artifacts
           path: |
             dist/index
+            dist/coverage
             dist/quality
           if-no-files-found: error
           retention-days: 30
