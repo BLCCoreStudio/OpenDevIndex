@@ -1,0 +1,103 @@
+schema_version: 2
+milestone: v0.2
+verified_at: '2026-08-31'
+target_modules: 6
+expected_categories:
+  platform: 6
+entries:
+- category: platform
+  id: supabase
+  name: Supabase
+  summary: Developer platform built around PostgreSQL that combines database, authentication, storage, realtime features, edge functions, and hosted or self-hosted workflows.
+  homepage: https://supabase.com/
+  repository: https://github.com/supabase/supabase
+  tags: [backend, postgresql, baas]
+  sources:
+  - {title: Supabase official site, url: https://supabase.com/, type: official}
+  - {title: Supabase repository, url: https://github.com/supabase/supabase, type: repository}
+  use_cases: [Build application backends around PostgreSQL, Add authentication and object storage, Use realtime database-driven application features]
+  key_points: [PostgreSQL is the core database layer, Offers managed cloud services and self-hosting components, Provides client libraries for common application platforms]
+  kind: platform
+  domains: [api, cloud, data]
+  license: Apache-2.0
+  deployment_types: [saas, self-hosted]
+- category: platform
+  id: pocketbase
+  name: PocketBase
+  summary: Compact open-source backend platform distributed as a single executable with an embedded database, realtime subscriptions, authentication, files, and an admin UI.
+  homepage: https://pocketbase.io/
+  repository: https://github.com/pocketbase/pocketbase
+  tags: [backend, baas, sqlite]
+  sources:
+  - {title: PocketBase official site, url: https://pocketbase.io/, type: official}
+  - {title: PocketBase repository, url: https://github.com/pocketbase/pocketbase, type: repository}
+  use_cases: [Prototype application backends quickly, Provide authentication and file storage, Run a lightweight self-hosted backend service]
+  key_points: [Distributed as a standalone executable, Uses SQLite as its embedded data store, Includes an administrative web interface]
+  kind: platform
+  domains: [api, data, developer-experience]
+  license: MIT
+  deployment_types: [self-hosted, local]
+- category: platform
+  id: appsmith
+  name: Appsmith
+  summary: Open-source low-code platform for building internal tools and business applications by connecting data sources, APIs, widgets, and JavaScript logic.
+  homepage: https://www.appsmith.com/
+  repository: https://github.com/appsmithorg/appsmith
+  tags: [low-code, internal-tools, web]
+  sources:
+  - {title: Appsmith official site, url: https://www.appsmith.com/, type: official}
+  - {title: Appsmith repository, url: https://github.com/appsmithorg/appsmith, type: repository}
+  use_cases: [Build internal dashboards and admin tools, Connect business interfaces to databases and APIs, Prototype operational web applications]
+  key_points: [Provides drag-and-drop UI components, Supports JavaScript for custom application logic, Available as hosted and self-managed deployments]
+  kind: platform
+  domains: [developer-experience, web]
+  license: Apache-2.0
+  deployment_types: [saas, self-hosted]
+- category: platform
+  id: tooljet
+  name: ToolJet
+  summary: Open-source low-code development platform for internal tools, combining visual application building with database, API, and service integrations.
+  homepage: https://www.tooljet.ai/
+  repository: https://github.com/ToolJet/ToolJet
+  tags: [low-code, internal-tools, web]
+  sources:
+  - {title: ToolJet official site, url: https://www.tooljet.ai/, type: official}
+  - {title: ToolJet repository, url: https://github.com/ToolJet/ToolJet, type: repository}
+  use_cases: [Build internal business applications, Connect dashboards to databases and APIs, Create operational tools with reusable components]
+  key_points: [Combines visual building with programmable queries and logic, Supports hosted and self-hosted deployments, Integrates with a range of data sources and services]
+  kind: platform
+  domains: [developer-experience, web]
+  license: AGPL-3.0-only
+  deployment_types: [saas, self-hosted]
+- category: platform
+  id: apache-kafka
+  name: Apache Kafka
+  summary: Distributed event-streaming platform for durable publish-subscribe messaging, stream processing, and high-throughput data pipelines across services.
+  homepage: https://kafka.apache.org/
+  repository: https://github.com/apache/kafka
+  tags: [data, streaming, distributed-systems]
+  sources:
+  - {title: Apache Kafka official site, url: https://kafka.apache.org/, type: official}
+  - {title: Apache Kafka repository, url: https://github.com/apache/kafka, type: repository}
+  use_cases: [Build event-driven service architectures, Move high-volume records between data systems, Persist and process ordered event streams]
+  key_points: [Topics are partitioned for scalable parallelism, Replication provides durability across brokers, Consumer groups coordinate parallel consumption]
+  kind: platform
+  domains: [data, distributed-systems]
+  license: Apache-2.0
+  deployment_types: [self-hosted, service]
+- category: platform
+  id: hoppscotch
+  name: Hoppscotch
+  summary: Open-source API development client with web and desktop workflows for composing requests, organizing collections, testing endpoints, and collaborating on APIs.
+  homepage: https://hoppscotch.io/
+  repository: https://github.com/hoppscotch/hoppscotch
+  tags: [api, testing, developer-tools]
+  sources:
+  - {title: Hoppscotch official site, url: https://hoppscotch.io/, type: official}
+  - {title: Hoppscotch repository, url: https://github.com/hoppscotch/hoppscotch, type: repository}
+  use_cases: [Explore and test HTTP APIs, Organize reusable API request collections, Develop and debug realtime API connections]
+  key_points: [Supports multiple API protocols and request types, Available through hosted and self-hosted workflows, Designed for interactive API development]
+  kind: platform
+  domains: [api, testing, developer-experience]
+  license: MIT
+  deployment_types: [web, desktop, self-hosted, saas]
