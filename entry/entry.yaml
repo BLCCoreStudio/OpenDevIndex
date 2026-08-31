@@ -1,0 +1,16 @@
+schema_version: 1
+id: openai-api
+name: OpenAI API
+category: ai
+summary: Developer API platform for integrating OpenAI models and capabilities into applications through authenticated programmable interfaces and official SDKs.
+homepage: https://platform.openai.com/docs
+status: active
+verified_at: '2026-08-31'
+tags:
+- api
+- models
+- ai
+sources:
+- title: OpenAI developer documentation
+  url: https://platform.openai.com/docs
+  type: documentation
