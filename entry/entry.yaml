@@ -2,6 +2,10 @@ schema_version: 1
 id: cpp
 name: C++
 category: language
+kind: language
+domains:
+- programming-languages
+- systems
 summary: Multi-paradigm compiled programming language built on C heritage and widely used for performance-sensitive systems, applications, games, and infrastructure.
 homepage: https://isocpp.org/
 status: active
