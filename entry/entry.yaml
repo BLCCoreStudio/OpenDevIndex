@@ -1,0 +1,28 @@
+schema_version: 2
+id: consul
+name: HashiCorp Consul
+category: platform
+kind: platform
+domains:
+- cloud
+- distributed-systems
+- networking
+summary: Service networking platform that provides service discovery, health checking, configuration primitives, and service-mesh capabilities across distributed environments.
+homepage: https://developer.hashicorp.com/consul
+repository: https://github.com/hashicorp/consul
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- service-discovery
+- networking
+- cloud
+sources:
+- title: Consul documentation
+  url: https://developer.hashicorp.com/consul
+  type: documentation
+- title: Consul source repository
+  url: https://github.com/hashicorp/consul
+  type: repository
