@@ -1,5 +1,13 @@
 # History
 
+## 2026-08-31 — v0.1
+
+- Reviewed `tool/nix` against the current OpenDevIndex catalog and taxonomy.
+- Recorded canonical kind `tool` and domain facets: developer-tools, systems.
+- Re-rendered module documentation from validated source-backed metadata.
+
+## Earlier history
+
 ## 2026-08-31
 
 - Added `tool/nix` to the curated OpenDevIndex v0.1 catalog.
