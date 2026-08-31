@@ -2,7 +2,7 @@
 
 This file is generated from validated OpenDevIndex catalogs. Each module link opens its independently versioned knowledge entry.
 
-**Indexed modules:** 250
+**Indexed modules:** 251
 
 ## Browse by kind
 
@@ -20,6 +20,7 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | `toolchain` | 3 |
 | `service` | 3 |
 | `concept` | 5 |
+| `architecture` | 1 |
 | `operating-system` | 1 |
 | `kernel` | 1 |
 
@@ -36,6 +37,7 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | `cli` | 12 |
 | `cloud` | 22 |
 | `compilers` | 7 |
+| `computer-architecture` | 1 |
 | `containers` | 8 |
 | `cryptography` | 2 |
 | `data` | 47 |
@@ -45,6 +47,7 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | `distributed-systems` | 18 |
 | `embedded` | 4 |
 | `graphics` | 2 |
+| `hardware` | 1 |
 | `identity` | 2 |
 | `internet` | 2 |
 | `iot` | 1 |
@@ -64,11 +67,17 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | `storage` | 1 |
 | `supply-chain` | 2 |
 | `sustainability` | 1 |
-| `systems` | 29 |
+| `systems` | 30 |
 | `testing` | 8 |
 | `virtualization` | 2 |
 | `web` | 60 |
 | `webassembly` | 1 |
+
+## Technology Universe coverage
+
+| Area | Mapped modules |
+| --- | ---: |
+| `hardware-architecture` | 1 |
 
 ## tool
 
@@ -377,6 +386,12 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | [Reproducible Builds](https://github.com/BLCCoreStudio/OpenDevIndex/tree/concept/reproducible-builds/entry) (`concept/reproducible-builds`) | `software-development`, `supply-chain` | Software-build discipline in which independently repeated builds from the same source and inputs can produce bit-for-bit identical outputs. |
 | [Retrieval-Augmented Generation](https://github.com/BLCCoreStudio/OpenDevIndex/tree/concept/retrieval-augmented-generation/entry) (`concept/retrieval-augmented-generation`) | `ai`, `data` | AI pattern that retrieves external information at inference time and provides it to a generative model so answers can use data beyond model parameters. |
 | [Virtualization](https://github.com/BLCCoreStudio/OpenDevIndex/tree/concept/virtualization/entry) (`concept/virtualization`) | `software-development`, `systems`, `virtualization` | Technique for presenting virtual hardware or execution environments so multiple or foreign operating systems and workloads can run on shared physical machines. |
+
+## architecture
+
+| Module | Domains | Summary |
+| --- | --- | --- |
+| [RISC-V](https://github.com/BLCCoreStudio/OpenDevIndex/tree/architecture/risc-v/entry) (`architecture/risc-v`) | `computer-architecture`, `hardware`, `systems` | An open-standard instruction set architecture built around a small base ISA plus optional extensions for processors ranging from embedded systems to general-purpose computing. |
 
 ## operating-system
 
