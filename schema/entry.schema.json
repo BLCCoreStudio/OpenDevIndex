@@ -16,27 +16,41 @@
     "sources"
   ],
   "properties": {
-    "schema_version": { "const": 1 },
+    "schema_version": { "enum": [1, 2] },
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
     "name": { "type": "string", "minLength": 1, "maxLength": 100 },
     "category": {
       "enum": [
-        "tool",
-        "language",
-        "framework",
-        "ai",
-        "security",
-        "cloud",
-        "database",
-        "protocol",
-        "concept",
-        "opensource"
+        "tool", "language", "framework", "library", "runtime", "platform",
+        "database", "protocol", "standard", "system", "toolchain", "service",
+        "project", "concept", "ai", "security", "cloud", "opensource"
       ]
+    },
+    "kind": {
+      "enum": [
+        "tool", "language", "framework", "library", "runtime", "platform",
+        "database", "protocol", "standard", "system", "toolchain", "service",
+        "project", "concept"
+      ]
+    },
+    "domains": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" }
     },
     "summary": { "type": "string", "minLength": 40, "maxLength": 320 },
     "homepage": { "type": ["string", "null"], "format": "uri" },
     "repository": { "type": ["string", "null"], "format": "uri" },
     "license": { "type": ["string", "null"], "maxLength": 100 },
+    "deployment_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["cli", "desktop", "embedded", "hybrid", "library", "local", "mobile", "saas", "self-hosted", "service", "system", "web"]
+      }
+    },
     "status": { "enum": ["active", "maintenance", "deprecated", "historical"] },
     "verified_at": { "type": "string", "format": "date" },
     "tags": {
@@ -64,5 +78,11 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "schema_version": { "const": 2 } } },
+      "then": { "required": ["kind", "domains"] }
+    }
+  ]
 }
