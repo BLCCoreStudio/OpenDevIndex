@@ -24,7 +24,7 @@ The module focuses on the technology's practical role, high-signal characteristi
 ## Taxonomy
 
 - Kind: `framework`
-- Domains: `ai`, `machine-learning`
+- Domains: `ai`, `machine-learning`, `python`
 - Deployment: not yet curated
 - License metadata: `not yet curated`
 

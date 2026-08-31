@@ -6,6 +6,7 @@ kind: framework
 domains:
 - ai
 - machine-learning
+- python
 summary: High-level deep-learning API designed for readable model construction and training workflows while supporting multiple tensor-computation backends.
 homepage: https://keras.io/
 repository: https://github.com/keras-team/keras
