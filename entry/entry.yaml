@@ -2,6 +2,10 @@ schema_version: 1
 id: react
 name: React
 category: framework
+kind: framework
+domains:
+- software-development
+- web
 summary: Library for building component-based user interfaces with declarative rendering and a broad ecosystem for web and cross-platform applications.
 homepage: https://react.dev/
 repository: https://github.com/facebook/react
