@@ -1,0 +1,30 @@
+schema_version: 2
+id: scala
+name: Scala
+category: language
+kind: language
+domains:
+- data
+- distributed-systems
+- programming-languages
+summary: Statically typed language for the JVM that combines object-oriented and functional programming and is widely used in distributed systems and data platforms.
+homepage: https://www.scala-lang.org/
+repository: https://github.com/scala/scala3
+license: Apache-2.0
+deployment_types:
+- local
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- jvm
+- functional
+sources:
+- title: Scala official site
+  url: https://www.scala-lang.org/
+  type: official
+- title: Scala 3 source repository
+  url: https://github.com/scala/scala3
+  type: repository
