@@ -2,9 +2,13 @@
 
 > Developer API platform for integrating OpenAI models and capabilities into applications through authenticated programmable interfaces and official SDKs.
 
+## What it is
+
+OpenAI API is indexed as a **service**. Its stable OpenDevIndex address is `ai/openai-api`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-OpenAI API is indexed by OpenDevIndex as a `ai` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ OpenAI API is indexed by OpenDevIndex as a `ai` knowledge module. This page is i
 - Access is provided through authenticated API requests
 - Official documentation defines current model and endpoint behavior
 
+## Taxonomy
+
+- Kind: `service`
+- Domains: `ai`, `api`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://platform.openai.com/docs
@@ -25,6 +36,10 @@ OpenAI API is indexed by OpenDevIndex as a `ai` knowledge module. This page is i
 
 - [OpenAI developer documentation](https://platform.openai.com/docs) — `documentation`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `ai/openai-api`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.

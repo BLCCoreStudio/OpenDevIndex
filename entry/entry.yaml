@@ -2,6 +2,10 @@ schema_version: 1
 id: openai-api
 name: OpenAI API
 category: ai
+kind: service
+domains:
+- ai
+- api
 summary: Developer API platform for integrating OpenAI models and capabilities into applications through authenticated programmable interfaces and official SDKs.
 homepage: https://platform.openai.com/docs
 status: active
