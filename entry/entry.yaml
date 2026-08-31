@@ -1,0 +1,30 @@
+schema_version: 2
+id: flask
+name: Flask
+category: framework
+kind: framework
+domains:
+- python
+- software-development
+- web
+summary: Lightweight Python web framework built around Werkzeug and Jinja that provides routing and request handling while leaving many architectural choices to extensions and applications.
+homepage: https://flask.palletsprojects.com/
+repository: https://github.com/pallets/flask
+license: BSD-3-Clause
+deployment_types:
+- local
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- web
+- backend
+sources:
+- title: Flask documentation
+  url: https://flask.palletsprojects.com/
+  type: documentation
+- title: Flask source repository
+  url: https://github.com/pallets/flask
+  type: repository
