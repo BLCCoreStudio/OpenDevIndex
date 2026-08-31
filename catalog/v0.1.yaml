@@ -1,0 +1,2360 @@
+schema_version: 1
+milestone: v0.1
+verified_at: '2026-08-31'
+target_modules: 100
+expected_categories:
+  tool: 20
+  language: 10
+  framework: 15
+  ai: 15
+  security: 10
+  cloud: 10
+  database: 5
+  protocol: 5
+  concept: 5
+  opensource: 5
+entries:
+- category: tool
+  id: git
+  name: Git
+  summary: Distributed version control system used to track source history, collaborate through branches, and exchange changes across software projects.
+  homepage: https://git-scm.com/
+  repository: https://github.com/git/git
+  tags:
+  - version-control
+  - scm
+  - cli
+  sources:
+  - title: Git official site
+    url: https://git-scm.com/
+    type: official
+  - title: Git source repository
+    url: https://github.com/git/git
+    type: repository
+  use_cases:
+  - Track and review source-code history
+  - Coordinate parallel development with branches
+  - Exchange changes through distributed repositories
+  key_points:
+  - Distributed rather than server-dependent
+  - Content-addressed object model underpins commits and trees
+- category: tool
+  id: qemu
+  name: QEMU
+  summary: Open-source machine emulator and virtualizer that can emulate full systems or individual processes across many CPU architectures.
+  homepage: https://www.qemu.org/
+  repository: https://gitlab.com/qemu-project/qemu
+  tags:
+  - virtualization
+  - emulation
+  - systems
+  sources:
+  - title: QEMU project
+    url: https://www.qemu.org/
+    type: official
+  - title: QEMU documentation
+    url: https://www.qemu.org/docs/master/
+    type: documentation
+  use_cases:
+  - Run guest operating systems
+  - Emulate foreign CPU architectures
+  - Build virtualization and device-testing workflows
+  key_points:
+  - Supports full-system and user-mode emulation
+  - Can use hardware acceleration when available
+- category: tool
+  id: docker
+  name: Docker
+  summary: Container development platform centered on portable images and isolated application processes, widely used for packaging and deployment workflows.
+  homepage: https://www.docker.com/
+  repository: https://github.com/docker/cli
+  tags:
+  - containers
+  - devops
+  - packaging
+  sources:
+  - title: Docker documentation
+    url: https://docs.docker.com/
+    type: documentation
+  - title: Docker CLI repository
+    url: https://github.com/docker/cli
+    type: repository
+  use_cases:
+  - Package applications into container images
+  - Create reproducible local development environments
+  - Run multi-service application stacks
+  key_points:
+  - Images are layered and content-addressed
+  - Dockerfiles describe image build steps
+- category: tool
+  id: podman
+  name: Podman
+  summary: Daemonless container engine for building, running, and managing OCI containers and pods with strong support for rootless operation.
+  homepage: https://podman.io/
+  repository: https://github.com/containers/podman
+  tags:
+  - containers
+  - oci
+  - rootless
+  sources:
+  - title: Podman official site
+    url: https://podman.io/
+    type: official
+  - title: Podman repository
+    url: https://github.com/containers/podman
+    type: repository
+  use_cases:
+  - Run rootless containers
+  - Manage pods and OCI images
+  - Use Docker-compatible container workflows
+  key_points:
+  - Does not require a central daemon
+  - Integrates closely with Linux container primitives
+- category: tool
+  id: neovim
+  name: Neovim
+  summary: Extensible text editor derived from Vim with a modernized architecture, Lua configuration, asynchronous APIs, and a large plugin ecosystem.
+  homepage: https://neovim.io/
+  repository: https://github.com/neovim/neovim
+  tags:
+  - editor
+  - lua
+  - terminal
+  sources:
+  - title: Neovim official site
+    url: https://neovim.io/
+    type: official
+  - title: Neovim repository
+    url: https://github.com/neovim/neovim
+    type: repository
+  use_cases:
+  - Edit code efficiently from terminal or GUI clients
+  - Build programmable editor workflows in Lua
+  - Integrate language servers and developer tooling
+  key_points:
+  - Provides built-in LSP client capabilities
+  - Maintains broad Vim editing-model compatibility
+- category: tool
+  id: vscode
+  name: Visual Studio Code
+  summary: Open-source-based code editor from Microsoft with extension support, integrated debugging, language tooling, terminals, and remote development features.
+  homepage: https://code.visualstudio.com/
+  repository: https://github.com/microsoft/vscode
+  tags:
+  - editor
+  - ide
+  - extensions
+  sources:
+  - title: VS Code documentation
+    url: https://code.visualstudio.com/docs
+    type: documentation
+  - title: VS Code repository
+    url: https://github.com/microsoft/vscode
+    type: repository
+  use_cases:
+  - Develop across many programming languages
+  - Debug applications and inspect source
+  - Extend workflows with marketplace extensions
+  key_points:
+  - Built on Electron
+  - Uses an extension-host architecture to isolate many extensions
+- category: tool
+  id: tmux
+  name: tmux
+  summary: Terminal multiplexer that creates persistent shell sessions and supports multiple windows and panes inside a single terminal connection.
+  homepage: https://github.com/tmux/tmux
+  repository: https://github.com/tmux/tmux
+  tags:
+  - terminal
+  - shell
+  - productivity
+  sources:
+  - title: tmux repository
+    url: https://github.com/tmux/tmux
+    type: repository
+  - title: tmux manual
+    url: https://man.openbsd.org/tmux
+    type: documentation
+  use_cases:
+  - Keep terminal sessions alive across disconnects
+  - Split one terminal into panes and windows
+  - Manage remote command-line workflows
+  key_points:
+  - Client-server architecture preserves sessions
+  - Configuration and key bindings are highly customizable
+- category: tool
+  id: curl
+  name: curl
+  summary: Command-line tool and transfer library for moving data using URLs across many network protocols, commonly used for HTTP automation and debugging.
+  homepage: https://curl.se/
+  repository: https://github.com/curl/curl
+  tags:
+  - networking
+  - http
+  - cli
+  sources:
+  - title: curl official site
+    url: https://curl.se/
+    type: official
+  - title: curl repository
+    url: https://github.com/curl/curl
+    type: repository
+  use_cases:
+  - Call and inspect web APIs
+  - Download or upload network resources
+  - Debug HTTP and TLS behavior
+  key_points:
+  - libcurl provides the transfer engine as a library
+  - Supports a broad set of URL-based protocols
+- category: tool
+  id: jq
+  name: jq
+  summary: Lightweight command-line processor for selecting, transforming, filtering, and composing JSON data in shell scripts and data pipelines.
+  homepage: https://jqlang.org/
+  repository: https://github.com/jqlang/jq
+  tags:
+  - json
+  - cli
+  - data
+  sources:
+  - title: jq official site
+    url: https://jqlang.org/
+    type: official
+  - title: jq repository
+    url: https://github.com/jqlang/jq
+    type: repository
+  use_cases:
+  - Filter JSON returned by APIs
+  - Transform structured data in shell pipelines
+  - Extract fields for automation scripts
+  key_points:
+  - Uses its own compact query language
+  - Designed to compose naturally with Unix pipelines
+- category: tool
+  id: ripgrep
+  name: ripgrep
+  summary: Fast recursive text-search command-line tool that respects common ignore files and is optimized for searching source trees and large directories.
+  homepage: https://github.com/BurntSushi/ripgrep
+  repository: https://github.com/BurntSushi/ripgrep
+  tags:
+  - search
+  - cli
+  - rust
+  sources:
+  - title: ripgrep repository
+    url: https://github.com/BurntSushi/ripgrep
+    type: repository
+  use_cases:
+  - Search source repositories quickly
+  - Find regular-expression matches recursively
+  - Respect .gitignore during code searches
+  key_points:
+  - Written in Rust
+  - Combines recursive traversal with regex searching
+- category: tool
+  id: fd
+  name: fd
+  summary: Simple and fast alternative to the traditional Unix find command, optimized for ergonomic filename and path searches from the command line.
+  homepage: https://github.com/sharkdp/fd
+  repository: https://github.com/sharkdp/fd
+  tags:
+  - search
+  - filesystem
+  - rust
+  sources:
+  - title: fd repository
+    url: https://github.com/sharkdp/fd
+    type: repository
+  use_cases:
+  - Locate files by name patterns
+  - Search directory trees with readable defaults
+  - Feed file selections into shell workflows
+  key_points:
+  - Uses regular expressions by default
+  - Ignores hidden and ignored files unless requested
+- category: tool
+  id: cmake
+  name: CMake
+  summary: Cross-platform build-system generator used to describe native software builds independently of a specific compiler, IDE, or underlying build tool.
+  homepage: https://cmake.org/
+  repository: https://github.com/Kitware/CMake
+  tags:
+  - build-system
+  - cpp
+  - cross-platform
+  sources:
+  - title: CMake official site
+    url: https://cmake.org/
+    type: official
+  - title: CMake documentation
+    url: https://cmake.org/cmake/help/latest/
+    type: documentation
+  use_cases:
+  - Configure portable C and C++ builds
+  - Generate Ninja, Makefile, or IDE project files
+  - Discover dependencies during native builds
+  key_points:
+  - CMake generates build-system files rather than compiling directly
+  - CMakeLists.txt is the primary project description format
+- category: tool
+  id: meson
+  name: Meson
+  summary: High-productivity build system focused on fast, reliable native builds with concise project definitions and first-class Ninja integration.
+  homepage: https://mesonbuild.com/
+  repository: https://github.com/mesonbuild/meson
+  tags:
+  - build-system
+  - ninja
+  - native
+  sources:
+  - title: Meson official site
+    url: https://mesonbuild.com/
+    type: official
+  - title: Meson repository
+    url: https://github.com/mesonbuild/meson
+    type: repository
+  use_cases:
+  - Configure native software projects
+  - Drive fast incremental builds through Ninja
+  - Define cross-compilation environments
+  key_points:
+  - Uses meson.build project files
+  - Emphasizes out-of-tree builds and reproducibility
+- category: tool
+  id: bazel
+  name: Bazel
+  summary: Build and test system designed for large multi-language codebases with explicit dependencies, caching, and reproducible build graphs.
+  homepage: https://bazel.build/
+  repository: https://github.com/bazelbuild/bazel
+  tags:
+  - build-system
+  - monorepo
+  - hermetic
+  sources:
+  - title: Bazel official site
+    url: https://bazel.build/
+    type: official
+  - title: Bazel repository
+    url: https://github.com/bazelbuild/bazel
+    type: repository
+  use_cases:
+  - Build large multi-language repositories
+  - Reuse cached build outputs
+  - Define hermetic build and test targets
+  key_points:
+  - Targets and dependencies form an explicit build graph
+  - Remote execution and caching are core scaling features
+- category: tool
+  id: make
+  name: GNU Make
+  summary: Classic build automation tool that evaluates dependency rules and shell recipes to update files and targets when their inputs change.
+  homepage: https://www.gnu.org/software/make/
+  tags:
+  - build-system
+  - gnu
+  - automation
+  sources:
+  - title: GNU Make project
+    url: https://www.gnu.org/software/make/
+    type: official
+  - title: GNU Make manual
+    url: https://www.gnu.org/software/make/manual/
+    type: documentation
+  use_cases:
+  - Compile software from dependency rules
+  - Automate repeatable command sequences
+  - Express incremental file-based workflows
+  key_points:
+  - Makefiles describe targets, prerequisites, and recipes
+  - Timestamp-based dependency evaluation drives many builds
+- category: tool
+  id: just
+  name: just
+  summary: Command runner for project-specific recipes, offering a focused alternative to using Makefiles for development commands that are not build graphs.
+  homepage: https://just.systems/
+  repository: https://github.com/casey/just
+  tags:
+  - command-runner
+  - automation
+  - developer-tools
+  sources:
+  - title: just documentation
+    url: https://just.systems/
+    type: documentation
+  - title: just repository
+    url: https://github.com/casey/just
+    type: repository
+  use_cases:
+  - Document common development commands
+  - Create cross-project task recipes
+  - Replace ad-hoc shell snippets with named tasks
+  key_points:
+  - Uses a justfile to define recipes
+  - Focuses on command running rather than dependency-aware builds
+- category: tool
+  id: nix
+  name: Nix
+  summary: Functional package manager and build system focused on reproducible environments, isolated package stores, and declarative software composition.
+  homepage: https://nixos.org/
+  repository: https://github.com/NixOS/nix
+  tags:
+  - package-manager
+  - reproducibility
+  - linux
+  sources:
+  - title: Nix project
+    url: https://nixos.org/
+    type: official
+  - title: Nix manual
+    url: https://nix.dev/manual/nix/latest/
+    type: documentation
+  use_cases:
+  - Create reproducible development environments
+  - Build packages in isolated stores
+  - Manage declarative system and software configurations
+  key_points:
+  - Package paths include hashes derived from build inputs
+  - Multiple package versions can coexist without path collisions
+- category: tool
+  id: homebrew
+  name: Homebrew
+  summary: Package manager for macOS and Linux that installs command-line tools and applications through versioned formulae and casks.
+  homepage: https://brew.sh/
+  repository: https://github.com/Homebrew/brew
+  tags:
+  - package-manager
+  - macos
+  - linux
+  sources:
+  - title: Homebrew official site
+    url: https://brew.sh/
+    type: official
+  - title: Homebrew repository
+    url: https://github.com/Homebrew/brew
+    type: repository
+  use_cases:
+  - Install developer command-line tools
+  - Manage application packages on macOS
+  - Automate package installation with Brewfiles
+  key_points:
+  - Formulae describe source or binary package installation
+  - Casks cover many graphical applications
+- category: tool
+  id: gh
+  name: GitHub CLI
+  summary: Official GitHub command-line interface for repositories, issues, pull requests, releases, workflows, and other GitHub operations.
+  homepage: https://cli.github.com/
+  repository: https://github.com/cli/cli
+  tags:
+  - github
+  - cli
+  - automation
+  sources:
+  - title: GitHub CLI official site
+    url: https://cli.github.com/
+    type: official
+  - title: GitHub CLI repository
+    url: https://github.com/cli/cli
+    type: repository
+  use_cases:
+  - Create and review pull requests from terminals
+  - Manage issues and releases
+  - Script GitHub operations in automation
+  key_points:
+  - Authenticates directly with GitHub accounts
+  - Extensible through gh extensions
+- category: tool
+  id: ollama
+  name: Ollama
+  summary: Local model runtime and developer tool for downloading, managing, and serving large language models through a simple command-line and HTTP interface.
+  homepage: https://ollama.com/
+  repository: https://github.com/ollama/ollama
+  tags:
+  - ai
+  - llm
+  - local
+  sources:
+  - title: Ollama official site
+    url: https://ollama.com/
+    type: official
+  - title: Ollama repository
+    url: https://github.com/ollama/ollama
+    type: repository
+  use_cases:
+  - Run supported language models locally
+  - Expose local model inference through an API
+  - Manage model files from the command line
+  key_points:
+  - Designed for local model workflows
+  - Provides a local HTTP API in addition to its CLI
+- category: language
+  id: rust
+  name: Rust
+  summary: Systems programming language focused on memory safety, performance, and concurrency without requiring a garbage collector.
+  homepage: https://www.rust-lang.org/
+  repository: https://github.com/rust-lang/rust
+  tags:
+  - systems
+  - memory-safety
+  - compiled
+  sources:
+  - title: Rust official site
+    url: https://www.rust-lang.org/
+    type: official
+  - title: The Rust Programming Language
+    url: https://doc.rust-lang.org/book/
+    type: documentation
+  use_cases:
+  - Build systems and command-line software
+  - Write performance-sensitive services
+  - Develop embedded and WebAssembly components
+  key_points:
+  - Ownership and borrowing enforce many memory-safety rules statically
+  - Cargo is the standard package and build tool
+- category: language
+  id: python
+  name: Python
+  summary: High-level general-purpose programming language known for readable syntax and a broad ecosystem spanning automation, web development, science, and AI.
+  homepage: https://www.python.org/
+  repository: https://github.com/python/cpython
+  tags:
+  - general-purpose
+  - scripting
+  - data
+  sources:
+  - title: Python official site
+    url: https://www.python.org/
+    type: official
+  - title: Python documentation
+    url: https://docs.python.org/3/
+    type: documentation
+  use_cases:
+  - Automate system and developer tasks
+  - Build web services and applications
+  - Develop data science and machine-learning workflows
+  key_points:
+  - CPython is the reference implementation
+  - Python uses dynamic typing with optional type annotations
+- category: language
+  id: javascript
+  name: JavaScript
+  summary: ECMAScript-based programming language that powers browser scripting and is also widely used on servers, tooling, desktop, and mobile platforms.
+  homepage: https://tc39.es/ecma262/
+  tags:
+  - web
+  - ecmascript
+  - dynamic
+  sources:
+  - title: ECMAScript language specification
+    url: https://tc39.es/ecma262/
+    type: standard
+  - title: MDN JavaScript guide
+    url: https://developer.mozilla.org/docs/Web/JavaScript/Guide
+    type: documentation
+  use_cases:
+  - Build interactive web applications
+  - Write server-side applications
+  - Create cross-platform tooling and interfaces
+  key_points:
+  - ECMAScript standardizes the core language
+  - Event-loop based runtimes are common in JavaScript environments
+- category: language
+  id: typescript
+  name: TypeScript
+  summary: Statically typed superset of JavaScript that adds compile-time type checking while emitting JavaScript for existing runtimes and browsers.
+  homepage: https://www.typescriptlang.org/
+  repository: https://github.com/microsoft/TypeScript
+  tags:
+  - javascript
+  - types
+  - web
+  sources:
+  - title: TypeScript official site
+    url: https://www.typescriptlang.org/
+    type: official
+  - title: TypeScript repository
+    url: https://github.com/microsoft/TypeScript
+    type: repository
+  use_cases:
+  - Build large JavaScript applications with type checking
+  - Author typed libraries and APIs
+  - Improve editor tooling for JavaScript codebases
+  key_points:
+  - Type annotations are erased during compilation
+  - Structural typing is central to its type system
+- category: language
+  id: go
+  name: Go
+  summary: Compiled programming language designed for simple tooling, efficient concurrency, and maintainable network and systems software.
+  homepage: https://go.dev/
+  repository: https://github.com/golang/go
+  tags:
+  - compiled
+  - concurrency
+  - cloud
+  sources:
+  - title: Go official site
+    url: https://go.dev/
+    type: official
+  - title: Go documentation
+    url: https://go.dev/doc/
+    type: documentation
+  use_cases:
+  - Build network services and cloud tooling
+  - Create standalone command-line binaries
+  - Write concurrent server applications
+  key_points:
+  - Goroutines and channels are core concurrency primitives
+  - The standard toolchain includes formatting, testing, and modules
+- category: language
+  id: java
+  name: Java
+  summary: Class-based general-purpose programming language and platform centered on the Java Virtual Machine, with a large server and enterprise ecosystem.
+  homepage: https://openjdk.org/
+  repository: https://github.com/openjdk/jdk
+  tags:
+  - jvm
+  - enterprise
+  - compiled
+  sources:
+  - title: OpenJDK project
+    url: https://openjdk.org/
+    type: official
+  - title: Java language specifications
+    url: https://docs.oracle.com/javase/specs/
+    type: documentation
+  use_cases:
+  - Build server and enterprise applications
+  - Develop JVM-based services and libraries
+  - Create Android-adjacent and cross-platform tooling
+  key_points:
+  - Compiles primarily to JVM bytecode
+  - Automatic memory management is provided by the runtime
+- category: language
+  id: kotlin
+  name: Kotlin
+  summary: Modern statically typed language from JetBrains targeting the JVM, Android, JavaScript, WebAssembly, and native platforms.
+  homepage: https://kotlinlang.org/
+  repository: https://github.com/JetBrains/kotlin
+  tags:
+  - jvm
+  - android
+  - multiplatform
+  sources:
+  - title: Kotlin official site
+    url: https://kotlinlang.org/
+    type: official
+  - title: Kotlin documentation
+    url: https://kotlinlang.org/docs/home.html
+    type: documentation
+  use_cases:
+  - Develop Android applications
+  - Build JVM services
+  - Share code across Kotlin Multiplatform targets
+  key_points:
+  - Designed for strong Java interoperability
+  - Supports nullable and non-null types in the type system
+- category: language
+  id: swift
+  name: Swift
+  summary: Compiled programming language developed for Apple platforms and also available as open source for systems, server, and cross-platform development.
+  homepage: https://www.swift.org/
+  repository: https://github.com/swiftlang/swift
+  tags:
+  - apple
+  - compiled
+  - systems
+  sources:
+  - title: Swift official site
+    url: https://www.swift.org/
+    type: official
+  - title: Swift repository
+    url: https://github.com/swiftlang/swift
+    type: repository
+  use_cases:
+  - Build applications for Apple platforms
+  - Develop server-side Swift services
+  - Write performance-sensitive native software
+  key_points:
+  - Uses automatic reference counting for many memory-management tasks
+  - Supports value types and protocol-oriented programming
+- category: language
+  id: c
+  name: C
+  summary: Foundational compiled systems programming language standardized by ISO and widely used for operating systems, embedded software, libraries, and low-level interfaces.
+  homepage: https://www.open-std.org/jtc1/sc22/wg14/
+  tags:
+  - systems
+  - embedded
+  - compiled
+  sources:
+  - title: ISO C working group
+    url: https://www.open-std.org/jtc1/sc22/wg14/
+    type: standard
+  use_cases:
+  - Develop operating-system and embedded components
+  - Build portable native libraries
+  - Interface closely with hardware and operating-system APIs
+  key_points:
+  - Manual memory management is common
+  - The language has a small runtime model and broad compiler support
+- category: language
+  id: cpp
+  name: C++
+  summary: Multi-paradigm compiled programming language built on C heritage and widely used for performance-sensitive systems, applications, games, and infrastructure.
+  homepage: https://isocpp.org/
+  tags:
+  - systems
+  - performance
+  - compiled
+  sources:
+  - title: Standard C++ Foundation
+    url: https://isocpp.org/
+    type: official
+  - title: ISO C++ working group
+    url: https://www.open-std.org/jtc1/sc22/wg21/
+    type: standard
+  use_cases:
+  - Build high-performance applications
+  - Develop game engines and native frameworks
+  - Create low-level infrastructure and libraries
+  key_points:
+  - Supports deterministic object lifetime through RAII
+  - Templates enable generic and compile-time programming
+- category: framework
+  id: pytorch
+  name: PyTorch
+  summary: Open-source tensor and deep-learning framework with automatic differentiation, GPU acceleration, and a large research and production ecosystem.
+  homepage: https://pytorch.org/
+  repository: https://github.com/pytorch/pytorch
+  tags:
+  - deep-learning
+  - python
+  - gpu
+  sources:
+  - title: PyTorch official site
+    url: https://pytorch.org/
+    type: official
+  - title: PyTorch repository
+    url: https://github.com/pytorch/pytorch
+    type: repository
+  use_cases:
+  - Train and evaluate neural networks
+  - Build tensor-based numerical workloads
+  - Deploy machine-learning models
+  key_points:
+  - Automatic differentiation is integrated into tensor operations
+  - Supports accelerator backends including GPUs
+- category: framework
+  id: react
+  name: React
+  summary: Library for building component-based user interfaces with declarative rendering and a broad ecosystem for web and cross-platform applications.
+  homepage: https://react.dev/
+  repository: https://github.com/facebook/react
+  tags:
+  - web
+  - ui
+  - javascript
+  sources:
+  - title: React documentation
+    url: https://react.dev/
+    type: documentation
+  - title: React repository
+    url: https://github.com/facebook/react
+    type: repository
+  use_cases:
+  - Build interactive web interfaces
+  - Compose reusable UI components
+  - Manage declarative client-side rendering
+  key_points:
+  - Components are the primary composition unit
+  - Hooks provide stateful behavior in function components
+- category: framework
+  id: nextjs
+  name: Next.js
+  summary: React framework for full-stack web applications with routing, server rendering, static generation, data loading, and deployment-oriented tooling.
+  homepage: https://nextjs.org/
+  repository: https://github.com/vercel/next.js
+  tags:
+  - react
+  - web
+  - full-stack
+  sources:
+  - title: Next.js official site
+    url: https://nextjs.org/
+    type: official
+  - title: Next.js repository
+    url: https://github.com/vercel/next.js
+    type: repository
+  use_cases:
+  - Build server-rendered React applications
+  - Generate static and dynamic web content
+  - Create full-stack web routes and APIs
+  key_points:
+  - File-system routing is a core convention
+  - Supports both server and client component models
+- category: framework
+  id: vue
+  name: Vue.js
+  summary: Progressive JavaScript framework for building user interfaces with reactive state, component composition, and an approachable template syntax.
+  homepage: https://vuejs.org/
+  repository: https://github.com/vuejs/core
+  tags:
+  - web
+  - ui
+  - javascript
+  sources:
+  - title: Vue official site
+    url: https://vuejs.org/
+    type: official
+  - title: Vue core repository
+    url: https://github.com/vuejs/core
+    type: repository
+  use_cases:
+  - Build reactive web interfaces
+  - Create component libraries
+  - Develop single-page applications
+  key_points:
+  - Reactive state updates drive rendering
+  - Single-file components can combine template, logic, and style
+- category: framework
+  id: svelte
+  name: Svelte
+  summary: Web UI framework that shifts substantial work to compile time and provides component syntax with built-in reactivity and application tooling.
+  homepage: https://svelte.dev/
+  repository: https://github.com/sveltejs/svelte
+  tags:
+  - web
+  - ui
+  - compiler
+  sources:
+  - title: Svelte official site
+    url: https://svelte.dev/
+    type: official
+  - title: Svelte repository
+    url: https://github.com/sveltejs/svelte
+    type: repository
+  use_cases:
+  - Build reactive web applications
+  - Create compiled UI components
+  - Develop full-stack applications with SvelteKit
+  key_points:
+  - Compilation transforms components into efficient JavaScript
+  - Reactivity is integrated into the component model
+- category: framework
+  id: flutter
+  name: Flutter
+  summary: Cross-platform application UI toolkit using Dart to build natively compiled mobile, web, desktop, and embedded interfaces from shared code.
+  homepage: https://flutter.dev/
+  repository: https://github.com/flutter/flutter
+  tags:
+  - mobile
+  - cross-platform
+  - dart
+  sources:
+  - title: Flutter official site
+    url: https://flutter.dev/
+    type: official
+  - title: Flutter repository
+    url: https://github.com/flutter/flutter
+    type: repository
+  use_cases:
+  - Build Android and iOS applications
+  - Create desktop and web interfaces
+  - Share UI code across multiple platforms
+  key_points:
+  - Uses its own rendering framework for consistent UI
+  - Dart is the primary application language
+- category: framework
+  id: react-native
+  name: React Native
+  summary: Framework for building native mobile applications with React and JavaScript or TypeScript while rendering through native platform components.
+  homepage: https://reactnative.dev/
+  repository: https://github.com/facebook/react-native
+  tags:
+  - mobile
+  - react
+  - cross-platform
+  sources:
+  - title: React Native documentation
+    url: https://reactnative.dev/
+    type: documentation
+  - title: React Native repository
+    url: https://github.com/facebook/react-native
+    type: repository
+  use_cases:
+  - Build Android and iOS applications with React
+  - Share business and UI logic across mobile platforms
+  - Bridge JavaScript code with native APIs
+  key_points:
+  - Renders native platform views rather than browser DOM
+  - Supports native modules for platform-specific capabilities
+- category: framework
+  id: django
+  name: Django
+  summary: Python web framework providing an integrated ORM, routing, templates, forms, authentication, administration, and security-focused defaults.
+  homepage: https://www.djangoproject.com/
+  repository: https://github.com/django/django
+  tags:
+  - python
+  - web
+  - backend
+  sources:
+  - title: Django official site
+    url: https://www.djangoproject.com/
+    type: official
+  - title: Django documentation
+    url: https://docs.djangoproject.com/
+    type: documentation
+  use_cases:
+  - Build database-backed web applications
+  - Create administrative interfaces quickly
+  - Develop server-rendered sites and APIs
+  key_points:
+  - Includes a built-in ORM
+  - The admin application can generate management interfaces from models
+- category: framework
+  id: fastapi
+  name: FastAPI
+  summary: Python framework for building typed HTTP APIs using standard type hints, automatic validation, OpenAPI generation, and asynchronous server support.
+  homepage: https://fastapi.tiangolo.com/
+  repository: https://github.com/fastapi/fastapi
+  tags:
+  - python
+  - api
+  - async
+  sources:
+  - title: FastAPI documentation
+    url: https://fastapi.tiangolo.com/
+    type: documentation
+  - title: FastAPI repository
+    url: https://github.com/fastapi/fastapi
+    type: repository
+  use_cases:
+  - Build JSON and REST APIs
+  - Generate OpenAPI schemas automatically
+  - Create asynchronous Python services
+  key_points:
+  - Uses Python type annotations for request validation
+  - Built on Starlette and Pydantic
+- category: framework
+  id: spring-boot
+  name: Spring Boot
+  summary: Java framework for building production-oriented Spring applications with opinionated defaults, dependency starters, embedded servers, and operational features.
+  homepage: https://spring.io/projects/spring-boot
+  repository: https://github.com/spring-projects/spring-boot
+  tags:
+  - java
+  - backend
+  - jvm
+  sources:
+  - title: Spring Boot project
+    url: https://spring.io/projects/spring-boot
+    type: official
+  - title: Spring Boot repository
+    url: https://github.com/spring-projects/spring-boot
+    type: repository
+  use_cases:
+  - Build JVM web services
+  - Create standalone Spring applications
+  - Configure production services with common defaults
+  key_points:
+  - Starter dependencies simplify dependency selection
+  - Applications commonly embed their HTTP server
+- category: framework
+  id: rails
+  name: Ruby on Rails
+  summary: Full-stack Ruby web framework emphasizing convention over configuration and integrated patterns for routing, databases, views, jobs, and testing.
+  homepage: https://rubyonrails.org/
+  repository: https://github.com/rails/rails
+  tags:
+  - ruby
+  - web
+  - full-stack
+  sources:
+  - title: Ruby on Rails official site
+    url: https://rubyonrails.org/
+    type: official
+  - title: Rails repository
+    url: https://github.com/rails/rails
+    type: repository
+  use_cases:
+  - Build database-backed web applications
+  - Create server-rendered sites
+  - Develop APIs with Rails conventions
+  key_points:
+  - Active Record provides the default ORM layer
+  - Convention over configuration reduces repetitive setup
+- category: framework
+  id: laravel
+  name: Laravel
+  summary: PHP web application framework with routing, ORM, queues, authentication, templating, testing, and a broad first-party tooling ecosystem.
+  homepage: https://laravel.com/
+  repository: https://github.com/laravel/framework
+  tags:
+  - php
+  - web
+  - backend
+  sources:
+  - title: Laravel official site
+    url: https://laravel.com/
+    type: official
+  - title: Laravel framework repository
+    url: https://github.com/laravel/framework
+    type: repository
+  use_cases:
+  - Build PHP web applications and APIs
+  - Use queues and scheduled background jobs
+  - Model relational data with Eloquent ORM
+  key_points:
+  - Eloquent is Laravel's primary ORM
+  - Artisan provides command-line application tooling
+- category: framework
+  id: astro
+  name: Astro
+  summary: Web framework focused on content-driven sites and server-rendered applications, with island architecture and support for multiple UI component frameworks.
+  homepage: https://astro.build/
+  repository: https://github.com/withastro/astro
+  tags:
+  - web
+  - static-site
+  - javascript
+  sources:
+  - title: Astro official site
+    url: https://astro.build/
+    type: official
+  - title: Astro repository
+    url: https://github.com/withastro/astro
+    type: repository
+  use_cases:
+  - Build content-heavy websites
+  - Generate static pages
+  - Hydrate only selected interactive UI islands
+  key_points:
+  - Ships minimal client JavaScript by default
+  - Can integrate components from several UI frameworks
+- category: framework
+  id: tauri
+  name: Tauri
+  summary: Framework for building lightweight desktop and mobile applications with web front ends and a Rust-based native application core.
+  homepage: https://tauri.app/
+  repository: https://github.com/tauri-apps/tauri
+  tags:
+  - desktop
+  - rust
+  - cross-platform
+  sources:
+  - title: Tauri official site
+    url: https://tauri.app/
+    type: official
+  - title: Tauri repository
+    url: https://github.com/tauri-apps/tauri
+    type: repository
+  use_cases:
+  - Build cross-platform desktop applications
+  - Combine web interfaces with native Rust commands
+  - Package smaller alternatives to browser-bundled desktop apps
+  key_points:
+  - Uses the operating system webview rather than bundling Chromium
+  - Rust implements the native core and command boundary
+- category: framework
+  id: electron
+  name: Electron
+  summary: Framework for building cross-platform desktop applications using web technologies by packaging Chromium and Node.js with an application runtime.
+  homepage: https://www.electronjs.org/
+  repository: https://github.com/electron/electron
+  tags:
+  - desktop
+  - javascript
+  - chromium
+  sources:
+  - title: Electron official site
+    url: https://www.electronjs.org/
+    type: official
+  - title: Electron repository
+    url: https://github.com/electron/electron
+    type: repository
+  use_cases:
+  - Build desktop applications with HTML, CSS, and JavaScript
+  - Reuse web development skills for native desktop distribution
+  - Access operating-system APIs from desktop apps
+  key_points:
+  - Bundles Chromium and Node.js
+  - Separates main-process and renderer-process responsibilities
+- category: ai
+  id: tensorflow
+  name: TensorFlow
+  summary: Open-source machine-learning platform for tensor computation, model training, deployment, and production pipelines across CPUs, GPUs, and accelerators.
+  homepage: https://www.tensorflow.org/
+  repository: https://github.com/tensorflow/tensorflow
+  tags:
+  - machine-learning
+  - deep-learning
+  - python
+  sources:
+  - title: TensorFlow official site
+    url: https://www.tensorflow.org/
+    type: official
+  - title: TensorFlow repository
+    url: https://github.com/tensorflow/tensorflow
+    type: repository
+  use_cases:
+  - Train machine-learning models
+  - Deploy models across server and edge environments
+  - Build tensor computation pipelines
+  key_points:
+  - Supports eager execution and graph-based execution
+  - Integrates with Keras as a high-level model API
+- category: ai
+  id: jax
+  name: JAX
+  summary: Python array-computing and machine-learning library providing NumPy-style APIs with automatic differentiation, compilation, vectorization, and accelerator execution.
+  homepage: https://docs.jax.dev/
+  repository: https://github.com/jax-ml/jax
+  tags:
+  - machine-learning
+  - autodiff
+  - accelerators
+  sources:
+  - title: JAX documentation
+    url: https://docs.jax.dev/
+    type: documentation
+  - title: JAX repository
+    url: https://github.com/jax-ml/jax
+    type: repository
+  use_cases:
+  - Build differentiable numerical programs
+  - Run array computations on accelerators
+  - Compile mathematical functions for speed
+  key_points:
+  - Transformations include grad, jit, and vmap
+  - Uses XLA-oriented compilation for many workloads
+- category: ai
+  id: keras
+  name: Keras
+  summary: High-level deep-learning API designed for readable model construction and training workflows while supporting multiple tensor-computation backends.
+  homepage: https://keras.io/
+  repository: https://github.com/keras-team/keras
+  tags:
+  - deep-learning
+  - python
+  - neural-networks
+  sources:
+  - title: Keras official site
+    url: https://keras.io/
+    type: official
+  - title: Keras repository
+    url: https://github.com/keras-team/keras
+    type: repository
+  use_cases:
+  - Prototype neural-network models
+  - Train common deep-learning architectures
+  - Create reusable layers and training pipelines
+  key_points:
+  - Provides high-level model and layer abstractions
+  - Designed for concise model-building workflows
+- category: ai
+  id: scikit-learn
+  name: scikit-learn
+  summary: Python machine-learning library offering classical supervised and unsupervised algorithms, preprocessing, model selection, and evaluation utilities.
+  homepage: https://scikit-learn.org/
+  repository: https://github.com/scikit-learn/scikit-learn
+  tags:
+  - machine-learning
+  - python
+  - data-science
+  sources:
+  - title: scikit-learn official site
+    url: https://scikit-learn.org/
+    type: official
+  - title: scikit-learn repository
+    url: https://github.com/scikit-learn/scikit-learn
+    type: repository
+  use_cases:
+  - Train classical machine-learning models
+  - Build preprocessing and feature pipelines
+  - Evaluate and tune predictive models
+  key_points:
+  - Estimator APIs are designed to compose consistently
+  - Covers classification, regression, clustering, and dimensionality reduction
+- category: ai
+  id: transformers
+  name: Transformers
+  summary: Hugging Face library providing pretrained transformer models, tokenizers, configuration, training utilities, and pipelines across major ML backends.
+  homepage: https://huggingface.co/docs/transformers/
+  repository: https://github.com/huggingface/transformers
+  tags:
+  - llm
+  - nlp
+  - huggingface
+  sources:
+  - title: Transformers documentation
+    url: https://huggingface.co/docs/transformers/
+    type: documentation
+  - title: Transformers repository
+    url: https://github.com/huggingface/transformers
+    type: repository
+  use_cases:
+  - Load and run pretrained language and vision models
+  - Fine-tune transformer architectures
+  - Build inference pipelines around model checkpoints
+  key_points:
+  - Model classes standardize many popular architectures
+  - Integrates closely with the Hugging Face Hub
+- category: ai
+  id: vllm
+  name: vLLM
+  summary: High-throughput inference and serving engine for large language models, focused on efficient memory use, batching, and production model serving.
+  homepage: https://docs.vllm.ai/
+  repository: https://github.com/vllm-project/vllm
+  tags:
+  - llm
+  - inference
+  - serving
+  sources:
+  - title: vLLM documentation
+    url: https://docs.vllm.ai/
+    type: documentation
+  - title: vLLM repository
+    url: https://github.com/vllm-project/vllm
+    type: repository
+  use_cases:
+  - Serve large language models behind APIs
+  - Increase inference throughput with batching
+  - Run supported open model checkpoints
+  key_points:
+  - PagedAttention is a core memory-management technique associated with vLLM
+  - Provides OpenAI-compatible serving interfaces
+- category: ai
+  id: llama.cpp
+  name: llama.cpp
+  summary: C and C++ inference project for running large language models efficiently across CPUs and multiple accelerator backends, including quantized local models.
+  homepage: https://github.com/ggml-org/llama.cpp
+  repository: https://github.com/ggml-org/llama.cpp
+  tags:
+  - llm
+  - local
+  - inference
+  sources:
+  - title: llama.cpp repository
+    url: https://github.com/ggml-org/llama.cpp
+    type: repository
+  use_cases:
+  - Run quantized language models locally
+  - Serve local model inference
+  - Experiment with CPU and heterogeneous accelerator backends
+  key_points:
+  - GGUF is the project's common model container format
+  - Designed to make local inference practical on consumer hardware
+- category: ai
+  id: langchain
+  name: LangChain
+  summary: Application framework and ecosystem for composing language-model calls with tools, retrieval, structured workflows, and agent-oriented application logic.
+  homepage: https://docs.langchain.com/
+  repository: https://github.com/langchain-ai/langchain
+  tags:
+  - llm
+  - agents
+  - rag
+  sources:
+  - title: LangChain documentation
+    url: https://docs.langchain.com/
+    type: documentation
+  - title: LangChain repository
+    url: https://github.com/langchain-ai/langchain
+    type: repository
+  use_cases:
+  - Build LLM applications that call tools
+  - Compose retrieval-augmented workflows
+  - Create agent and orchestration pipelines
+  key_points:
+  - Provides integrations for many model and data providers
+  - Focuses on application composition around language models
+- category: ai
+  id: llamaindex
+  name: LlamaIndex
+  summary: Framework for connecting language-model applications to private or external data through indexing, retrieval, workflows, and agent-oriented abstractions.
+  homepage: https://docs.llamaindex.ai/
+  repository: https://github.com/run-llama/llama_index
+  tags:
+  - llm
+  - rag
+  - data
+  sources:
+  - title: LlamaIndex documentation
+    url: https://docs.llamaindex.ai/
+    type: documentation
+  - title: LlamaIndex repository
+    url: https://github.com/run-llama/llama_index
+    type: repository
+  use_cases:
+  - Build retrieval-augmented generation systems
+  - Index external documents for LLM applications
+  - Create data-aware agent workflows
+  key_points:
+  - Provides document ingestion and retrieval abstractions
+  - Supports many storage and model integrations
+- category: ai
+  id: onnx
+  name: ONNX
+  summary: Open Neural Network Exchange format and ecosystem for representing machine-learning graphs so models can move between compatible frameworks and runtimes.
+  homepage: https://onnx.ai/
+  repository: https://github.com/onnx/onnx
+  tags:
+  - model-format
+  - interoperability
+  - ml
+  sources:
+  - title: ONNX official site
+    url: https://onnx.ai/
+    type: official
+  - title: ONNX repository
+    url: https://github.com/onnx/onnx
+    type: repository
+  use_cases:
+  - Exchange models between supported ML tools
+  - Represent model computation graphs portably
+  - Deploy models through ONNX-compatible runtimes
+  key_points:
+  - Defines operators and a serialized graph format
+  - Aims to reduce framework lock-in for model interchange
+- category: ai
+  id: openai-api
+  name: OpenAI API
+  summary: Developer API platform for integrating OpenAI models and capabilities into applications through authenticated programmable interfaces and official SDKs.
+  homepage: https://platform.openai.com/docs
+  tags:
+  - api
+  - models
+  - ai
+  sources:
+  - title: OpenAI developer documentation
+    url: https://platform.openai.com/docs
+    type: documentation
+  use_cases:
+  - Integrate model capabilities into applications
+  - Build tool-using and multimodal AI workflows
+  - Automate model inference from backend services
+  key_points:
+  - Access is provided through authenticated API requests
+  - Official documentation defines current model and endpoint behavior
+- category: ai
+  id: anthropic-api
+  name: Anthropic API
+  summary: Developer API for integrating Anthropic Claude models into applications, including message-based model interaction and tool-oriented workflows.
+  homepage: https://docs.anthropic.com/
+  tags:
+  - api
+  - claude
+  - ai
+  sources:
+  - title: Anthropic developer documentation
+    url: https://docs.anthropic.com/
+    type: documentation
+  use_cases:
+  - Integrate Claude models into applications
+  - Build tool-using model workflows
+  - Automate language-model tasks from services
+  key_points:
+  - Uses authenticated API access
+  - Model capabilities and limits are documented by Anthropic
+- category: ai
+  id: gemini-api
+  name: Gemini API
+  summary: Google developer API for building applications with Gemini models through text, multimodal, structured, and tool-integrated model capabilities.
+  homepage: https://ai.google.dev/
+  tags:
+  - api
+  - gemini
+  - ai
+  sources:
+  - title: Google AI for Developers
+    url: https://ai.google.dev/
+    type: documentation
+  use_cases:
+  - Integrate Gemini models into applications
+  - Build multimodal AI features
+  - Use model APIs from backend or supported client environments
+  key_points:
+  - Google publishes model and API documentation through AI for Developers
+  - Supports multiple model families and modalities
+- category: ai
+  id: mlflow
+  name: MLflow
+  summary: Open-source platform for managing machine-learning experiments, model artifacts, evaluation, registries, and deployment-oriented lifecycle workflows.
+  homepage: https://mlflow.org/
+  repository: https://github.com/mlflow/mlflow
+  tags:
+  - mlops
+  - experiments
+  - models
+  sources:
+  - title: MLflow official site
+    url: https://mlflow.org/
+    type: official
+  - title: MLflow repository
+    url: https://github.com/mlflow/mlflow
+    type: repository
+  use_cases:
+  - Track machine-learning experiments
+  - Register and version models
+  - Evaluate and package model workflows
+  key_points:
+  - Experiment runs capture parameters, metrics, and artifacts
+  - Model registry features support lifecycle management
+- category: ai
+  id: ray
+  name: Ray
+  summary: Distributed computing framework for scaling Python and AI workloads from a single machine to clusters with task, actor, training, and serving abstractions.
+  homepage: https://docs.ray.io/
+  repository: https://github.com/ray-project/ray
+  tags:
+  - distributed
+  - python
+  - ml
+  sources:
+  - title: Ray documentation
+    url: https://docs.ray.io/
+    type: documentation
+  - title: Ray repository
+    url: https://github.com/ray-project/ray
+    type: repository
+  use_cases:
+  - Parallelize Python workloads
+  - Scale machine-learning training jobs
+  - Serve distributed AI applications
+  key_points:
+  - Remote tasks and actors are core distributed primitives
+  - Includes higher-level libraries for training and serving
+- category: security
+  id: openssl
+  name: OpenSSL
+  summary: Open-source cryptography and TLS toolkit providing widely used libraries and command-line utilities for secure transport, certificates, and cryptographic operations.
+  homepage: https://www.openssl.org/
+  repository: https://github.com/openssl/openssl
+  tags:
+  - tls
+  - cryptography
+  - security
+  sources:
+  - title: OpenSSL official site
+    url: https://www.openssl.org/
+    type: official
+  - title: OpenSSL repository
+    url: https://github.com/openssl/openssl
+    type: repository
+  use_cases:
+  - Implement TLS in applications
+  - Inspect and create certificates
+  - Perform cryptographic command-line operations
+  key_points:
+  - libcrypto provides cryptographic primitives
+  - libssl implements TLS-related protocol functionality
+- category: security
+  id: openssh
+  name: OpenSSH
+  summary: Open-source implementation of the SSH protocol suite used for encrypted remote login, command execution, tunneling, and secure file transfer.
+  homepage: https://www.openssh.com/
+  tags:
+  - ssh
+  - remote-access
+  - encryption
+  sources:
+  - title: OpenSSH official site
+    url: https://www.openssh.com/
+    type: official
+  - title: OpenSSH manual pages
+    url: https://man.openbsd.org/ssh
+    type: documentation
+  use_cases:
+  - Connect securely to remote systems
+  - Forward ports through encrypted tunnels
+  - Transfer files with SSH-based tools
+  key_points:
+  - Public-key authentication is widely used
+  - The suite includes client and server components
+- category: security
+  id: wireguard
+  name: WireGuard
+  summary: Modern VPN protocol and implementation designed around a small codebase, contemporary cryptography, and simple peer-to-peer configuration.
+  homepage: https://www.wireguard.com/
+  repository: https://github.com/WireGuard/wireguard-tools
+  tags:
+  - vpn
+  - networking
+  - cryptography
+  sources:
+  - title: WireGuard official site
+    url: https://www.wireguard.com/
+    type: official
+  - title: WireGuard tools repository
+    url: https://github.com/WireGuard/wireguard-tools
+    type: repository
+  use_cases:
+  - Create encrypted point-to-point tunnels
+  - Build site-to-site VPN links
+  - Secure remote network access
+  key_points:
+  - Peers are identified by public keys
+  - Uses a deliberately small set of cryptographic primitives
+- category: security
+  id: age
+  name: age
+  summary: Simple file-encryption format and tool designed as a modern, composable way to encrypt files to public-key or passphrase recipients.
+  homepage: https://age-encryption.org/
+  repository: https://github.com/FiloSottile/age
+  tags:
+  - encryption
+  - files
+  - cli
+  sources:
+  - title: age official site
+    url: https://age-encryption.org/
+    type: official
+  - title: age repository
+    url: https://github.com/FiloSottile/age
+    type: repository
+  use_cases:
+  - Encrypt files for named recipients
+  - Protect backups and configuration artifacts
+  - Use composable encryption in shell pipelines
+  key_points:
+  - Designed around small explicit recipient identities
+  - Supports public-key and passphrase workflows
+- category: security
+  id: sigstore
+  name: Sigstore
+  summary: Open-source ecosystem for signing and verifying software artifacts using short-lived identities, transparency logs, and supply-chain security tooling.
+  homepage: https://www.sigstore.dev/
+  repository: https://github.com/sigstore/sigstore
+  tags:
+  - supply-chain
+  - signing
+  - provenance
+  sources:
+  - title: Sigstore official site
+    url: https://www.sigstore.dev/
+    type: official
+  - title: Sigstore repository
+    url: https://github.com/sigstore/sigstore
+    type: repository
+  use_cases:
+  - Sign software artifacts and container images
+  - Verify artifact identity and provenance
+  - Add transparency-backed checks to supply chains
+  key_points:
+  - Transparency logs make signing events auditable
+  - Keyless signing can use federated workload or user identities
+- category: security
+  id: trivy
+  name: Trivy
+  summary: Open-source security scanner for container images, filesystems, repositories, infrastructure configuration, dependencies, and software supply chains.
+  homepage: https://trivy.dev/
+  repository: https://github.com/aquasecurity/trivy
+  tags:
+  - scanner
+  - containers
+  - vulnerabilities
+  sources:
+  - title: Trivy documentation
+    url: https://trivy.dev/
+    type: documentation
+  - title: Trivy repository
+    url: https://github.com/aquasecurity/trivy
+    type: repository
+  use_cases:
+  - Scan container images for vulnerabilities
+  - Check repositories and dependency manifests
+  - Detect infrastructure misconfigurations
+  key_points:
+  - Supports multiple scan targets in one tool
+  - Can integrate into CI pipelines
+- category: security
+  id: semgrep
+  name: Semgrep
+  summary: Static-analysis platform and open-source engine for matching code patterns, enforcing secure coding rules, and detecting classes of defects across languages.
+  homepage: https://semgrep.dev/
+  repository: https://github.com/semgrep/semgrep
+  tags:
+  - static-analysis
+  - sast
+  - code
+  sources:
+  - title: Semgrep official site
+    url: https://semgrep.dev/
+    type: official
+  - title: Semgrep repository
+    url: https://github.com/semgrep/semgrep
+    type: repository
+  use_cases:
+  - Scan source code for security issues
+  - Enforce organization-specific code patterns
+  - Run static checks in CI
+  key_points:
+  - Rules use code-like structural patterns
+  - Supports many programming languages
+- category: security
+  id: nmap
+  name: Nmap
+  summary: Network exploration and security-auditing tool for discovering hosts, identifying open ports, fingerprinting services, and running scriptable network probes.
+  homepage: https://nmap.org/
+  repository: https://github.com/nmap/nmap
+  tags:
+  - network
+  - scanner
+  - audit
+  sources:
+  - title: Nmap official site
+    url: https://nmap.org/
+    type: official
+  - title: Nmap reference guide
+    url: https://nmap.org/book/man.html
+    type: documentation
+  use_cases:
+  - Inventory reachable network services
+  - Audit exposed TCP and UDP ports
+  - Fingerprint hosts and application services
+  key_points:
+  - Includes the Nmap Scripting Engine
+  - Supports multiple host-discovery and scan techniques
+- category: security
+  id: clamav
+  name: ClamAV
+  summary: Open-source antivirus engine and scanning toolkit commonly used for malware detection in mail gateways, file-processing systems, and servers.
+  homepage: https://www.clamav.net/
+  repository: https://github.com/Cisco-Talos/clamav
+  tags:
+  - malware
+  - antivirus
+  - scanner
+  sources:
+  - title: ClamAV official site
+    url: https://www.clamav.net/
+    type: official
+  - title: ClamAV repository
+    url: https://github.com/Cisco-Talos/clamav
+    type: repository
+  use_cases:
+  - Scan uploaded or stored files for malware
+  - Integrate antivirus checks into server pipelines
+  - Protect mail and file-processing gateways
+  key_points:
+  - Signature databases are updated independently of the engine
+  - Includes command-line and daemon-based scanning modes
+- category: security
+  id: wazuh
+  name: Wazuh
+  summary: Open-source security platform combining endpoint monitoring, log analysis, threat detection, compliance capabilities, and security analytics.
+  homepage: https://wazuh.com/
+  repository: https://github.com/wazuh/wazuh
+  tags:
+  - siem
+  - endpoint
+  - monitoring
+  sources:
+  - title: Wazuh official site
+    url: https://wazuh.com/
+    type: official
+  - title: Wazuh repository
+    url: https://github.com/wazuh/wazuh
+    type: repository
+  use_cases:
+  - Monitor endpoints for security events
+  - Aggregate and analyze host telemetry
+  - Support compliance and detection workflows
+  key_points:
+  - Uses endpoint agents and central analysis components
+  - Combines multiple host-security data sources
+- category: cloud
+  id: kubernetes
+  name: Kubernetes
+  summary: Open-source orchestration system for deploying, scaling, networking, and operating containerized applications across clusters of machines.
+  homepage: https://kubernetes.io/
+  repository: https://github.com/kubernetes/kubernetes
+  tags:
+  - containers
+  - orchestration
+  - cloud-native
+  sources:
+  - title: Kubernetes official site
+    url: https://kubernetes.io/
+    type: official
+  - title: Kubernetes repository
+    url: https://github.com/kubernetes/kubernetes
+    type: repository
+  use_cases:
+  - Schedule containers across clusters
+  - Roll out and scale services
+  - Manage declarative application infrastructure
+  key_points:
+  - Desired state is represented through API objects
+  - Controllers continuously reconcile actual and desired state
+- category: cloud
+  id: terraform
+  name: Terraform
+  summary: Infrastructure-as-code tool for declaring and applying resource graphs through provider plugins across cloud, SaaS, and infrastructure platforms.
+  homepage: https://developer.hashicorp.com/terraform
+  repository: https://github.com/hashicorp/terraform
+  tags:
+  - iac
+  - automation
+  - cloud
+  sources:
+  - title: Terraform documentation
+    url: https://developer.hashicorp.com/terraform
+    type: documentation
+  - title: Terraform repository
+    url: https://github.com/hashicorp/terraform
+    type: repository
+  use_cases:
+  - Provision cloud infrastructure declaratively
+  - Plan infrastructure changes before applying them
+  - Manage resources through provider integrations
+  key_points:
+  - State tracks managed resource mappings
+  - Configuration describes dependency relationships among resources
+- category: cloud
+  id: ansible
+  name: Ansible
+  summary: Automation system for configuration management, application deployment, orchestration, and infrastructure tasks using agentless remote execution.
+  homepage: https://docs.ansible.com/
+  repository: https://github.com/ansible/ansible
+  tags:
+  - automation
+  - configuration-management
+  - devops
+  sources:
+  - title: Ansible documentation
+    url: https://docs.ansible.com/
+    type: documentation
+  - title: Ansible repository
+    url: https://github.com/ansible/ansible
+    type: repository
+  use_cases:
+  - Configure fleets of servers
+  - Automate repeatable operational tasks
+  - Deploy applications and infrastructure changes
+  key_points:
+  - Playbooks are commonly written in YAML
+  - SSH is a common transport for Unix-like managed hosts
+- category: cloud
+  id: helm
+  name: Helm
+  summary: Package manager for Kubernetes that bundles templated resource manifests into versioned charts for installation, upgrades, and reuse.
+  homepage: https://helm.sh/
+  repository: https://github.com/helm/helm
+  tags:
+  - kubernetes
+  - packages
+  - cloud-native
+  sources:
+  - title: Helm official site
+    url: https://helm.sh/
+    type: official
+  - title: Helm repository
+    url: https://github.com/helm/helm
+    type: repository
+  use_cases:
+  - Package Kubernetes applications
+  - Parameterize deployment manifests
+  - Install and upgrade application releases
+  key_points:
+  - Charts are reusable Kubernetes package definitions
+  - Release state tracks installed chart instances
+- category: cloud
+  id: prometheus
+  name: Prometheus
+  summary: Open-source monitoring and alerting system built around time-series metrics, label-based queries, pull-oriented scraping, and rule evaluation.
+  homepage: https://prometheus.io/
+  repository: https://github.com/prometheus/prometheus
+  tags:
+  - monitoring
+  - metrics
+  - observability
+  sources:
+  - title: Prometheus official site
+    url: https://prometheus.io/
+    type: official
+  - title: Prometheus repository
+    url: https://github.com/prometheus/prometheus
+    type: repository
+  use_cases:
+  - Collect infrastructure and application metrics
+  - Query time-series data with PromQL
+  - Trigger alerts from metric rules
+  key_points:
+  - PromQL is its query language
+  - Targets are commonly scraped over HTTP
+- category: cloud
+  id: grafana
+  name: Grafana
+  summary: Observability visualization platform used to query, explore, dashboard, and alert on metrics, logs, traces, and other operational data sources.
+  homepage: https://grafana.com/
+  repository: https://github.com/grafana/grafana
+  tags:
+  - observability
+  - dashboards
+  - monitoring
+  sources:
+  - title: Grafana official site
+    url: https://grafana.com/
+    type: official
+  - title: Grafana repository
+    url: https://github.com/grafana/grafana
+    type: repository
+  use_cases:
+  - Build operational dashboards
+  - Explore metrics, logs, and traces
+  - Configure alerting across connected data sources
+  key_points:
+  - Supports many external data-source plugins
+  - Dashboards can combine panels from multiple systems
+- category: cloud
+  id: opentelemetry
+  name: OpenTelemetry
+  summary: Vendor-neutral observability project defining APIs, SDKs, semantic conventions, and protocols for producing and transporting traces, metrics, and logs.
+  homepage: https://opentelemetry.io/
+  repository: https://github.com/open-telemetry/opentelemetry-specification
+  tags:
+  - observability
+  - tracing
+  - standards
+  sources:
+  - title: OpenTelemetry official site
+    url: https://opentelemetry.io/
+    type: official
+  - title: OpenTelemetry specification
+    url: https://github.com/open-telemetry/opentelemetry-specification
+    type: standard
+  use_cases:
+  - Instrument applications for traces and metrics
+  - Export telemetry to multiple backends
+  - Standardize observability context across services
+  key_points:
+  - Designed to be vendor-neutral
+  - OTLP is a standard protocol in the ecosystem
+- category: cloud
+  id: envoy
+  name: Envoy
+  summary: High-performance open-source edge and service proxy designed for cloud-native networking, traffic management, observability, and service-mesh architectures.
+  homepage: https://www.envoyproxy.io/
+  repository: https://github.com/envoyproxy/envoy
+  tags:
+  - proxy
+  - networking
+  - service-mesh
+  sources:
+  - title: Envoy official site
+    url: https://www.envoyproxy.io/
+    type: official
+  - title: Envoy repository
+    url: https://github.com/envoyproxy/envoy
+    type: repository
+  use_cases:
+  - Proxy service-to-service traffic
+  - Implement load balancing and routing
+  - Collect network-layer observability
+  key_points:
+  - Uses a dynamic configuration API for many deployments
+  - Supports HTTP and lower-level network proxying
+- category: cloud
+  id: istio
+  name: Istio
+  summary: Open-source service mesh that adds traffic management, security policy, and observability controls to distributed applications, commonly on Kubernetes.
+  homepage: https://istio.io/
+  repository: https://github.com/istio/istio
+  tags:
+  - service-mesh
+  - kubernetes
+  - networking
+  sources:
+  - title: Istio official site
+    url: https://istio.io/
+    type: official
+  - title: Istio repository
+    url: https://github.com/istio/istio
+    type: repository
+  use_cases:
+  - Control traffic between microservices
+  - Apply service-to-service security policies
+  - Observe distributed service communication
+  key_points:
+  - Commonly uses Envoy-based data-plane capabilities
+  - Separates application code from many network policies
+- category: cloud
+  id: pulumi
+  name: Pulumi
+  summary: Infrastructure-as-code platform that lets developers define cloud resources using general-purpose programming languages and provider packages.
+  homepage: https://www.pulumi.com/
+  repository: https://github.com/pulumi/pulumi
+  tags:
+  - iac
+  - cloud
+  - automation
+  sources:
+  - title: Pulumi official site
+    url: https://www.pulumi.com/
+    type: official
+  - title: Pulumi repository
+    url: https://github.com/pulumi/pulumi
+    type: repository
+  use_cases:
+  - Provision infrastructure with familiar languages
+  - Compose reusable infrastructure components
+  - Automate cloud deployment workflows
+  key_points:
+  - Uses a deployment engine to track resource state
+  - Supports multiple programming-language SDKs
+- category: database
+  id: postgresql
+  name: PostgreSQL
+  summary: Open-source relational database known for standards-oriented SQL, transactions, extensibility, advanced data types, indexing, and reliable server workloads.
+  homepage: https://www.postgresql.org/
+  repository: https://github.com/postgres/postgres
+  tags:
+  - sql
+  - relational
+  - database
+  sources:
+  - title: PostgreSQL official site
+    url: https://www.postgresql.org/
+    type: official
+  - title: PostgreSQL documentation
+    url: https://www.postgresql.org/docs/
+    type: documentation
+  use_cases:
+  - Store transactional application data
+  - Run complex SQL queries
+  - Extend database behavior with custom types and functions
+  key_points:
+  - Uses multi-version concurrency control
+  - Supports extensible index and data-type systems
+- category: database
+  id: mysql
+  name: MySQL
+  summary: Widely used relational database management system implementing SQL for transactional and web workloads with a large ecosystem of tools and integrations.
+  homepage: https://www.mysql.com/
+  repository: https://github.com/mysql/mysql-server
+  tags:
+  - sql
+  - relational
+  - database
+  sources:
+  - title: MySQL official site
+    url: https://www.mysql.com/
+    type: official
+  - title: MySQL server repository
+    url: https://github.com/mysql/mysql-server
+    type: repository
+  use_cases:
+  - Store application data in relational tables
+  - Power transactional web backends
+  - Replicate database workloads across servers
+  key_points:
+  - Uses pluggable storage engines
+  - InnoDB is a commonly used transactional storage engine
+- category: database
+  id: sqlite
+  name: SQLite
+  summary: Embedded relational database engine that stores a complete database in ordinary files and requires no separate database server process.
+  homepage: https://www.sqlite.org/
+  tags:
+  - sql
+  - embedded
+  - database
+  sources:
+  - title: SQLite official site
+    url: https://www.sqlite.org/
+    type: official
+  - title: SQLite documentation
+    url: https://www.sqlite.org/docs.html
+    type: documentation
+  use_cases:
+  - Embed relational storage inside applications
+  - Store local application state
+  - Use transactional SQL without running a server
+  key_points:
+  - Database files are portable across supported systems
+  - The library is linked directly into applications
+- category: database
+  id: redis
+  name: Redis
+  summary: In-memory data platform centered on key-value structures and low-latency operations, commonly used for caching, messaging, counters, and real-time state.
+  homepage: https://redis.io/
+  repository: https://github.com/redis/redis
+  tags:
+  - in-memory
+  - cache
+  - database
+  sources:
+  - title: Redis official site
+    url: https://redis.io/
+    type: official
+  - title: Redis repository
+    url: https://github.com/redis/redis
+    type: repository
+  use_cases:
+  - Cache frequently accessed application data
+  - Implement counters and ephemeral state
+  - Build queue and messaging patterns
+  key_points:
+  - Supports multiple data structures beyond plain strings
+  - Persistence options can complement in-memory operation
+- category: database
+  id: duckdb
+  name: DuckDB
+  summary: In-process analytical SQL database designed for fast OLAP-style queries over local data files and data frames without a separate server.
+  homepage: https://duckdb.org/
+  repository: https://github.com/duckdb/duckdb
+  tags:
+  - analytics
+  - sql
+  - embedded
+  sources:
+  - title: DuckDB official site
+    url: https://duckdb.org/
+    type: official
+  - title: DuckDB repository
+    url: https://github.com/duckdb/duckdb
+    type: repository
+  use_cases:
+  - Query Parquet and local analytical data
+  - Embed OLAP workloads in applications and notebooks
+  - Analyze data frames with SQL
+  key_points:
+  - Runs in-process like an embedded library
+  - Uses a columnar execution model for analytical workloads
+- category: protocol
+  id: mcp
+  name: Model Context Protocol
+  summary: Open protocol for connecting AI applications to tools, resources, prompts, and external context through a standardized client-server interface.
+  homepage: https://modelcontextprotocol.io/
+  repository: https://github.com/modelcontextprotocol/modelcontextprotocol
+  tags:
+  - ai
+  - protocol
+  - tools
+  sources:
+  - title: Model Context Protocol documentation
+    url: https://modelcontextprotocol.io/
+    type: documentation
+  - title: MCP specification repository
+    url: https://github.com/modelcontextprotocol/modelcontextprotocol
+    type: repository
+  use_cases:
+  - Expose tools and resources to AI applications
+  - Connect model clients to external systems
+  - Standardize context-provider integrations
+  key_points:
+  - Uses a client-server architecture
+  - Defines structured capabilities for tools, resources, and prompts
+- category: protocol
+  id: http
+  name: HTTP
+  summary: Application-layer protocol underlying the Web and many APIs, defining request and response semantics, methods, status codes, fields, caching, and representation transfer.
+  homepage: https://www.rfc-editor.org/rfc/rfc9110
+  tags:
+  - web
+  - networking
+  - standard
+  sources:
+  - title: HTTP Semantics RFC 9110
+    url: https://www.rfc-editor.org/rfc/rfc9110
+    type: standard
+  use_cases:
+  - Transfer web resources
+  - Build request-response APIs
+  - Carry metadata and representations between clients and servers
+  key_points:
+  - Methods such as GET and POST have standardized semantics
+  - Status codes communicate response outcomes
+- category: protocol
+  id: grpc
+  name: gRPC
+  summary: High-performance remote procedure call framework using Protocol Buffers by default and HTTP/2-based transports for strongly typed service interfaces.
+  homepage: https://grpc.io/
+  repository: https://github.com/grpc/grpc
+  tags:
+  - rpc
+  - protobuf
+  - networking
+  sources:
+  - title: gRPC official site
+    url: https://grpc.io/
+    type: official
+  - title: gRPC repository
+    url: https://github.com/grpc/grpc
+    type: repository
+  use_cases:
+  - Build typed service-to-service APIs
+  - Generate clients and servers from interface definitions
+  - Stream messages between distributed services
+  key_points:
+  - Protocol Buffers are the default interface-definition format
+  - Supports unary and streaming RPC patterns
+- category: protocol
+  id: websocket
+  name: WebSocket
+  summary: Standard protocol for establishing persistent full-duplex communication channels between clients and servers after an HTTP-based opening handshake.
+  homepage: https://www.rfc-editor.org/rfc/rfc6455
+  tags:
+  - web
+  - realtime
+  - standard
+  sources:
+  - title: WebSocket Protocol RFC 6455
+    url: https://www.rfc-editor.org/rfc/rfc6455
+    type: standard
+  use_cases:
+  - Push real-time updates to clients
+  - Build interactive bidirectional applications
+  - Maintain long-lived browser-server connections
+  key_points:
+  - Begins with an HTTP Upgrade handshake
+  - After establishment, both peers can send messages independently
+- category: protocol
+  id: oauth2
+  name: OAuth 2.0
+  summary: Authorization framework that lets applications obtain scoped access to protected resources using tokens instead of directly handling a user's credentials.
+  homepage: https://www.rfc-editor.org/rfc/rfc6749
+  tags:
+  - authorization
+  - identity
+  - standard
+  sources:
+  - title: OAuth 2.0 RFC 6749
+    url: https://www.rfc-editor.org/rfc/rfc6749
+    type: standard
+  - title: OAuth 2.0 Security Best Current Practice
+    url: https://www.rfc-editor.org/rfc/rfc9700
+    type: standard
+  use_cases:
+  - Delegate access to third-party applications
+  - Issue scoped access tokens
+  - Separate authorization decisions from resource APIs
+  key_points:
+  - Access tokens represent delegated authorization
+  - Different grant patterns serve different client types and trust models
+- category: concept
+  id: containers
+  name: Containers
+  summary: Operating-system-level isolation model that packages applications with dependencies while sharing a host kernel and using standardized image and runtime formats.
+  homepage: https://opencontainers.org/
+  repository: https://github.com/opencontainers/runtime-spec
+  tags:
+  - containers
+  - isolation
+  - oci
+  sources:
+  - title: Open Container Initiative
+    url: https://opencontainers.org/
+    type: official
+  - title: OCI Runtime Specification
+    url: https://github.com/opencontainers/runtime-spec
+    type: standard
+  use_cases:
+  - Package applications with dependencies
+  - Isolate processes and filesystems
+  - Move standardized images between compatible runtimes
+  key_points:
+  - Containers typically share the host kernel
+  - OCI specifications standardize important image and runtime interfaces
+- category: concept
+  id: virtualization
+  name: Virtualization
+  summary: Technique for presenting virtual hardware or execution environments so multiple or foreign operating systems and workloads can run on shared physical machines.
+  homepage: https://www.kernel.org/doc/html/latest/virt/kvm/index.html
+  tags:
+  - virtualization
+  - hypervisor
+  - systems
+  sources:
+  - title: Linux KVM documentation
+    url: https://www.kernel.org/doc/html/latest/virt/kvm/index.html
+    type: documentation
+  use_cases:
+  - Run multiple operating systems on one host
+  - Isolate workloads through virtual machines
+  - Test software against different hardware environments
+  key_points:
+  - Hardware virtualization extensions can accelerate guest execution
+  - Hypervisors mediate access to virtualized resources
+- category: concept
+  id: continuous-integration
+  name: Continuous Integration
+  summary: Development practice in which changes are integrated frequently and automatically built or tested to surface regressions and integration problems quickly.
+  homepage: https://docs.github.com/actions
+  tags:
+  - ci
+  - automation
+  - testing
+  sources:
+  - title: GitHub Actions documentation
+    url: https://docs.github.com/actions
+    type: documentation
+  use_cases:
+  - Run tests automatically on changes
+  - Validate builds before merging
+  - Provide rapid feedback to contributors
+  key_points:
+  - Automated checks reduce the cost of frequent integration
+  - CI pipelines commonly combine build, test, lint, and security steps
+- category: concept
+  id: reproducible-builds
+  name: Reproducible Builds
+  summary: Software-build discipline in which independently repeated builds from the same source and inputs can produce bit-for-bit identical outputs.
+  homepage: https://reproducible-builds.org/
+  tags:
+  - builds
+  - supply-chain
+  - reproducibility
+  sources:
+  - title: Reproducible Builds project
+    url: https://reproducible-builds.org/
+    type: official
+  use_cases:
+  - Verify distributed build artifacts
+  - Reduce hidden build-environment differences
+  - Strengthen software supply-chain auditing
+  key_points:
+  - Deterministic inputs and timestamps are important
+  - Independent rebuilds can help detect unexpected binary differences
+- category: concept
+  id: retrieval-augmented-generation
+  name: Retrieval-Augmented Generation
+  summary: AI pattern that retrieves external information at inference time and provides it to a generative model so answers can use data beyond model parameters.
+  homepage: https://arxiv.org/abs/2005.11401
+  tags:
+  - rag
+  - llm
+  - retrieval
+  sources:
+  - title: Retrieval-Augmented Generation paper
+    url: https://arxiv.org/abs/2005.11401
+    type: research
+  use_cases:
+  - Ground language-model responses in external documents
+  - Use private knowledge without retraining the base model
+  - Combine search systems with generative interfaces
+  key_points:
+  - A retriever selects context before or during generation
+  - Quality depends on both retrieval relevance and generation behavior
+- category: opensource
+  id: linux-kernel
+  name: Linux Kernel
+  summary: Open-source kernel at the core of Linux operating systems, providing process scheduling, memory management, device drivers, networking, and hardware abstractions.
+  homepage: https://www.kernel.org/
+  repository: https://github.com/torvalds/linux
+  tags:
+  - linux
+  - kernel
+  - systems
+  sources:
+  - title: Linux kernel archives
+    url: https://www.kernel.org/
+    type: official
+  - title: Linux source mirror
+    url: https://github.com/torvalds/linux
+    type: repository
+  use_cases:
+  - Power Linux operating systems
+  - Provide hardware and process abstractions
+  - Serve as a foundation for servers, Android, embedded systems, and desktops
+  key_points:
+  - Monolithic kernel with loadable module support
+  - Developed through a large distributed maintainer hierarchy
+- category: opensource
+  id: llvm
+  name: LLVM
+  summary: Open-source compiler infrastructure ecosystem containing reusable optimization, code-generation, linker, debugger, and language-tooling projects including Clang.
+  homepage: https://llvm.org/
+  repository: https://github.com/llvm/llvm-project
+  tags:
+  - compiler
+  - toolchain
+  - clang
+  sources:
+  - title: LLVM official site
+    url: https://llvm.org/
+    type: official
+  - title: LLVM project repository
+    url: https://github.com/llvm/llvm-project
+    type: repository
+  use_cases:
+  - Build compilers and language tools
+  - Generate optimized machine code
+  - Develop static analysis and debugging tooling
+  key_points:
+  - LLVM IR is a central intermediate representation
+  - The monorepo includes Clang, LLD, LLDB, and related projects
+- category: opensource
+  id: debian
+  name: Debian
+  summary: Community-developed GNU/Linux distribution and package ecosystem known for its social contract, large repositories, stable releases, and downstream influence.
+  homepage: https://www.debian.org/
+  tags:
+  - linux
+  - distribution
+  - packages
+  sources:
+  - title: Debian official site
+    url: https://www.debian.org/
+    type: official
+  - title: Debian documentation
+    url: https://www.debian.org/doc/
+    type: documentation
+  use_cases:
+  - Run servers and desktop Linux systems
+  - Build downstream Linux distributions
+  - Distribute software through Debian packages
+  key_points:
+  - Uses the APT and dpkg package-management stack
+  - Maintained by a global volunteer project
+- category: opensource
+  id: kde
+  name: KDE
+  summary: Open-source community and software ecosystem producing the Plasma desktop, application frameworks, developer libraries, and a broad set of Linux desktop applications.
+  homepage: https://kde.org/
+  repository: https://invent.kde.org/
+  tags:
+  - linux
+  - desktop
+  - qt
+  sources:
+  - title: KDE official site
+    url: https://kde.org/
+    type: official
+  - title: KDE developer platform
+    url: https://develop.kde.org/
+    type: documentation
+  use_cases:
+  - Run and customize the Plasma desktop
+  - Build applications with KDE Frameworks
+  - Use KDE's open-source desktop application ecosystem
+  key_points:
+  - Plasma is KDE's desktop environment
+  - Many KDE technologies are built on Qt
+- category: opensource
+  id: gnome
+  name: GNOME
+  summary: Open-source desktop environment and application ecosystem for Linux and Unix-like systems, centered on GNOME Shell, GTK, and human-interface guidelines.
+  homepage: https://www.gnome.org/
+  repository: https://gitlab.gnome.org/GNOME
+  tags:
+  - linux
+  - desktop
+  - gtk
+  sources:
+  - title: GNOME official site
+    url: https://www.gnome.org/
+    type: official
+  - title: GNOME developer documentation
+    url: https://developer.gnome.org/
+    type: documentation
+  use_cases:
+  - Run a modern Linux desktop environment
+  - Build GTK-based desktop applications
+  - Use GNOME's integrated productivity applications
+  key_points:
+  - GNOME Shell provides the core desktop interface
+  - GTK is a foundational toolkit in the ecosystem
