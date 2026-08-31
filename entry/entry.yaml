@@ -1,0 +1,30 @@
+schema_version: 2
+id: wireshark
+name: Wireshark
+category: tool
+kind: tool
+domains:
+- developer-tools
+- networking
+- security
+summary: Open-source network protocol analyzer with graphical and command-line tooling for capturing, decoding, filtering, and inspecting packets across a large range of protocols.
+homepage: https://www.wireshark.org/
+repository: https://gitlab.com/wireshark/wireshark
+license: GPL-2.0-or-later
+deployment_types:
+- desktop
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- networking
+- security
+- protocol-analysis
+sources:
+- title: Wireshark official site
+  url: https://www.wireshark.org/
+  type: official
+- title: Wireshark source repository
+  url: https://gitlab.com/wireshark/wireshark
+  type: repository
