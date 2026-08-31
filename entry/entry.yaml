@@ -1,0 +1,16 @@
+schema_version: 1
+id: websocket
+name: WebSocket
+category: protocol
+summary: Standard protocol for establishing persistent full-duplex communication channels between clients and servers after an HTTP-based opening handshake.
+homepage: https://www.rfc-editor.org/rfc/rfc6455
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- realtime
+- standard
+sources:
+- title: WebSocket Protocol RFC 6455
+  url: https://www.rfc-editor.org/rfc/rfc6455
+  type: standard
