@@ -2,6 +2,10 @@ schema_version: 1
 id: react-native
 name: React Native
 category: framework
+kind: framework
+domains:
+- mobile
+- software-development
 summary: Framework for building native mobile applications with React and JavaScript or TypeScript while rendering through native platform components.
 homepage: https://reactnative.dev/
 repository: https://github.com/facebook/react-native

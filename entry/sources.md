@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **React Native documentation** — https://reactnative.dev/ (`documentation`)
 - **React Native repository** — https://github.com/facebook/react-native (`repository`)
