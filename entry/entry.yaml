@@ -2,6 +2,9 @@ schema_version: 1
 id: reproducible-builds
 name: Reproducible Builds
 category: concept
+kind: concept
+domains:
+- software-development
 summary: Software-build discipline in which independently repeated builds from the same source and inputs can produce bit-for-bit identical outputs.
 homepage: https://reproducible-builds.org/
 status: active
