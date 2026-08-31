@@ -2,6 +2,10 @@ schema_version: 1
 id: duckdb
 name: DuckDB
 category: database
+kind: database
+domains:
+- analytics
+- data
 summary: In-process analytical SQL database designed for fast OLAP-style queries over local data files and data frames without a separate server.
 homepage: https://duckdb.org/
 repository: https://github.com/duckdb/duckdb
