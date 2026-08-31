@@ -2,6 +2,9 @@ schema_version: 1
 id: openssl
 name: OpenSSL
 category: security
+kind: library
+domains:
+- security
 summary: Open-source cryptography and TLS toolkit providing widely used libraries and command-line utilities for secure transport, certificates, and cryptographic operations.
 homepage: https://www.openssl.org/
 repository: https://github.com/openssl/openssl
