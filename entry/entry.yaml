@@ -2,6 +2,10 @@ schema_version: 1
 id: llama.cpp
 name: llama.cpp
 category: ai
+kind: runtime
+domains:
+- ai
+- systems
 summary: C and C++ inference project for running large language models efficiently across CPUs and multiple accelerator backends, including quantized local models.
 homepage: https://github.com/ggml-org/llama.cpp
 repository: https://github.com/ggml-org/llama.cpp
