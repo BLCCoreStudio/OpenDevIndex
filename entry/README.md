@@ -49,4 +49,4 @@ Start with text encoding and basic data structures, then learn JSON values and g
 
 ## Verification
 
-This module was reviewed on **2026-08-31** against IETF RFC 8259 and ECMA-404. RFC 8259 is the Internet Standard for the JSON data interchange format, while ECMA-404 defines the JSON data interchange syntax. citeturn851022search4turn851022search3
+This module was reviewed on **2026-08-31** against IETF RFC 8259 and ECMA-404. RFC 8259 is the Internet Standard for the JSON data interchange format, while ECMA-404 defines the JSON data interchange syntax.
