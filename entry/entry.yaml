@@ -1,0 +1,30 @@
+schema_version: 2
+id: continue
+name: Continue
+category: tool
+kind: tool
+domains:
+- ai
+- developer-experience
+- developer-tools
+summary: Open-source AI coding assistant platform for integrating language models into developer workflows with configurable models, context providers, and editor integrations.
+homepage: https://www.continue.dev/
+repository: https://github.com/continuedev/continue
+license: Apache-2.0
+deployment_types:
+- desktop
+- local
+- saas
+status: active
+verified_at: '2026-08-31'
+tags:
+- ai
+- coding-assistant
+- developer-tools
+sources:
+- title: Continue official site
+  url: https://www.continue.dev/
+  type: official
+- title: Continue repository
+  url: https://github.com/continuedev/continue
+  type: repository
