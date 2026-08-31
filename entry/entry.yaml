@@ -4,6 +4,7 @@ name: WireGuard
 category: security
 kind: protocol
 domains:
+- cryptography
 - networking
 - security
 summary: Modern VPN protocol and implementation designed around a small codebase, contemporary cryptography, and simple peer-to-peer configuration.
