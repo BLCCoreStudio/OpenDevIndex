@@ -1,0 +1,19 @@
+schema_version: 1
+id: oauth2
+name: OAuth 2.0
+category: protocol
+summary: Authorization framework that lets applications obtain scoped access to protected resources using tokens instead of directly handling a user's credentials.
+homepage: https://www.rfc-editor.org/rfc/rfc6749
+status: active
+verified_at: '2026-08-31'
+tags:
+- authorization
+- identity
+- standard
+sources:
+- title: OAuth 2.0 RFC 6749
+  url: https://www.rfc-editor.org/rfc/rfc6749
+  type: standard
+- title: OAuth 2.0 Security Best Current Practice
+  url: https://www.rfc-editor.org/rfc/rfc9700
+  type: standard
