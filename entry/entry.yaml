@@ -1,0 +1,28 @@
+schema_version: 2
+id: flux
+name: Flux
+category: platform
+kind: platform
+domains:
+- ci-cd
+- cloud
+- devops
+summary: GitOps toolkit for Kubernetes that continuously reconciles clusters from Git and OCI sources using composable controllers for sources, deployments, and automation.
+homepage: https://fluxcd.io/
+repository: https://github.com/fluxcd/flux2
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- kubernetes
+- gitops
+- automation
+sources:
+- title: Flux official site
+  url: https://fluxcd.io/
+  type: official
+- title: Flux source repository
+  url: https://github.com/fluxcd/flux2
+  type: repository
