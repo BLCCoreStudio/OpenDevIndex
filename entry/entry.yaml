@@ -1,0 +1,19 @@
+schema_version: 1
+id: cpp
+name: C++
+category: language
+summary: Multi-paradigm compiled programming language built on C heritage and widely used for performance-sensitive systems, applications, games, and infrastructure.
+homepage: https://isocpp.org/
+status: active
+verified_at: '2026-08-31'
+tags:
+- systems
+- performance
+- compiled
+sources:
+- title: Standard C++ Foundation
+  url: https://isocpp.org/
+  type: official
+- title: ISO C++ working group
+  url: https://www.open-std.org/jtc1/sc22/wg21/
+  type: standard
