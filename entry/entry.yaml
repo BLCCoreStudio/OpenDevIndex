@@ -1,0 +1,20 @@
+schema_version: 1
+id: vllm
+name: vLLM
+category: ai
+summary: High-throughput inference and serving engine for large language models, focused on efficient memory use, batching, and production model serving.
+homepage: https://docs.vllm.ai/
+repository: https://github.com/vllm-project/vllm
+status: active
+verified_at: '2026-08-31'
+tags:
+- llm
+- inference
+- serving
+sources:
+- title: vLLM documentation
+  url: https://docs.vllm.ai/
+  type: documentation
+- title: vLLM repository
+  url: https://github.com/vllm-project/vllm
+  type: repository
