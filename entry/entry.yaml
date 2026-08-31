@@ -1,0 +1,29 @@
+schema_version: 2
+id: pocketbase
+name: PocketBase
+category: platform
+kind: platform
+domains:
+- api
+- data
+- developer-experience
+summary: Compact open-source backend platform distributed as a single executable with an embedded database, realtime subscriptions, authentication, files, and an admin UI.
+homepage: https://pocketbase.io/
+repository: https://github.com/pocketbase/pocketbase
+license: MIT
+deployment_types:
+- self-hosted
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- backend
+- baas
+- sqlite
+sources:
+- title: PocketBase official site
+  url: https://pocketbase.io/
+  type: official
+- title: PocketBase repository
+  url: https://github.com/pocketbase/pocketbase
+  type: repository
