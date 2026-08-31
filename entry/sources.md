@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **curl official site** — https://curl.se/ (`official`)
 - **curl repository** — https://github.com/curl/curl (`repository`)
