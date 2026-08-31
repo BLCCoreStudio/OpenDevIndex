@@ -2,6 +2,9 @@ schema_version: 1
 id: clamav
 name: ClamAV
 category: security
+kind: tool
+domains:
+- security
 summary: Open-source antivirus engine and scanning toolkit commonly used for malware detection in mail gateways, file-processing systems, and servers.
 homepage: https://www.clamav.net/
 repository: https://github.com/Cisco-Talos/clamav
