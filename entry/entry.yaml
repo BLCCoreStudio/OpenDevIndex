@@ -1,0 +1,19 @@
+schema_version: 1
+id: javascript
+name: JavaScript
+category: language
+summary: ECMAScript-based programming language that powers browser scripting and is also widely used on servers, tooling, desktop, and mobile platforms.
+homepage: https://tc39.es/ecma262/
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- ecmascript
+- dynamic
+sources:
+- title: ECMAScript language specification
+  url: https://tc39.es/ecma262/
+  type: standard
+- title: MDN JavaScript guide
+  url: https://developer.mozilla.org/docs/Web/JavaScript/Guide
+  type: documentation
