@@ -1,0 +1,19 @@
+schema_version: 1
+id: openssh
+name: OpenSSH
+category: security
+summary: Open-source implementation of the SSH protocol suite used for encrypted remote login, command execution, tunneling, and secure file transfer.
+homepage: https://www.openssh.com/
+status: active
+verified_at: '2026-08-31'
+tags:
+- ssh
+- remote-access
+- encryption
+sources:
+- title: OpenSSH official site
+  url: https://www.openssh.com/
+  type: official
+- title: OpenSSH manual pages
+  url: https://man.openbsd.org/ssh
+  type: documentation
