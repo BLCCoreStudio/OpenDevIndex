@@ -19,6 +19,10 @@ tags:
   - cli
 platforms:
   - Linux
+coverage:
+  area: developer-tools
+  topics:
+    - developer-experience
 relationships:
   - type: related-to
     target: concept/example-concept
