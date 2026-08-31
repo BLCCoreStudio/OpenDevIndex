@@ -1,0 +1,302 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 9
+expected_categories:
+  tool: 9
+entries:
+- category: tool
+  id: opentofu
+  name: OpenTofu
+  homepage: https://opentofu.org/
+  repository: https://github.com/opentofu/opentofu
+  tags:
+  - iac
+  - cloud
+  - devops
+  kind: tool
+  domains:
+  - cloud
+  - devops
+  deployment_types:
+  - cli
+  - local
+  summary: OpenTofu is an open-source infrastructure-as-code tool created as a community-driven Terraform-compatible project for declaring, planning, and applying infrastructure through provider ecosystems.
+  sources:
+  - title: OpenTofu official site or documentation
+    url: https://opentofu.org/
+    type: official
+  - title: OpenTofu source repository
+    url: https://github.com/opentofu/opentofu
+    type: repository
+  use_cases:
+  - Use OpenTofu in development or operations workflows where its iac capabilities match the task
+  - Integrate OpenTofu into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate OpenTofu against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - OpenTofu is an open-source infrastructure-as-code tool created as a community-driven Terraform-compatible project for declaring, planning, and applying infrastructure through provider ecosystems.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: packer
+  name: HashiCorp Packer
+  homepage: https://developer.hashicorp.com/packer
+  repository: https://github.com/hashicorp/packer
+  tags:
+  - image-build
+  - automation
+  - devops
+  kind: tool
+  domains:
+  - build
+  - devops
+  - cloud
+  deployment_types:
+  - cli
+  - local
+  summary: HashiCorp Packer is an image-building automation tool for creating reproducible virtual-machine and cloud images from declarative templates across infrastructure providers and deployment pipelines.
+  sources:
+  - title: HashiCorp Packer official site or documentation
+    url: https://developer.hashicorp.com/packer
+    type: official
+  - title: HashiCorp Packer source repository
+    url: https://github.com/hashicorp/packer
+    type: repository
+  use_cases:
+  - Use HashiCorp Packer in development or operations workflows where its image build capabilities match the task
+  - Integrate HashiCorp Packer into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate HashiCorp Packer against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - HashiCorp Packer is an image-building automation tool for creating reproducible virtual-machine and cloud images from declarative templates across infrastructure providers and deployment pipelines.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: nomad
+  name: HashiCorp Nomad
+  homepage: https://developer.hashicorp.com/nomad
+  repository: https://github.com/hashicorp/nomad
+  tags:
+  - orchestration
+  - containers
+  - scheduler
+  kind: tool
+  domains:
+  - cloud
+  - devops
+  - distributed-systems
+  deployment_types:
+  - cli
+  - local
+  summary: HashiCorp Nomad is a distributed workload orchestrator for containerized and non-containerized applications with scheduling, service integration, multi-region operation, and declarative job specifications.
+  sources:
+  - title: HashiCorp Nomad official site or documentation
+    url: https://developer.hashicorp.com/nomad
+    type: official
+  - title: HashiCorp Nomad source repository
+    url: https://github.com/hashicorp/nomad
+    type: repository
+  use_cases:
+  - Use HashiCorp Nomad in development or operations workflows where its orchestration capabilities match the task
+  - Integrate HashiCorp Nomad into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate HashiCorp Nomad against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - HashiCorp Nomad is a distributed workload orchestrator for containerized and non-containerized applications with scheduling, service integration, multi-region operation, and declarative job specifications.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: vault
+  name: HashiCorp Vault
+  homepage: https://developer.hashicorp.com/vault
+  repository: https://github.com/hashicorp/vault
+  tags:
+  - secrets
+  - security
+  - identity
+  kind: tool
+  domains:
+  - security
+  - devops
+  - cloud
+  deployment_types:
+  - cli
+  - local
+  summary: HashiCorp Vault is a secrets-management and encryption platform for controlling credentials, dynamic secrets, authentication methods, encryption services, and audited access to sensitive data.
+  sources:
+  - title: HashiCorp Vault official site or documentation
+    url: https://developer.hashicorp.com/vault
+    type: official
+  - title: HashiCorp Vault source repository
+    url: https://github.com/hashicorp/vault
+    type: repository
+  use_cases:
+  - Use HashiCorp Vault in development or operations workflows where its secrets capabilities match the task
+  - Integrate HashiCorp Vault into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate HashiCorp Vault against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - HashiCorp Vault is a secrets-management and encryption platform for controlling credentials, dynamic secrets, authentication methods, encryption services, and audited access to sensitive data.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: consul
+  name: HashiCorp Consul
+  homepage: https://developer.hashicorp.com/consul
+  repository: https://github.com/hashicorp/consul
+  tags:
+  - service-discovery
+  - networking
+  - service-mesh
+  kind: tool
+  domains:
+  - networking
+  - cloud
+  - distributed-systems
+  deployment_types:
+  - cli
+  - local
+  summary: HashiCorp Consul is a service-networking platform providing discovery, health checking, configuration, and service-mesh capabilities for distributed applications across dynamic infrastructure.
+  sources:
+  - title: HashiCorp Consul official site or documentation
+    url: https://developer.hashicorp.com/consul
+    type: official
+  - title: HashiCorp Consul source repository
+    url: https://github.com/hashicorp/consul
+    type: repository
+  use_cases:
+  - Use HashiCorp Consul in development or operations workflows where its service discovery capabilities match the task
+  - Integrate HashiCorp Consul into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate HashiCorp Consul against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - HashiCorp Consul is a service-networking platform providing discovery, health checking, configuration, and service-mesh capabilities for distributed applications across dynamic infrastructure.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: caddy
+  name: Caddy
+  homepage: https://caddyserver.com/
+  repository: https://github.com/caddyserver/caddy
+  tags:
+  - web-server
+  - reverse-proxy
+  - tls
+  kind: tool
+  domains:
+  - web
+  - networking
+  - security
+  deployment_types:
+  - cli
+  - local
+  summary: Caddy is an extensible web server and reverse proxy known for automatic HTTPS, simple configuration, modern protocol support, and a modular Go-based architecture.
+  sources:
+  - title: Caddy official site or documentation
+    url: https://caddyserver.com/
+    type: official
+  - title: Caddy source repository
+    url: https://github.com/caddyserver/caddy
+    type: repository
+  use_cases:
+  - Use Caddy in development or operations workflows where its web server capabilities match the task
+  - Integrate Caddy into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Caddy against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Caddy is an extensible web server and reverse proxy known for automatic HTTPS, simple configuration, modern protocol support, and a modular Go-based architecture.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: nginx
+  name: NGINX
+  homepage: https://nginx.org/
+  repository: https://github.com/nginx/nginx
+  tags:
+  - web-server
+  - reverse-proxy
+  - networking
+  kind: tool
+  domains:
+  - web
+  - networking
+  deployment_types:
+  - cli
+  - local
+  summary: NGINX is a high-performance web server, reverse proxy, load balancer, and HTTP cache widely used as an internet-facing frontend and application-delivery component.
+  sources:
+  - title: NGINX official site or documentation
+    url: https://nginx.org/
+    type: official
+  - title: NGINX source repository
+    url: https://github.com/nginx/nginx
+    type: repository
+  use_cases:
+  - Use NGINX in development or operations workflows where its web server capabilities match the task
+  - Integrate NGINX into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate NGINX against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - NGINX is a high-performance web server, reverse proxy, load balancer, and HTTP cache widely used as an internet-facing frontend and application-delivery component.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: haproxy
+  name: HAProxy
+  homepage: https://www.haproxy.org/
+  repository: https://github.com/haproxy/haproxy
+  tags:
+  - load-balancer
+  - proxy
+  - networking
+  kind: tool
+  domains:
+  - networking
+  - web
+  - observability
+  deployment_types:
+  - cli
+  - local
+  summary: HAProxy is an open-source TCP and HTTP load balancer and proxy designed for high availability, observability, traffic routing, and performance-sensitive application delivery.
+  sources:
+  - title: HAProxy official site or documentation
+    url: https://www.haproxy.org/
+    type: official
+  - title: HAProxy source repository
+    url: https://github.com/haproxy/haproxy
+    type: repository
+  use_cases:
+  - Use HAProxy in development or operations workflows where its load balancer capabilities match the task
+  - Integrate HAProxy into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate HAProxy against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - HAProxy is an open-source TCP and HTTP load balancer and proxy designed for high availability, observability, traffic routing, and performance-sensitive application delivery.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: minikube
+  name: minikube
+  homepage: https://minikube.sigs.k8s.io/docs/
+  repository: https://github.com/kubernetes/minikube
+  tags:
+  - kubernetes
+  - local-development
+  - containers
+  kind: tool
+  domains:
+  - containers
+  - cloud
+  - developer-experience
+  deployment_types:
+  - cli
+  - local
+  summary: minikube is a local Kubernetes environment for learning, development, testing, and experimentation with cluster workloads, drivers, and common Kubernetes add-ons.
+  sources:
+  - title: minikube official site or documentation
+    url: https://minikube.sigs.k8s.io/docs/
+    type: official
+  - title: minikube source repository
+    url: https://github.com/kubernetes/minikube
+    type: repository
+  use_cases:
+  - Use minikube in development or operations workflows where its kubernetes capabilities match the task
+  - Integrate minikube into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate minikube against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - minikube is a local Kubernetes environment for learning, development, testing, and experimentation with cluster workloads, drivers, and common Kubernetes add-ons.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
