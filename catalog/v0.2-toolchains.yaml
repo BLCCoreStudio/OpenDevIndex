@@ -1,0 +1,22 @@
+schema_version: 2
+milestone: v0.2
+verified_at: '2026-08-31'
+target_modules: 1
+expected_categories:
+  toolchain: 1
+entries:
+- category: toolchain
+  id: gcc
+  name: GCC
+  summary: GNU Compiler Collection providing production compilers for C, C++, Fortran, and other languages across a broad range of operating systems and architectures.
+  homepage: https://gcc.gnu.org/
+  tags: [compiler, toolchain, gnu]
+  sources:
+  - {title: GCC official site, url: https://gcc.gnu.org/, type: official}
+  - {title: GCC online documentation, url: https://gcc.gnu.org/onlinedocs/, type: documentation}
+  use_cases: [Compile native C and C++ software, Target multiple CPU architectures, Build operating-system and embedded software toolchains]
+  key_points: [Includes multiple language front ends, Supports extensive optimization and target back ends, Widely used in GNU/Linux and embedded toolchains]
+  kind: toolchain
+  domains: [systems, build]
+  license: GPL-3.0-or-later
+  deployment_types: [cli, local]
