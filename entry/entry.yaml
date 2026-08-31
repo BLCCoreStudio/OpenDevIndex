@@ -1,0 +1,20 @@
+schema_version: 1
+id: llvm
+name: LLVM
+category: opensource
+summary: Open-source compiler infrastructure ecosystem containing reusable optimization, code-generation, linker, debugger, and language-tooling projects including Clang.
+homepage: https://llvm.org/
+repository: https://github.com/llvm/llvm-project
+status: active
+verified_at: '2026-08-31'
+tags:
+- compiler
+- toolchain
+- clang
+sources:
+- title: LLVM official site
+  url: https://llvm.org/
+  type: official
+- title: LLVM project repository
+  url: https://github.com/llvm/llvm-project
+  type: repository
