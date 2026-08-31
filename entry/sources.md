@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **VS Code documentation** — https://code.visualstudio.com/docs (`documentation`)
 - **VS Code repository** — https://github.com/microsoft/vscode (`repository`)
