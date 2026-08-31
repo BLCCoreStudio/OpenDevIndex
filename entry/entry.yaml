@@ -1,0 +1,29 @@
+schema_version: 2
+id: gradle
+name: Gradle
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+- software-development
+summary: General-purpose build automation system widely used for JVM and Android projects, with programmable build logic, incremental execution, dependency management, and caching.
+homepage: https://gradle.org/
+repository: https://github.com/gradle/gradle
+license: Apache-2.0
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- jvm
+- developer-tools
+sources:
+- title: Gradle official site
+  url: https://gradle.org/
+  type: official
+- title: Gradle source repository
+  url: https://github.com/gradle/gradle
+  type: repository
