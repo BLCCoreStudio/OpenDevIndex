@@ -2,6 +2,10 @@ schema_version: 1
 id: gemini-api
 name: Gemini API
 category: ai
+kind: service
+domains:
+- ai
+- api
 summary: Google developer API for building applications with Gemini models through text, multimodal, structured, and tool-integrated model capabilities.
 homepage: https://ai.google.dev/
 status: active
