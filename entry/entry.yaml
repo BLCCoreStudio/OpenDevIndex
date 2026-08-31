@@ -1,0 +1,28 @@
+schema_version: 2
+id: swc
+name: SWC
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+- web
+summary: Rust-based platform for fast JavaScript and TypeScript compilation, minification, transformation, and extensible tooling used by modern web frameworks.
+homepage: https://swc.rs/
+repository: https://github.com/swc-project/swc
+deployment_types:
+- cli
+- library
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- rust
+- typescript
+sources:
+- title: SWC official site
+  url: https://swc.rs/
+  type: official
+- title: SWC source repository
+  url: https://github.com/swc-project/swc
+  type: repository
