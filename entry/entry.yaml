@@ -1,0 +1,28 @@
+schema_version: 2
+id: linkerd
+name: Linkerd
+category: platform
+kind: platform
+domains:
+- cloud
+- networking
+- observability
+summary: Lightweight service mesh for Kubernetes that adds mutual TLS, traffic metrics, reliability features, and service-to-service policy through dedicated data-plane proxies.
+homepage: https://linkerd.io/
+repository: https://github.com/linkerd/linkerd2
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- kubernetes
+- service-mesh
+- networking
+sources:
+- title: Linkerd official site
+  url: https://linkerd.io/
+  type: official
+- title: Linkerd source repository
+  url: https://github.com/linkerd/linkerd2
+  type: repository
