@@ -5,7 +5,7 @@ category: tool
 kind: tool
 domains:
 - developer-tools
-- systems
+- operating-systems
 summary: Functional package manager and build system focused on reproducible environments, isolated package stores, and declarative software composition.
 homepage: https://nixos.org/
 repository: https://github.com/NixOS/nix
