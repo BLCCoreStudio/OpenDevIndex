@@ -6,6 +6,7 @@ kind: framework
 domains:
 - ai
 - machine-learning
+- python
 summary: Open-source machine-learning platform for tensor computation, model training, deployment, and production pipelines across CPUs, GPUs, and accelerators.
 homepage: https://www.tensorflow.org/
 repository: https://github.com/tensorflow/tensorflow
