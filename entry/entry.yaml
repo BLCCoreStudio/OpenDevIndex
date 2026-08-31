@@ -1,0 +1,27 @@
+schema_version: 2
+id: fiber
+name: Fiber
+category: framework
+kind: framework
+domains:
+- api
+- web
+summary: Express-inspired web framework for Go built on fasthttp, offering routing, middleware, and familiar APIs for performance-oriented services.
+homepage: https://gofiber.io/
+repository: https://github.com/gofiber/fiber
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- go
+- web
+- api
+sources:
+- title: Fiber official site
+  url: https://gofiber.io/
+  type: official
+- title: Fiber source repository
+  url: https://github.com/gofiber/fiber
+  type: repository
