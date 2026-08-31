@@ -1,0 +1,20 @@
+schema_version: 1
+id: keras
+name: Keras
+category: ai
+summary: High-level deep-learning API designed for readable model construction and training workflows while supporting multiple tensor-computation backends.
+homepage: https://keras.io/
+repository: https://github.com/keras-team/keras
+status: active
+verified_at: '2026-08-31'
+tags:
+- deep-learning
+- python
+- neural-networks
+sources:
+- title: Keras official site
+  url: https://keras.io/
+  type: official
+- title: Keras repository
+  url: https://github.com/keras-team/keras
+  type: repository
