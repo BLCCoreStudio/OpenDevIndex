@@ -1,0 +1,27 @@
+schema_version: 2
+id: hadolint
+name: Hadolint
+category: tool
+kind: tool
+domains:
+- containers
+- developer-tools
+summary: Dockerfile linter that combines Dockerfile best-practice rules with shell-script analysis to catch common image-build mistakes before deployment.
+homepage: https://github.com/hadolint/hadolint
+repository: https://github.com/hadolint/hadolint
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- containers
+- linting
+- dockerfile
+sources:
+- title: Hadolint source repository
+  url: https://github.com/hadolint/hadolint
+  type: repository
+- title: Hadolint documentation
+  url: https://github.com/hadolint/hadolint#readme
+  type: documentation
