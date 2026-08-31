@@ -1,0 +1,72 @@
+schema_version: 2
+milestone: v0.2
+verified_at: '2026-08-31'
+target_modules: 2
+expected_categories:
+  language: 2
+entries:
+- category: language
+  id: php
+  name: PHP
+  summary: Widely deployed server-side programming language with a large web ecosystem, mature package tooling, and direct integration with common web servers.
+  homepage: https://www.php.net/
+  repository: https://github.com/php/php-src
+  tags:
+  - programming-language
+  - web
+  - server-side
+  sources:
+  - title: PHP official site
+    url: https://www.php.net/
+    type: official
+  - title: PHP source repository
+    url: https://github.com/php/php-src
+    type: repository
+  use_cases:
+  - Build server-rendered web applications and APIs
+  - Run content-management and commerce platforms
+  - Create command-line automation with the PHP runtime
+  key_points:
+  - PHP is dynamically typed with optional modern type declarations
+  - Composer is the dominant package manager for the PHP ecosystem
+  - Major frameworks include Laravel and Symfony
+  kind: language
+  domains:
+  - web
+  - programming-languages
+  license: PHP-3.01
+  deployment_types:
+  - local
+  - self-hosted
+- category: language
+  id: ruby
+  name: Ruby
+  summary: Dynamic general-purpose programming language emphasizing developer productivity and expressive object-oriented code, best known for the Ruby on Rails ecosystem.
+  homepage: https://www.ruby-lang.org/
+  repository: https://github.com/ruby/ruby
+  tags:
+  - programming-language
+  - web
+  - dynamic
+  sources:
+  - title: Ruby official site
+    url: https://www.ruby-lang.org/
+    type: official
+  - title: Ruby source repository
+    url: https://github.com/ruby/ruby
+    type: repository
+  use_cases:
+  - Build web applications with Ruby frameworks
+  - Write automation and developer tooling
+  - Create command-line applications and libraries
+  key_points:
+  - Ruby treats nearly everything as an object
+  - RubyGems and Bundler provide package and dependency management
+  - Rails is the most prominent web framework in the ecosystem
+  kind: language
+  domains:
+  - web
+  - programming-languages
+  deployment_types:
+  - local
+  - self-hosted
