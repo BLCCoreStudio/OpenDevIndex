@@ -1,0 +1,27 @@
+schema_version: 2
+id: direnv
+name: direnv
+category: tool
+kind: tool
+domains:
+- cli
+- developer-tools
+summary: Shell extension that automatically loads and unloads directory-specific environment variables, helping projects keep local development configuration scoped to working directories.
+homepage: https://direnv.net/
+repository: https://github.com/direnv/direnv
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- cli
+- environment
+- developer-tools
+sources:
+- title: direnv official site
+  url: https://direnv.net/
+  type: official
+- title: direnv source repository
+  url: https://github.com/direnv/direnv
+  type: repository
