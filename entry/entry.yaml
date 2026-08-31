@@ -1,0 +1,29 @@
+schema_version: 2
+id: cilium
+name: Cilium
+category: platform
+kind: platform
+domains:
+- cloud
+- networking
+- observability
+- security
+summary: Cloud-native networking, observability, and security platform based on eBPF, widely used to provide Kubernetes networking, network policy, load balancing, and visibility.
+homepage: https://cilium.io/
+repository: https://github.com/cilium/cilium
+deployment_types:
+- self-hosted
+- system
+status: active
+verified_at: '2026-08-31'
+tags:
+- kubernetes
+- networking
+- ebpf
+sources:
+- title: Cilium official site
+  url: https://cilium.io/
+  type: official
+- title: Cilium source repository
+  url: https://github.com/cilium/cilium
+  type: repository
