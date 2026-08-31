@@ -1,0 +1,27 @@
+schema_version: 2
+id: apache-airflow
+name: Apache Airflow
+category: tool
+kind: tool
+domains:
+- data
+- devops
+summary: Workflow orchestration platform for defining, scheduling, and monitoring data pipelines as code using Python-based directed acyclic graphs.
+homepage: https://airflow.apache.org/
+repository: https://github.com/apache/airflow
+license: Apache-2.0
+deployment_types:
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- data
+- orchestration
+- python
+sources:
+- title: Apache Airflow official site
+  url: https://airflow.apache.org/
+  type: official
+- title: Apache Airflow repository
+  url: https://github.com/apache/airflow
+  type: repository
