@@ -1,0 +1,27 @@
+schema_version: 2
+id: apache-flink
+name: Apache Flink
+category: framework
+kind: framework
+domains:
+- data
+- distributed-systems
+summary: Distributed processing framework designed for stateful stream processing and batch workloads with event-time semantics and fault-tolerant execution.
+homepage: https://flink.apache.org/
+repository: https://github.com/apache/flink
+license: Apache-2.0
+deployment_types:
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- data
+- streaming
+- distributed-computing
+sources:
+- title: Apache Flink official site
+  url: https://flink.apache.org/
+  type: official
+- title: Apache Flink repository
+  url: https://github.com/apache/flink
+  type: repository
