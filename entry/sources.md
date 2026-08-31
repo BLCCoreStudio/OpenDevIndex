@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Electron official site** — https://www.electronjs.org/ (`official`)
 - **Electron repository** — https://github.com/electron/electron (`repository`)

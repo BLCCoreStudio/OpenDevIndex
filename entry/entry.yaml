@@ -2,6 +2,9 @@ schema_version: 1
 id: electron
 name: Electron
 category: framework
+kind: framework
+domains:
+- software-development
 summary: Framework for building cross-platform desktop applications using web technologies by packaging Chromium and Node.js with an application runtime.
 homepage: https://www.electronjs.org/
 repository: https://github.com/electron/electron
