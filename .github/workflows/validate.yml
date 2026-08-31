@@ -32,6 +32,9 @@ jobs:
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
 
+      - name: Validate technology universe coverage
+        run: python scripts/validate_coverage.py coverage/technology-universe-v1.yaml
+
       - name: Validate curated catalogs
         run: |
           set -euo pipefail

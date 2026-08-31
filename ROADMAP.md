@@ -34,7 +34,10 @@ Current growth model: reviewed catalog shards published from trusted `main`. The
 
 ## v1.0 — Open technology map / 10,000 modules
 
+The 10,000-module destination is now represented by a machine-readable **Technology Universe** coverage plan. Its 20 major areas and allocations are validated in CI so growth stays broad instead of drifting toward whichever topic is easiest to add.
+
 - 10,000 validated knowledge modules
+- CI-validated 10,000-module coverage allocation
 - Public searchable web index
 - API-friendly catalog artifacts
 - Topic relationships, dependencies and alternatives graph
@@ -44,6 +47,8 @@ Current growth model: reviewed catalog shards published from trusted `main`. The
 - Trend/change feeds for fast-moving technologies
 - Translation-ready content model
 - Broad coverage across software, systems, infrastructure, security, AI, hardware and emerging technology
+
+See [`docs/COVERAGE.md`](docs/COVERAGE.md) and [`coverage/technology-universe-v1.yaml`](coverage/technology-universe-v1.yaml).
 
 ## Beyond v1 — Technology knowledge graph
 
