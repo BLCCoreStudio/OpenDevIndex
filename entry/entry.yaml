@@ -1,0 +1,27 @@
+schema_version: 2
+id: hatch
+name: Hatch
+category: tool
+kind: tool
+domains:
+- developer-tools
+- python
+summary: Extensible Python project manager covering environments, packaging, versioning, scripts, builds, and publishing through a plugin-oriented workflow.
+homepage: https://hatch.pypa.io/
+repository: https://github.com/pypa/hatch
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- packaging
+- environments
+sources:
+- title: Hatch documentation
+  url: https://hatch.pypa.io/
+  type: documentation
+- title: Hatch source repository
+  url: https://github.com/pypa/hatch
+  type: repository
