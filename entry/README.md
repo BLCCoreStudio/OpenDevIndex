@@ -2,9 +2,13 @@
 
 > Compiled programming language designed for simple tooling, efficient concurrency, and maintainable network and systems software.
 
+## What it is
+
+Go is indexed as a **language**. Its stable OpenDevIndex address is `language/go`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-Go is indexed by OpenDevIndex as a `language` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ Go is indexed by OpenDevIndex as a `language` knowledge module. This page is int
 - Goroutines and channels are core concurrency primitives
 - The standard toolchain includes formatting, testing, and modules
 
+## Taxonomy
+
+- Kind: `language`
+- Domains: `cloud`, `programming-languages`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://go.dev/
@@ -27,6 +38,10 @@ Go is indexed by OpenDevIndex as a `language` knowledge module. This page is int
 - [Go official site](https://go.dev/) — `official`
 - [Go documentation](https://go.dev/doc/) — `documentation`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `language/go`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.

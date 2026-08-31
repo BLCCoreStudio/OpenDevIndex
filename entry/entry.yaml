@@ -2,6 +2,10 @@ schema_version: 1
 id: go
 name: Go
 category: language
+kind: language
+domains:
+- cloud
+- programming-languages
 summary: Compiled programming language designed for simple tooling, efficient concurrency, and maintainable network and systems software.
 homepage: https://go.dev/
 repository: https://github.com/golang/go
