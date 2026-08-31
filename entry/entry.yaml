@@ -1,0 +1,20 @@
+schema_version: 1
+id: redis
+name: Redis
+category: database
+summary: In-memory data platform centered on key-value structures and low-latency operations, commonly used for caching, messaging, counters, and real-time state.
+homepage: https://redis.io/
+repository: https://github.com/redis/redis
+status: active
+verified_at: '2026-08-31'
+tags:
+- in-memory
+- cache
+- database
+sources:
+- title: Redis official site
+  url: https://redis.io/
+  type: official
+- title: Redis repository
+  url: https://github.com/redis/redis
+  type: repository
