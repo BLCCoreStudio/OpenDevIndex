@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **WebSocket Protocol RFC 6455** — https://www.rfc-editor.org/rfc/rfc6455 (`standard`)
 
