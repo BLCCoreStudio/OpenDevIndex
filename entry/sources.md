@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **GitHub CLI official site** — https://cli.github.com/ (`official`)
 - **GitHub CLI repository** — https://github.com/cli/cli (`repository`)
