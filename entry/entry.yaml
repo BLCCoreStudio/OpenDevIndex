@@ -2,6 +2,10 @@ schema_version: 1
 id: istio
 name: Istio
 category: cloud
+kind: platform
+domains:
+- cloud
+- networking
 summary: Open-source service mesh that adds traffic management, security policy, and observability controls to distributed applications, commonly on Kubernetes.
 homepage: https://istio.io/
 repository: https://github.com/istio/istio

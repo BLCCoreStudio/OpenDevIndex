@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Istio official site** — https://istio.io/ (`official`)
 - **Istio repository** — https://github.com/istio/istio (`repository`)
