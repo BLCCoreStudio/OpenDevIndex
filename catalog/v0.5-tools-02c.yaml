@@ -1,0 +1,267 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 8
+expected_categories:
+  tool: 8
+entries:
+- category: tool
+  id: dbeaver
+  name: DBeaver Community
+  homepage: https://dbeaver.io/
+  repository: https://github.com/dbeaver/dbeaver
+  tags:
+  - database
+  - sql
+  - desktop
+  kind: tool
+  domains:
+  - data
+  - developer-tools
+  deployment_types:
+  - cli
+  - local
+  summary: DBeaver Community is a cross-platform open-source database client and administration tool supporting many SQL and NoSQL systems through drivers, query editors, metadata browsing, and data management.
+  sources:
+  - title: DBeaver Community official site or documentation
+    url: https://dbeaver.io/
+    type: official
+  - title: DBeaver Community source repository
+    url: https://github.com/dbeaver/dbeaver
+    type: repository
+  use_cases:
+  - Use DBeaver Community in development or operations workflows where its database capabilities match the task
+  - Integrate DBeaver Community into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate DBeaver Community against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - DBeaver Community is a cross-platform open-source database client and administration tool supporting many SQL and NoSQL systems through drivers, query editors, metadata browsing, and data management.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: pgadmin
+  name: pgAdmin
+  homepage: https://www.pgadmin.org/
+  repository: https://github.com/pgadmin-org/pgadmin4
+  tags:
+  - postgresql
+  - database
+  - administration
+  kind: tool
+  domains:
+  - data
+  - developer-tools
+  deployment_types:
+  - cli
+  - local
+  summary: pgAdmin is an open-source administration and development platform for PostgreSQL providing graphical database management, query tooling, monitoring, and server configuration workflows.
+  sources:
+  - title: pgAdmin official site or documentation
+    url: https://www.pgadmin.org/
+    type: official
+  - title: pgAdmin source repository
+    url: https://github.com/pgadmin-org/pgadmin4
+    type: repository
+  use_cases:
+  - Use pgAdmin in development or operations workflows where its postgresql capabilities match the task
+  - Integrate pgAdmin into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate pgAdmin against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - pgAdmin is an open-source administration and development platform for PostgreSQL providing graphical database management, query tooling, monitoring, and server configuration workflows.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: insomnia
+  name: Insomnia
+  homepage: https://insomnia.rest/
+  repository: https://github.com/Kong/insomnia
+  tags:
+  - api
+  - testing
+  - client
+  kind: tool
+  domains:
+  - api
+  - testing
+  - developer-experience
+  deployment_types:
+  - cli
+  - local
+  summary: Insomnia is an open-source API development client for designing, debugging, testing, and organizing HTTP, GraphQL, gRPC, and related API requests in developer workflows.
+  sources:
+  - title: Insomnia official site or documentation
+    url: https://insomnia.rest/
+    type: official
+  - title: Insomnia source repository
+    url: https://github.com/Kong/insomnia
+    type: repository
+  use_cases:
+  - Use Insomnia in development or operations workflows where its api capabilities match the task
+  - Integrate Insomnia into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Insomnia against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Insomnia is an open-source API development client for designing, debugging, testing, and organizing HTTP, GraphQL, gRPC, and related API requests in developer workflows.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: pre-commit
+  name: pre-commit
+  homepage: https://pre-commit.com/
+  repository: https://github.com/pre-commit/pre-commit
+  tags:
+  - git
+  - automation
+  - quality
+  kind: tool
+  domains:
+  - developer-tools
+  - testing
+  - ci-cd
+  deployment_types:
+  - cli
+  - local
+  summary: pre-commit is a framework for managing repository hooks that run formatting, linting, validation, and other automated checks consistently before changes are committed.
+  sources:
+  - title: pre-commit official site or documentation
+    url: https://pre-commit.com/
+    type: official
+  - title: pre-commit source repository
+    url: https://github.com/pre-commit/pre-commit
+    type: repository
+  use_cases:
+  - Use pre-commit in development or operations workflows where its git capabilities match the task
+  - Integrate pre-commit into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate pre-commit against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - pre-commit is a framework for managing repository hooks that run formatting, linting, validation, and other automated checks consistently before changes are committed.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: eslint
+  name: ESLint
+  homepage: https://eslint.org/
+  repository: https://github.com/eslint/eslint
+  tags:
+  - javascript
+  - linting
+  - quality
+  kind: tool
+  domains:
+  - developer-tools
+  - testing
+  - web
+  deployment_types:
+  - cli
+  - local
+  summary: ESLint is an extensible static-analysis and linting tool for JavaScript and related ecosystems, using configurable rules to identify problems and enforce project conventions.
+  sources:
+  - title: ESLint official site or documentation
+    url: https://eslint.org/
+    type: official
+  - title: ESLint source repository
+    url: https://github.com/eslint/eslint
+    type: repository
+  use_cases:
+  - Use ESLint in development or operations workflows where its javascript capabilities match the task
+  - Integrate ESLint into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate ESLint against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - ESLint is an extensible static-analysis and linting tool for JavaScript and related ecosystems, using configurable rules to identify problems and enforce project conventions.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: prettier
+  name: Prettier
+  homepage: https://prettier.io/
+  repository: https://github.com/prettier/prettier
+  tags:
+  - formatter
+  - javascript
+  - developer-tools
+  kind: tool
+  domains:
+  - developer-tools
+  - web
+  deployment_types:
+  - cli
+  - local
+  summary: Prettier is an opinionated code formatter that parses source code and reprints it consistently across JavaScript, TypeScript, CSS, JSON, Markdown, and other supported languages.
+  sources:
+  - title: Prettier official site or documentation
+    url: https://prettier.io/
+    type: official
+  - title: Prettier source repository
+    url: https://github.com/prettier/prettier
+    type: repository
+  use_cases:
+  - Use Prettier in development or operations workflows where its formatter capabilities match the task
+  - Integrate Prettier into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Prettier against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Prettier is an opinionated code formatter that parses source code and reprints it consistently across JavaScript, TypeScript, CSS, JSON, Markdown, and other supported languages.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: biome
+  name: Biome
+  homepage: https://biomejs.dev/
+  repository: https://github.com/biomejs/biome
+  tags:
+  - formatter
+  - linter
+  - javascript
+  kind: tool
+  domains:
+  - developer-tools
+  - web
+  - testing
+  deployment_types:
+  - cli
+  - local
+  summary: Biome is a fast web-development toolchain written in Rust that combines formatting, linting, and code-assistance capabilities for JavaScript, TypeScript, JSON, CSS, and related workflows.
+  sources:
+  - title: Biome official site or documentation
+    url: https://biomejs.dev/
+    type: official
+  - title: Biome source repository
+    url: https://github.com/biomejs/biome
+    type: repository
+  use_cases:
+  - Use Biome in development or operations workflows where its formatter capabilities match the task
+  - Integrate Biome into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Biome against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Biome is a fast web-development toolchain written in Rust that combines formatting, linting, and code-assistance capabilities for JavaScript, TypeScript, JSON, CSS, and related workflows.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
+- category: tool
+  id: black
+  name: Black
+  homepage: https://black.readthedocs.io/en/stable/
+  repository: https://github.com/psf/black
+  tags:
+  - python
+  - formatter
+  - developer-tools
+  kind: tool
+  domains:
+  - developer-tools
+  - python
+  deployment_types:
+  - cli
+  - local
+  summary: Black is an opinionated Python code formatter that applies deterministic formatting with minimal configuration across editors, local development, repositories, and CI pipelines.
+  sources:
+  - title: Black official site or documentation
+    url: https://black.readthedocs.io/en/stable/
+    type: official
+  - title: Black source repository
+    url: https://github.com/psf/black
+    type: repository
+  use_cases:
+  - Use Black in development or operations workflows where its python capabilities match the task
+  - Integrate Black into repeatable local, CI, infrastructure, testing, or service-management workflows as appropriate
+  - Evaluate Black against competing tools for automation, interoperability, operational complexity, and maintenance needs
+  key_points:
+  - Black is an opinionated Python code formatter that applies deterministic formatting with minimal configuration across editors, local development, repositories, and CI pipelines.
+  - Its operational behavior depends on configuration, integrations, supported platforms, and the surrounding toolchain
+  - Security-sensitive and production usage should follow the project's current documentation and release guidance
