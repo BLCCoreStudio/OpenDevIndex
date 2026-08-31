@@ -1,0 +1,16 @@
+schema_version: 1
+id: http
+name: HTTP
+category: protocol
+summary: Application-layer protocol underlying the Web and many APIs, defining request and response semantics, methods, status codes, fields, caching, and representation transfer.
+homepage: https://www.rfc-editor.org/rfc/rfc9110
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- networking
+- standard
+sources:
+- title: HTTP Semantics RFC 9110
+  url: https://www.rfc-editor.org/rfc/rfc9110
+  type: standard
