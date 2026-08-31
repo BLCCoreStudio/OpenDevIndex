@@ -1,0 +1,31 @@
+schema_version: 2
+id: ffmpeg
+name: FFmpeg
+category: tool
+kind: tool
+domains:
+- media
+- multimedia
+summary: Cross-platform multimedia toolkit for decoding, encoding, transcoding, filtering, streaming, probing, and transforming audio and video formats.
+homepage: https://ffmpeg.org/
+repository: https://github.com/FFmpeg/FFmpeg
+deployment_types:
+- cli
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- media
+- audio
+- video
+sources:
+- title: FFmpeg official site
+  url: https://ffmpeg.org/
+  type: official
+- title: FFmpeg documentation
+  url: https://ffmpeg.org/documentation.html
+  type: documentation
+- title: FFmpeg repository mirror
+  url: https://github.com/FFmpeg/FFmpeg
+  type: repository
