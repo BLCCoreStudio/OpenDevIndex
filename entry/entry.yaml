@@ -1,0 +1,27 @@
+schema_version: 2
+id: ruby
+name: Ruby
+category: language
+kind: language
+domains:
+- programming-languages
+- web
+summary: Dynamic general-purpose programming language emphasizing developer productivity and expressive object-oriented code, best known for the Ruby on Rails ecosystem.
+homepage: https://www.ruby-lang.org/
+repository: https://github.com/ruby/ruby
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- web
+- dynamic
+sources:
+- title: Ruby official site
+  url: https://www.ruby-lang.org/
+  type: official
+- title: Ruby source repository
+  url: https://github.com/ruby/ruby
+  type: repository
