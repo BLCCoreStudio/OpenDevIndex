@@ -1,0 +1,27 @@
+schema_version: 2
+id: gin
+name: Gin
+category: framework
+kind: framework
+domains:
+- api
+- web
+summary: HTTP web framework for Go focused on fast routing, middleware composition, JSON handling, and concise APIs for backend services.
+homepage: https://gin-gonic.com/
+repository: https://github.com/gin-gonic/gin
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- go
+- web
+- api
+sources:
+- title: Gin official site
+  url: https://gin-gonic.com/
+  type: official
+- title: Gin source repository
+  url: https://github.com/gin-gonic/gin
+  type: repository
