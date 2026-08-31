@@ -1,0 +1,20 @@
+schema_version: 1
+id: react-native
+name: React Native
+category: framework
+summary: Framework for building native mobile applications with React and JavaScript or TypeScript while rendering through native platform components.
+homepage: https://reactnative.dev/
+repository: https://github.com/facebook/react-native
+status: active
+verified_at: '2026-08-31'
+tags:
+- mobile
+- react
+- cross-platform
+sources:
+- title: React Native documentation
+  url: https://reactnative.dev/
+  type: documentation
+- title: React Native repository
+  url: https://github.com/facebook/react-native
+  type: repository
