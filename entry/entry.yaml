@@ -1,0 +1,27 @@
+schema_version: 2
+id: suricata
+name: Suricata
+category: security
+kind: tool
+domains:
+- networking
+- security
+summary: Open-source network threat detection engine supporting intrusion detection, intrusion prevention, network security monitoring, protocol analysis, and rule-based traffic inspection.
+homepage: https://suricata.io/
+repository: https://github.com/OISF/suricata
+deployment_types:
+- system
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- security
+- networking
+- ids
+sources:
+- title: Suricata official site
+  url: https://suricata.io/
+  type: official
+- title: Suricata source repository
+  url: https://github.com/OISF/suricata
+  type: repository
