@@ -1,0 +1,29 @@
+schema_version: 2
+id: maven
+name: Apache Maven
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+- software-development
+summary: Build and project-management tool for Java and JVM ecosystems that uses declarative project models, dependency coordinates, lifecycle phases, and a large plugin repository.
+homepage: https://maven.apache.org/
+repository: https://github.com/apache/maven
+license: Apache-2.0
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- java
+- developer-tools
+sources:
+- title: Apache Maven official site
+  url: https://maven.apache.org/
+  type: official
+- title: Apache Maven source repository
+  url: https://github.com/apache/maven
+  type: repository
