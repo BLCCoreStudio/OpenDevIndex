@@ -1,0 +1,20 @@
+schema_version: 1
+id: cmake
+name: CMake
+category: tool
+summary: Cross-platform build-system generator used to describe native software builds independently of a specific compiler, IDE, or underlying build tool.
+homepage: https://cmake.org/
+repository: https://github.com/Kitware/CMake
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- cpp
+- cross-platform
+sources:
+- title: CMake official site
+  url: https://cmake.org/
+  type: official
+- title: CMake documentation
+  url: https://cmake.org/cmake/help/latest/
+  type: documentation
