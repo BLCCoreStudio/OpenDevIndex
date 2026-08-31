@@ -2,6 +2,10 @@ schema_version: 1
 id: cmake
 name: CMake
 category: tool
+kind: tool
+domains:
+- build
+- developer-tools
 summary: Cross-platform build-system generator used to describe native software builds independently of a specific compiler, IDE, or underlying build tool.
 homepage: https://cmake.org/
 repository: https://github.com/Kitware/CMake
