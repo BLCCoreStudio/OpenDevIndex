@@ -125,7 +125,7 @@ jobs:
             [ -z "$catalog" ] && continue
             python scripts/validate_catalog.py "$catalog"
             report="publication-$(basename "$catalog" .yaml).md"
-            python scripts/seed_modules.py \
+            python scripts/seed_modules_v3.py \
               --catalog "$catalog" \
               --base-ref origin/main \
               --limit "$INPUT_LIMIT" \
