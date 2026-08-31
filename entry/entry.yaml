@@ -1,0 +1,27 @@
+schema_version: 2
+id: qwik
+name: Qwik
+category: framework
+kind: framework
+domains:
+- software-development
+- web
+summary: Web framework designed around resumability and fine-grained lazy loading so applications can minimize initial JavaScript execution while retaining interactive components.
+homepage: https://qwik.dev/
+repository: https://github.com/QwikDev/qwik
+deployment_types:
+- web
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- javascript
+- performance
+sources:
+- title: Qwik documentation
+  url: https://qwik.dev/
+  type: documentation
+- title: Qwik source repository
+  url: https://github.com/QwikDev/qwik
+  type: repository
