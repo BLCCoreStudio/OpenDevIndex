@@ -2,6 +2,10 @@ schema_version: 1
 id: age
 name: age
 category: security
+kind: tool
+domains:
+- cli
+- security
 summary: Simple file-encryption format and tool designed as a modern, composable way to encrypt files to public-key or passphrase recipients.
 homepage: https://age-encryption.org/
 repository: https://github.com/FiloSottile/age

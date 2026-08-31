@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **age official site** — https://age-encryption.org/ (`official`)
 - **age repository** — https://github.com/FiloSottile/age (`repository`)
