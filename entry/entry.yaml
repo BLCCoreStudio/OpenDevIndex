@@ -1,0 +1,26 @@
+schema_version: 2
+id: vulkan
+name: Vulkan
+category: standard
+kind: standard
+domains:
+- api
+- graphics
+- systems
+summary: Cross-platform graphics and compute API standard from Khronos that exposes explicit control over GPU resources, synchronization, and command submission.
+homepage: https://www.vulkan.org/
+repository: https://github.com/KhronosGroup/Vulkan-Docs
+license: Apache-2.0
+status: active
+verified_at: '2026-08-31'
+tags:
+- graphics
+- gpu
+- api
+sources:
+- title: Vulkan official site
+  url: https://www.vulkan.org/
+  type: official
+- title: Vulkan specification repository
+  url: https://github.com/KhronosGroup/Vulkan-Docs
+  type: repository
