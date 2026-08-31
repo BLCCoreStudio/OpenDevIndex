@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **MySQL official site** — https://www.mysql.com/ (`official`)
 - **MySQL server repository** — https://github.com/mysql/mysql-server (`repository`)
