@@ -2,6 +2,9 @@ schema_version: 1
 id: semgrep
 name: Semgrep
 category: security
+kind: tool
+domains:
+- security
 summary: Static-analysis platform and open-source engine for matching code patterns, enforcing secure coding rules, and detecting classes of defects across languages.
 homepage: https://semgrep.dev/
 repository: https://github.com/semgrep/semgrep
