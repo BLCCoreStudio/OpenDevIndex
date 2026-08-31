@@ -1,33 +1,47 @@
 # QEMU
 
-QEMU is an open-source machine emulator and virtualizer. It can model complete systems—including CPUs, memory, storage, networking, and other devices—or run programs built for a different CPU architecture through user-mode emulation.
+> Open-source machine emulator and virtualizer that can emulate full systems or individual processes across many CPU architectures.
+
+## What it is
+
+QEMU is indexed as a **tool**. Its stable OpenDevIndex address is `tool/qemu`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
 
 ## Why it matters
 
-QEMU is useful when software needs a machine that is different from the physical host: operating-system development, cross-architecture testing, embedded work, virtual machines, CI, firmware experiments, and security research are common examples.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
-## How it works
+## Typical use cases
 
-For full-system emulation QEMU presents a virtual machine to a guest operating system. Its Tiny Code Generator (TCG) can translate guest CPU instructions in software, which makes cross-architecture emulation possible. When host and guest environments allow it, QEMU can instead work with hardware virtualization accelerators such as KVM on Linux, Hypervisor Framework on macOS, or WHPX on Windows.
+- Run guest operating systems
+- Emulate foreign CPU architectures
+- Build virtualization and device-testing workflows
 
-QEMU also provides a large device model ecosystem, including VirtIO devices designed for efficient virtualized I/O, plus block, network, display, USB, and other virtual hardware.
+## Key points
 
-## Good fit
+- Supports full-system and user-mode emulation
+- Can use hardware acceleration when available
 
-- Running or testing guest operating systems
-- Cross-architecture development
-- Virtualization stacks built with KVM or other accelerators
-- Embedded and firmware development
-- Reproducible VM-based CI and testing
+## Taxonomy
 
-## Trade-offs
+- Kind: `tool`
+- Domains: `systems`, `virtualization`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
 
-Pure TCG emulation is flexible but can be substantially slower than hardware-assisted virtualization. QEMU exposes many machine and device options, so configuration can be complex. Some alternatives trade flexibility for simpler deployment or a narrower security/performance model.
+## Primary links
 
-## Alternatives and related projects
+- Homepage: https://www.qemu.org/
+- Repository: https://gitlab.com/qemu-project/qemu
 
-VirtualBox and VMware products target general desktop virtualization. Firecracker focuses on minimal microVMs. KVM is a Linux virtualization accelerator commonly used by QEMU rather than a complete replacement for QEMU's device and machine model.
+## Verified sources
+
+- [QEMU project](https://www.qemu.org/) — `official`
+- [QEMU documentation](https://www.qemu.org/docs/master/) — `documentation`
 
 ## Verification
 
-Reviewed against the QEMU master documentation on 2026-08-31.
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
+## Maintenance
+
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.

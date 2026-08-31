@@ -1,7 +1,8 @@
 # Sources
 
-- [QEMU documentation](https://www.qemu.org/docs/master/) — official project documentation.
-- [System emulation introduction](https://www.qemu.org/docs/master/system/introduction.html) — machine models, TCG, accelerators, devices, and system-emulation concepts.
-- [QEMU source repository](https://gitlab.com/qemu-project/qemu) — upstream development repository.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
-Verified: 2026-08-31.
+- **QEMU project** — https://www.qemu.org/ (`official`)
+- **QEMU documentation** — https://www.qemu.org/docs/master/ (`documentation`)
+
+Sources are selected to prefer official project pages, canonical documentation, standards, primary repositories, advisories, or original research.
