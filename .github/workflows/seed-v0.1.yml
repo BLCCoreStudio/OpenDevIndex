@@ -12,7 +12,6 @@ on:
       - main
     paths:
       - 'catalog/v0.1.yaml'
-      - 'scripts/seed_modules.py'
       - '.github/workflows/seed-v0.1.yml'
 
 permissions:
