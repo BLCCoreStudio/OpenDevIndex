@@ -1,0 +1,27 @@
+schema_version: 2
+id: polars
+name: Polars
+category: library
+kind: library
+domains:
+- analytics
+- data
+summary: High-performance DataFrame library written in Rust with Python and other language bindings, built around columnar execution, query optimization, and Apache Arrow concepts.
+homepage: https://pola.rs/
+repository: https://github.com/pola-rs/polars
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- dataframe
+- rust
+- analytics
+sources:
+- title: Polars official site
+  url: https://pola.rs/
+  type: official
+- title: Polars source repository
+  url: https://github.com/pola-rs/polars
+  type: repository
