@@ -5,6 +5,7 @@ category: concept
 kind: concept
 domains:
 - software-development
+- supply-chain
 summary: Software-build discipline in which independently repeated builds from the same source and inputs can produce bit-for-bit identical outputs.
 homepage: https://reproducible-builds.org/
 status: active
