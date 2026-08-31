@@ -1,0 +1,28 @@
+schema_version: 2
+id: tooljet
+name: ToolJet
+category: platform
+kind: platform
+domains:
+- developer-experience
+- web
+summary: Open-source low-code development platform for internal tools, combining visual application building with database, API, and service integrations.
+homepage: https://www.tooljet.ai/
+repository: https://github.com/ToolJet/ToolJet
+license: AGPL-3.0-only
+deployment_types:
+- saas
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- low-code
+- internal-tools
+- web
+sources:
+- title: ToolJet official site
+  url: https://www.tooljet.ai/
+  type: official
+- title: ToolJet repository
+  url: https://github.com/ToolJet/ToolJet
+  type: repository
