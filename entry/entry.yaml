@@ -1,0 +1,20 @@
+schema_version: 1
+id: postgresql
+name: PostgreSQL
+category: database
+summary: Open-source relational database known for standards-oriented SQL, transactions, extensibility, advanced data types, indexing, and reliable server workloads.
+homepage: https://www.postgresql.org/
+repository: https://github.com/postgres/postgres
+status: active
+verified_at: '2026-08-31'
+tags:
+- sql
+- relational
+- database
+sources:
+- title: PostgreSQL official site
+  url: https://www.postgresql.org/
+  type: official
+- title: PostgreSQL documentation
+  url: https://www.postgresql.org/docs/
+  type: documentation
