@@ -1,0 +1,71 @@
+schema_version: 2
+milestone: v0.2
+verified_at: '2026-08-31'
+target_modules: 4
+expected_categories:
+  runtime: 4
+entries:
+- category: runtime
+  id: nodejs
+  name: Node.js
+  summary: Cross-platform JavaScript runtime built on the V8 engine for server applications, command-line tools, networking services, and development automation.
+  homepage: https://nodejs.org/
+  repository: https://github.com/nodejs/node
+  tags: [javascript, runtime, server]
+  sources:
+  - {title: Node.js official site, url: https://nodejs.org/, type: official}
+  - {title: Node.js repository, url: https://github.com/nodejs/node, type: repository}
+  use_cases: [Build network services and web backends, Run JavaScript command-line tools, Execute build tooling outside the browser]
+  key_points: [Uses an event-driven non-blocking I/O model, The npm ecosystem is commonly used for package distribution, Supports both CommonJS and ECMAScript module workflows]
+  kind: runtime
+  domains: [web, programming-languages]
+  license: MIT
+  deployment_types: [local, self-hosted]
+- category: runtime
+  id: deno
+  name: Deno
+  summary: JavaScript and TypeScript runtime with secure-by-default permissions, built-in developer tooling, web-standard APIs, and modern package compatibility.
+  homepage: https://deno.com/
+  repository: https://github.com/denoland/deno
+  tags: [javascript, typescript, runtime]
+  sources:
+  - {title: Deno official site, url: https://deno.com/, type: official}
+  - {title: Deno repository, url: https://github.com/denoland/deno, type: repository}
+  use_cases: [Run TypeScript and JavaScript services, Build command-line applications, Execute scripts with explicit filesystem and network permissions]
+  key_points: [Permissions restrict sensitive capabilities by default, Includes formatter linter test runner and other tooling, Supports many web-platform APIs]
+  kind: runtime
+  domains: [web, programming-languages]
+  license: MIT
+  deployment_types: [local, self-hosted]
+- category: runtime
+  id: bun
+  name: Bun
+  summary: JavaScript and TypeScript runtime, package manager, bundler, and test runner focused on fast startup and an integrated developer-tooling experience.
+  homepage: https://bun.sh/
+  repository: https://github.com/oven-sh/bun
+  tags: [javascript, typescript, runtime]
+  sources:
+  - {title: Bun official site, url: https://bun.sh/, type: official}
+  - {title: Bun repository, url: https://github.com/oven-sh/bun, type: repository}
+  use_cases: [Run JavaScript and TypeScript applications, Install project dependencies, Bundle and test web or server projects]
+  key_points: [Combines several common JavaScript development tools in one runtime, Targets compatibility with much of the Node.js ecosystem, Uses JavaScriptCore as its JavaScript engine]
+  kind: runtime
+  domains: [web, programming-languages, developer-experience]
+  license: MIT
+  deployment_types: [local, self-hosted]
+- category: runtime
+  id: wasmtime
+  name: Wasmtime
+  summary: Standalone WebAssembly runtime from the Bytecode Alliance focused on standards compliance, security, embedding, and efficient execution across platforms.
+  homepage: https://wasmtime.dev/
+  repository: https://github.com/bytecodealliance/wasmtime
+  tags: [webassembly, runtime, systems]
+  sources:
+  - {title: Wasmtime official site, url: https://wasmtime.dev/, type: official}
+  - {title: Wasmtime repository, url: https://github.com/bytecodealliance/wasmtime, type: repository}
+  use_cases: [Run WebAssembly modules outside browsers, Embed WebAssembly execution into applications, Build sandboxed plugin and server workloads]
+  key_points: [Implements WebAssembly and WASI capabilities, Designed for embedding through multiple language APIs, Uses Cranelift for code generation]
+  kind: runtime
+  domains: [systems, webassembly]
+  license: Apache-2.0 WITH LLVM-exception
+  deployment_types: [local, embedded, self-hosted]
