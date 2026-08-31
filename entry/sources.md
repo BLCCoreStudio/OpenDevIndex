@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Laravel official site** — https://laravel.com/ (`official`)
 - **Laravel framework repository** — https://github.com/laravel/framework (`repository`)
