@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **TypeScript official site** — https://www.typescriptlang.org/ (`official`)
 - **TypeScript repository** — https://github.com/microsoft/TypeScript (`repository`)

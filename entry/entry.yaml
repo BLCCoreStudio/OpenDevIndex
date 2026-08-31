@@ -2,6 +2,10 @@ schema_version: 1
 id: typescript
 name: TypeScript
 category: language
+kind: language
+domains:
+- programming-languages
+- web
 summary: Statically typed superset of JavaScript that adds compile-time type checking while emitting JavaScript for existing runtimes and browsers.
 homepage: https://www.typescriptlang.org/
 repository: https://github.com/microsoft/TypeScript
