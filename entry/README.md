@@ -1,0 +1,48 @@
+# ClickHouse
+
+> Open-source column-oriented database management system optimized for high-volume analytical queries, real-time reporting, compression, and large-scale event or telemetry data.
+
+## What it is
+
+ClickHouse is indexed as a **database**. Its stable OpenDevIndex address is `database/clickhouse`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
+## Why it matters
+
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
+
+## Typical use cases
+
+- Run interactive analytics over very large event datasets
+- Store observability, telemetry, product, advertising, and time-oriented analytical data
+- Build low-latency reporting systems that benefit from columnar storage and compression
+
+## Key points
+
+- ClickHouse is column-oriented, allowing analytical queries to read only relevant columns
+- Its execution engine is designed for vectorized high-throughput query processing
+- The system supports replication and distributed query execution for large deployments
+
+## Taxonomy
+
+- Kind: `database`
+- Domains: `analytics`, `data`, `observability`
+- Deployment: `self-hosted`, `service`
+- License metadata: `Apache-2.0`
+
+## Primary links
+
+- Homepage: https://clickhouse.com/
+- Repository: https://github.com/ClickHouse/ClickHouse
+
+## Verified sources
+
+- [ClickHouse official site](https://clickhouse.com/) — `official`
+- [ClickHouse source repository](https://github.com/ClickHouse/ClickHouse) — `repository`
+
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
+## Maintenance
+
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
