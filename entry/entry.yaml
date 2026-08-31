@@ -1,0 +1,20 @@
+schema_version: 1
+id: meson
+name: Meson
+category: tool
+summary: High-productivity build system focused on fast, reliable native builds with concise project definitions and first-class Ninja integration.
+homepage: https://mesonbuild.com/
+repository: https://github.com/mesonbuild/meson
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- ninja
+- native
+sources:
+- title: Meson official site
+  url: https://mesonbuild.com/
+  type: official
+- title: Meson repository
+  url: https://github.com/mesonbuild/meson
+  type: repository
