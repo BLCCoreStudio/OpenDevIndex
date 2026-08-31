@@ -2,6 +2,10 @@ schema_version: 1
 id: llamaindex
 name: LlamaIndex
 category: ai
+kind: framework
+domains:
+- ai
+- data
 summary: Framework for connecting language-model applications to private or external data through indexing, retrieval, workflows, and agent-oriented abstractions.
 homepage: https://docs.llamaindex.ai/
 repository: https://github.com/run-llama/llama_index

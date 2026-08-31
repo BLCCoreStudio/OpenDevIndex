@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **LlamaIndex documentation** — https://docs.llamaindex.ai/ (`documentation`)
 - **LlamaIndex repository** — https://github.com/run-llama/llama_index (`repository`)
