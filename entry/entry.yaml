@@ -1,0 +1,28 @@
+schema_version: 2
+id: neo4j
+name: Neo4j
+category: database
+kind: database
+domains:
+- analytics
+- data
+summary: Graph database platform centered on property graphs and the Cypher query language, designed for traversing and analyzing highly connected data and relationship-heavy domains.
+homepage: https://neo4j.com/
+repository: https://github.com/neo4j/neo4j
+license: GPL-3.0 (Community Edition)
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- database
+- graph
+- analytics
+sources:
+- title: Neo4j official site
+  url: https://neo4j.com/
+  type: official
+- title: Neo4j source repository
+  url: https://github.com/neo4j/neo4j
+  type: repository
