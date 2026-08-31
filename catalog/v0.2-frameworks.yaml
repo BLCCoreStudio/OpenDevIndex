@@ -1,0 +1,55 @@
+schema_version: 2
+milestone: v0.2
+verified_at: '2026-08-31'
+target_modules: 3
+expected_categories:
+  framework: 3
+entries:
+- category: framework
+  id: apache-spark
+  name: Apache Spark
+  summary: Distributed data-processing engine for large-scale analytics with APIs for SQL, batch processing, streaming, machine learning, and graph workloads.
+  homepage: https://spark.apache.org/
+  repository: https://github.com/apache/spark
+  tags: [data, analytics, distributed-computing]
+  sources:
+  - {title: Apache Spark official site, url: https://spark.apache.org/, type: official}
+  - {title: Apache Spark repository, url: https://github.com/apache/spark, type: repository}
+  use_cases: [Process large datasets across clusters, Run SQL and analytics workloads, Build batch and streaming data pipelines]
+  key_points: [Uses distributed execution across worker nodes, Provides APIs in several programming languages, Spark SQL is a major structured-data interface]
+  kind: framework
+  domains: [data, distributed-systems]
+  license: Apache-2.0
+  deployment_types: [self-hosted]
+- category: framework
+  id: apache-flink
+  name: Apache Flink
+  summary: Distributed processing framework designed for stateful stream processing and batch workloads with event-time semantics and fault-tolerant execution.
+  homepage: https://flink.apache.org/
+  repository: https://github.com/apache/flink
+  tags: [data, streaming, distributed-computing]
+  sources:
+  - {title: Apache Flink official site, url: https://flink.apache.org/, type: official}
+  - {title: Apache Flink repository, url: https://github.com/apache/flink, type: repository}
+  use_cases: [Process continuous event streams, Build stateful data-processing applications, Run batch analytics on distributed data]
+  key_points: [State and checkpoints support fault recovery, Event-time processing is a core capability, Designed for long-running distributed streaming jobs]
+  kind: framework
+  domains: [data, distributed-systems]
+  license: Apache-2.0
+  deployment_types: [self-hosted]
+- category: framework
+  id: gstreamer
+  name: GStreamer
+  summary: Cross-platform multimedia framework based on composable pipeline elements for capturing, decoding, processing, encoding, and streaming audio and video.
+  homepage: https://gstreamer.freedesktop.org/
+  repository: https://gitlab.freedesktop.org/gstreamer/gstreamer
+  tags: [media, audio, video]
+  sources:
+  - {title: GStreamer official site, url: https://gstreamer.freedesktop.org/, type: official}
+  - {title: GStreamer repository, url: https://gitlab.freedesktop.org/gstreamer/gstreamer, type: repository}
+  use_cases: [Build multimedia playback and capture applications, Compose realtime audio and video pipelines, Integrate codecs filters and network transports]
+  key_points: [Pipelines are assembled from reusable elements, Plugin sets provide codecs and integrations, Used across desktop embedded and streaming software]
+  kind: framework
+  domains: [media, multimedia]
+  license: LGPL-2.1-or-later
+  deployment_types: [library, embedded, local]

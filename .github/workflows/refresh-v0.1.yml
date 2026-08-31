@@ -1,32 +1,30 @@
-name: Publish OpenDevIndex v0.1
+name: Refresh Existing Modules
 
 on:
   workflow_dispatch:
-    inputs:
-      limit:
-        description: Maximum number of missing modules to publish; 0 publishes all
-        required: false
-        default: '0'
   push:
     branches:
       - main
     paths:
-      - 'catalog/v0.1.yaml'
-      - '.github/workflows/seed-v0.1.yml'
+      - 'taxonomy/v2.yaml'
+      - 'scripts/taxonomy.py'
+      - 'scripts/seed_modules.py'
+      - 'scripts/validate_entry.py'
+      - '.github/workflows/refresh-v0.1.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: opendevindex-v0.1-publication
+  group: opendevindex-v0.1-refresh
   cancel-in-progress: false
 
 jobs:
-  publish:
+  refresh:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
-      - name: Check out main with history
+      - name: Check out main with full history
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           fetch-depth: 0
@@ -39,7 +37,7 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-ci.txt
 
-      - name: Install publication dependencies
+      - name: Install refresh dependencies
         run: python -m pip install -r requirements-ci.txt
 
       - name: Configure publication identity
@@ -47,22 +45,19 @@ jobs:
           git config user.name "OpenDevIndex Publisher"
           git config user.email "207100624+BLCCoreStudio@users.noreply.github.com"
 
-      - name: Validate v0.1 catalog
-        run: python scripts/validate_catalog.py catalog/v0.1.yaml
-
-      - name: Publish validated knowledge modules
-        env:
-          INPUT_LIMIT: ${{ github.event.inputs.limit || '0' }}
+      - name: Refresh validated v0.1 modules
         run: |
           python scripts/seed_modules.py \
             --catalog catalog/v0.1.yaml \
             --base-ref origin/main \
-            --limit "$INPUT_LIMIT" \
-            --push
+            --refresh-existing \
+            --refresh-only \
+            --push \
+            --report refresh-v0.1-report.md
 
-      - name: Publish run summary
+      - name: Publish refresh summary
         if: always()
         run: |
-          if [ -f seed-report.md ]; then
-            cat seed-report.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -f refresh-v0.1-report.md ]; then
+            cat refresh-v0.1-report.md >> "$GITHUB_STEP_SUMMARY"
           fi

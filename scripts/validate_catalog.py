@@ -12,12 +12,9 @@ from pathlib import Path
 
 import yaml
 
+from taxonomy import load_taxonomy, supported_address_categories
 from url_safety import is_safe_https_url
 
-CATEGORIES = {
-    "tool", "language", "framework", "ai", "security",
-    "cloud", "database", "protocol", "concept", "opensource",
-}
 SOURCE_TYPES = {"official", "repository", "standard", "advisory", "research", "documentation"}
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
 TAG_RE = re.compile(r"^[a-z0-9][a-z0-9.+_-]*$")
@@ -33,8 +30,19 @@ def validate(path: Path) -> list[str]:
     if not isinstance(data, dict):
         return [f"{path}: top level must be a mapping"]
 
-    if data.get("schema_version") != 1:
-        errors.append("schema_version must be 1")
+    schema_version = data.get("schema_version")
+    if schema_version not in {1, 2}:
+        errors.append("schema_version must be 1 or 2")
+
+    try:
+        taxonomy = load_taxonomy()
+    except Exception as exc:
+        return errors + [f"taxonomy validation failed: {exc}"]
+
+    categories = supported_address_categories(taxonomy)
+    kinds = set(taxonomy["canonical_kinds"])
+    domains_allowed = set(taxonomy["domains"])
+    deployments_allowed = set(taxonomy["deployment_types"])
 
     target = data.get("target_modules")
     entries = data.get("entries")
@@ -70,8 +78,8 @@ def validate(path: Path) -> list[str]:
         summary = entry.get("summary")
         module_ref = f"{category}/{slug}"
 
-        if category not in CATEGORIES:
-            errors.append(f"{prefix}: unsupported category {category!r}")
+        if category not in categories:
+            errors.append(f"{prefix}: unsupported address category {category!r}")
         else:
             counts[category] += 1
 
@@ -88,13 +96,43 @@ def validate(path: Path) -> list[str]:
         if not isinstance(summary, str) or not 40 <= len(summary.strip()) <= 320:
             errors.append(f"{prefix}: summary must be 40..320 characters")
 
+        min_curated = 3 if schema_version == 2 else 2
         tags = entry.get("tags")
-        if not isinstance(tags, list) or len(tags) < 2:
-            errors.append(f"{prefix}: tags must contain at least two values")
+        if not isinstance(tags, list) or len(tags) < min_curated:
+            errors.append(f"{prefix}: tags must contain at least {min_curated} values")
         elif len(tags) != len(set(tags)):
             errors.append(f"{prefix}: tags must be unique")
         elif any(not isinstance(tag, str) or not TAG_RE.fullmatch(tag) for tag in tags):
             errors.append(f"{prefix}: invalid tag")
+
+        kind = entry.get("kind")
+        domains = entry.get("domains")
+        if schema_version == 2 and kind is None:
+            errors.append(f"{prefix}: taxonomy v2 entries require kind")
+        if kind is not None and kind not in kinds:
+            errors.append(f"{prefix}: unsupported kind {kind!r}")
+        if schema_version == 2 and not domains:
+            errors.append(f"{prefix}: taxonomy v2 entries require domains")
+        if domains is not None:
+            if not isinstance(domains, list) or not domains:
+                errors.append(f"{prefix}: domains must be a non-empty list")
+            elif len(domains) != len(set(domains)):
+                errors.append(f"{prefix}: domains must be unique")
+            elif any(domain not in domains_allowed for domain in domains):
+                errors.append(f"{prefix}: unsupported domain")
+
+        deployment_types = entry.get("deployment_types")
+        if deployment_types is not None:
+            if not isinstance(deployment_types, list) or not deployment_types:
+                errors.append(f"{prefix}: deployment_types must be a non-empty list when present")
+            elif len(deployment_types) != len(set(deployment_types)):
+                errors.append(f"{prefix}: deployment_types must be unique")
+            elif any(value not in deployments_allowed for value in deployment_types):
+                errors.append(f"{prefix}: unsupported deployment type")
+
+        license_value = entry.get("license")
+        if license_value is not None and (not isinstance(license_value, str) or not license_value.strip() or len(license_value) > 100):
+            errors.append(f"{prefix}: license must be a non-empty string up to 100 characters")
 
         for field in ("homepage", "repository"):
             value = entry.get(field)
@@ -102,8 +140,9 @@ def validate(path: Path) -> list[str]:
                 errors.append(f"{prefix}: {field} must be a public HTTPS URL")
 
         sources = entry.get("sources")
-        if not isinstance(sources, list) or not sources:
-            errors.append(f"{prefix}: sources must not be empty")
+        min_sources = 2 if schema_version == 2 else 1
+        if not isinstance(sources, list) or len(sources) < min_sources:
+            errors.append(f"{prefix}: sources must contain at least {min_sources} reference(s)")
         else:
             for i, source in enumerate(sources, start=1):
                 if not isinstance(source, dict):
@@ -118,8 +157,8 @@ def validate(path: Path) -> list[str]:
 
         for field in ("use_cases", "key_points"):
             values = entry.get(field)
-            if not isinstance(values, list) or len(values) < 2:
-                errors.append(f"{prefix}: {field} must contain at least two curated items")
+            if not isinstance(values, list) or len(values) < min_curated:
+                errors.append(f"{prefix}: {field} must contain at least {min_curated} curated items")
             elif any(not isinstance(value, str) or len(value.strip()) < 10 for value in values):
                 errors.append(f"{prefix}: {field} items must be meaningful text")
 

@@ -1,30 +1,25 @@
-name: Publish OpenDevIndex v0.1
+name: Publish OpenDevIndex v0.2
 
 on:
   workflow_dispatch:
-    inputs:
-      limit:
-        description: Maximum number of missing modules to publish; 0 publishes all
-        required: false
-        default: '0'
   push:
     branches:
       - main
     paths:
-      - 'catalog/v0.1.yaml'
-      - '.github/workflows/seed-v0.1.yml'
+      - 'catalog/v0.2-*.yaml'
+      - '.github/workflows/publish-v0.2.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: opendevindex-v0.1-publication
+  group: opendevindex-v0.2-publication
   cancel-in-progress: false
 
 jobs:
   publish:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - name: Check out main with history
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
@@ -47,22 +42,25 @@ jobs:
           git config user.name "OpenDevIndex Publisher"
           git config user.email "207100624+BLCCoreStudio@users.noreply.github.com"
 
-      - name: Validate v0.1 catalog
-        run: python scripts/validate_catalog.py catalog/v0.1.yaml
-
-      - name: Publish validated knowledge modules
-        env:
-          INPUT_LIMIT: ${{ github.event.inputs.limit || '0' }}
+      - name: Validate and publish v0.2 catalogs
         run: |
-          python scripts/seed_modules.py \
-            --catalog catalog/v0.1.yaml \
-            --base-ref origin/main \
-            --limit "$INPUT_LIMIT" \
-            --push
+          set -euo pipefail
+          : > publication-summary.md
+          for catalog in catalog/v0.2-*.yaml; do
+            python scripts/validate_catalog.py "$catalog"
+            report="publication-$(basename "$catalog" .yaml).md"
+            python scripts/seed_modules.py \
+              --catalog "$catalog" \
+              --base-ref origin/main \
+              --push \
+              --report "$report"
+            cat "$report" >> publication-summary.md
+            printf '\n' >> publication-summary.md
+          done
 
       - name: Publish run summary
         if: always()
         run: |
-          if [ -f seed-report.md ]; then
-            cat seed-report.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -f publication-summary.md ]; then
+            cat publication-summary.md >> "$GITHUB_STEP_SUMMARY"
           fi

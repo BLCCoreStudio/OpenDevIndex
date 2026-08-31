@@ -1,0 +1,55 @@
+schema_version: 2
+milestone: v0.2
+verified_at: '2026-08-31'
+target_modules: 3
+expected_categories:
+  library: 3
+entries:
+- category: library
+  id: pytest
+  name: pytest
+  summary: Python testing framework that emphasizes readable tests, powerful fixtures, plugin extensibility, and scalable execution from small unit suites to large projects.
+  homepage: https://pytest.org/
+  repository: https://github.com/pytest-dev/pytest
+  tags: [testing, python, library]
+  sources:
+  - {title: pytest official site, url: https://pytest.org/, type: official}
+  - {title: pytest repository, url: https://github.com/pytest-dev/pytest, type: repository}
+  use_cases: [Write unit and integration tests for Python projects, Build reusable test fixtures, Extend test behavior with plugins]
+  key_points: [Plain assert statements receive detailed failure introspection, Fixtures provide composable setup and dependency injection, A large plugin ecosystem extends test capabilities]
+  kind: library
+  domains: [testing, python]
+  license: MIT
+  deployment_types: [library, local]
+- category: library
+  id: jest
+  name: Jest
+  summary: JavaScript testing framework with assertions, mocking, snapshot testing, watch mode, and broad integration across web and Node.js projects.
+  homepage: https://jestjs.io/
+  repository: https://github.com/jestjs/jest
+  tags: [testing, javascript, library]
+  sources:
+  - {title: Jest official site, url: https://jestjs.io/, type: official}
+  - {title: Jest repository, url: https://github.com/jestjs/jest, type: repository}
+  use_cases: [Test JavaScript and TypeScript applications, Mock modules and application dependencies, Run regression tests with snapshot assertions]
+  key_points: [Includes a test runner and assertion APIs, Watch mode supports iterative development, Snapshot testing is built into the core workflow]
+  kind: library
+  domains: [testing, web]
+  license: MIT
+  deployment_types: [library, local]
+- category: library
+  id: axe-core
+  name: axe-core
+  summary: Accessibility testing engine for automated detection of many WCAG-related issues in HTML-based user interfaces and browser testing workflows.
+  homepage: https://www.deque.com/axe/core-documentation/
+  repository: https://github.com/dequelabs/axe-core
+  tags: [accessibility, testing, web]
+  sources:
+  - {title: axe-core documentation, url: https://www.deque.com/axe/core-documentation/, type: documentation}
+  - {title: axe-core repository, url: https://github.com/dequelabs/axe-core, type: repository}
+  use_cases: [Automate accessibility checks in web tests, Integrate accessibility rules into CI pipelines, Detect common WCAG violations during development]
+  key_points: [Automated rules can identify only a subset of accessibility issues, Integrates with multiple browser-testing ecosystems, Manual accessibility review remains necessary]
+  kind: library
+  domains: [accessibility, testing, web]
+  license: MPL-2.0
+  deployment_types: [library, local]

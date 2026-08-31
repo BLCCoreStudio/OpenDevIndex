@@ -9,7 +9,9 @@ on:
       - main
     paths:
       - 'catalog/**'
+      - 'taxonomy/**'
       - 'scripts/catalog_utils.py'
+      - 'scripts/taxonomy.py'
       - 'scripts/check_source_health.py'
       - 'scripts/url_safety.py'
       - 'scripts/validate_catalog.py'

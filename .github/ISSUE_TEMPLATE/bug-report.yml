@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a problem with validation, search, publication, or repository tooling
+title: "Bug: "
+labels: []
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [validation, search, public index, source health, publication, taxonomy, documentation, other]
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened?
+      description: Include the command, workflow, or module involved.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or reproduction details
+      render: shell

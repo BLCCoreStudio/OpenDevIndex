@@ -1,0 +1,39 @@
+name: Content request
+description: Suggest a technology or concept for OpenDevIndex
+title: "Content: "
+labels: []
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Technology or concept
+      placeholder: e.g. Zig
+    validations:
+      required: true
+  - type: input
+    id: canonical
+    attributes:
+      label: Canonical source
+      description: Official documentation, specification, or source repository.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Suggested kind
+      options: [tool, language, framework, library, runtime, platform, database, protocol, standard, system, toolchain, service, project, concept, unsure]
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Why it belongs in the index
+      description: Explain its developer relevance and typical uses.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Additional sources
+      description: Prefer primary or authoritative references, one URL per line.

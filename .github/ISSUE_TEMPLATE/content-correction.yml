@@ -1,0 +1,32 @@
+name: Content correction
+description: Report inaccurate, outdated, or misleading knowledge-module content
+title: "Correction: "
+labels: []
+body:
+  - type: input
+    id: module
+    attributes:
+      label: Module
+      placeholder: e.g. framework/pytorch
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is inaccurate or outdated?
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting sources
+      description: Prefer official documentation, standards, source repositories, advisories, or original research.
+      placeholder: https://...
+    validations:
+      required: true

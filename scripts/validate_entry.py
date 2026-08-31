@@ -11,20 +11,9 @@ from pathlib import Path
 
 import yaml
 
+from taxonomy import load_taxonomy, supported_address_categories
 from url_safety import is_safe_https_url
 
-CATEGORIES = {
-    "tool",
-    "language",
-    "framework",
-    "ai",
-    "security",
-    "cloud",
-    "database",
-    "protocol",
-    "concept",
-    "opensource",
-}
 CORE_PREFIXES = ("feat/", "fix/", "docs/", "chore/", "ci/", "refactor/", "release/")
 REQUIRED_FILES = (
     Path("entry/README.md"),
@@ -40,8 +29,9 @@ def fail(message: str, errors: list[str]) -> None:
     errors.append(message)
 
 
-def validate(branch: str) -> list[str]:
+def validate(branch: str, root: Path | None = None) -> list[str]:
     errors: list[str] = []
+    root = root or Path.cwd()
 
     if branch == "main" or branch.startswith(CORE_PREFIXES):
         return errors
@@ -50,17 +40,23 @@ def validate(branch: str) -> list[str]:
         fail("Knowledge module ref must use <category>/<slug>.", errors)
         return errors
 
+    taxonomy = load_taxonomy()
+    categories = supported_address_categories(taxonomy)
+    kinds = set(taxonomy["canonical_kinds"])
+    domains_allowed = set(taxonomy["domains"])
+    deployment_allowed = set(taxonomy["deployment_types"])
+
     category, slug = branch.split("/", 1)
-    if category not in CATEGORIES:
+    if category not in categories:
         fail(f"Unsupported category prefix: {category}", errors)
     if not SLUG_RE.fullmatch(slug):
         fail(f"Invalid module slug: {slug}", errors)
 
-    for path in REQUIRED_FILES:
-        if not path.is_file():
-            fail(f"Missing required file: {path}", errors)
+    for relative in REQUIRED_FILES:
+        if not (root / relative).is_file():
+            fail(f"Missing required file: {relative}", errors)
 
-    metadata_path = Path("entry/entry.yaml")
+    metadata_path = root / "entry/entry.yaml"
     if not metadata_path.is_file():
         return errors
 
@@ -89,12 +85,44 @@ def validate(branch: str) -> list[str]:
     if missing:
         fail(f"Missing metadata keys: {', '.join(missing)}", errors)
 
-    if data.get("schema_version") != 1:
-        fail("schema_version must be 1.", errors)
+    schema_version = data.get("schema_version")
+    if schema_version not in {1, 2}:
+        fail("schema_version must be 1 or 2.", errors)
+    if schema_version == 2:
+        for key in ("kind", "domains"):
+            if key not in data:
+                fail(f"schema v2 requires metadata key: {key}", errors)
+
     if data.get("id") != slug:
         fail(f"metadata id must match module slug '{slug}'.", errors)
     if data.get("category") != category:
         fail(f"metadata category must match module category '{category}'.", errors)
+
+    kind = data.get("kind")
+    if kind is not None and kind not in kinds:
+        fail(f"unsupported canonical kind: {kind}", errors)
+
+    domains = data.get("domains")
+    if domains is not None:
+        if not isinstance(domains, list) or not domains:
+            fail("domains must be a non-empty list.", errors)
+        elif len(domains) != len(set(domains)):
+            fail("domains must be unique.", errors)
+        elif any(domain not in domains_allowed for domain in domains):
+            fail("domains contain an unsupported taxonomy value.", errors)
+
+    deployments = data.get("deployment_types")
+    if deployments is not None:
+        if not isinstance(deployments, list) or not deployments:
+            fail("deployment_types must be a non-empty list when present.", errors)
+        elif len(deployments) != len(set(deployments)):
+            fail("deployment_types must be unique.", errors)
+        elif any(value not in deployment_allowed for value in deployments):
+            fail("deployment_types contain an unsupported value.", errors)
+
+    license_value = data.get("license")
+    if license_value is not None and (not isinstance(license_value, str) or not license_value.strip() or len(license_value) > 100):
+        fail("license must be a non-empty string up to 100 characters.", errors)
 
     name = data.get("name")
     if not isinstance(name, str) or not name.strip() or len(name) > 100:
@@ -122,9 +150,10 @@ def validate(branch: str) -> list[str]:
     elif verified_date > dt.date.today():
         fail("verified_at cannot be in the future.", errors)
 
+    min_curated = 3 if schema_version == 2 else 2
     tags = data.get("tags")
-    if not isinstance(tags, list) or len(tags) < 2:
-        fail("tags must contain at least two values.", errors)
+    if not isinstance(tags, list) or len(tags) < min_curated:
+        fail(f"tags must contain at least {min_curated} values.", errors)
     elif len(tags) != len(set(tags)):
         fail("tags must be unique.", errors)
     elif any(not isinstance(tag, str) or not TAG_RE.fullmatch(tag) for tag in tags):
@@ -136,8 +165,9 @@ def validate(branch: str) -> list[str]:
             fail(f"{field} must be a public HTTPS URL when present.", errors)
 
     sources = data.get("sources")
-    if not isinstance(sources, list) or not sources:
-        fail("sources must contain at least one source.", errors)
+    min_sources = 2 if schema_version == 2 else 1
+    if not isinstance(sources, list) or len(sources) < min_sources:
+        fail(f"sources must contain at least {min_sources} source(s).", errors)
     else:
         allowed_types = {"official", "repository", "standard", "advisory", "research", "documentation"}
         for index, source in enumerate(sources, start=1):
@@ -151,11 +181,12 @@ def validate(branch: str) -> list[str]:
             if source.get("type") not in allowed_types:
                 fail(f"source #{index} has unsupported type.", errors)
 
-    readme = Path("entry/README.md")
-    if readme.is_file() and len(readme.read_text(encoding="utf-8").strip()) < 300:
-        fail("entry/README.md is too short to be a useful module (minimum 300 characters).", errors)
+    readme = root / "entry/README.md"
+    minimum_readme = 450 if schema_version == 2 else 300
+    if readme.is_file() and len(readme.read_text(encoding="utf-8").strip()) < minimum_readme:
+        fail(f"entry/README.md is too short to be useful (minimum {minimum_readme} characters).", errors)
 
-    sources_md = Path("entry/sources.md")
+    sources_md = root / "entry/sources.md"
     if sources_md.is_file() and "https://" not in sources_md.read_text(encoding="utf-8"):
         fail("entry/sources.md must contain at least one HTTPS reference.", errors)
 
@@ -165,9 +196,10 @@ def validate(branch: str) -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--branch", required=True, help="Module ref or core branch name being validated")
+    parser.add_argument("--root", default=".", help="Repository/worktree root containing entry/")
     args = parser.parse_args()
 
-    errors = validate(args.branch)
+    errors = validate(args.branch, Path(args.root).resolve())
     if errors:
         print("OpenDevIndex validation failed:", file=sys.stderr)
         for error in errors:

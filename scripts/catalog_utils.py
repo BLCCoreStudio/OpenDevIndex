@@ -9,20 +9,8 @@ from typing import Iterable
 
 import yaml
 
+from taxonomy import enrich_entry, load_taxonomy
 from validate_catalog import validate as validate_catalog
-
-CATEGORY_ORDER = (
-    "tool",
-    "language",
-    "framework",
-    "ai",
-    "security",
-    "cloud",
-    "database",
-    "protocol",
-    "concept",
-    "opensource",
-)
 
 
 def discover_catalogs(catalog_dir: Path) -> list[Path]:
@@ -51,10 +39,11 @@ def load_catalog(path: Path) -> dict:
 
 
 def collect_entries(paths: Iterable[Path]) -> tuple[list[dict], list[dict]]:
-    """Collect entries from catalogs while rejecting cross-catalog duplicates."""
+    """Collect and taxonomy-enrich entries while rejecting cross-catalog duplicates."""
     entries: list[dict] = []
     catalogs: list[dict] = []
     seen_refs: set[str] = set()
+    taxonomy = load_taxonomy()
 
     for path in paths:
         data = load_catalog(path)
@@ -67,6 +56,7 @@ def collect_entries(paths: Iterable[Path]) -> tuple[list[dict], list[dict]]:
                 "path": path.as_posix(),
                 "milestone": milestone,
                 "verified_at": verified_at,
+                "schema_version": data.get("schema_version", 1),
                 "module_count": len(catalog_entries),
             }
         )
@@ -81,14 +71,15 @@ def collect_entries(paths: Iterable[Path]) -> tuple[list[dict], list[dict]]:
             entry["catalog"] = path.as_posix()
             entry["milestone"] = milestone
             entry["verified_at"] = verified_at
-            entries.append(entry)
+            entry["catalog_schema_version"] = data.get("schema_version", 1)
+            entries.append(enrich_entry(entry, taxonomy))
 
-    order = {category: index for index, category in enumerate(CATEGORY_ORDER)}
+    kind_order = {kind: index for index, kind in enumerate(taxonomy["canonical_kinds"])}
     entries.sort(
         key=lambda item: (
-            order.get(item["category"], len(order)),
+            kind_order.get(item["kind"], len(kind_order)),
             item["name"].casefold(),
-            item["id"],
+            item["module_ref"],
         )
     )
     return entries, catalogs
@@ -96,4 +87,26 @@ def collect_entries(paths: Iterable[Path]) -> tuple[list[dict], list[dict]]:
 
 def category_counts(entries: Iterable[dict]) -> dict[str, int]:
     counts = Counter(entry["category"] for entry in entries)
-    return {category: counts.get(category, 0) for category in CATEGORY_ORDER if counts.get(category, 0)}
+    return dict(sorted(counts.items()))
+
+
+def kind_counts(entries: Iterable[dict]) -> dict[str, int]:
+    taxonomy = load_taxonomy()
+    counts = Counter(entry["kind"] for entry in entries)
+    return {
+        kind: counts[kind]
+        for kind in taxonomy["canonical_kinds"]
+        if counts.get(kind, 0)
+    }
+
+
+def domain_counts(entries: Iterable[dict]) -> dict[str, int]:
+    taxonomy = load_taxonomy()
+    counts: Counter[str] = Counter()
+    for entry in entries:
+        counts.update(entry.get("domains", []))
+    return {
+        domain: counts[domain]
+        for domain in taxonomy["domains"]
+        if counts.get(domain, 0)
+    }
