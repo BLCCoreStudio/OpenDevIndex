@@ -1,0 +1,17 @@
+schema_version: 1
+id: llama.cpp
+name: llama.cpp
+category: ai
+summary: C and C++ inference project for running large language models efficiently across CPUs and multiple accelerator backends, including quantized local models.
+homepage: https://github.com/ggml-org/llama.cpp
+repository: https://github.com/ggml-org/llama.cpp
+status: active
+verified_at: '2026-08-31'
+tags:
+- llm
+- local
+- inference
+sources:
+- title: llama.cpp repository
+  url: https://github.com/ggml-org/llama.cpp
+  type: repository
