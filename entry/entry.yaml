@@ -1,0 +1,27 @@
+schema_version: 2
+id: sqlalchemy
+name: SQLAlchemy
+category: library
+kind: library
+domains:
+- data
+- python
+summary: Python SQL toolkit and object-relational mapper that provides a composable SQL expression language, database connection management, and ORM patterns.
+homepage: https://www.sqlalchemy.org/
+repository: https://github.com/sqlalchemy/sqlalchemy
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- database
+- orm
+sources:
+- title: SQLAlchemy official site
+  url: https://www.sqlalchemy.org/
+  type: official
+- title: SQLAlchemy source repository
+  url: https://github.com/sqlalchemy/sqlalchemy
+  type: repository
