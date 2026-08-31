@@ -1,0 +1,27 @@
+schema_version: 2
+id: sccache
+name: sccache
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+summary: Compilation cache that accelerates repeated builds by reusing compiler outputs locally or through remote storage backends across supported toolchains.
+homepage: https://github.com/mozilla/sccache
+repository: https://github.com/mozilla/sccache
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- cache
+- compiler
+sources:
+- title: sccache source repository
+  url: https://github.com/mozilla/sccache
+  type: repository
+- title: sccache documentation
+  url: https://github.com/mozilla/sccache/blob/main/docs/README.md
+  type: documentation
