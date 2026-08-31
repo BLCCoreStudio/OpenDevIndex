@@ -1,0 +1,16 @@
+schema_version: 1
+id: c
+name: C
+category: language
+summary: Foundational compiled systems programming language standardized by ISO and widely used for operating systems, embedded software, libraries, and low-level interfaces.
+homepage: https://www.open-std.org/jtc1/sc22/wg14/
+status: active
+verified_at: '2026-08-31'
+tags:
+- systems
+- embedded
+- compiled
+sources:
+- title: ISO C working group
+  url: https://www.open-std.org/jtc1/sc22/wg14/
+  type: standard
