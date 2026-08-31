@@ -1,0 +1,20 @@
+schema_version: 1
+id: ollama
+name: Ollama
+category: tool
+summary: Local model runtime and developer tool for downloading, managing, and serving large language models through a simple command-line and HTTP interface.
+homepage: https://ollama.com/
+repository: https://github.com/ollama/ollama
+status: active
+verified_at: '2026-08-31'
+tags:
+- ai
+- llm
+- local
+sources:
+- title: Ollama official site
+  url: https://ollama.com/
+  type: official
+- title: Ollama repository
+  url: https://github.com/ollama/ollama
+  type: repository
