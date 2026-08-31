@@ -2,6 +2,9 @@ schema_version: 1
 id: tmux
 name: tmux
 category: tool
+kind: tool
+domains:
+- developer-tools
 summary: Terminal multiplexer that creates persistent shell sessions and supports multiple windows and panes inside a single terminal connection.
 homepage: https://github.com/tmux/tmux
 repository: https://github.com/tmux/tmux
