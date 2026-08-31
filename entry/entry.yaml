@@ -1,0 +1,16 @@
+schema_version: 1
+id: reproducible-builds
+name: Reproducible Builds
+category: concept
+summary: Software-build discipline in which independently repeated builds from the same source and inputs can produce bit-for-bit identical outputs.
+homepage: https://reproducible-builds.org/
+status: active
+verified_at: '2026-08-31'
+tags:
+- builds
+- supply-chain
+- reproducibility
+sources:
+- title: Reproducible Builds project
+  url: https://reproducible-builds.org/
+  type: official
