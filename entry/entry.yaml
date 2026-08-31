@@ -1,0 +1,27 @@
+schema_version: 2
+id: clojure
+name: Clojure
+category: language
+kind: language
+domains:
+- programming-languages
+- software-development
+summary: Functional Lisp dialect for the JVM that emphasizes immutable data, interactive development, concurrency-friendly design, and direct access to Java libraries.
+homepage: https://clojure.org/
+repository: https://github.com/clojure/clojure
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- jvm
+- functional
+sources:
+- title: Clojure official site
+  url: https://clojure.org/
+  type: official
+- title: Clojure source repository
+  url: https://github.com/clojure/clojure
+  type: repository
