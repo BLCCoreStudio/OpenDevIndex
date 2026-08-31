@@ -2,9 +2,13 @@
 
 > Open-source machine-learning platform for tensor computation, model training, deployment, and production pipelines across CPUs, GPUs, and accelerators.
 
+## What it is
+
+TensorFlow is indexed as a **framework**. Its stable OpenDevIndex address is `ai/tensorflow`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-TensorFlow is indexed by OpenDevIndex as a `ai` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ TensorFlow is indexed by OpenDevIndex as a `ai` knowledge module. This page is i
 - Supports eager execution and graph-based execution
 - Integrates with Keras as a high-level model API
 
+## Taxonomy
+
+- Kind: `framework`
+- Domains: `ai`, `machine-learning`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://www.tensorflow.org/
@@ -27,6 +38,10 @@ TensorFlow is indexed by OpenDevIndex as a `ai` knowledge module. This page is i
 - [TensorFlow official site](https://www.tensorflow.org/) — `official`
 - [TensorFlow repository](https://github.com/tensorflow/tensorflow) — `repository`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `ai/tensorflow`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.

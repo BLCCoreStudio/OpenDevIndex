@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **TensorFlow official site** — https://www.tensorflow.org/ (`official`)
 - **TensorFlow repository** — https://github.com/tensorflow/tensorflow (`repository`)
