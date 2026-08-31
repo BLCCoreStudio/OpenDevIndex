@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **gRPC official site** — https://grpc.io/ (`official`)
 - **gRPC repository** — https://github.com/grpc/grpc (`repository`)

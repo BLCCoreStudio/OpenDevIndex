@@ -2,6 +2,9 @@ schema_version: 1
 id: grpc
 name: gRPC
 category: protocol
+kind: protocol
+domains:
+- networking
 summary: High-performance remote procedure call framework using Protocol Buffers by default and HTTP/2-based transports for strongly typed service interfaces.
 homepage: https://grpc.io/
 repository: https://github.com/grpc/grpc
