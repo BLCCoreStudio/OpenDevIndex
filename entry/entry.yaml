@@ -6,6 +6,7 @@ kind: framework
 domains:
 - ai
 - machine-learning
+- python
 summary: Open-source tensor and deep-learning framework with automatic differentiation, GPU acceleration, and a large research and production ecosystem.
 homepage: https://pytorch.org/
 repository: https://github.com/pytorch/pytorch
