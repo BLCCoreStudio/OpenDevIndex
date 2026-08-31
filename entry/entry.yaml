@@ -1,0 +1,20 @@
+schema_version: 1
+id: gnome
+name: GNOME
+category: opensource
+summary: Open-source desktop environment and application ecosystem for Linux and Unix-like systems, centered on GNOME Shell, GTK, and human-interface guidelines.
+homepage: https://www.gnome.org/
+repository: https://gitlab.gnome.org/GNOME
+status: active
+verified_at: '2026-08-31'
+tags:
+- linux
+- desktop
+- gtk
+sources:
+- title: GNOME official site
+  url: https://www.gnome.org/
+  type: official
+- title: GNOME developer documentation
+  url: https://developer.gnome.org/
+  type: documentation
