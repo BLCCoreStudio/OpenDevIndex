@@ -1,0 +1,20 @@
+schema_version: 1
+id: swift
+name: Swift
+category: language
+summary: Compiled programming language developed for Apple platforms and also available as open source for systems, server, and cross-platform development.
+homepage: https://www.swift.org/
+repository: https://github.com/swiftlang/swift
+status: active
+verified_at: '2026-08-31'
+tags:
+- apple
+- compiled
+- systems
+sources:
+- title: Swift official site
+  url: https://www.swift.org/
+  type: official
+- title: Swift repository
+  url: https://github.com/swiftlang/swift
+  type: repository
