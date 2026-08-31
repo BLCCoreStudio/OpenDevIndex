@@ -1,0 +1,27 @@
+schema_version: 2
+id: redpanda
+name: Redpanda
+category: platform
+kind: platform
+domains:
+- data
+- distributed-systems
+summary: Kafka-compatible streaming data platform written primarily in C++ that provides a distributed log and event-streaming API without requiring a separate JVM runtime.
+homepage: https://www.redpanda.com/
+repository: https://github.com/redpanda-data/redpanda
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- streaming
+- kafka
+- distributed
+sources:
+- title: Redpanda official site
+  url: https://www.redpanda.com/
+  type: official
+- title: Redpanda source repository
+  url: https://github.com/redpanda-data/redpanda
+  type: repository
