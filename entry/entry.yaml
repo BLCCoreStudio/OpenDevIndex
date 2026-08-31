@@ -1,0 +1,27 @@
+schema_version: 2
+id: groovy
+name: Apache Groovy
+category: language
+kind: language
+domains:
+- programming-languages
+- software-development
+summary: Dynamic JVM language with concise syntax, scripting support, and close Java interoperability, widely used in build automation and JVM application tooling.
+homepage: https://groovy-lang.org/
+repository: https://github.com/apache/groovy
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- jvm
+- scripting
+sources:
+- title: Groovy official site
+  url: https://groovy-lang.org/
+  type: official
+- title: Groovy source repository
+  url: https://github.com/apache/groovy
+  type: repository
