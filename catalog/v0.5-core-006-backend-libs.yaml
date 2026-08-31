@@ -1,0 +1,158 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  framework: 6
+  library: 4
+entries:
+- category: framework
+  id: gin
+  name: Gin
+  summary: HTTP web framework for Go focused on fast routing, middleware composition, JSON handling, and concise APIs for backend services.
+  homepage: https://gin-gonic.com/
+  repository: https://github.com/gin-gonic/gin
+  tags: [go, web, api]
+  sources:
+  - {title: Gin official site, url: https://gin-gonic.com/, type: official}
+  - {title: Gin source repository, url: https://github.com/gin-gonic/gin, type: repository}
+  use_cases: [Build REST APIs in Go, Create middleware-based HTTP services, Develop compact backend services with JSON request handling]
+  key_points: [Gin uses a high-performance HTTP router, Middleware can be composed per engine or route group, The framework integrates closely with Go HTTP conventions]
+  kind: framework
+  domains: [web, api]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: fiber
+  name: Fiber
+  summary: Express-inspired web framework for Go built on fasthttp, offering routing, middleware, and familiar APIs for performance-oriented services.
+  homepage: https://gofiber.io/
+  repository: https://github.com/gofiber/fiber
+  tags: [go, web, api]
+  sources:
+  - {title: Fiber official site, url: https://gofiber.io/, type: official}
+  - {title: Fiber source repository, url: https://github.com/gofiber/fiber, type: repository}
+  use_cases: [Build fast HTTP APIs in Go, Create services with Express-like routing conventions, Compose middleware for authentication logging and request handling]
+  key_points: [Fiber is built on the fasthttp networking stack, Its API intentionally resembles common Express patterns, The framework includes routing and middleware primitives]
+  kind: framework
+  domains: [web, api]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: echo
+  name: Echo
+  summary: Minimal high-performance Go web framework providing routing, middleware, request binding, validation hooks, and helpers for HTTP APIs.
+  homepage: https://echo.labstack.com/
+  repository: https://github.com/labstack/echo
+  tags: [go, web, api]
+  sources:
+  - {title: Echo documentation, url: https://echo.labstack.com/, type: documentation}
+  - {title: Echo source repository, url: https://github.com/labstack/echo, type: repository}
+  use_cases: [Build JSON APIs and web backends in Go, Organize HTTP endpoints with route groups and middleware, Handle request binding responses and common web concerns]
+  key_points: [Echo provides a compact router and middleware stack, It supports centralized HTTP error handling, Request binding and rendering helpers are built into the framework]
+  kind: framework
+  domains: [web, api]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: actix-web
+  name: Actix Web
+  summary: Powerful Rust web framework built on the Actix ecosystem, providing asynchronous HTTP servers, routing, middleware, extractors, and WebSocket support.
+  homepage: https://actix.rs/
+  repository: https://github.com/actix/actix-web
+  tags: [rust, web, async]
+  sources:
+  - {title: Actix official site, url: https://actix.rs/, type: official}
+  - {title: Actix Web source repository, url: https://github.com/actix/actix-web, type: repository}
+  use_cases: [Build asynchronous Rust web services, Create typed request handlers and middleware, Serve HTTP and WebSocket workloads with a native Rust stack]
+  key_points: [Actix Web uses Rust asynchronous programming, Extractors convert request state into typed handler inputs, The framework supports middleware and streaming response patterns]
+  kind: framework
+  domains: [web, systems]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: axum
+  name: Axum
+  summary: Rust web application framework from the Tokio ecosystem that emphasizes ergonomic routing, typed extractors, middleware interoperability, and async services.
+  homepage: https://docs.rs/axum/latest/axum/
+  repository: https://github.com/tokio-rs/axum
+  tags: [rust, web, async]
+  sources:
+  - {title: Axum documentation, url: https://docs.rs/axum/latest/axum/, type: documentation}
+  - {title: Axum source repository, url: https://github.com/tokio-rs/axum, type: repository}
+  use_cases: [Build typed HTTP APIs in Rust, Compose services using Tower middleware, Create asynchronous backends on the Tokio runtime]
+  key_points: [Axum uses extractors to decode request data into typed values, It integrates with the Tower service and middleware ecosystem, Tokio provides the usual asynchronous runtime foundation]
+  kind: framework
+  domains: [web, systems]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: rocket
+  name: Rocket
+  summary: Rust web framework emphasizing type safety, declarative routing, request guards, and ergonomic server-side application development.
+  homepage: https://rocket.rs/
+  repository: https://github.com/rwf2/Rocket
+  tags: [rust, web, type-safety]
+  sources:
+  - {title: Rocket official site, url: https://rocket.rs/, type: official}
+  - {title: Rocket source repository, url: https://github.com/rwf2/Rocket, type: repository}
+  use_cases: [Build type-safe web applications in Rust, Create APIs with declarative route attributes, Validate request state through typed guards and forms]
+  key_points: [Rocket uses Rust types to validate many request conditions, Routes are declared with procedural attributes, The framework includes templating forms and request-guard concepts]
+  kind: framework
+  domains: [web, systems]
+  deployment_types: [self-hosted, service]
+- category: library
+  id: tokio
+  name: Tokio
+  summary: Asynchronous runtime and library ecosystem for Rust that provides task scheduling, networking primitives, timers, synchronization tools, and foundations for async applications.
+  homepage: https://tokio.rs/
+  repository: https://github.com/tokio-rs/tokio
+  tags: [rust, async, networking]
+  sources:
+  - {title: Tokio official site, url: https://tokio.rs/, type: official}
+  - {title: Tokio source repository, url: https://github.com/tokio-rs/tokio, type: repository}
+  use_cases: [Run asynchronous Rust network services, Schedule concurrent I/O tasks, Build clients and servers using the broader Tokio ecosystem]
+  key_points: [Tokio supplies a multithreaded asynchronous runtime, Its networking APIs integrate with Rust async and await, Many Rust networking libraries use Tokio as a runtime foundation]
+  kind: runtime
+  domains: [systems, networking]
+  deployment_types: [library, local]
+- category: library
+  id: numpy
+  name: NumPy
+  summary: Core Python library for multidimensional arrays, vectorized numerical operations, linear algebra, random sampling, and interoperability across scientific computing tools.
+  homepage: https://numpy.org/
+  repository: https://github.com/numpy/numpy
+  tags: [python, numerical, data]
+  sources:
+  - {title: NumPy official site, url: https://numpy.org/, type: official}
+  - {title: NumPy source repository, url: https://github.com/numpy/numpy, type: repository}
+  use_cases: [Perform vectorized numerical computation, Represent multidimensional scientific data as arrays, Provide array interoperability for data-science and machine-learning libraries]
+  key_points: [NumPy ndarray is a foundational Python numerical data structure, Vectorized operations move heavy computation into optimized native code, A broad scientific Python ecosystem builds on NumPy array conventions]
+  kind: library
+  domains: [data, python]
+  deployment_types: [library, local]
+- category: library
+  id: pandas
+  name: pandas
+  summary: Python data analysis library centered on Series and DataFrame structures for labeled tabular data, cleaning, transformation, aggregation, and time-series workflows.
+  homepage: https://pandas.pydata.org/
+  repository: https://github.com/pandas-dev/pandas
+  tags: [python, dataframe, analytics]
+  sources:
+  - {title: pandas documentation, url: https://pandas.pydata.org/, type: documentation}
+  - {title: pandas source repository, url: https://github.com/pandas-dev/pandas, type: repository}
+  use_cases: [Clean and transform tabular datasets, Analyze time-series and labeled data, Prepare data for visualization reporting and machine-learning workflows]
+  key_points: [DataFrame is pandas primary two-dimensional data structure, The library supports rich indexing grouping joins and missing-data operations, pandas interoperates with NumPy and many Python data libraries]
+  kind: library
+  domains: [data, analytics, python]
+  deployment_types: [library, local]
+- category: library
+  id: scipy
+  name: SciPy
+  summary: Scientific computing library for Python that adds optimization, integration, interpolation, signal processing, statistics, sparse matrices, and other numerical algorithms.
+  homepage: https://scipy.org/
+  repository: https://github.com/scipy/scipy
+  tags: [python, scientific, numerical]
+  sources:
+  - {title: SciPy official site, url: https://scipy.org/, type: official}
+  - {title: SciPy source repository, url: https://github.com/scipy/scipy, type: repository}
+  use_cases: [Solve scientific optimization and integration problems, Perform signal processing and statistical calculations, Use sparse linear algebra and numerical algorithms from Python]
+  key_points: [SciPy builds on NumPy arrays and numerical conventions, It groups mature algorithms into domain-focused subpackages, The project is a central component of the scientific Python ecosystem]
+  kind: library
+  domains: [data, python]
+  deployment_types: [library, local]

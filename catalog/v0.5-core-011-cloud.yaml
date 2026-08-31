@@ -1,0 +1,158 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  platform: 8
+  tool: 2
+entries:
+- category: platform
+  id: nomad
+  name: HashiCorp Nomad
+  summary: Workload orchestrator for deploying and managing containerized and non-containerized applications across clusters with a comparatively small operational footprint.
+  homepage: https://developer.hashicorp.com/nomad
+  repository: https://github.com/hashicorp/nomad
+  tags: [orchestration, cloud, scheduler]
+  sources:
+  - {title: Nomad documentation, url: https://developer.hashicorp.com/nomad, type: documentation}
+  - {title: Nomad source repository, url: https://github.com/hashicorp/nomad, type: repository}
+  use_cases: [Schedule containers and native workloads across clusters, Run batch jobs and long-lived services, Coordinate deployments across mixed infrastructure]
+  key_points: [Nomad uses declarative job specifications, The scheduler supports multiple workload drivers, Nomad can integrate with Consul and Vault in HashiCorp-oriented infrastructure stacks]
+  kind: platform
+  domains: [cloud, devops, distributed-systems]
+  deployment_types: [self-hosted, service]
+- category: platform
+  id: consul
+  name: HashiCorp Consul
+  summary: Service networking platform that provides service discovery, health checking, configuration primitives, and service-mesh capabilities across distributed environments.
+  homepage: https://developer.hashicorp.com/consul
+  repository: https://github.com/hashicorp/consul
+  tags: [service-discovery, networking, cloud]
+  sources:
+  - {title: Consul documentation, url: https://developer.hashicorp.com/consul, type: documentation}
+  - {title: Consul source repository, url: https://github.com/hashicorp/consul, type: repository}
+  use_cases: [Discover services across dynamic infrastructure, Maintain service health and catalog information, Build service-to-service networking and mesh policies]
+  key_points: [Consul maintains a distributed service catalog, Health checks influence service discovery results, The platform can provide service-mesh connectivity through proxies]
+  kind: platform
+  domains: [cloud, networking, distributed-systems]
+  deployment_types: [self-hosted, service]
+- category: platform
+  id: vault
+  name: HashiCorp Vault
+  summary: Secrets-management and cryptographic platform for securely storing credentials, issuing dynamic secrets, managing encryption keys, and brokering machine identities.
+  homepage: https://developer.hashicorp.com/vault
+  repository: https://github.com/hashicorp/vault
+  tags: [security, secrets, identity]
+  sources:
+  - {title: Vault documentation, url: https://developer.hashicorp.com/vault, type: documentation}
+  - {title: Vault source repository, url: https://github.com/hashicorp/vault, type: repository}
+  use_cases: [Store and control access to application secrets, Generate dynamic database or cloud credentials, Provide encryption and signing operations through centralized policy]
+  key_points: [Vault uses policy-controlled authenticated access to secret engines, Dynamic secrets can be generated with limited lifetimes, The transit engine can perform cryptographic operations without exposing raw keys]
+  kind: platform
+  domains: [security, cloud]
+  deployment_types: [self-hosted, service]
+- category: platform
+  id: argocd
+  name: Argo CD
+  summary: Declarative continuous-delivery platform for Kubernetes that reconciles cluster applications from Git repositories and provides synchronization, health, and rollout visibility.
+  homepage: https://argo-cd.readthedocs.io/
+  repository: https://github.com/argoproj/argo-cd
+  tags: [kubernetes, gitops, ci]
+  sources:
+  - {title: Argo CD documentation, url: https://argo-cd.readthedocs.io/, type: documentation}
+  - {title: Argo CD source repository, url: https://github.com/argoproj/argo-cd, type: repository}
+  use_cases: [Deploy Kubernetes applications from Git repositories, Continuously reconcile desired and live cluster state, Review application health and synchronization status]
+  key_points: [Argo CD implements a GitOps reconciliation model, Application definitions point to version-controlled manifests or generators, The platform provides web CLI and API interfaces]
+  kind: platform
+  domains: [cloud, devops, ci-cd]
+  deployment_types: [self-hosted, service]
+- category: platform
+  id: flux
+  name: Flux
+  summary: GitOps toolkit for Kubernetes that continuously reconciles clusters from Git and OCI sources using composable controllers for sources, deployments, and automation.
+  homepage: https://fluxcd.io/
+  repository: https://github.com/fluxcd/flux2
+  tags: [kubernetes, gitops, automation]
+  sources:
+  - {title: Flux official site, url: https://fluxcd.io/, type: official}
+  - {title: Flux source repository, url: https://github.com/fluxcd/flux2, type: repository}
+  use_cases: [Synchronize Kubernetes resources from Git, Automate image and configuration updates, Compose GitOps workflows from specialized Kubernetes controllers]
+  key_points: [Flux is built as a set of Kubernetes controllers, Sources and reconciled resources are represented as custom resources, The toolkit supports Git Helm and OCI-oriented delivery patterns]
+  kind: platform
+  domains: [cloud, devops, ci-cd]
+  deployment_types: [self-hosted, service]
+- category: platform
+  id: cilium
+  name: Cilium
+  summary: Cloud-native networking, observability, and security platform based on eBPF, widely used to provide Kubernetes networking, network policy, load balancing, and visibility.
+  homepage: https://cilium.io/
+  repository: https://github.com/cilium/cilium
+  tags: [kubernetes, networking, ebpf]
+  sources:
+  - {title: Cilium official site, url: https://cilium.io/, type: official}
+  - {title: Cilium source repository, url: https://github.com/cilium/cilium, type: repository}
+  use_cases: [Provide Kubernetes pod networking, Enforce network security policies, Observe service traffic and troubleshoot cluster connectivity]
+  key_points: [Cilium uses eBPF extensively in the Linux kernel datapath, It can replace or complement kube-proxy functionality, Hubble adds flow visibility and network observability]
+  kind: platform
+  domains: [cloud, networking, security, observability]
+  deployment_types: [self-hosted, system]
+- category: platform
+  id: linkerd
+  name: Linkerd
+  summary: Lightweight service mesh for Kubernetes that adds mutual TLS, traffic metrics, reliability features, and service-to-service policy through dedicated data-plane proxies.
+  homepage: https://linkerd.io/
+  repository: https://github.com/linkerd/linkerd2
+  tags: [kubernetes, service-mesh, networking]
+  sources:
+  - {title: Linkerd official site, url: https://linkerd.io/, type: official}
+  - {title: Linkerd source repository, url: https://github.com/linkerd/linkerd2, type: repository}
+  use_cases: [Encrypt service-to-service traffic with mutual TLS, Collect service metrics for Kubernetes workloads, Apply traffic policy and reliability controls without modifying application code]
+  key_points: [Linkerd injects lightweight proxies into meshed workloads, The control plane manages identity policy and configuration, The project emphasizes Kubernetes-native operation and a small data-plane footprint]
+  kind: platform
+  domains: [cloud, networking, observability]
+  deployment_types: [self-hosted, service]
+- category: tool
+  id: opentofu
+  name: OpenTofu
+  summary: Open-source infrastructure-as-code tool created as a community-driven Terraform-compatible implementation for declaratively managing infrastructure through providers.
+  homepage: https://opentofu.org/
+  repository: https://github.com/opentofu/opentofu
+  tags: [iac, cloud, devops]
+  sources:
+  - {title: OpenTofu official site, url: https://opentofu.org/, type: official}
+  - {title: OpenTofu source repository, url: https://github.com/opentofu/opentofu, type: repository}
+  use_cases: [Define infrastructure in declarative configuration, Plan and apply changes through provider plugins, Manage reproducible multi-environment infrastructure workflows]
+  key_points: [OpenTofu uses the HashiCorp Configuration Language ecosystem, It maintains compatibility goals with Terraform workflows and providers, The project is governed under the Linux Foundation]
+  kind: tool
+  domains: [cloud, devops, developer-tools]
+  deployment_types: [cli, local]
+- category: tool
+  id: packer
+  name: Packer
+  summary: HashiCorp image-building tool that creates repeatable machine images for multiple platforms from declarative templates and pluggable builders and provisioners.
+  homepage: https://developer.hashicorp.com/packer
+  repository: https://github.com/hashicorp/packer
+  tags: [image-build, cloud, automation]
+  sources:
+  - {title: Packer documentation, url: https://developer.hashicorp.com/packer, type: documentation}
+  - {title: Packer source repository, url: https://github.com/hashicorp/packer, type: repository}
+  use_cases: [Build reproducible virtual-machine and cloud images, Automate base-image creation in delivery pipelines, Create equivalent images for multiple infrastructure targets]
+  key_points: [Packer separates image builders from provisioning steps, Templates describe repeatable image construction workflows, Plugins extend builders provisioners data sources and post-processors]
+  kind: tool
+  domains: [cloud, devops, build]
+  deployment_types: [cli, local]
+- category: platform
+  id: minio
+  name: MinIO
+  summary: High-performance object storage server compatible with the Amazon S3 API, commonly used for self-hosted cloud-native storage and data infrastructure.
+  homepage: https://min.io/
+  repository: https://github.com/minio/minio
+  tags: [object-storage, s3, cloud]
+  sources:
+  - {title: MinIO official site, url: https://min.io/, type: official}
+  - {title: MinIO source repository, url: https://github.com/minio/minio, type: repository}
+  use_cases: [Run self-hosted S3-compatible object storage, Store application objects backups datasets and artifacts, Provide object storage for cloud-native and data-processing systems]
+  key_points: [MinIO exposes an S3-compatible API, The server is designed for distributed object storage deployments, Clients and applications can often reuse S3-compatible tooling]
+  kind: platform
+  domains: [cloud, data]
+  deployment_types: [self-hosted, service]

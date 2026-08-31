@@ -1,0 +1,159 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  platform: 3
+  security: 3
+  standard: 3
+  protocol: 1
+entries:
+- category: platform
+  id: nats
+  name: NATS
+  summary: High-performance messaging system for distributed applications, providing publish-subscribe, request-reply, queueing, persistence, and streaming through JetStream.
+  homepage: https://nats.io/
+  repository: https://github.com/nats-io/nats-server
+  tags: [messaging, distributed, streaming]
+  sources:
+  - {title: NATS official site, url: https://nats.io/, type: official}
+  - {title: NATS server source repository, url: https://github.com/nats-io/nats-server, type: repository}
+  use_cases: [Connect microservices with publish-subscribe messaging, Implement request-reply communication between services, Persist and replay streams with JetStream]
+  key_points: [NATS emphasizes a small and fast messaging core, Subjects are used to route published messages, JetStream adds persistence consumers and stream-management features]
+  kind: platform
+  domains: [distributed-systems, data, networking]
+  deployment_types: [self-hosted, service]
+- category: platform
+  id: rabbitmq
+  name: RabbitMQ
+  summary: Open-source message broker implementing AMQP and additional messaging protocols, widely used for work queues, routing, publish-subscribe, and reliable service integration.
+  homepage: https://www.rabbitmq.com/
+  repository: https://github.com/rabbitmq/rabbitmq-server
+  tags: [messaging, amqp, queue]
+  sources:
+  - {title: RabbitMQ official site, url: https://www.rabbitmq.com/, type: official}
+  - {title: RabbitMQ source repository, url: https://github.com/rabbitmq/rabbitmq-server, type: repository}
+  use_cases: [Build reliable asynchronous work queues, Route messages between services using exchanges and bindings, Implement event-driven integrations with acknowledgements and persistence]
+  key_points: [RabbitMQ core model includes exchanges queues bindings and consumers, AMQP 0-9-1 is a widely used protocol with RabbitMQ, The broker supports clustering acknowledgements and durable messaging]
+  kind: platform
+  domains: [distributed-systems, data]
+  deployment_types: [self-hosted, service]
+- category: platform
+  id: redpanda
+  name: Redpanda
+  summary: Kafka-compatible streaming data platform written primarily in C++ that provides a distributed log and event-streaming API without requiring a separate JVM runtime.
+  homepage: https://www.redpanda.com/
+  repository: https://github.com/redpanda-data/redpanda
+  tags: [streaming, kafka, distributed]
+  sources:
+  - {title: Redpanda official site, url: https://www.redpanda.com/, type: official}
+  - {title: Redpanda source repository, url: https://github.com/redpanda-data/redpanda, type: repository}
+  use_cases: [Run Kafka-compatible event streaming workloads, Build durable event-driven data pipelines, Use stream-processing clients that target the Kafka protocol ecosystem]
+  key_points: [Redpanda implements compatibility with Kafka client protocols, The broker is implemented without a JVM dependency, Data is partitioned and replicated across cluster nodes]
+  kind: platform
+  domains: [data, distributed-systems]
+  deployment_types: [self-hosted, service]
+- category: security
+  id: owasp-zap
+  name: OWASP ZAP
+  summary: Open-source web application security scanner and intercepting proxy maintained under OWASP, used for manual testing and automated dynamic application security testing.
+  homepage: https://www.zaproxy.org/
+  repository: https://github.com/zaproxy/zaproxy
+  tags: [security, web, dast]
+  sources:
+  - {title: ZAP official site, url: https://www.zaproxy.org/, type: official}
+  - {title: ZAP source repository, url: https://github.com/zaproxy/zaproxy, type: repository}
+  use_cases: [Intercept and inspect browser-to-application traffic during authorized testing, Automate dynamic security scans in CI, Explore web application attack surfaces during security assessments]
+  key_points: [ZAP acts as an intercepting HTTP and HTTPS proxy, Active and passive scanners detect classes of web security issues, An automation framework supports repeatable security-testing plans]
+  kind: tool
+  domains: [security, web, testing]
+  deployment_types: [desktop, local]
+- category: security
+  id: suricata
+  name: Suricata
+  summary: Open-source network threat detection engine supporting intrusion detection, intrusion prevention, network security monitoring, protocol analysis, and rule-based traffic inspection.
+  homepage: https://suricata.io/
+  repository: https://github.com/OISF/suricata
+  tags: [security, networking, ids]
+  sources:
+  - {title: Suricata official site, url: https://suricata.io/, type: official}
+  - {title: Suricata source repository, url: https://github.com/OISF/suricata, type: repository}
+  use_cases: [Monitor network traffic for malicious patterns, Run intrusion-detection and prevention rules, Extract protocol and flow metadata for security analysis]
+  key_points: [Suricata supports IDS IPS and network-security-monitoring modes, Its detection engine processes rule-based signatures, The engine performs application-layer protocol parsing for many network protocols]
+  kind: tool
+  domains: [security, networking]
+  deployment_types: [system, self-hosted]
+- category: security
+  id: yara
+  name: YARA
+  summary: Pattern-matching tool and rule language for identifying and classifying files, memory, and malware samples using textual, binary, and structural signatures.
+  homepage: https://virustotal.github.io/yara/
+  repository: https://github.com/VirusTotal/yara
+  tags: [security, malware, detection]
+  sources:
+  - {title: YARA documentation, url: https://virustotal.github.io/yara/, type: documentation}
+  - {title: YARA source repository, url: https://github.com/VirusTotal/yara, type: repository}
+  use_cases: [Classify malware samples with reusable rules, Scan files and memory for forensic indicators, Share structured detection logic across analysis workflows]
+  key_points: [YARA rules combine strings with boolean conditions, Rules can match textual hexadecimal and regular-expression patterns, Modules expose additional structured metadata to rule conditions]
+  kind: tool
+  domains: [security]
+  deployment_types: [cli, local]
+- category: standard
+  id: openapi
+  name: OpenAPI Specification
+  summary: Vendor-neutral specification for describing HTTP APIs in machine-readable form, enabling documentation, client generation, validation, testing, and tooling interoperability.
+  homepage: https://www.openapis.org/
+  repository: https://github.com/OAI/OpenAPI-Specification
+  tags: [api, standard, http]
+  sources:
+  - {title: OpenAPI Initiative, url: https://www.openapis.org/, type: official}
+  - {title: OpenAPI Specification repository, url: https://github.com/OAI/OpenAPI-Specification, type: repository}
+  use_cases: [Describe HTTP API operations and schemas, Generate client SDKs and documentation, Validate requests responses and API design against a shared contract]
+  key_points: [OpenAPI documents are commonly represented as YAML or JSON, The specification describes paths operations parameters responses and schemas, A broad ecosystem of generators validators and documentation tools supports OpenAPI]
+  kind: standard
+  domains: [api, software-development]
+  deployment_types: [library, local]
+- category: protocol
+  id: graphql
+  name: GraphQL
+  summary: Query language and execution specification for APIs that lets clients request typed fields from a schema and supports queries, mutations, subscriptions, and introspection.
+  homepage: https://graphql.org/
+  repository: https://github.com/graphql/graphql-spec
+  tags: [api, graphql, schema]
+  sources:
+  - {title: GraphQL official site, url: https://graphql.org/, type: official}
+  - {title: GraphQL specification repository, url: https://github.com/graphql/graphql-spec, type: repository}
+  use_cases: [Build typed application APIs, Let clients select precisely which response fields they need, Drive tooling and validation from an introspectable schema]
+  key_points: [GraphQL APIs are defined by a strongly typed schema, Clients submit structured selection sets rather than fixed endpoint response shapes, The specification defines validation and execution semantics independently of transport]
+  kind: protocol
+  domains: [api, web]
+  deployment_types: [service, library]
+- category: standard
+  id: mqtt
+  name: MQTT
+  summary: Lightweight publish-subscribe messaging protocol standardized by OASIS, designed for constrained devices, unreliable networks, telemetry, and machine-to-machine communication.
+  homepage: https://mqtt.org/
+  tags: [protocol, iot, messaging]
+  sources:
+  - {title: MQTT official site, url: https://mqtt.org/, type: official}
+  - {title: MQTT Version 5.0 standard, url: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html, type: standard}
+  use_cases: [Connect IoT devices through brokered publish-subscribe messaging, Transmit telemetry over constrained or unreliable networks, Build lightweight machine-to-machine event systems]
+  key_points: [MQTT uses topics to route messages through a broker, Quality-of-service levels provide different delivery guarantees, The protocol is designed for small message overhead and persistent sessions]
+  kind: standard
+  domains: [networking, distributed-systems]
+  deployment_types: [embedded, service]
+- category: standard
+  id: webauthn
+  name: WebAuthn
+  summary: W3C web authentication standard that enables public-key credentials and passkeys for phishing-resistant sign-in through browser and platform authenticator APIs.
+  homepage: https://www.w3.org/TR/webauthn-3/
+  repository: https://github.com/w3c/webauthn
+  tags: [security, authentication, passkeys]
+  sources:
+  - {title: WebAuthn Level 3 specification, url: https://www.w3.org/TR/webauthn-3/, type: standard}
+  - {title: WebAuthn specification repository, url: https://github.com/w3c/webauthn, type: repository}
+  use_cases: [Implement passkey-based user authentication, Add hardware-backed public-key sign-in to web applications, Reduce reliance on reusable passwords and phishing-prone credentials]
+  key_points: [WebAuthn uses asymmetric credentials scoped to relying parties, Authenticators can be built into devices or external security keys, The browser mediates credential creation and assertion ceremonies]
+  kind: standard
+  domains: [security, web]
+  deployment_types: [web, service]

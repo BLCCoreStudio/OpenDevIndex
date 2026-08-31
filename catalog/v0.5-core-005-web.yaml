@@ -1,0 +1,218 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  framework: 9
+  library: 1
+entries:
+- category: framework
+  id: hono
+  name: Hono
+  summary: Small web framework built around Web Standards that targets JavaScript and TypeScript runtimes including edge platforms, Node.js, Bun, and Deno.
+  homepage: https://hono.dev/
+  repository: https://github.com/honojs/hono
+  tags: [web, typescript, edge]
+  sources:
+  - {title: Hono documentation, url: https://hono.dev/, type: documentation}
+  - {title: Hono source repository, url: https://github.com/honojs/hono, type: repository}
+  use_cases:
+  - Build lightweight APIs and web services
+  - Deploy applications to edge and serverless runtimes
+  - Share Web-Standard request handling across multiple JavaScript runtimes
+  key_points:
+  - Hono is designed around Web Standard Request and Response APIs
+  - It supports multiple JavaScript runtimes from one framework model
+  - The framework emphasizes small size and fast routing
+  kind: framework
+  domains: [web, software-development]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: fastify
+  name: Fastify
+  summary: Node.js web framework focused on low overhead, extensibility, schema-based validation, and a plugin architecture for building APIs and backend services.
+  homepage: https://fastify.dev/
+  repository: https://github.com/fastify/fastify
+  tags: [web, nodejs, api]
+  sources:
+  - {title: Fastify official site, url: https://fastify.dev/, type: official}
+  - {title: Fastify source repository, url: https://github.com/fastify/fastify, type: repository}
+  use_cases:
+  - Build high-throughput HTTP APIs
+  - Structure Node.js services with encapsulated plugins
+  - Validate and serialize request and response data using schemas
+  key_points:
+  - Fastify uses a plugin and encapsulation model
+  - JSON Schema can drive validation and serialization
+  - The framework targets low runtime overhead on Node.js
+  kind: framework
+  domains: [web, api, software-development]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: koa
+  name: Koa
+  summary: Minimal Node.js web framework from the team behind Express that uses async middleware composition to provide a small foundation for APIs and web applications.
+  homepage: https://koajs.com/
+  repository: https://github.com/koajs/koa
+  tags: [web, nodejs, middleware]
+  sources:
+  - {title: Koa official site, url: https://koajs.com/, type: official}
+  - {title: Koa source repository, url: https://github.com/koajs/koa, type: repository}
+  use_cases:
+  - Build lightweight Node.js APIs
+  - Compose asynchronous middleware pipelines
+  - Create custom web frameworks or service foundations
+  key_points:
+  - Koa keeps its core intentionally small
+  - Middleware uses an async stack with downstream and upstream flow
+  - Routing and many application features are supplied by separate packages
+  kind: framework
+  domains: [web, api]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: sveltekit
+  name: SvelteKit
+  summary: Application framework for building production web applications with Svelte, providing routing, server rendering, data loading, adapters, and deployment integrations.
+  homepage: https://svelte.dev/docs/kit
+  repository: https://github.com/sveltejs/kit
+  tags: [web, svelte, fullstack]
+  sources:
+  - {title: SvelteKit documentation, url: https://svelte.dev/docs/kit, type: documentation}
+  - {title: SvelteKit source repository, url: https://github.com/sveltejs/kit, type: repository}
+  use_cases:
+  - Build server-rendered Svelte applications
+  - Create full-stack sites with filesystem-based routing
+  - Deploy Svelte applications through platform-specific adapters
+  key_points:
+  - SvelteKit is the application framework in the Svelte ecosystem
+  - It supports server rendering, static generation, and client navigation
+  - Adapters connect builds to different deployment targets
+  kind: framework
+  domains: [web, software-development]
+  deployment_types: [web, self-hosted]
+- category: framework
+  id: solidjs
+  name: SolidJS
+  summary: Declarative JavaScript UI framework built around fine-grained reactivity, compiled JSX, and direct DOM updates without a virtual DOM rerender model.
+  homepage: https://www.solidjs.com/
+  repository: https://github.com/solidjs/solid
+  tags: [web, javascript, reactive]
+  sources:
+  - {title: SolidJS official site, url: https://www.solidjs.com/, type: official}
+  - {title: SolidJS source repository, url: https://github.com/solidjs/solid, type: repository}
+  use_cases:
+  - Build highly reactive browser interfaces
+  - Create component-based web applications with JSX
+  - Develop performance-sensitive interactive frontends
+  key_points:
+  - Solid uses fine-grained reactive primitives
+  - Components do not follow a virtual-DOM rerender model
+  - JSX is compiled to targeted DOM operations
+  kind: framework
+  domains: [web, software-development]
+  deployment_types: [web]
+- category: framework
+  id: qwik
+  name: Qwik
+  summary: Web framework designed around resumability and fine-grained lazy loading so applications can minimize initial JavaScript execution while retaining interactive components.
+  homepage: https://qwik.dev/
+  repository: https://github.com/QwikDev/qwik
+  tags: [web, javascript, performance]
+  sources:
+  - {title: Qwik documentation, url: https://qwik.dev/, type: documentation}
+  - {title: Qwik source repository, url: https://github.com/QwikDev/qwik, type: repository}
+  use_cases:
+  - Build interactive sites with low startup JavaScript cost
+  - Create server-rendered applications that resume on the client
+  - Develop component-based frontends with aggressive lazy loading
+  key_points:
+  - Qwik centers its architecture on resumability rather than hydration
+  - Code and application state can be serialized for later execution
+  - Event handlers and components are loaded on demand
+  kind: framework
+  domains: [web, software-development]
+  deployment_types: [web, self-hosted]
+- category: framework
+  id: phoenix
+  name: Phoenix
+  summary: Elixir web framework built on the BEAM ecosystem, providing routing, channels, real-time features, and LiveView integration for resilient web applications.
+  homepage: https://www.phoenixframework.org/
+  repository: https://github.com/phoenixframework/phoenix
+  tags: [web, elixir, realtime]
+  sources:
+  - {title: Phoenix official site, url: https://www.phoenixframework.org/, type: official}
+  - {title: Phoenix source repository, url: https://github.com/phoenixframework/phoenix, type: repository}
+  use_cases:
+  - Build fault-tolerant web APIs and applications
+  - Create real-time features with channels
+  - Develop server-driven interactive interfaces with Phoenix LiveView
+  key_points:
+  - Phoenix runs on the Erlang VM through Elixir
+  - Channels support bidirectional real-time communication
+  - The framework follows explicit functional request-processing patterns
+  kind: framework
+  domains: [web, distributed-systems]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: symfony
+  name: Symfony
+  summary: Mature PHP framework and reusable component ecosystem for building web applications, APIs, console tools, and long-lived enterprise services.
+  homepage: https://symfony.com/
+  repository: https://github.com/symfony/symfony
+  tags: [web, php, framework]
+  sources:
+  - {title: Symfony official site, url: https://symfony.com/, type: official}
+  - {title: Symfony source repository, url: https://github.com/symfony/symfony, type: repository}
+  use_cases:
+  - Build structured PHP web applications and APIs
+  - Reuse standalone framework components in other PHP projects
+  - Develop console commands and long-lived backend systems
+  key_points:
+  - Symfony is both a full framework and a collection of reusable components
+  - Composer is used for package and dependency management
+  - The project emphasizes backward compatibility and explicit release support
+  kind: framework
+  domains: [web, software-development]
+  deployment_types: [self-hosted, service]
+- category: framework
+  id: codeigniter
+  name: CodeIgniter
+  summary: Lightweight PHP web framework that provides routing, database access, validation, security helpers, and an application structure aimed at straightforward deployment.
+  homepage: https://codeigniter.com/
+  repository: https://github.com/codeigniter4/CodeIgniter4
+  tags: [web, php, mvc]
+  sources:
+  - {title: CodeIgniter official site, url: https://codeigniter.com/, type: official}
+  - {title: CodeIgniter source repository, url: https://github.com/codeigniter4/CodeIgniter4, type: repository}
+  use_cases:
+  - Build traditional PHP web applications
+  - Create REST-style APIs with a lightweight framework
+  - Develop applications for environments where simple deployment matters
+  key_points:
+  - CodeIgniter 4 targets modern PHP versions
+  - The framework includes MVC-oriented application structure
+  - It keeps configuration and deployment relatively lightweight
+  kind: framework
+  domains: [web, software-development]
+  deployment_types: [self-hosted, web]
+- category: library
+  id: lit
+  name: Lit
+  summary: Lightweight library for building standards-based web components using reactive properties and declarative templates while staying close to native browser APIs.
+  homepage: https://lit.dev/
+  repository: https://github.com/lit/lit
+  tags: [web, web-components, javascript]
+  sources:
+  - {title: Lit official site, url: https://lit.dev/, type: official}
+  - {title: Lit source repository, url: https://github.com/lit/lit, type: repository}
+  use_cases:
+  - Build reusable custom elements
+  - Create design-system components based on Web Components
+  - Add reactive rendering while keeping browser-native component boundaries
+  key_points:
+  - Lit builds on the Web Components standards
+  - Templates are expressed with tagged JavaScript template literals
+  - Reactive updates are scoped to component state changes
+  kind: library
+  domains: [web, software-development]
+  deployment_types: [web, library]

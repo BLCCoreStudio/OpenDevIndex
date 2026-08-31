@@ -1,0 +1,157 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  tool: 10
+entries:
+- category: tool
+  id: vite
+  name: Vite
+  summary: Frontend build tool and development server that provides fast module serving during development and optimized production builds for modern web projects.
+  homepage: https://vite.dev/
+  repository: https://github.com/vitejs/vite
+  tags: [build-system, web, javascript]
+  sources:
+  - {title: Vite official site, url: https://vite.dev/, type: official}
+  - {title: Vite source repository, url: https://github.com/vitejs/vite, type: repository}
+  use_cases: [Run fast local development servers for web applications, Bundle production assets for JavaScript and TypeScript projects, Integrate framework plugins and modern frontend tooling]
+  key_points: [Vite serves source modules on demand during development, Production builds use a dedicated bundling pipeline, Its plugin model is shared with the broader Rollup ecosystem]
+  kind: tool
+  domains: [build, web, developer-tools]
+  deployment_types: [cli, local]
+- category: tool
+  id: webpack
+  name: webpack
+  summary: Highly configurable JavaScript module bundler that builds dependency graphs and transforms application assets through loaders and plugins.
+  homepage: https://webpack.js.org/
+  repository: https://github.com/webpack/webpack
+  tags: [build-system, javascript, web]
+  sources:
+  - {title: webpack official site, url: https://webpack.js.org/, type: official}
+  - {title: webpack source repository, url: https://github.com/webpack/webpack, type: repository}
+  use_cases: [Bundle complex JavaScript applications, Transform source assets with loaders, Extend build pipelines through plugins and code-splitting strategies]
+  key_points: [webpack models application assets as a dependency graph, Loaders transform module content before bundling, Plugins can customize most stages of the compilation lifecycle]
+  kind: tool
+  domains: [build, web, developer-tools]
+  deployment_types: [cli, local]
+- category: tool
+  id: rollup
+  name: Rollup
+  summary: JavaScript module bundler focused on ES modules, tree shaking, library packaging, and a plugin architecture used directly and by higher-level build tools.
+  homepage: https://rollupjs.org/
+  repository: https://github.com/rollup/rollup
+  tags: [build-system, javascript, bundler]
+  sources:
+  - {title: Rollup official site, url: https://rollupjs.org/, type: official}
+  - {title: Rollup source repository, url: https://github.com/rollup/rollup, type: repository}
+  use_cases: [Bundle JavaScript libraries, Create optimized ES module and CommonJS outputs, Extend builds with reusable transformation plugins]
+  key_points: [Rollup is designed around ES module semantics, Tree shaking removes statically unused exports, Its plugin ecosystem is also used by tools such as Vite]
+  kind: tool
+  domains: [build, web, developer-tools]
+  deployment_types: [cli, local]
+- category: tool
+  id: esbuild
+  name: esbuild
+  summary: Extremely fast JavaScript and TypeScript bundler and minifier written in Go, commonly used as a low-level engine inside modern development tooling.
+  homepage: https://esbuild.github.io/
+  repository: https://github.com/evanw/esbuild
+  tags: [build-system, javascript, typescript]
+  sources:
+  - {title: esbuild documentation, url: https://esbuild.github.io/, type: documentation}
+  - {title: esbuild source repository, url: https://github.com/evanw/esbuild, type: repository}
+  use_cases: [Bundle web applications and libraries quickly, Transform TypeScript and modern JavaScript syntax, Minify JavaScript and CSS as part of larger build pipelines]
+  key_points: [esbuild is implemented in Go for high throughput, It includes bundling transformation and minification in one binary, Many higher-level tools embed or invoke esbuild]
+  kind: tool
+  domains: [build, web, developer-tools]
+  deployment_types: [cli, local]
+- category: tool
+  id: swc
+  name: SWC
+  summary: Rust-based platform for fast JavaScript and TypeScript compilation, minification, transformation, and extensible tooling used by modern web frameworks.
+  homepage: https://swc.rs/
+  repository: https://github.com/swc-project/swc
+  tags: [build-system, rust, typescript]
+  sources:
+  - {title: SWC official site, url: https://swc.rs/, type: official}
+  - {title: SWC source repository, url: https://github.com/swc-project/swc, type: repository}
+  use_cases: [Transpile modern JavaScript and TypeScript, Minify application code, Embed a fast compiler core into web frameworks and developer tools]
+  key_points: [SWC core compiler is implemented in Rust, It supports syntax transforms and minification, The project exposes APIs and plugins for integration into larger toolchains]
+  kind: tool
+  domains: [build, web, developer-tools]
+  deployment_types: [cli, library]
+- category: tool
+  id: biome
+  name: Biome
+  summary: Fast formatter and linter for JavaScript, TypeScript, JSON, CSS, and related web code, designed as an integrated toolchain with a Rust implementation.
+  homepage: https://biomejs.dev/
+  repository: https://github.com/biomejs/biome
+  tags: [javascript, linting, formatting]
+  sources:
+  - {title: Biome official site, url: https://biomejs.dev/, type: official}
+  - {title: Biome source repository, url: https://github.com/biomejs/biome, type: repository}
+  use_cases: [Format JavaScript and TypeScript code, Run static lint checks in local and CI workflows, Replace multiple frontend quality tools with one integrated command-line application]
+  key_points: [Biome combines formatting and linting in one tool, Its implementation is primarily written in Rust, The project emphasizes deterministic output and editor integration]
+  kind: tool
+  domains: [developer-tools, web]
+  deployment_types: [cli, local]
+- category: tool
+  id: prettier
+  name: Prettier
+  summary: Opinionated code formatter that parses source files and reprints them consistently, reducing style debates across JavaScript and many other supported languages.
+  homepage: https://prettier.io/
+  repository: https://github.com/prettier/prettier
+  tags: [formatting, javascript, developer-tools]
+  sources:
+  - {title: Prettier official site, url: https://prettier.io/, type: official}
+  - {title: Prettier source repository, url: https://github.com/prettier/prettier, type: repository}
+  use_cases: [Apply consistent formatting across codebases, Integrate automatic formatting into editors, Enforce formatting in continuous-integration checks]
+  key_points: [Prettier intentionally limits formatting configuration, It reformats parsed syntax rather than applying line-oriented rules, A plugin system extends support to additional languages and file formats]
+  kind: tool
+  domains: [developer-tools, web]
+  deployment_types: [cli, local]
+- category: tool
+  id: eslint
+  name: ESLint
+  summary: Pluggable static-analysis and linting tool for JavaScript and related ecosystems, used to detect problematic patterns and enforce project coding rules.
+  homepage: https://eslint.org/
+  repository: https://github.com/eslint/eslint
+  tags: [linting, javascript, static-analysis]
+  sources:
+  - {title: ESLint official site, url: https://eslint.org/, type: official}
+  - {title: ESLint source repository, url: https://github.com/eslint/eslint, type: repository}
+  use_cases: [Detect likely JavaScript code defects, Enforce project-specific coding rules, Integrate static checks with editors and CI pipelines]
+  key_points: [ESLint rules operate on parsed program syntax, Flat configuration is the modern configuration model, Plugins provide framework language and domain-specific rules]
+  kind: tool
+  domains: [developer-tools, web]
+  deployment_types: [cli, local]
+- category: tool
+  id: git-lfs
+  name: Git LFS
+  summary: Git extension that stores large file contents outside normal Git object history while keeping lightweight pointer files in repositories.
+  homepage: https://git-lfs.com/
+  repository: https://github.com/git-lfs/git-lfs
+  tags: [git, version-control, storage]
+  sources:
+  - {title: Git LFS official site, url: https://git-lfs.com/, type: official}
+  - {title: Git LFS source repository, url: https://github.com/git-lfs/git-lfs, type: repository}
+  use_cases: [Track large binary assets alongside Git projects, Reduce repository clone size for selected large files, Store media models and generated artifacts through LFS-aware hosting]
+  key_points: [Git LFS replaces tracked large objects with small pointer files, Actual object payloads are transferred through an LFS server, Repository hosting platforms commonly provide integrated LFS storage]
+  kind: tool
+  domains: [developer-tools, data]
+  deployment_types: [cli, local]
+- category: tool
+  id: poetry
+  name: Poetry
+  summary: Python packaging and dependency-management tool that manages project metadata, dependency resolution, virtual environments, builds, and package publishing workflows.
+  homepage: https://python-poetry.org/
+  repository: https://github.com/python-poetry/poetry
+  tags: [python, packaging, dependencies]
+  sources:
+  - {title: Poetry official site, url: https://python-poetry.org/, type: official}
+  - {title: Poetry source repository, url: https://github.com/python-poetry/poetry, type: repository}
+  use_cases: [Manage Python project dependencies, Create isolated development environments, Build and publish Python packages]
+  key_points: [Poetry resolves and locks project dependency graphs, Project configuration is stored in pyproject.toml, The tool integrates environment management with packaging workflows]
+  kind: tool
+  domains: [developer-tools, python]
+  deployment_types: [cli, local]

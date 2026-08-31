@@ -1,0 +1,216 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  language: 10
+entries:
+- category: language
+  id: csharp
+  name: C#
+  summary: Modern statically typed programming language in the .NET ecosystem, used for cloud services, desktop software, games, web backends, and cross-platform applications.
+  homepage: https://learn.microsoft.com/en-us/dotnet/csharp/
+  repository: https://github.com/dotnet/roslyn
+  tags: [programming-language, dotnet, managed]
+  sources:
+  - {title: C# documentation, url: https://learn.microsoft.com/en-us/dotnet/csharp/, type: documentation}
+  - {title: Roslyn source repository, url: https://github.com/dotnet/roslyn, type: repository}
+  use_cases:
+  - Build .NET web services and APIs
+  - Create desktop and cross-platform applications
+  - Develop games and tooling with the .NET ecosystem
+  key_points:
+  - C# runs primarily on the .NET runtime
+  - The language combines static typing with modern functional and asynchronous features
+  - Roslyn provides the open-source C# and Visual Basic compiler platform
+  kind: language
+  domains: [programming-languages, software-development]
+  deployment_types: [local, self-hosted]
+- category: language
+  id: objective-c
+  name: Objective-C
+  summary: Object-oriented programming language built on C that remains important for understanding and maintaining Apple platform software and established Cocoa codebases.
+  homepage: https://developer.apple.com/documentation/objectivec
+  repository: https://github.com/llvm/llvm-project
+  tags: [programming-language, apple, cocoa]
+  sources:
+  - {title: Apple Objective-C documentation, url: https://developer.apple.com/documentation/objectivec, type: documentation}
+  - {title: LLVM project repository, url: https://github.com/llvm/llvm-project, type: repository}
+  use_cases:
+  - Maintain existing macOS and iOS applications
+  - Integrate C libraries with Apple platform code
+  - Understand Cocoa and Objective-C runtime behavior
+  key_points:
+  - Objective-C extends C with message-based object-oriented features
+  - Apple platforms use the Objective-C runtime alongside Swift
+  - Clang provides the modern open-source compiler implementation
+  kind: language
+  domains: [programming-languages, mobile]
+  deployment_types: [local, mobile]
+- category: language
+  id: r
+  name: R
+  summary: Programming language and environment focused on statistical computing, data analysis, scientific visualization, and reproducible research workflows.
+  homepage: https://www.r-project.org/
+  tags: [programming-language, statistics, data]
+  sources:
+  - {title: The R Project, url: https://www.r-project.org/, type: official}
+  - {title: CRAN manuals, url: https://cran.r-project.org/manuals.html, type: documentation}
+  use_cases:
+  - Perform statistical analysis and modeling
+  - Build reproducible research and data-science workflows
+  - Create scientific charts and exploratory visualizations
+  key_points:
+  - R has a large package ecosystem distributed through CRAN
+  - The language is optimized around vectors, data frames, and statistical workflows
+  - R is widely used in research, analytics, and biostatistics
+  kind: language
+  domains: [programming-languages, data, analytics]
+  deployment_types: [local]
+- category: language
+  id: perl
+  name: Perl
+  summary: Mature dynamic programming language known for text processing, systems administration, automation, and a long-running package ecosystem centered on CPAN.
+  homepage: https://www.perl.org/
+  repository: https://github.com/Perl/perl5
+  tags: [programming-language, scripting, automation]
+  sources:
+  - {title: Perl official site, url: https://www.perl.org/, type: official}
+  - {title: Perl 5 source repository, url: https://github.com/Perl/perl5, type: repository}
+  use_cases:
+  - Automate system and administration tasks
+  - Process structured and unstructured text
+  - Maintain established Perl applications and infrastructure
+  key_points:
+  - Perl emphasizes expressive text and pattern processing
+  - CPAN provides a large long-lived module ecosystem
+  - Perl 5 remains the dominant production branch of the language
+  kind: language
+  domains: [programming-languages, systems]
+  deployment_types: [local, self-hosted]
+- category: language
+  id: groovy
+  name: Apache Groovy
+  summary: Dynamic JVM language with concise syntax, scripting support, and close Java interoperability, widely used in build automation and JVM application tooling.
+  homepage: https://groovy-lang.org/
+  repository: https://github.com/apache/groovy
+  tags: [programming-language, jvm, scripting]
+  sources:
+  - {title: Groovy official site, url: https://groovy-lang.org/, type: official}
+  - {title: Groovy source repository, url: https://github.com/apache/groovy, type: repository}
+  use_cases:
+  - Write JVM automation and scripts
+  - Extend Java applications with a dynamic language
+  - Define Gradle build logic and domain-specific languages
+  key_points:
+  - Groovy compiles to JVM bytecode
+  - It interoperates directly with Java classes and libraries
+  - The language supports both dynamic and optional static compilation
+  kind: language
+  domains: [programming-languages, software-development]
+  deployment_types: [local, self-hosted]
+- category: language
+  id: clojure
+  name: Clojure
+  summary: Functional Lisp dialect for the JVM that emphasizes immutable data, interactive development, concurrency-friendly design, and direct access to Java libraries.
+  homepage: https://clojure.org/
+  repository: https://github.com/clojure/clojure
+  tags: [programming-language, jvm, functional]
+  sources:
+  - {title: Clojure official site, url: https://clojure.org/, type: official}
+  - {title: Clojure source repository, url: https://github.com/clojure/clojure, type: repository}
+  use_cases:
+  - Build data-oriented backend systems
+  - Write concurrent JVM services using immutable data
+  - Develop interactive functional programs with REPL-driven workflows
+  key_points:
+  - Clojure is a Lisp with persistent immutable data structures
+  - It runs on the JVM and interoperates with Java
+  - Its concurrency model favors values and coordinated state management
+  kind: language
+  domains: [programming-languages, software-development]
+  deployment_types: [local, self-hosted]
+- category: language
+  id: fsharp
+  name: F#
+  summary: Functional-first .NET programming language that combines concise immutable-by-default code with strong typing and seamless interoperability across the .NET ecosystem.
+  homepage: https://fsharp.org/
+  repository: https://github.com/dotnet/fsharp
+  tags: [programming-language, dotnet, functional]
+  sources:
+  - {title: F# official site, url: https://fsharp.org/, type: official}
+  - {title: F# source repository, url: https://github.com/dotnet/fsharp, type: repository}
+  use_cases:
+  - Build type-safe .NET services and applications
+  - Model data-heavy domains with algebraic data types
+  - Use functional programming alongside existing .NET libraries
+  key_points:
+  - F# is statically typed with type inference
+  - It is functional-first while supporting object-oriented programming
+  - F# compiles for the .NET runtime and interoperates with C# libraries
+  kind: language
+  domains: [programming-languages, software-development]
+  deployment_types: [local, self-hosted]
+- category: language
+  id: ocaml
+  name: OCaml
+  summary: Statically typed functional programming language with powerful type inference and native-code compilation, used for compilers, verification tools, systems, and research.
+  homepage: https://ocaml.org/
+  repository: https://github.com/ocaml/ocaml
+  tags: [programming-language, functional, native]
+  sources:
+  - {title: OCaml official site, url: https://ocaml.org/, type: official}
+  - {title: OCaml source repository, url: https://github.com/ocaml/ocaml, type: repository}
+  use_cases:
+  - Build compilers and language tooling
+  - Develop reliable native applications with strong static types
+  - Implement research and verification-oriented software
+  key_points:
+  - OCaml combines functional, imperative, and object-oriented features
+  - Its type system provides strong inference without pervasive annotations
+  - The compiler supports native and bytecode targets
+  kind: language
+  domains: [programming-languages, systems]
+  deployment_types: [local]
+- category: language
+  id: nim
+  name: Nim
+  summary: Compiled systems programming language with Python-like syntax, static typing, metaprogramming, and multiple memory-management strategies for efficient native software.
+  homepage: https://nim-lang.org/
+  repository: https://github.com/nim-lang/Nim
+  tags: [programming-language, systems, native]
+  sources:
+  - {title: Nim official site, url: https://nim-lang.org/, type: official}
+  - {title: Nim source repository, url: https://github.com/nim-lang/Nim, type: repository}
+  use_cases:
+  - Build native command-line and systems tools
+  - Create performance-sensitive applications with high-level syntax
+  - Use compile-time metaprogramming to generate specialized code
+  key_points:
+  - Nim compiles primarily to C, C++, or JavaScript backends
+  - The language uses static typing with type inference
+  - Macros and compile-time execution are core language capabilities
+  kind: language
+  domains: [programming-languages, systems]
+  deployment_types: [local, system]
+- category: language
+  id: crystal
+  name: Crystal
+  summary: Compiled programming language with Ruby-inspired syntax, static type inference, native code generation, and concurrency primitives for building fast applications and services.
+  homepage: https://crystal-lang.org/
+  repository: https://github.com/crystal-lang/crystal
+  tags: [programming-language, native, web]
+  sources:
+  - {title: Crystal official site, url: https://crystal-lang.org/, type: official}
+  - {title: Crystal source repository, url: https://github.com/crystal-lang/crystal, type: repository}
+  use_cases:
+  - Build native web services and command-line programs
+  - Write performance-oriented applications with expressive syntax
+  - Develop concurrent network services using fibers and channels
+  key_points:
+  - Crystal uses static type inference without requiring most annotations
+  - Its syntax intentionally resembles Ruby
+  - The compiler produces native executables through LLVM
+  kind: language
+  domains: [programming-languages, web]
+  deployment_types: [local, self-hosted]

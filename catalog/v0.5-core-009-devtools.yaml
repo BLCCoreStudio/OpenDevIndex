@@ -1,0 +1,157 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  tool: 10
+entries:
+- category: tool
+  id: pipx
+  name: pipx
+  summary: Python application installer that places each command-line package in its own isolated environment while exposing its executables on the user PATH.
+  homepage: https://pipx.pypa.io/
+  repository: https://github.com/pypa/pipx
+  tags: [python, cli, packaging]
+  sources:
+  - {title: pipx documentation, url: https://pipx.pypa.io/, type: documentation}
+  - {title: pipx source repository, url: https://github.com/pypa/pipx, type: repository}
+  use_cases: [Install Python command-line applications without dependency conflicts, Run Python applications in temporary isolated environments, Manage upgrades and removal of Python CLI tools]
+  key_points: [pipx creates a dedicated virtual environment for each installed application, Installed command entry points are exposed on the user PATH, The project is maintained under the Python Packaging Authority]
+  kind: tool
+  domains: [developer-tools, python, cli]
+  deployment_types: [cli, local]
+- category: tool
+  id: hatch
+  name: Hatch
+  summary: Extensible Python project manager covering environments, packaging, versioning, scripts, builds, and publishing through a plugin-oriented workflow.
+  homepage: https://hatch.pypa.io/
+  repository: https://github.com/pypa/hatch
+  tags: [python, packaging, environments]
+  sources:
+  - {title: Hatch documentation, url: https://hatch.pypa.io/, type: documentation}
+  - {title: Hatch source repository, url: https://github.com/pypa/hatch, type: repository}
+  use_cases: [Manage Python development environments, Build and publish Python packages, Define repeatable project scripts and versioning workflows]
+  key_points: [Hatch uses pyproject.toml as its primary project configuration, Its environment system supports multiple Python configurations, Plugins extend build versioning metadata and environment behavior]
+  kind: tool
+  domains: [developer-tools, python]
+  deployment_types: [cli, local]
+- category: tool
+  id: sccache
+  name: sccache
+  summary: Compilation cache that accelerates repeated builds by reusing compiler outputs locally or through remote storage backends across supported toolchains.
+  homepage: https://github.com/mozilla/sccache
+  repository: https://github.com/mozilla/sccache
+  tags: [build-system, cache, compiler]
+  sources:
+  - {title: sccache source repository, url: https://github.com/mozilla/sccache, type: repository}
+  - {title: sccache documentation, url: https://github.com/mozilla/sccache/blob/main/docs/README.md, type: documentation}
+  use_cases: [Speed up repeated native and Rust compilations, Share cached compiler outputs across CI workers, Reduce rebuild time in large codebases]
+  key_points: [sccache wraps supported compilers and hashes compilation inputs, Cache storage can be local or backed by remote services, The tool is commonly used with Rust and C-family build pipelines]
+  kind: tool
+  domains: [build, developer-tools]
+  deployment_types: [cli, local]
+- category: tool
+  id: ccache
+  name: ccache
+  summary: Compiler cache for C and C++ toolchains that detects equivalent compilations and reuses previous outputs to reduce incremental build times.
+  homepage: https://ccache.dev/
+  repository: https://github.com/ccache/ccache
+  tags: [build-system, cache, compiler]
+  sources:
+  - {title: ccache official site, url: https://ccache.dev/, type: official}
+  - {title: ccache source repository, url: https://github.com/ccache/ccache, type: repository}
+  use_cases: [Accelerate repeated C and C++ builds, Reduce CI compile time when inputs are unchanged, Use local or supported remote caches in native build workflows]
+  key_points: [ccache sits in front of supported compilers, It hashes relevant compiler inputs to find reusable results, The tool supports statistics and multiple cache configuration options]
+  kind: tool
+  domains: [build, developer-tools]
+  deployment_types: [cli, local]
+- category: tool
+  id: mold
+  name: mold
+  summary: High-speed linker for Unix-like systems designed as a drop-in alternative for common ELF linkers, reducing the final link stage of large native builds.
+  homepage: https://github.com/rui314/mold
+  repository: https://github.com/rui314/mold
+  tags: [build-system, linker, native]
+  sources:
+  - {title: mold source repository, url: https://github.com/rui314/mold, type: repository}
+  - {title: mold documentation, url: https://github.com/rui314/mold/blob/main/docs/mold.md, type: documentation}
+  use_cases: [Reduce link times for large native applications, Use a faster linker in C and C++ build pipelines, Experiment with parallelized linking for large binaries]
+  key_points: [mold is designed for high parallelism during linking, It targets compatibility with common Unix linker command conventions, The project focuses on native ELF-oriented toolchains]
+  kind: tool
+  domains: [build, systems]
+  deployment_types: [cli, system]
+- category: tool
+  id: clang
+  name: Clang
+  summary: LLVM-native compiler front end for C, C++, Objective-C, and related languages, providing diagnostics, tooling libraries, and standards-oriented language support.
+  homepage: https://clang.llvm.org/
+  repository: https://github.com/llvm/llvm-project
+  tags: [compiler, cpp, llvm]
+  sources:
+  - {title: Clang official site, url: https://clang.llvm.org/, type: official}
+  - {title: LLVM project repository, url: https://github.com/llvm/llvm-project, type: repository}
+  use_cases: [Compile C C++ and Objective-C code, Power language-server and static-analysis tools, Integrate compiler libraries into developer tooling]
+  key_points: [Clang is a front end in the LLVM compiler infrastructure, It is designed to provide detailed diagnostics and tooling APIs, The compiler supports major C-family language standards]
+  kind: toolchain
+  domains: [build, systems]
+  deployment_types: [cli, system]
+- category: tool
+  id: lldb
+  name: LLDB
+  summary: Debugger from the LLVM project designed for native programs, offering command-line, scripting, and IDE integration across several operating systems and architectures.
+  homepage: https://lldb.llvm.org/
+  repository: https://github.com/llvm/llvm-project
+  tags: [debugger, llvm, native]
+  sources:
+  - {title: LLDB official site, url: https://lldb.llvm.org/, type: official}
+  - {title: LLVM project repository, url: https://github.com/llvm/llvm-project, type: repository}
+  use_cases: [Debug native C C++ Swift and Objective-C applications, Integrate debugging into IDEs and automation, Inspect processes memory threads and program state]
+  key_points: [LLDB is developed as part of the LLVM project, It exposes a scriptable API in addition to its command-line interface, Multiple major development environments use LLDB as a native debugger foundation]
+  kind: tool
+  domains: [developer-tools, systems]
+  deployment_types: [cli, local]
+- category: tool
+  id: shellcheck
+  name: ShellCheck
+  summary: Static-analysis tool for shell scripts that detects common syntax mistakes, quoting errors, portability problems, and suspicious shell programming patterns.
+  homepage: https://www.shellcheck.net/
+  repository: https://github.com/koalaman/shellcheck
+  tags: [shell, linting, static-analysis]
+  sources:
+  - {title: ShellCheck official site, url: https://www.shellcheck.net/, type: official}
+  - {title: ShellCheck source repository, url: https://github.com/koalaman/shellcheck, type: repository}
+  use_cases: [Lint Bash and POSIX-style shell scripts, Catch quoting and word-splitting mistakes in CI, Improve portability and maintainability of automation scripts]
+  key_points: [ShellCheck assigns diagnostic codes to individual findings, It understands common shell dialect differences, The tool integrates with editors CI systems and command-line workflows]
+  kind: tool
+  domains: [developer-tools, cli]
+  deployment_types: [cli, local]
+- category: tool
+  id: hadolint
+  name: Hadolint
+  summary: Dockerfile linter that combines Dockerfile best-practice rules with shell-script analysis to catch common image-build mistakes before deployment.
+  homepage: https://github.com/hadolint/hadolint
+  repository: https://github.com/hadolint/hadolint
+  tags: [containers, linting, dockerfile]
+  sources:
+  - {title: Hadolint source repository, url: https://github.com/hadolint/hadolint, type: repository}
+  - {title: Hadolint documentation, url: https://github.com/hadolint/hadolint#readme, type: documentation}
+  use_cases: [Lint Dockerfiles in CI pipelines, Catch risky or inefficient image-build patterns, Enforce container build conventions across repositories]
+  key_points: [Hadolint parses Dockerfiles into an abstract syntax tree, Embedded shell commands are checked with ShellCheck-derived rules, Rules can be configured ignored or enforced by severity]
+  kind: tool
+  domains: [containers, developer-tools]
+  deployment_types: [cli, local]
+- category: tool
+  id: direnv
+  name: direnv
+  summary: Shell extension that automatically loads and unloads directory-specific environment variables, helping projects keep local development configuration scoped to working directories.
+  homepage: https://direnv.net/
+  repository: https://github.com/direnv/direnv
+  tags: [cli, environment, developer-tools]
+  sources:
+  - {title: direnv official site, url: https://direnv.net/, type: official}
+  - {title: direnv source repository, url: https://github.com/direnv/direnv, type: repository}
+  use_cases: [Load project-specific environment variables automatically, Switch development tool settings when entering directories, Combine local environment configuration with reproducible shell workflows]
+  key_points: [direnv hooks into the interactive shell prompt cycle, Environment changes are declared in per-directory files, Explicit approval prevents newly changed environment files from loading silently]
+  kind: tool
+  domains: [developer-tools, cli]
+  deployment_types: [cli, local]
