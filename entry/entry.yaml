@@ -1,0 +1,28 @@
+schema_version: 2
+id: elasticsearch
+name: Elasticsearch
+category: database
+kind: database
+domains:
+- analytics
+- data
+- observability
+summary: Distributed search and analytics engine built around Lucene, used for full-text search, log analytics, observability data, and document-oriented querying.
+homepage: https://www.elastic.co/elasticsearch
+repository: https://github.com/elastic/elasticsearch
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- search
+- database
+- analytics
+sources:
+- title: Elasticsearch official site
+  url: https://www.elastic.co/elasticsearch
+  type: official
+- title: Elasticsearch source repository
+  url: https://github.com/elastic/elasticsearch
+  type: repository
