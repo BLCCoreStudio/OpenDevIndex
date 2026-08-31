@@ -1,0 +1,20 @@
+schema_version: 1
+id: terraform
+name: Terraform
+category: cloud
+summary: Infrastructure-as-code tool for declaring and applying resource graphs through provider plugins across cloud, SaaS, and infrastructure platforms.
+homepage: https://developer.hashicorp.com/terraform
+repository: https://github.com/hashicorp/terraform
+status: active
+verified_at: '2026-08-31'
+tags:
+- iac
+- automation
+- cloud
+sources:
+- title: Terraform documentation
+  url: https://developer.hashicorp.com/terraform
+  type: documentation
+- title: Terraform repository
+  url: https://github.com/hashicorp/terraform
+  type: repository
