@@ -1,0 +1,28 @@
+schema_version: 2
+id: fastify
+name: Fastify
+category: framework
+kind: framework
+domains:
+- api
+- software-development
+- web
+summary: Node.js web framework focused on low overhead, extensibility, schema-based validation, and a plugin architecture for building APIs and backend services.
+homepage: https://fastify.dev/
+repository: https://github.com/fastify/fastify
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- nodejs
+- api
+sources:
+- title: Fastify official site
+  url: https://fastify.dev/
+  type: official
+- title: Fastify source repository
+  url: https://github.com/fastify/fastify
+  type: repository
