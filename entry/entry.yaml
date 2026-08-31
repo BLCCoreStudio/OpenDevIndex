@@ -5,6 +5,7 @@ category: protocol
 kind: protocol
 domains:
 - api
+- identity
 - security
 summary: Authorization framework that lets applications obtain scoped access to protected resources using tokens instead of directly handling a user's credentials.
 homepage: https://www.rfc-editor.org/rfc/rfc6749

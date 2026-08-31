@@ -24,7 +24,7 @@ The module focuses on the technology's practical role, high-signal characteristi
 ## Taxonomy
 
 - Kind: `protocol`
-- Domains: `api`, `security`
+- Domains: `api`, `identity`, `security`
 - Deployment: not yet curated
 - License metadata: `not yet curated`
 
