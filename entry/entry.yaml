@@ -1,0 +1,20 @@
+schema_version: 1
+id: openssl
+name: OpenSSL
+category: security
+summary: Open-source cryptography and TLS toolkit providing widely used libraries and command-line utilities for secure transport, certificates, and cryptographic operations.
+homepage: https://www.openssl.org/
+repository: https://github.com/openssl/openssl
+status: active
+verified_at: '2026-08-31'
+tags:
+- tls
+- cryptography
+- security
+sources:
+- title: OpenSSL official site
+  url: https://www.openssl.org/
+  type: official
+- title: OpenSSL repository
+  url: https://github.com/openssl/openssl
+  type: repository
