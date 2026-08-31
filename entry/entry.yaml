@@ -1,0 +1,20 @@
+schema_version: 1
+id: spring-boot
+name: Spring Boot
+category: framework
+summary: Java framework for building production-oriented Spring applications with opinionated defaults, dependency starters, embedded servers, and operational features.
+homepage: https://spring.io/projects/spring-boot
+repository: https://github.com/spring-projects/spring-boot
+status: active
+verified_at: '2026-08-31'
+tags:
+- java
+- backend
+- jvm
+sources:
+- title: Spring Boot project
+  url: https://spring.io/projects/spring-boot
+  type: official
+- title: Spring Boot repository
+  url: https://github.com/spring-projects/spring-boot
+  type: repository
