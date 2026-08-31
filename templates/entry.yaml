@@ -1,18 +1,28 @@
-schema_version: 1
+schema_version: 3
 id: example-slug
 name: Example Name
 category: tool
+kind: tool
+domains:
+  - developer-tools
 summary: A concise 40–320 character explanation of what this technology is and why it matters.
 homepage: https://example.com
 repository: https://github.com/example/example
 license: MIT
+deployment_types:
+  - cli
 status: active
 verified_at: 2026-08-31
 tags:
   - example
   - developer-tools
+  - cli
 platforms:
   - Linux
+relationships:
+  - type: related-to
+    target: concept/example-concept
+    note: Optional short explanation of why the relationship matters.
 sources:
   - title: Official website
     url: https://example.com
