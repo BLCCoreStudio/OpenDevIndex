@@ -1,0 +1,29 @@
+schema_version: 2
+id: kong
+name: Kong Gateway
+category: tool
+kind: tool
+domains:
+- api
+- cloud
+- networking
+summary: API gateway and reverse-proxy platform built around extensible traffic policies for routing, authentication, observability, and service connectivity.
+homepage: https://konghq.com/products/kong-gateway
+repository: https://github.com/Kong/kong
+license: Apache-2.0
+deployment_types:
+- self-hosted
+- hybrid
+status: active
+verified_at: '2026-08-31'
+tags:
+- api
+- gateway
+- proxy
+sources:
+- title: Kong Gateway product page
+  url: https://konghq.com/products/kong-gateway
+  type: official
+- title: Kong Gateway repository
+  url: https://github.com/Kong/kong
+  type: repository
