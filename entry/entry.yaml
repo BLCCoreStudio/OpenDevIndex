@@ -1,0 +1,20 @@
+schema_version: 1
+id: jax
+name: JAX
+category: ai
+summary: Python array-computing and machine-learning library providing NumPy-style APIs with automatic differentiation, compilation, vectorization, and accelerator execution.
+homepage: https://docs.jax.dev/
+repository: https://github.com/jax-ml/jax
+status: active
+verified_at: '2026-08-31'
+tags:
+- machine-learning
+- autodiff
+- accelerators
+sources:
+- title: JAX documentation
+  url: https://docs.jax.dev/
+  type: documentation
+- title: JAX repository
+  url: https://github.com/jax-ml/jax
+  type: repository
