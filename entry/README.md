@@ -1,31 +1,47 @@
 # Git
 
-Git is a free and open-source distributed version control system used to track changes, coordinate development, and move work between repositories without requiring a single central server for the local history.
+> Distributed version control system used to track source history, collaborate through branches, and exchange changes across software projects.
+
+## What it is
+
+Git is indexed as a **tool**. Its stable OpenDevIndex address is `tool/git`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
 
 ## Why it matters
 
-A normal Git clone contains repository history, so developers can inspect commits, create branches, compare changes, and commit locally before synchronizing with a remote. That distributed model supports everything from solo projects to very large collaborative codebases.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
-## Core model
+## Typical use cases
 
-Git stores project history as objects addressed by cryptographic hashes. Commits point to project trees and parent commits; branch names are movable references to commits. Commands such as `clone`, `fetch`, `pull`, `commit`, `branch`, `merge`, `rebase`, and `push` manipulate local history or synchronize it with other repositories.
+- Track and review source-code history
+- Coordinate parallel development with branches
+- Exchange changes through distributed repositories
 
-## Good fit
+## Key points
 
-- Source-code version control
-- Collaborative software development
-- Release and maintenance branches
-- Code review workflows built on Git hosting services
-- Reproducible history for configuration, documentation, and other text-based assets
+- Distributed rather than server-dependent
+- Content-addressed object model underpins commits and trees
 
-## Trade-offs
+## Taxonomy
 
-Git is powerful, but its data model and commands can be confusing at first. Large binary assets may require additional tooling, and rewriting shared history can disrupt collaborators. Hosting platforms such as GitHub, GitLab, and Forgejo add collaboration features around Git but are not Git itself.
+- Kind: `tool`
+- Domains: `cli`, `developer-tools`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
 
-## Alternatives
+## Primary links
 
-Mercurial and Fossil are distributed alternatives. Subversion and Perforce use more centralized models and can be preferable in specific enterprise or large-binary workflows.
+- Homepage: https://git-scm.com/
+- Repository: https://github.com/git/git
+
+## Verified sources
+
+- [Git official site](https://git-scm.com/) — `official`
+- [Git source repository](https://github.com/git/git) — `repository`
 
 ## Verification
 
-This module was reviewed against the official Git website and documentation on 2026-08-31.
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
+## Maintenance
+
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
