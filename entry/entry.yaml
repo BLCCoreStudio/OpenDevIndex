@@ -2,6 +2,10 @@ schema_version: 1
 id: flutter
 name: Flutter
 category: framework
+kind: framework
+domains:
+- mobile
+- software-development
 summary: Cross-platform application UI toolkit using Dart to build natively compiled mobile, web, desktop, and embedded interfaces from shared code.
 homepage: https://flutter.dev/
 repository: https://github.com/flutter/flutter
