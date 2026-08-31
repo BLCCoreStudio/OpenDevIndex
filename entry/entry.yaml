@@ -1,0 +1,28 @@
+schema_version: 2
+id: pipx
+name: pipx
+category: tool
+kind: tool
+domains:
+- cli
+- developer-tools
+- python
+summary: Python application installer that places each command-line package in its own isolated environment while exposing its executables on the user PATH.
+homepage: https://pipx.pypa.io/
+repository: https://github.com/pypa/pipx
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- cli
+- packaging
+sources:
+- title: pipx documentation
+  url: https://pipx.pypa.io/
+  type: documentation
+- title: pipx source repository
+  url: https://github.com/pypa/pipx
+  type: repository
