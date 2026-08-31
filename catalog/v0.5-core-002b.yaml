@@ -1,0 +1,178 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 5
+expected_categories:
+  tool: 5
+entries:
+- category: tool
+  id: pnpm
+  name: pnpm
+  summary: JavaScript package manager that uses a content-addressable store and linked dependency layout to reduce duplicated files while supporting workspaces and modern Node.js projects.
+  homepage: https://pnpm.io/
+  repository: https://github.com/pnpm/pnpm
+  license: MIT
+  tags:
+  - javascript
+  - package-manager
+  - developer-tools
+  sources:
+  - title: pnpm documentation
+    url: https://pnpm.io/
+    type: documentation
+  - title: pnpm source repository
+    url: https://github.com/pnpm/pnpm
+    type: repository
+  use_cases:
+  - Install dependencies for Node.js and frontend projects
+  - Manage JavaScript and TypeScript monorepos with workspace support
+  - Reduce repeated package storage across many local projects
+  key_points:
+  - pnpm stores package contents in a shared content-addressable store
+  - Project dependency trees use links rather than copying every package into each project
+  - The package manager supports lockfiles, workspaces, scripts, publishing, and common npm registry workflows
+  kind: tool
+  domains:
+  - developer-tools
+  - web
+  - developer-experience
+  deployment_types:
+  - cli
+  - local
+- category: tool
+  id: gradle
+  name: Gradle
+  summary: General-purpose build automation system widely used for JVM and Android projects, with programmable build logic, incremental execution, dependency management, and caching.
+  homepage: https://gradle.org/
+  repository: https://github.com/gradle/gradle
+  license: Apache-2.0
+  tags:
+  - build-system
+  - jvm
+  - developer-tools
+  sources:
+  - title: Gradle official site
+    url: https://gradle.org/
+    type: official
+  - title: Gradle source repository
+    url: https://github.com/gradle/gradle
+    type: repository
+  use_cases:
+  - Build Android applications and multi-module JVM projects
+  - Automate compilation, testing, packaging, publishing, and custom project tasks
+  - Use incremental builds, dependency resolution, and local or remote build caches in large codebases
+  key_points:
+  - Gradle build logic is commonly authored with Kotlin or Groovy DSLs
+  - The task graph and incremental model avoid work when inputs and outputs have not changed
+  - The ecosystem includes extensive plugins for Android, JVM languages, native builds, publishing, and enterprise build infrastructure
+  kind: tool
+  domains:
+  - build
+  - developer-tools
+  - software-development
+  deployment_types:
+  - cli
+  - local
+- category: tool
+  id: maven
+  name: Apache Maven
+  summary: Build and project-management tool for Java and JVM ecosystems that uses declarative project models, dependency coordinates, lifecycle phases, and a large plugin repository.
+  homepage: https://maven.apache.org/
+  repository: https://github.com/apache/maven
+  license: Apache-2.0
+  tags:
+  - build-system
+  - java
+  - developer-tools
+  sources:
+  - title: Apache Maven official site
+    url: https://maven.apache.org/
+    type: official
+  - title: Apache Maven source repository
+    url: https://github.com/apache/maven
+    type: repository
+  use_cases:
+  - Build, test, package, and publish Java or JVM projects
+  - Resolve transitive dependencies from Maven-compatible artifact repositories
+  - Standardize project lifecycles and plugin-driven build steps across teams
+  key_points:
+  - Maven projects are conventionally described by a pom.xml project object model
+  - Dependency coordinates identify artifacts by group, artifact, and version
+  - A standard lifecycle organizes phases such as validation, compilation, testing, packaging, verification, installation, and deployment
+  kind: tool
+  domains:
+  - build
+  - developer-tools
+  - software-development
+  deployment_types:
+  - cli
+  - local
+- category: tool
+  id: ninja
+  name: Ninja
+  summary: Small build system focused on executing generated build graphs as quickly as possible, commonly used as a backend for higher-level generators such as CMake and Meson.
+  homepage: https://ninja-build.org/
+  repository: https://github.com/ninja-build/ninja
+  license: Apache-2.0
+  tags:
+  - build-system
+  - native
+  - developer-tools
+  sources:
+  - title: Ninja official site
+    url: https://ninja-build.org/
+    type: official
+  - title: Ninja source repository
+    url: https://github.com/ninja-build/ninja
+    type: repository
+  use_cases:
+  - Execute large native build graphs with low overhead
+  - Serve as the generated backend for CMake, Meson, GN, and other build configuration systems
+  - Run incremental compilation efficiently in projects with many files and generated dependencies
+  key_points:
+  - Ninja deliberately keeps its build-file language minimal and expects higher-level tools to generate complex graphs
+  - Fast startup and dependency checking are central design priorities
+  - The tool tracks explicit and discovered dependencies to avoid unnecessary rebuilds
+  kind: tool
+  domains:
+  - build
+  - developer-tools
+  - systems
+  deployment_types:
+  - cli
+  - local
+- category: tool
+  id: wireshark
+  name: Wireshark
+  summary: Open-source network protocol analyzer with graphical and command-line tooling for capturing, decoding, filtering, and inspecting packets across a large range of protocols.
+  homepage: https://www.wireshark.org/
+  repository: https://gitlab.com/wireshark/wireshark
+  license: GPL-2.0-or-later
+  tags:
+  - networking
+  - security
+  - protocol-analysis
+  sources:
+  - title: Wireshark official site
+    url: https://www.wireshark.org/
+    type: official
+  - title: Wireshark source repository
+    url: https://gitlab.com/wireshark/wireshark
+    type: repository
+  use_cases:
+  - Troubleshoot application and network communication problems
+  - Inspect protocol exchanges during development and interoperability testing
+  - Analyze packet captures for security investigations and operational diagnostics
+  key_points:
+  - Wireshark includes deep protocol dissectors and powerful display filters
+  - TShark exposes packet analysis capabilities for command-line and automated workflows
+  - Capturing traffic may require elevated operating-system privileges even when analysis itself does not
+  kind: tool
+  domains:
+  - networking
+  - security
+  - developer-tools
+  deployment_types:
+  - desktop
+  - cli
+  - local
