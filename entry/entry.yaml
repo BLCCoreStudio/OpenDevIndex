@@ -1,0 +1,20 @@
+schema_version: 1
+id: curl
+name: curl
+category: tool
+summary: Command-line tool and transfer library for moving data using URLs across many network protocols, commonly used for HTTP automation and debugging.
+homepage: https://curl.se/
+repository: https://github.com/curl/curl
+status: active
+verified_at: '2026-08-31'
+tags:
+- networking
+- http
+- cli
+sources:
+- title: curl official site
+  url: https://curl.se/
+  type: official
+- title: curl repository
+  url: https://github.com/curl/curl
+  type: repository
