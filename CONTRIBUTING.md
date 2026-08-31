@@ -4,11 +4,11 @@ OpenDevIndex is a structured, source-backed index of software, developer tools, 
 
 ## Core principle
 
-Every entry must be useful on its own. Branches are knowledge modules, not placeholders.
+Every knowledge module must be useful on its own, backed by authoritative references, and understandable without relying on hidden context.
 
-## Entry branch naming
+## Module identifiers
 
-Use one of these prefixes:
+Use one of these stable category/slug forms:
 
 - `tool/<slug>`
 - `language/<slug>`
@@ -23,9 +23,9 @@ Use one of these prefixes:
 
 Examples: `tool/qemu`, `language/rust`, `framework/pytorch`, `protocol/mcp`.
 
-## Required files in an entry branch
+## Required module files
 
-Each knowledge branch should contain:
+Each independently versioned module contains:
 
 - `entry/README.md` — human-readable overview
 - `entry/entry.yaml` — machine-readable metadata
@@ -34,18 +34,35 @@ Each knowledge branch should contain:
 
 ## Quality rules
 
-1. No empty or number-only branches.
-2. No copied marketing text.
+1. Do not publish placeholder or low-value modules.
+2. Do not copy marketing text as documentation.
 3. Prefer primary sources and official documentation.
-4. Separate facts from opinions.
-5. Include alternatives and trade-offs where useful.
-6. Mark rapidly changing information with a verification date.
-7. Keep entries concise enough to scan but detailed enough to teach.
+4. Use public HTTPS references; local, private-network, or credential-bearing URLs are rejected.
+5. Separate facts from opinions.
+6. Include alternatives and trade-offs where useful.
+7. Mark rapidly changing information with a verification date.
+8. Keep entries concise enough to scan but detailed enough to teach.
+
+## Local checks
+
+Before opening a pull request that changes core tooling or catalogs, run:
+
+```bash
+python -m pip install -r requirements-ci.txt
+python -m unittest discover -s tests -v
+python scripts/validate_catalog.py catalog/v0.1.yaml
+python scripts/build_index.py --catalog-dir catalog --output-dir dist/index
+python scripts/search_index.py "your query" --index dist/index/search.json
+```
+
+Network source-health checks run separately in GitHub Actions so pull requests do not make arbitrary outbound requests.
 
 ## Pull requests
 
-Changes to the core schema, automation, or catalog belong in normal feature branches and PRs. Knowledge-module branches are independently versioned and should remain understandable without relying on hidden context.
+Changes to the core schema, automation, catalog data, search tooling, or project documentation belong in normal feature branches and pull requests. Independently versioned knowledge modules should remain understandable and maintainable over time.
 
 ## Long-term goal
 
-Build 10,000 verified, useful knowledge modules without sacrificing quality for the branch count.
+Build a broad, searchable, verified software knowledge index without sacrificing accuracy, source quality, or maintainability.
+
+Each knowledge module is independently validated for structure, accuracy, and quality before being included in the index.
