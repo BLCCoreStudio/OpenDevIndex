@@ -1,0 +1,28 @@
+schema_version: 2
+id: opensearch
+name: OpenSearch
+category: database
+kind: database
+domains:
+- analytics
+- data
+- observability
+summary: Open-source distributed search and analytics suite derived from Elasticsearch and Kibana, providing document indexing, querying, dashboards, and observability capabilities.
+homepage: https://opensearch.org/
+repository: https://github.com/opensearch-project/OpenSearch
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- search
+- database
+- analytics
+sources:
+- title: OpenSearch official site
+  url: https://opensearch.org/
+  type: official
+- title: OpenSearch source repository
+  url: https://github.com/opensearch-project/OpenSearch
+  type: repository
