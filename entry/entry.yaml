@@ -2,6 +2,9 @@ schema_version: 1
 id: java
 name: Java
 category: language
+kind: language
+domains:
+- programming-languages
 summary: Class-based general-purpose programming language and platform centered on the Java Virtual Machine, with a large server and enterprise ecosystem.
 homepage: https://openjdk.org/
 repository: https://github.com/openjdk/jdk
