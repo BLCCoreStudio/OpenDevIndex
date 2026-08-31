@@ -1,0 +1,28 @@
+schema_version: 2
+id: github-actions
+name: GitHub Actions
+category: tool
+kind: tool
+domains:
+- ci-cd
+- devops
+summary: GitHub-native automation platform for continuous integration, delivery, scheduled jobs, and repository workflows defined as versioned YAML files.
+homepage: https://docs.github.com/actions
+repository: https://github.com/actions/runner
+license: MIT
+deployment_types:
+- saas
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- ci
+- cd
+- automation
+sources:
+- title: GitHub Actions documentation
+  url: https://docs.github.com/actions
+  type: documentation
+- title: GitHub Actions runner repository
+  url: https://github.com/actions/runner
+  type: repository
