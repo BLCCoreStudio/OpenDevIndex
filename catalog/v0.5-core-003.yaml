@@ -1,0 +1,177 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 5
+expected_categories:
+  tool: 1
+  database: 4
+entries:
+- category: tool
+  id: containerd
+  name: containerd
+  summary: Industry-standard container runtime focused on managing the complete container lifecycle, including image transfer, storage, execution, supervision, and low-level runtime integration.
+  homepage: https://containerd.io/
+  repository: https://github.com/containerd/containerd
+  license: Apache-2.0
+  tags:
+  - containers
+  - runtime
+  - systems
+  sources:
+  - title: containerd official site
+    url: https://containerd.io/
+    type: official
+  - title: containerd source repository
+    url: https://github.com/containerd/containerd
+    type: repository
+  use_cases:
+  - Provide container lifecycle services underneath Kubernetes and other orchestration platforms
+  - Manage OCI images, snapshots, running containers, and runtime processes
+  - Embed a stable container runtime API inside higher-level infrastructure platforms
+  key_points:
+  - containerd is a daemon and API rather than a full end-user developer platform like Docker
+  - It integrates with OCI runtimes such as runc for low-level container execution
+  - The project is a graduated Cloud Native Computing Foundation project and is widely used in Kubernetes environments
+  kind: tool
+  domains:
+  - containers
+  - systems
+  - cloud
+  deployment_types:
+  - service
+  - system
+  - self-hosted
+- category: database
+  id: mongodb
+  name: MongoDB
+  summary: Document-oriented database that stores records in BSON-like documents and provides indexing, replication, aggregation, transactions, and distributed deployment capabilities.
+  homepage: https://www.mongodb.com/
+  repository: https://github.com/mongodb/mongo
+  license: SSPL-1.0
+  tags:
+  - database
+  - document
+  - distributed-systems
+  sources:
+  - title: MongoDB documentation
+    url: https://www.mongodb.com/docs/manual/
+    type: documentation
+  - title: MongoDB server source repository
+    url: https://github.com/mongodb/mongo
+    type: repository
+  use_cases:
+  - Store application data with flexible document-shaped schemas
+  - Build operational backends that need secondary indexes and aggregation pipelines
+  - Run replicated or sharded deployments for availability and horizontal data distribution
+  key_points:
+  - MongoDB uses BSON documents rather than rows in fixed relational tables
+  - Replica sets provide replication and automatic primary election
+  - Sharding distributes collections across multiple servers for horizontal scaling
+  kind: database
+  domains:
+  - data
+  - distributed-systems
+  - web
+  deployment_types:
+  - self-hosted
+  - service
+- category: database
+  id: clickhouse
+  name: ClickHouse
+  summary: Open-source column-oriented database management system optimized for high-volume analytical queries, real-time reporting, compression, and large-scale event or telemetry data.
+  homepage: https://clickhouse.com/
+  repository: https://github.com/ClickHouse/ClickHouse
+  license: Apache-2.0
+  tags:
+  - database
+  - analytics
+  - columnar
+  sources:
+  - title: ClickHouse official site
+    url: https://clickhouse.com/
+    type: official
+  - title: ClickHouse source repository
+    url: https://github.com/ClickHouse/ClickHouse
+    type: repository
+  use_cases:
+  - Run interactive analytics over very large event datasets
+  - Store observability, telemetry, product, advertising, and time-oriented analytical data
+  - Build low-latency reporting systems that benefit from columnar storage and compression
+  key_points:
+  - ClickHouse is column-oriented, allowing analytical queries to read only relevant columns
+  - Its execution engine is designed for vectorized high-throughput query processing
+  - The system supports replication and distributed query execution for large deployments
+  kind: database
+  domains:
+  - data
+  - analytics
+  - observability
+  deployment_types:
+  - self-hosted
+  - service
+- category: database
+  id: cassandra
+  name: Apache Cassandra
+  summary: Distributed wide-column database designed for high availability, horizontal scale, multi-node replication, and predictable write-heavy workloads without a single primary server.
+  homepage: https://cassandra.apache.org/
+  repository: https://github.com/apache/cassandra
+  license: Apache-2.0
+  tags:
+  - database
+  - distributed-systems
+  - wide-column
+  sources:
+  - title: Apache Cassandra official site
+    url: https://cassandra.apache.org/
+    type: official
+  - title: Apache Cassandra source repository
+    url: https://github.com/apache/cassandra
+    type: repository
+  use_cases:
+  - Store high-volume operational data across many commodity servers
+  - Run geographically distributed workloads that prioritize availability and replication
+  - Support write-heavy applications with partitioned data models and tunable consistency
+  key_points:
+  - Cassandra uses a peer-to-peer architecture without a single primary node
+  - Data is partitioned and replicated across a cluster according to configurable strategies
+  - CQL provides a SQL-inspired interface while the underlying data model is optimized around query-specific partitions
+  kind: database
+  domains:
+  - data
+  - distributed-systems
+  deployment_types:
+  - self-hosted
+  - service
+- category: database
+  id: neo4j
+  name: Neo4j
+  summary: Graph database platform centered on property graphs and the Cypher query language, designed for traversing and analyzing highly connected data and relationship-heavy domains.
+  homepage: https://neo4j.com/
+  repository: https://github.com/neo4j/neo4j
+  license: GPL-3.0 (Community Edition)
+  tags:
+  - database
+  - graph
+  - analytics
+  sources:
+  - title: Neo4j official site
+    url: https://neo4j.com/
+    type: official
+  - title: Neo4j source repository
+    url: https://github.com/neo4j/neo4j
+    type: repository
+  use_cases:
+  - Model fraud, identity, recommendation, network, and knowledge relationships
+  - Run graph traversals and pattern queries over connected application data
+  - Build applications where relationships are first-class entities rather than join-table details
+  key_points:
+  - Neo4j stores nodes and relationships with properties in a native graph model
+  - Cypher expresses graph pattern matching using a declarative query syntax
+  - Graph traversal can avoid repeated relational joins for workloads dominated by connected paths and neighborhoods
+  kind: database
+  domains:
+  - data
+  - analytics
+  deployment_types:
+  - self-hosted
+  - service
