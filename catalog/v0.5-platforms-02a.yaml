@@ -1,0 +1,323 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  platform: 10
+entries:
+- category: platform
+  id: gitlab
+  name: GitLab
+  homepage: https://about.gitlab.com/
+  repository: https://gitlab.com/gitlab-org/gitlab
+  tags:
+  - git
+  - devops
+  - ci
+  kind: platform
+  domains:
+  - developer-tools
+  - ci-cd
+  - devops
+  deployment_types:
+  - self-hosted
+  summary: GitLab is a software development platform combining Git repository hosting, code review, issue tracking, CI/CD, security, and delivery workflows in a single integrated application.
+  sources:
+  - title: GitLab official site or documentation
+    url: https://about.gitlab.com/
+    type: official
+  - title: GitLab source repository
+    url: https://gitlab.com/gitlab-org/gitlab
+    type: repository
+  use_cases:
+  - Deploy GitLab as a shared platform for teams working across developer tools and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate GitLab for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - GitLab is a software development platform combining Git repository hosting, code review, issue tracking, CI/CD, security, and delivery workflows in a single integrated application.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: gitea
+  name: Gitea
+  homepage: https://about.gitea.com/
+  repository: https://github.com/go-gitea/gitea
+  tags:
+  - git
+  - self-hosted
+  - forge
+  kind: platform
+  domains:
+  - developer-tools
+  - devops
+  deployment_types:
+  - self-hosted
+  summary: Gitea is a lightweight self-hosted software forge providing Git repository hosting, pull requests, issues, packages, actions, and collaboration features with simple deployment.
+  sources:
+  - title: Gitea official site or documentation
+    url: https://about.gitea.com/
+    type: official
+  - title: Gitea source repository
+    url: https://github.com/go-gitea/gitea
+    type: repository
+  use_cases:
+  - Deploy Gitea as a shared platform for teams working across developer tools and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate Gitea for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - Gitea is a lightweight self-hosted software forge providing Git repository hosting, pull requests, issues, packages, actions, and collaboration features with simple deployment.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: forgejo
+  name: Forgejo
+  homepage: https://forgejo.org/
+  repository: https://codeberg.org/forgejo/forgejo
+  tags:
+  - git
+  - self-hosted
+  - forge
+  kind: platform
+  domains:
+  - developer-tools
+  - open-source
+  - devops
+  deployment_types:
+  - self-hosted
+  summary: Forgejo is a community-governed self-hosted software forge derived from Gitea, providing Git hosting, issues, pull requests, actions, packages, and open collaboration infrastructure.
+  sources:
+  - title: Forgejo official site or documentation
+    url: https://forgejo.org/
+    type: official
+  - title: Forgejo source repository
+    url: https://codeberg.org/forgejo/forgejo
+    type: repository
+  use_cases:
+  - Deploy Forgejo as a shared platform for teams working across developer tools and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate Forgejo for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - Forgejo is a community-governed self-hosted software forge derived from Gitea, providing Git hosting, issues, pull requests, actions, packages, and open collaboration infrastructure.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: sentry
+  name: Sentry
+  homepage: https://sentry.io/
+  repository: https://github.com/getsentry/sentry
+  tags:
+  - observability
+  - errors
+  - monitoring
+  kind: platform
+  domains:
+  - observability
+  - developer-tools
+  deployment_types:
+  - self-hosted
+  summary: Sentry is an application observability platform focused on error tracking, performance monitoring, tracing, profiling, and developer-facing diagnostics for production software.
+  sources:
+  - title: Sentry official site or documentation
+    url: https://sentry.io/
+    type: official
+  - title: Sentry source repository
+    url: https://github.com/getsentry/sentry
+    type: repository
+  use_cases:
+  - Deploy Sentry as a shared platform for teams working across observability and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate Sentry for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - Sentry is an application observability platform focused on error tracking, performance monitoring, tracing, profiling, and developer-facing diagnostics for production software.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: keycloak
+  name: Keycloak
+  homepage: https://www.keycloak.org/
+  repository: https://github.com/keycloak/keycloak
+  tags:
+  - identity
+  - authentication
+  - security
+  kind: platform
+  domains:
+  - security
+  - api
+  deployment_types:
+  - self-hosted
+  summary: Keycloak is an open-source identity and access management platform providing single sign-on, identity brokering, federation, OAuth 2.0, OpenID Connect, and SAML capabilities.
+  sources:
+  - title: Keycloak official site or documentation
+    url: https://www.keycloak.org/
+    type: official
+  - title: Keycloak source repository
+    url: https://github.com/keycloak/keycloak
+    type: repository
+  use_cases:
+  - Deploy Keycloak as a shared platform for teams working across security and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate Keycloak for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - Keycloak is an open-source identity and access management platform providing single sign-on, identity brokering, federation, OAuth 2.0, OpenID Connect, and SAML capabilities.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: backstage
+  name: Backstage
+  homepage: https://backstage.io/
+  repository: https://github.com/backstage/backstage
+  tags:
+  - developer-portal
+  - platform-engineering
+  - catalog
+  kind: platform
+  domains:
+  - developer-experience
+  - developer-tools
+  deployment_types:
+  - self-hosted
+  summary: Backstage is an open-source developer portal framework from Spotify for building software catalogs, documentation hubs, templates, and internal developer platforms around existing engineering tooling.
+  sources:
+  - title: Backstage official site or documentation
+    url: https://backstage.io/
+    type: official
+  - title: Backstage source repository
+    url: https://github.com/backstage/backstage
+    type: repository
+  use_cases:
+  - Deploy Backstage as a shared platform for teams working across developer experience and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate Backstage for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - Backstage is an open-source developer portal framework from Spotify for building software catalogs, documentation hubs, templates, and internal developer platforms around existing engineering tooling.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: openstack
+  name: OpenStack
+  homepage: https://www.openstack.org/
+  repository: https://opendev.org/openstack/nova
+  tags:
+  - cloud
+  - iaas
+  - open-source
+  kind: platform
+  domains:
+  - cloud
+  - virtualization
+  - open-source
+  deployment_types:
+  - self-hosted
+  summary: OpenStack is an open-source cloud computing platform composed of services for virtual machines, networking, storage, identity, images, orchestration, and private or public infrastructure clouds.
+  sources:
+  - title: OpenStack official site or documentation
+    url: https://www.openstack.org/
+    type: official
+  - title: OpenStack source repository
+    url: https://opendev.org/openstack/nova
+    type: repository
+  use_cases:
+  - Deploy OpenStack as a shared platform for teams working across cloud and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate OpenStack for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - OpenStack is an open-source cloud computing platform composed of services for virtual machines, networking, storage, identity, images, orchestration, and private or public infrastructure clouds.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: rancher
+  name: Rancher
+  homepage: https://www.rancher.com/
+  repository: https://github.com/rancher/rancher
+  tags:
+  - kubernetes
+  - cluster-management
+  - containers
+  kind: platform
+  domains:
+  - containers
+  - cloud
+  - devops
+  deployment_types:
+  - self-hosted
+  summary: Rancher is an open-source Kubernetes management platform for operating multiple clusters, centralizing access control, policy, provisioning, application delivery, and lifecycle workflows.
+  sources:
+  - title: Rancher official site or documentation
+    url: https://www.rancher.com/
+    type: official
+  - title: Rancher source repository
+    url: https://github.com/rancher/rancher
+    type: repository
+  use_cases:
+  - Deploy Rancher as a shared platform for teams working across containers and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate Rancher for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - Rancher is an open-source Kubernetes management platform for operating multiple clusters, centralizing access control, policy, provisioning, application delivery, and lifecycle workflows.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: harbor
+  name: Harbor
+  homepage: https://goharbor.io/
+  repository: https://github.com/goharbor/harbor
+  tags:
+  - registry
+  - containers
+  - supply-chain
+  kind: platform
+  domains:
+  - containers
+  - security
+  - devops
+  deployment_types:
+  - self-hosted
+  summary: Harbor is an open-source cloud-native registry for OCI container images and artifacts with replication, access control, vulnerability integration, and project-level governance.
+  sources:
+  - title: Harbor official site or documentation
+    url: https://goharbor.io/
+    type: official
+  - title: Harbor source repository
+    url: https://github.com/goharbor/harbor
+    type: repository
+  use_cases:
+  - Deploy Harbor as a shared platform for teams working across containers and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate Harbor for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - Harbor is an open-source cloud-native registry for OCI container images and artifacts with replication, access control, vulnerability integration, and project-level governance.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
+- category: platform
+  id: sonarqube
+  name: SonarQube
+  homepage: https://www.sonarsource.com/products/sonarqube/
+  repository: https://github.com/SonarSource/sonarqube
+  tags:
+  - static-analysis
+  - code-quality
+  - security
+  kind: platform
+  domains:
+  - developer-tools
+  - security
+  - testing
+  deployment_types:
+  - self-hosted
+  summary: SonarQube is a static-analysis and code-quality platform that continuously inspects source code for reliability, maintainability, and security issues across many programming languages.
+  sources:
+  - title: SonarQube official site or documentation
+    url: https://www.sonarsource.com/products/sonarqube/
+    type: official
+  - title: SonarQube source repository
+    url: https://github.com/SonarSource/sonarqube
+    type: repository
+  use_cases:
+  - Deploy SonarQube as a shared platform for teams working across developer tools and related engineering workflows
+  - Centralize capabilities that would otherwise require several separately managed services, integrations, or operational processes
+  - Evaluate SonarQube for self-hosted or managed adoption based on governance, scalability, security, and integration requirements
+  key_points:
+  - SonarQube is a static-analysis and code-quality platform that continuously inspects source code for reliability, maintainability, and security issues across many programming languages.
+  - Platform value depends on how well its integrated services match an organization's workflow, governance, and operations model
+  - Deployment architecture, supported integrations, licensing, and upgrade requirements should be checked in current documentation
