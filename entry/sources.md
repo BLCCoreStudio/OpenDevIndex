@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Linux kernel archives** — https://www.kernel.org/ (`official`)
 - **Linux source mirror** — https://github.com/torvalds/linux (`repository`)
