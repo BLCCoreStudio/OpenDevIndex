@@ -4,6 +4,7 @@ name: C++
 category: language
 kind: language
 domains:
+- performance
 - programming-languages
 - systems
 summary: Multi-paradigm compiled programming language built on C heritage and widely used for performance-sensitive systems, applications, games, and infrastructure.
