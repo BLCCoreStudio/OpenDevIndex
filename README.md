@@ -13,11 +13,11 @@ Instead of keeping thousands of unrelated notes in one giant document, OpenDevIn
 - **Independently versioned** — one subject can evolve without rewriting the entire index.
 - **Broad by design** — tools, languages, frameworks, AI, security, cloud, databases, protocols, concepts, and open-source ecosystems belong here.
 - **Automation-friendly** — catalogs, schemas, and CI make the index usable by humans, scripts, search engines, and future applications.
-- **Quality before branch count** — an empty ref is not a knowledge module.
+- **Quality-gated** — modules are included only after structure, metadata, and source checks pass.
 
-## Knowledge branches
+## Knowledge modules
 
-Each knowledge module lives on a dedicated branch:
+Knowledge modules are independently versioned using stable category/slug addresses:
 
 ```text
 tool/git
@@ -43,7 +43,7 @@ entry/
 └── history.md
 ```
 
-Branches must contain real, useful information. Empty or artificial branches are explicitly rejected by the project rules.
+Modules must contain real, useful information and pass validation before inclusion in the index.
 
 ## v0.1 curated catalog
 
@@ -65,7 +65,7 @@ The first milestone is defined in [`catalog/v0.1.yaml`](catalog/v0.1.yaml):
 
 Every catalog record has a stable slug, a human-written summary, tags, curated use cases, key points, and authoritative HTTPS sources.
 
-The trusted seeding pipeline is **idempotent**: it skips branches that already exist, renders missing modules from the reviewed catalog, runs the entry validator before every commit, and only then pushes the branch. Pull requests never receive seed write permission.
+The trusted seeding pipeline is **idempotent**: it skips modules that already exist, renders missing modules from the reviewed catalog, runs the entry validator before every commit, and only then publishes the validated module. Pull requests never receive seed write permission.
 
 See [`catalog/README.md`](catalog/README.md) and [`docs/SEEDING.md`](docs/SEEDING.md).
 
@@ -101,9 +101,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/ARCHITECTURE.md](docs/ARCHITECT
 
 ## Validation and supply-chain hygiene
 
-OpenDevIndex validates both the curated catalog and individual knowledge branches in GitHub Actions. Third-party Actions used by the core workflows are pinned to exact commit SHAs.
+OpenDevIndex validates both the curated catalog and individual knowledge modules in GitHub Actions. Third-party Actions used by the core workflows are pinned to exact commit SHAs.
 
-A branch only counts toward a milestone when its required files and metadata pass validation.
+A module is included in a milestone only when its required files and metadata pass validation.
 
 ## Roadmap
 
@@ -111,7 +111,7 @@ A branch only counts toward a milestone when its required files and metadata pas
 - **v0.5:** 1,000 verified knowledge modules + generated search catalog
 - **v1.0:** 10,000 verified knowledge modules + public searchable index
 
-The 10,000-module goal is a **content goal, not a branch-count stunt**.
+Each knowledge module is independently validated for structure, accuracy, and quality before being included in the index.
 
 ## License
 
