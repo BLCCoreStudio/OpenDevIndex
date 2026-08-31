@@ -71,6 +71,20 @@
       "uniqueItems": true,
       "items": { "type": "string" }
     },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["area", "topics"],
+      "properties": {
+        "area": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "topics": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" }
+        }
+      }
+    },
     "relationships": {
       "type": "array",
       "uniqueItems": true,
