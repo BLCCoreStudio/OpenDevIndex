@@ -1,0 +1,29 @@
+schema_version: 2
+id: wasmtime
+name: Wasmtime
+category: runtime
+kind: runtime
+domains:
+- systems
+- webassembly
+summary: Standalone WebAssembly runtime from the Bytecode Alliance focused on standards compliance, security, embedding, and efficient execution across platforms.
+homepage: https://wasmtime.dev/
+repository: https://github.com/bytecodealliance/wasmtime
+license: Apache-2.0 WITH LLVM-exception
+deployment_types:
+- local
+- embedded
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- webassembly
+- runtime
+- systems
+sources:
+- title: Wasmtime official site
+  url: https://wasmtime.dev/
+  type: official
+- title: Wasmtime repository
+  url: https://github.com/bytecodealliance/wasmtime
+  type: repository
