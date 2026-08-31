@@ -1,0 +1,28 @@
+schema_version: 2
+id: lightgbm
+name: LightGBM
+category: library
+kind: library
+domains:
+- ai
+- data
+- machine-learning
+summary: Gradient-boosting framework from Microsoft designed for efficient tree-based learning on large datasets, with support for classification, regression, and ranking.
+homepage: https://lightgbm.readthedocs.io/
+repository: https://github.com/microsoft/LightGBM
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- machine-learning
+- gradient-boosting
+- data
+sources:
+- title: LightGBM documentation
+  url: https://lightgbm.readthedocs.io/
+  type: documentation
+- title: LightGBM source repository
+  url: https://github.com/microsoft/LightGBM
+  type: repository
