@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Open Container Initiative** — https://opencontainers.org/ (`official`)
 - **OCI Runtime Specification** — https://github.com/opencontainers/runtime-spec (`standard`)

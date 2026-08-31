@@ -2,6 +2,10 @@ schema_version: 1
 id: containers
 name: Containers
 category: concept
+kind: concept
+domains:
+- containers
+- software-development
 summary: Operating-system-level isolation model that packages applications with dependencies while sharing a host kernel and using standardized image and runtime formats.
 homepage: https://opencontainers.org/
 repository: https://github.com/opencontainers/runtime-spec

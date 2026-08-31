@@ -2,9 +2,13 @@
 
 > Operating-system-level isolation model that packages applications with dependencies while sharing a host kernel and using standardized image and runtime formats.
 
+## What it is
+
+Containers is indexed as a **concept**. Its stable OpenDevIndex address is `concept/containers`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-Containers is indexed by OpenDevIndex as a `concept` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ Containers is indexed by OpenDevIndex as a `concept` knowledge module. This page
 - Containers typically share the host kernel
 - OCI specifications standardize important image and runtime interfaces
 
+## Taxonomy
+
+- Kind: `concept`
+- Domains: `containers`, `software-development`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://opencontainers.org/
@@ -27,6 +38,10 @@ Containers is indexed by OpenDevIndex as a `concept` knowledge module. This page
 - [Open Container Initiative](https://opencontainers.org/) — `official`
 - [OCI Runtime Specification](https://github.com/opencontainers/runtime-spec) — `standard`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `concept/containers`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
