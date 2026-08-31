@@ -14,7 +14,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Check out repository
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
@@ -39,6 +39,12 @@ jobs:
             python scripts/validate_catalog.py "$catalog"
           done
 
+      - name: Audit editorial quality
+        run: |
+          python scripts/audit_quality.py \
+            --catalog-dir catalog \
+            --minimum 80
+
       - name: Validate module
         env:
           MODULE_REF: ${{ github.head_ref || github.ref_name }}
@@ -49,5 +55,9 @@ jobs:
         run: |
           python scripts/seed_modules.py \
             --catalog catalog/v0.1.yaml \
+            --base-ref HEAD \
+            --limit 1
+          python scripts/seed_modules.py \
+            --catalog catalog/v0.2-languages.yaml \
             --base-ref HEAD \
             --limit 1
