@@ -1,0 +1,26 @@
+schema_version: 2
+id: ocaml
+name: OCaml
+category: language
+kind: language
+domains:
+- programming-languages
+- systems
+summary: Statically typed functional programming language with powerful type inference and native-code compilation, used for compilers, verification tools, systems, and research.
+homepage: https://ocaml.org/
+repository: https://github.com/ocaml/ocaml
+deployment_types:
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- functional
+- native
+sources:
+- title: OCaml official site
+  url: https://ocaml.org/
+  type: official
+- title: OCaml source repository
+  url: https://github.com/ocaml/ocaml
+  type: repository
