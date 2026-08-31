@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Next.js official site** — https://nextjs.org/ (`official`)
 - **Next.js repository** — https://github.com/vercel/next.js (`repository`)
