@@ -1,0 +1,27 @@
+schema_version: 2
+id: rabbitmq
+name: RabbitMQ
+category: platform
+kind: platform
+domains:
+- data
+- distributed-systems
+summary: Open-source message broker implementing AMQP and additional messaging protocols, widely used for work queues, routing, publish-subscribe, and reliable service integration.
+homepage: https://www.rabbitmq.com/
+repository: https://github.com/rabbitmq/rabbitmq-server
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- messaging
+- amqp
+- queue
+sources:
+- title: RabbitMQ official site
+  url: https://www.rabbitmq.com/
+  type: official
+- title: RabbitMQ source repository
+  url: https://github.com/rabbitmq/rabbitmq-server
+  type: repository
