@@ -1,0 +1,90 @@
+schema_version: 1
+name: OpenDevIndex Technology Universe
+target_modules: 10000
+principles:
+  - source-backed
+  - independently-validated
+  - relationship-aware
+  - technology-wide
+  - no-placeholder-content
+areas:
+  - id: computer-science
+    name: Computer Science Foundations
+    target_modules: 600
+    topics: [algorithms, data-structures, complexity, computability, information-theory, logic, discrete-mathematics, numerical-computing, programming-paradigms, theory]
+  - id: programming-languages
+    name: Programming Languages and Runtimes
+    target_modules: 650
+    topics: [languages, runtimes, virtual-machines, compilers, interpreters, type-systems, package-ecosystems, language-tools, interoperability, memory-models]
+  - id: software-engineering
+    name: Software Engineering and Architecture
+    target_modules: 600
+    topics: [architecture, design-patterns, api-design, system-design, concurrency, software-principles, refactoring, documentation, collaboration, engineering-practices]
+  - id: operating-systems
+    name: Operating Systems and Systems Software
+    target_modules: 450
+    topics: [kernels, linux, unix, windows, macos, android, ios, filesystems, processes, scheduling, memory-management, shells, system-services]
+  - id: hardware-architecture
+    name: Hardware and Computer Architecture
+    target_modules: 550
+    topics: [cpus, gpus, accelerators, instruction-sets, microarchitecture, memory, storage, buses, motherboards, firmware, semiconductors, computer-architecture]
+  - id: networking-internet
+    name: Networking and Internet Infrastructure
+    target_modules: 600
+    topics: [tcp-ip, dns, http, tls, routing, switching, wireless, cdn, proxies, vpn, internet-infrastructure, network-tools, network-architecture]
+  - id: cybersecurity-privacy
+    name: Cybersecurity, Cryptography and Privacy
+    target_modules: 700
+    topics: [application-security, network-security, identity, authentication, authorization, cryptography, privacy, vulnerability-research, defensive-security, threat-intelligence, malware-analysis, security-tools, supply-chain-security]
+  - id: web
+    name: Web Platforms and Development
+    target_modules: 500
+    topics: [browsers, html, css, javascript, frontend, backend, web-frameworks, web-apis, accessibility, web-performance, web-security, web-standards]
+  - id: mobile-desktop
+    name: Mobile and Desktop Computing
+    target_modules: 400
+    topics: [android, ios, desktop-frameworks, cross-platform, app-architecture, ui-systems, device-apis, application-packaging, app-security, platform-tooling]
+  - id: databases-data
+    name: Databases, Storage and Data Engineering
+    target_modules: 550
+    topics: [relational-databases, nosql, storage-engines, search, caching, streaming, analytics, data-formats, data-pipelines, warehouses, lakes, query-engines]
+  - id: cloud-devops-sre
+    name: Cloud, DevOps, Infrastructure and SRE
+    target_modules: 600
+    topics: [cloud-platforms, containers, orchestration, ci-cd, infrastructure-as-code, configuration-management, observability, sre, reliability, deployment, service-mesh, platform-engineering]
+  - id: ai-ml
+    name: Artificial Intelligence and Machine Learning
+    target_modules: 750
+    topics: [machine-learning, deep-learning, llms, multimodal-ai, agents, model-architectures, training, inference, datasets, evaluation, ai-infrastructure, mlops, responsible-ai]
+  - id: graphics-games-media-xr
+    name: Graphics, Games, Media and XR
+    target_modules: 350
+    topics: [computer-graphics, rendering, shaders, game-engines, audio, video, codecs, image-processing, animation, vr, ar, xr, creative-tools]
+  - id: embedded-iot-robotics
+    name: Embedded Systems, IoT and Robotics
+    target_modules: 400
+    topics: [microcontrollers, embedded-linux, rtos, firmware, sensors, actuators, iot-protocols, edge-computing, robotics, control-systems, hardware-software-integration]
+  - id: open-source-ecosystems
+    name: Open Source Ecosystems
+    target_modules: 300
+    topics: [major-projects, foundations, distributions, communities, governance, licensing, package-ecosystems, collaboration-models, project-history, sustainability]
+  - id: standards-protocols-formats
+    name: Standards, Protocols and Formats
+    target_modules: 400
+    topics: [internet-standards, web-standards, data-formats, binary-formats, media-formats, interoperability, specifications, apis, serialization, industry-standards]
+  - id: developer-tools
+    name: Developer Tools and Environments
+    target_modules: 450
+    topics: [editors, ides, terminals, shells, version-control, build-systems, package-managers, linters, formatters, code-search, developer-experience, automation]
+  - id: testing-debugging-performance
+    name: Testing, Debugging and Performance Engineering
+    target_modules: 350
+    topics: [testing, test-frameworks, debugging, profiling, tracing, benchmarking, fuzzing, static-analysis, dynamic-analysis, performance, reliability-testing]
+  - id: distributed-systems
+    name: Distributed and Large-Scale Systems
+    target_modules: 450
+    topics: [distributed-systems, consensus, replication, messaging, queues, event-streaming, distributed-storage, scalability, fault-tolerance, coordination, architectures]
+  - id: emerging-historical
+    name: Emerging and Historical Technology
+    target_modules: 350
+    topics: [quantum-computing, neuromorphic-computing, spatial-computing, decentralized-systems, experimental-systems, computing-history, legacy-platforms, influential-projects, research-systems]
