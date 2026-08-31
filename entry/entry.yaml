@@ -2,6 +2,10 @@ schema_version: 1
 id: gnome
 name: GNOME
 category: opensource
+kind: platform
+domains:
+- open-source
+- systems
 summary: Open-source desktop environment and application ecosystem for Linux and Unix-like systems, centered on GNOME Shell, GTK, and human-interface guidelines.
 homepage: https://www.gnome.org/
 repository: https://gitlab.gnome.org/GNOME
