@@ -1,0 +1,29 @@
+schema_version: 2
+id: axe-core
+name: axe-core
+category: library
+kind: library
+domains:
+- accessibility
+- testing
+- web
+summary: Accessibility testing engine for automated detection of many WCAG-related issues in HTML-based user interfaces and browser testing workflows.
+homepage: https://www.deque.com/axe/core-documentation/
+repository: https://github.com/dequelabs/axe-core
+license: MPL-2.0
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- accessibility
+- testing
+- web
+sources:
+- title: axe-core documentation
+  url: https://www.deque.com/axe/core-documentation/
+  type: documentation
+- title: axe-core repository
+  url: https://github.com/dequelabs/axe-core
+  type: repository
