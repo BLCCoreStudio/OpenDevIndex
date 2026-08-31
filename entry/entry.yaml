@@ -1,0 +1,20 @@
+schema_version: 1
+id: scikit-learn
+name: scikit-learn
+category: ai
+summary: Python machine-learning library offering classical supervised and unsupervised algorithms, preprocessing, model selection, and evaluation utilities.
+homepage: https://scikit-learn.org/
+repository: https://github.com/scikit-learn/scikit-learn
+status: active
+verified_at: '2026-08-31'
+tags:
+- machine-learning
+- python
+- data-science
+sources:
+- title: scikit-learn official site
+  url: https://scikit-learn.org/
+  type: official
+- title: scikit-learn repository
+  url: https://github.com/scikit-learn/scikit-learn
+  type: repository
