@@ -1,0 +1,27 @@
+schema_version: 2
+id: influxdb
+name: InfluxDB
+category: database
+kind: database
+domains:
+- data
+- observability
+summary: Time-series database designed for metrics, events, observability, and sensor workloads, with specialized storage and query capabilities for timestamped data.
+homepage: https://www.influxdata.com/products/influxdb-overview/
+repository: https://github.com/influxdata/influxdb
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- database
+- timeseries
+- observability
+sources:
+- title: InfluxDB official site
+  url: https://www.influxdata.com/products/influxdb-overview/
+  type: official
+- title: InfluxDB source repository
+  url: https://github.com/influxdata/influxdb
+  type: repository
