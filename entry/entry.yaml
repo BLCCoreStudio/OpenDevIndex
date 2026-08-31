@@ -1,0 +1,20 @@
+schema_version: 1
+id: kotlin
+name: Kotlin
+category: language
+summary: Modern statically typed language from JetBrains targeting the JVM, Android, JavaScript, WebAssembly, and native platforms.
+homepage: https://kotlinlang.org/
+repository: https://github.com/JetBrains/kotlin
+status: active
+verified_at: '2026-08-31'
+tags:
+- jvm
+- android
+- multiplatform
+sources:
+- title: Kotlin official site
+  url: https://kotlinlang.org/
+  type: official
+- title: Kotlin documentation
+  url: https://kotlinlang.org/docs/home.html
+  type: documentation
