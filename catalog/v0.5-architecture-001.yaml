@@ -1,0 +1,55 @@
+schema_version: 3
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 1
+expected_categories:
+  architecture: 1
+entries:
+  - category: architecture
+    id: risc-v
+    name: RISC-V
+    kind: architecture
+    domains:
+      - computer-architecture
+      - hardware
+      - systems
+    coverage:
+      area: hardware-architecture
+      topics:
+        - instruction-sets
+        - computer-architecture
+    summary: An open-standard instruction set architecture built around a small base ISA plus optional extensions for processors ranging from embedded systems to general-purpose computing.
+    homepage: https://riscv.org/
+    repository: https://github.com/riscv/riscv-isa-manual
+    license: CC-BY-4.0
+    deployment_types:
+      - hardware
+      - embedded
+      - system
+    tags:
+      - risc-v
+      - isa
+      - hardware
+      - computer-architecture
+    sources:
+      - title: RISC-V Ratified Specifications Library
+        url: https://docs.riscv.org/reference/home/index.html
+        type: standard
+      - title: RISC-V ISA Manual repository
+        url: https://github.com/riscv/riscv-isa-manual
+        type: repository
+      - title: RISC-V International ratified specifications
+        url: https://riscv.org/specifications/ratified/
+        type: official
+    use_cases:
+      - Build embedded and general-purpose processors around an open standardized instruction-set architecture
+      - Develop operating systems compilers debuggers and low-level software against a portable ISA contract
+      - Research and teach computer architecture using openly available architectural specifications
+    key_points:
+      - RISC-V separates a required base integer ISA from optional standardized extensions
+      - The ISA defines software-visible architectural behavior without prescribing one processor microarchitecture
+      - Ratified specifications provide stable architectural contracts while draft extensions can still change
+    relationships:
+      - type: compatible-with
+        target: tool/qemu
+        note: QEMU supports RISC-V emulation for software development and testing workflows.
