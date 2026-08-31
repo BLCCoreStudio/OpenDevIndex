@@ -4,6 +4,7 @@ name: C
 category: language
 kind: language
 domains:
+- embedded
 - programming-languages
 - systems
 summary: Foundational compiled systems programming language standardized by ISO and widely used for operating systems, embedded software, libraries, and low-level interfaces.
