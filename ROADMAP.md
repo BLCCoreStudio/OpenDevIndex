@@ -3,11 +3,12 @@
 ## v0.1 — Foundation / 100 modules
 
 - Stable entry schema v1
-- CI validation for knowledge branches
+- CI validation for knowledge modules
 - Contribution templates
 - First 100 source-backed modules
 - Category and duplicate checks
-- Catalog generator prototype
+- Reproducible search-index generator and local search CLI
+- Automated source health workflow
 
 ## v0.5 — Searchable / 1,000 modules
 
@@ -15,7 +16,7 @@
 - Fast static search index
 - Cross-links between related technologies
 - Staleness detection based on `verified_at`
-- Automated source/link health checks
+- Automated source/link health reporting
 - Contributor quality dashboard
 
 ## v1.0 — Open software map / 10,000 modules
@@ -29,9 +30,9 @@
 
 ## Non-goals
 
-- Inflating branch count with empty data
+- Publishing placeholder or unverified modules
 - Mirroring proprietary documentation
 - Ranking products based on sponsorship
 - Treating generated AI text as a source
 
-A module counts toward a milestone only after it passes automated validation and contains useful human-readable content with sources.
+Each knowledge module is independently validated for structure, accuracy, and quality before being included in the index.

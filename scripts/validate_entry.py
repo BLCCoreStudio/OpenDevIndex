@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate an OpenDevIndex knowledge branch."""
+"""Validate an OpenDevIndex knowledge module."""
 
 from __future__ import annotations
 
@@ -8,9 +8,10 @@ import datetime as dt
 import re
 import sys
 from pathlib import Path
-from urllib.parse import urlparse
 
 import yaml
+
+from url_safety import is_safe_https_url
 
 CATEGORIES = {
     "tool",
@@ -39,13 +40,6 @@ def fail(message: str, errors: list[str]) -> None:
     errors.append(message)
 
 
-def valid_https_url(value: object) -> bool:
-    if not isinstance(value, str):
-        return False
-    parsed = urlparse(value)
-    return parsed.scheme == "https" and bool(parsed.netloc)
-
-
 def validate(branch: str) -> list[str]:
     errors: list[str] = []
 
@@ -53,7 +47,7 @@ def validate(branch: str) -> list[str]:
         return errors
 
     if "/" not in branch:
-        fail("Knowledge branch must use <category>/<slug>.", errors)
+        fail("Knowledge module ref must use <category>/<slug>.", errors)
         return errors
 
     category, slug = branch.split("/", 1)
@@ -98,9 +92,9 @@ def validate(branch: str) -> list[str]:
     if data.get("schema_version") != 1:
         fail("schema_version must be 1.", errors)
     if data.get("id") != slug:
-        fail(f"metadata id must match branch slug '{slug}'.", errors)
+        fail(f"metadata id must match module slug '{slug}'.", errors)
     if data.get("category") != category:
-        fail(f"metadata category must match branch category '{category}'.", errors)
+        fail(f"metadata category must match module category '{category}'.", errors)
 
     name = data.get("name")
     if not isinstance(name, str) or not name.strip() or len(name) > 100:
@@ -138,8 +132,8 @@ def validate(branch: str) -> list[str]:
 
     for field in ("homepage", "repository"):
         value = data.get(field)
-        if value is not None and not valid_https_url(value):
-            fail(f"{field} must be an HTTPS URL when present.", errors)
+        if value is not None and not is_safe_https_url(value):
+            fail(f"{field} must be a public HTTPS URL when present.", errors)
 
     sources = data.get("sources")
     if not isinstance(sources, list) or not sources:
@@ -152,8 +146,8 @@ def validate(branch: str) -> list[str]:
                 continue
             if not source.get("title"):
                 fail(f"source #{index} is missing title.", errors)
-            if not valid_https_url(source.get("url")):
-                fail(f"source #{index} must use an HTTPS URL.", errors)
+            if not is_safe_https_url(source.get("url")):
+                fail(f"source #{index} must use a public HTTPS URL.", errors)
             if source.get("type") not in allowed_types:
                 fail(f"source #{index} has unsupported type.", errors)
 
@@ -170,7 +164,7 @@ def validate(branch: str) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--branch", required=True, help="Branch name being validated")
+    parser.add_argument("--branch", required=True, help="Module ref or core branch name being validated")
     args = parser.parse_args()
 
     errors = validate(args.branch)

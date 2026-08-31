@@ -1,6 +1,6 @@
 # Curated catalogs
 
-OpenDevIndex catalogs are reviewable source-of-truth manifests used to create independently versioned knowledge branches.
+OpenDevIndex catalogs are reviewable source-of-truth manifests used to publish independently versioned knowledge modules and build searchable index artifacts.
 
 ## v0.1
 
@@ -9,10 +9,10 @@ OpenDevIndex catalogs are reviewable source-of-truth manifests used to create in
 - a stable category and slug;
 - a concise, human-written summary;
 - at least two useful tags;
-- authoritative HTTPS sources;
+- authoritative public HTTPS sources;
 - curated use cases;
 - curated key points.
 
-The catalog itself is validated in CI before any seed workflow can create branches. Pull requests never receive write permission for seeding. Branch creation is allowed only after the catalog reaches `main` or through an explicit workflow dispatch.
+The catalog is validated in CI before publication tooling can act on it. Pull requests never receive publication write permission; publication is allowed only after reviewed catalog data reaches `main` or through an explicit trusted workflow dispatch.
 
-The generator skips existing branches, so rerunning it is idempotent and safe for incremental milestones.
+The publication process is idempotent, so rerunning it is safe for incremental milestones. The same catalog data also feeds the reproducible search-index builder and scheduled source-health checks.

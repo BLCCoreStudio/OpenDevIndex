@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+dist/
+source-health.json
+source-health.md
+seed-report.json
+seed-report.md
