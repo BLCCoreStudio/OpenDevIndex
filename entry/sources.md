@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **scikit-learn official site** — https://scikit-learn.org/ (`official`)
 - **scikit-learn repository** — https://github.com/scikit-learn/scikit-learn (`repository`)

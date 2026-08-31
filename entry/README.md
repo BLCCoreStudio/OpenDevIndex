@@ -2,9 +2,13 @@
 
 > Python machine-learning library offering classical supervised and unsupervised algorithms, preprocessing, model selection, and evaluation utilities.
 
+## What it is
+
+scikit-learn is indexed as a **library**. Its stable OpenDevIndex address is `ai/scikit-learn`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-scikit-learn is indexed by OpenDevIndex as a `ai` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ scikit-learn is indexed by OpenDevIndex as a `ai` knowledge module. This page is
 - Estimator APIs are designed to compose consistently
 - Covers classification, regression, clustering, and dimensionality reduction
 
+## Taxonomy
+
+- Kind: `library`
+- Domains: `ai`, `machine-learning`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://scikit-learn.org/
@@ -27,6 +38,10 @@ scikit-learn is indexed by OpenDevIndex as a `ai` knowledge module. This page is
 - [scikit-learn official site](https://scikit-learn.org/) — `official`
 - [scikit-learn repository](https://github.com/scikit-learn/scikit-learn) — `repository`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `ai/scikit-learn`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
