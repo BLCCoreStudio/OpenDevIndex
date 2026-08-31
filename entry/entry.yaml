@@ -1,0 +1,28 @@
+schema_version: 2
+id: cassandra
+name: Apache Cassandra
+category: database
+kind: database
+domains:
+- data
+- distributed-systems
+summary: Distributed wide-column database designed for high availability, horizontal scale, multi-node replication, and predictable write-heavy workloads without a single primary server.
+homepage: https://cassandra.apache.org/
+repository: https://github.com/apache/cassandra
+license: Apache-2.0
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- database
+- distributed-systems
+- wide-column
+sources:
+- title: Apache Cassandra official site
+  url: https://cassandra.apache.org/
+  type: official
+- title: Apache Cassandra source repository
+  url: https://github.com/apache/cassandra
+  type: repository
