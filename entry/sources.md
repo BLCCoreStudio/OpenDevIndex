@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **jq official site** — https://jqlang.org/ (`official`)
 - **jq repository** — https://github.com/jqlang/jq (`repository`)
