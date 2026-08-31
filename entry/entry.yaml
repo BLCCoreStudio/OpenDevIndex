@@ -1,0 +1,28 @@
+schema_version: 2
+id: xgboost
+name: XGBoost
+category: library
+kind: library
+domains:
+- ai
+- data
+- machine-learning
+summary: Optimized gradient-boosting library for decision-tree models with distributed, GPU, and language-binding support across common machine-learning workflows.
+homepage: https://xgboost.ai/
+repository: https://github.com/dmlc/xgboost
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- machine-learning
+- gradient-boosting
+- data
+sources:
+- title: XGBoost official site
+  url: https://xgboost.ai/
+  type: official
+- title: XGBoost source repository
+  url: https://github.com/dmlc/xgboost
+  type: repository
