@@ -1,0 +1,28 @@
+schema_version: 2
+id: sentence-transformers
+name: Sentence Transformers
+category: library
+kind: library
+domains:
+- ai
+- data
+- machine-learning
+summary: Python framework for producing and training text and multimodal embeddings, commonly used for semantic search, clustering, retrieval, and similarity tasks.
+homepage: https://www.sbert.net/
+repository: https://github.com/UKPLab/sentence-transformers
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- ai
+- embeddings
+- nlp
+sources:
+- title: Sentence Transformers documentation
+  url: https://www.sbert.net/
+  type: documentation
+- title: Sentence Transformers source repository
+  url: https://github.com/UKPLab/sentence-transformers
+  type: repository
