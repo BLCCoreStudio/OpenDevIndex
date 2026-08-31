@@ -1,0 +1,28 @@
+schema_version: 2
+id: jest
+name: Jest
+category: library
+kind: library
+domains:
+- testing
+- web
+summary: JavaScript testing framework with assertions, mocking, snapshot testing, watch mode, and broad integration across web and Node.js projects.
+homepage: https://jestjs.io/
+repository: https://github.com/jestjs/jest
+license: MIT
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- testing
+- javascript
+- library
+sources:
+- title: Jest official site
+  url: https://jestjs.io/
+  type: official
+- title: Jest repository
+  url: https://github.com/jestjs/jest
+  type: repository
