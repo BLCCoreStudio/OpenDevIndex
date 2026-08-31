@@ -6,14 +6,26 @@ OpenDevIndex is an open, structured, source-backed index of software, developer 
 
 Instead of keeping thousands of unrelated notes in one giant document, OpenDevIndex treats each subject as an independently versioned **knowledge module**.
 
+## Browse the index
+
+The generated [`INDEX.md`](INDEX.md) is the public directory for discovering every published knowledge module. It groups technologies by what they **are** (`kind`) and shows the domains they belong to, with direct links to the independently versioned module entries.
+
+Search artifacts are also generated for tools and applications:
+
+```bash
+python scripts/build_index.py --catalog-dir catalog --output-dir dist/index --public-index INDEX.md
+python scripts/search_index.py "local ai" --index dist/index/search.json
+```
+
 ## What makes it different?
 
 - **Structured + human-readable** — every module has machine-readable metadata and a concise guide.
 - **Source-backed** — important claims should point to primary or reputable sources.
 - **Independently versioned** — one subject can evolve without rewriting the entire index.
+- **Facet-based taxonomy** — stable module addresses are separated from canonical kinds and multi-domain classification.
 - **Broad by design** — tools, languages, frameworks, AI, security, cloud, databases, protocols, concepts, and open-source ecosystems belong here.
 - **Automation-friendly** — catalogs, schemas, and CI make the index usable by humans, scripts, search engines, and future applications.
-- **Quality-gated** — modules are included only after structure, metadata, and source checks pass.
+- **Quality-gated** — modules are included only after structure, metadata, source, and editorial checks pass.
 
 ## Knowledge modules
 
@@ -45,6 +57,17 @@ entry/
 
 Modules must contain real, useful information and pass validation before inclusion in the index.
 
+### Stable addresses vs. taxonomy
+
+The address prefix is a stable compatibility identifier, not the only classification of a technology. Taxonomy v2 adds two discovery facets:
+
+- **`kind`** answers *what is it?* — for example `framework`, `runtime`, `library`, `service`, `protocol`, or `platform`.
+- **`domains`** answers *where does it belong?* — for example `ai`, `security`, `cloud`, `data`, `observability`, `systems`, or `web`.
+
+For example, the legacy address `ai/tensorflow` remains valid, while the search index classifies TensorFlow as `kind: framework` with `domains: [ai, machine-learning]`. This keeps existing links stable without forcing ambiguous technologies into one-dimensional categories.
+
+See [`docs/TAXONOMY.md`](docs/TAXONOMY.md).
+
 ## v0.1 curated catalog
 
 The first milestone is defined in [`catalog/v0.1.yaml`](catalog/v0.1.yaml):
@@ -71,31 +94,34 @@ See [`catalog/README.md`](catalog/README.md) and [`docs/SEEDING.md`](docs/SEEDIN
 
 ## Search and source health
 
-OpenDevIndex includes reproducible tooling for turning validated catalogs into machine-readable search artifacts:
-
-```bash
-python scripts/build_index.py --catalog-dir catalog --output-dir dist/index
-python scripts/search_index.py "local ai" --index dist/index/search.json
-```
-
-The generated output includes a full JSON catalog, a compact search index, and a human-readable catalog. GitHub Actions builds and smoke-tests these artifacts and publishes them as workflow artifacts for downstream tools.
+OpenDevIndex includes reproducible tooling for turning validated catalogs into machine-readable search artifacts. The generated output includes a full JSON catalog, a compact search index, and the public Markdown index. Search supports taxonomy-aware fields such as kind, domains, tags, license, and deployment type.
 
 A separate **Source Health** workflow checks canonical homepages, repositories, and source references on a schedule. Permanent missing-link responses fail the health check, while rate limits, anti-bot responses, and temporary network failures are reported separately to avoid turning transient external outages into false data-quality failures.
 
-## Categories
+## Editorial quality
 
-| Prefix | Scope |
+Catalog entries are scored against an explicit editorial rubric covering summary quality, discovery tags, source depth, use cases, key points, taxonomy metadata, canonical links, and optional licensing/deployment metadata.
+
+The quality audit is automated in CI, while factual correctness still requires source-backed human review. Link availability alone is never treated as proof that a technical claim is correct.
+
+See [`docs/EDITORIAL_POLICY.md`](docs/EDITORIAL_POLICY.md).
+
+## Address prefixes
+
+| Prefix | Stable address scope |
 | --- | --- |
 | `tool/` | Developer and software tools |
 | `language/` | Programming languages and runtimes |
 | `framework/` | Frameworks, SDKs and major libraries |
-| `ai/` | AI models, agents, tooling and infrastructure |
-| `security/` | Security, privacy and defensive technology |
-| `cloud/` | Cloud, DevOps, containers and infrastructure |
+| `ai/` | Legacy AI-focused module addresses |
+| `security/` | Legacy security-focused module addresses |
+| `cloud/` | Legacy cloud/DevOps-focused module addresses |
 | `database/` | Databases, storage and data systems |
 | `protocol/` | Protocols, standards and interoperability |
 | `concept/` | Technical concepts and practical explainers |
 | `opensource/` | Major open-source projects and ecosystems |
+
+New modules use canonical taxonomy metadata even when a stable address prefix is retained for compatibility.
 
 ## Quality bar
 
