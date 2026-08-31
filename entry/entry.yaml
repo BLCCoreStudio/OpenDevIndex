@@ -1,0 +1,28 @@
+schema_version: 2
+id: angular
+name: Angular
+category: framework
+kind: framework
+domains:
+- software-development
+- web
+summary: Full-featured web application framework maintained by Google with components, dependency injection, routing, forms, testing support, and an integrated development toolchain.
+homepage: https://angular.dev/
+repository: https://github.com/angular/angular
+license: MIT
+deployment_types:
+- web
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- typescript
+- frontend
+sources:
+- title: Angular documentation
+  url: https://angular.dev/
+  type: documentation
+- title: Angular source repository
+  url: https://github.com/angular/angular
+  type: repository
