@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/BLCCoreStudio/OpenDevIndex/schema/entry.schema.json",
+  "title": "OpenDevIndex knowledge module metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "category",
+    "summary",
+    "status",
+    "verified_at",
+    "tags",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "category": {
+      "enum": [
+        "tool",
+        "language",
+        "framework",
+        "ai",
+        "security",
+        "cloud",
+        "database",
+        "protocol",
+        "concept",
+        "opensource"
+      ]
+    },
+    "summary": { "type": "string", "minLength": 40, "maxLength": 320 },
+    "homepage": { "type": ["string", "null"], "format": "uri" },
+    "repository": { "type": ["string", "null"], "format": "uri" },
+    "license": { "type": ["string", "null"], "maxLength": 100 },
+    "status": { "enum": ["active", "maintenance", "deprecated", "historical"] },
+    "verified_at": { "type": "string", "format": "date" },
+    "tags": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.+_-]*$" }
+    },
+    "platforms": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "url", "type"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri" },
+          "type": { "enum": ["official", "repository", "standard", "advisory", "research", "documentation"] }
+        }
+      }
+    }
+  }
+}
