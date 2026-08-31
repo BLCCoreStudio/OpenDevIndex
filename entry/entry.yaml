@@ -2,27 +2,23 @@ schema_version: 1
 id: pytorch
 name: PyTorch
 category: framework
-summary: An open-source machine-learning framework providing tensors, automatic differentiation, neural-network APIs, accelerator support, and distributed computation.
-homepage: https://pytorch.org
+kind: framework
+domains:
+- ai
+- machine-learning
+summary: Open-source tensor and deep-learning framework with automatic differentiation, GPU acceleration, and a large research and production ecosystem.
+homepage: https://pytorch.org/
 repository: https://github.com/pytorch/pytorch
-license: BSD-3-Clause
 status: active
-verified_at: 2026-08-31
+verified_at: '2026-08-31'
 tags:
-  - machine-learning
-  - deep-learning
-  - tensors
-platforms:
-  - Linux
-  - macOS
-  - Windows
+- deep-learning
+- python
+- gpu
 sources:
-  - title: PyTorch documentation
-    url: https://docs.pytorch.org/docs/
-    type: documentation
-  - title: PyTorch autograd mechanics
-    url: https://docs.pytorch.org/docs/stable/notes/autograd.html
-    type: documentation
-  - title: PyTorch source repository
-    url: https://github.com/pytorch/pytorch
-    type: repository
+- title: PyTorch official site
+  url: https://pytorch.org/
+  type: official
+- title: PyTorch repository
+  url: https://github.com/pytorch/pytorch
+  type: repository

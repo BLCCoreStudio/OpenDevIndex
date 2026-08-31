@@ -1,33 +1,47 @@
 # PyTorch
 
-PyTorch is an open-source machine-learning framework centered on multidimensional tensors, automatic differentiation, neural-network building blocks, accelerator support, and distributed computation.
+> Open-source tensor and deep-learning framework with automatic differentiation, GPU acceleration, and a large research and production ecosystem.
+
+## What it is
+
+PyTorch is indexed as a **framework**. Its stable OpenDevIndex address is `framework/pytorch`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
 
 ## Why it matters
 
-PyTorch combines a Python-first development experience with optimized native kernels and accelerator backends. It is widely used for deep-learning research, model training, experimentation, and production systems where developers need tensor operations and gradient-based optimization.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
-## Core model
+## Typical use cases
 
-`torch.Tensor` is the fundamental data structure. Tensors represent multidimensional data and can execute on CPUs or supported accelerators. PyTorch's autograd system records the operations used to produce tensors that require gradients and can compute derivatives by traversing that computation graph in reverse.
+- Train and evaluate neural networks
+- Build tensor-based numerical workloads
+- Deploy machine-learning models
 
-The broader framework includes neural-network APIs, optimizers, compilation/export tooling, distributed communication, data utilities, mixed precision, and multiple accelerator integrations.
+## Key points
 
-## Good fit
+- Automatic differentiation is integrated into tensor operations
+- Supports accelerator backends including GPUs
 
-- Deep-learning research and prototyping
-- Training neural networks with automatic differentiation
-- GPU/accelerator-backed tensor workloads
-- Distributed model training
-- Building ML libraries and higher-level model frameworks
+## Taxonomy
 
-## Trade-offs
+- Kind: `framework`
+- Domains: `ai`, `machine-learning`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
 
-Large installations and accelerator-specific packages can complicate deployment. High-performance training often requires understanding memory behavior, kernel selection, distributed systems, and device-specific constraints. Some deployment environments may benefit from smaller or more specialized runtimes.
+## Primary links
 
-## Alternatives
+- Homepage: https://pytorch.org/
+- Repository: https://github.com/pytorch/pytorch
 
-TensorFlow offers a large end-to-end ML ecosystem. JAX combines NumPy-style APIs with transformations such as automatic differentiation and compilation. Smaller inference-focused runtimes may be preferable when training functionality is unnecessary.
+## Verified sources
+
+- [PyTorch official site](https://pytorch.org/) — `official`
+- [PyTorch repository](https://github.com/pytorch/pytorch) — `repository`
 
 ## Verification
 
-Reviewed against current PyTorch documentation and the upstream repository on 2026-08-31.
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
+## Maintenance
+
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
