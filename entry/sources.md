@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Kotlin official site** — https://kotlinlang.org/ (`official`)
 - **Kotlin documentation** — https://kotlinlang.org/docs/home.html (`documentation`)

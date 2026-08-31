@@ -2,6 +2,9 @@ schema_version: 1
 id: kotlin
 name: Kotlin
 category: language
+kind: language
+domains:
+- programming-languages
 summary: Modern statically typed language from JetBrains targeting the JVM, Android, JavaScript, WebAssembly, and native platforms.
 homepage: https://kotlinlang.org/
 repository: https://github.com/JetBrains/kotlin

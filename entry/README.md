@@ -2,9 +2,13 @@
 
 > Modern statically typed language from JetBrains targeting the JVM, Android, JavaScript, WebAssembly, and native platforms.
 
+## What it is
+
+Kotlin is indexed as a **language**. Its stable OpenDevIndex address is `language/kotlin`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-Kotlin is indexed by OpenDevIndex as a `language` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ Kotlin is indexed by OpenDevIndex as a `language` knowledge module. This page is
 - Designed for strong Java interoperability
 - Supports nullable and non-null types in the type system
 
+## Taxonomy
+
+- Kind: `language`
+- Domains: `programming-languages`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://kotlinlang.org/
@@ -27,6 +38,10 @@ Kotlin is indexed by OpenDevIndex as a `language` knowledge module. This page is
 - [Kotlin official site](https://kotlinlang.org/) — `official`
 - [Kotlin documentation](https://kotlinlang.org/docs/home.html) — `documentation`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `language/kotlin`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
