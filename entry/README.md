@@ -1,33 +1,47 @@
 # Rust
 
-Rust is a systems programming language focused on performance, reliability, and productive low-level development. Its ownership and borrowing model lets safe Rust prevent many memory-safety and data-race bugs at compile time without requiring a garbage collector.
+> Systems programming language focused on memory safety, performance, and concurrency without requiring a garbage collector.
+
+## What it is
+
+Rust is indexed as a **language**. Its stable OpenDevIndex address is `language/rust`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
 
 ## Why it matters
 
-Rust targets software that needs tight control over memory and performance while still benefiting from strong static guarantees. It is used for command-line tools, network services, operating-system components, embedded software, WebAssembly, developer infrastructure, and other performance-sensitive systems.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
-## Core model
+## Typical use cases
 
-Rust tracks ownership of values and the lifetimes of references. The compiler checks borrowing rules so safe code cannot freely create dangling references or unsynchronized mutable aliasing. Rust also has `unsafe` features for operations that cannot be proven safe by the compiler; developers using them take responsibility for preserving the language's safety invariants.
+- Build systems and command-line software
+- Write performance-sensitive services
+- Develop embedded and WebAssembly components
 
-Rust does not require a garbage collector or a language runtime for ordinary native code. Cargo provides dependency management, builds, testing, and package workflows, while rustup manages toolchains and targets.
+## Key points
 
-## Good fit
+- Ownership and borrowing enforce many memory-safety rules statically
+- Cargo is the standard package and build tool
 
-- Native software where memory safety and predictable performance matter
-- CLI and developer tools
-- Networking and backend infrastructure
-- Embedded systems and WebAssembly
-- Components replacing or complementing C and C++
+## Taxonomy
 
-## Trade-offs
+- Kind: `language`
+- Domains: `programming-languages`, `systems`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
 
-Ownership and lifetime rules create a learning curve, especially for complex shared data structures. Compile times and dependency graphs can become substantial in large projects. Rust's ecosystem is mature in many areas but not equally deep in every application domain.
+## Primary links
 
-## Alternatives
+- Homepage: https://www.rust-lang.org/
+- Repository: https://github.com/rust-lang/rust
 
-C and C++ provide lower-level control with fewer enforced safety guarantees. Go emphasizes simplicity and garbage-collected concurrency. Zig emphasizes explicit low-level control and C interoperability with a different safety and language model.
+## Verified sources
+
+- [Rust official site](https://www.rust-lang.org/) — `official`
+- [The Rust Programming Language](https://doc.rust-lang.org/book/) — `documentation`
 
 ## Verification
 
-Reviewed against the Rust project website, reference, and release information on 2026-08-31.
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
+## Maintenance
+
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
