@@ -2,6 +2,10 @@ schema_version: 1
 id: podman
 name: Podman
 category: tool
+kind: tool
+domains:
+- containers
+- devops
 summary: Daemonless container engine for building, running, and managing OCI containers and pods with strong support for rootless operation.
 homepage: https://podman.io/
 repository: https://github.com/containers/podman
