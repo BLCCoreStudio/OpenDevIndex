@@ -27,7 +27,7 @@ python scripts/search_index.py "local ai" --index dist/index/search.json
 - **Facet-based taxonomy** — stable module addresses are separated from canonical kinds and multi-domain classification.
 - **Technology-wide scope** — programming, systems, hardware, networking, AI, security, cloud, databases, protocols, open source, developer tooling and emerging technology belong here.
 - **Explain, don't just list** — modules can cover architecture, concepts, tools, examples, alternatives, trade-offs, risks, operations and learning paths.
-- **Relationship-aware** — the catalog is designed to connect dependencies, alternatives, implementations, standards and related concepts.
+- **Relationship-aware** — modules can express typed graph edges such as dependencies, implementations, alternatives, compatibility and historical succession.
 - **Automation-friendly** — catalogs, schemas, and CI make the index usable by humans, scripts, search engines, educational tools and future applications.
 - **Quality-gated** — modules are included only after structure, metadata, source, and editorial checks pass.
 
@@ -37,14 +37,15 @@ Knowledge modules are independently versioned using stable category/slug address
 
 ```text
 tool/git
-tool/qemu
 language/rust
 framework/pytorch
-ai/tensorflow
-security/sigstore
-cloud/kubernetes
-database/postgresql
 protocol/mcp
+hardware/example-cpu
+architecture/x86-64
+algorithm/dijkstra
+model/example-model
+format/parquet
+dataset/example-dataset
 concept/virtualization
 opensource/linux-kernel
 ```
@@ -86,14 +87,17 @@ Where applicable, a mature module should cover:
 
 Not every module needs every section. Requirements can vary by module kind while preserving a consistent experience.
 
-### Stable addresses vs. taxonomy
+### Stable addresses, taxonomy and graph relationships
 
-The address prefix is a stable compatibility identifier, not the only classification of a technology. Taxonomy v2 adds two discovery facets:
+Taxonomy v3 separates three concerns:
 
-- **`kind`** answers *what is it?* — for example `framework`, `runtime`, `library`, `service`, `protocol`, or `platform`.
-- **`domains`** answers *where does it belong?* — for example `ai`, `security`, `cloud`, `data`, `observability`, `systems`, or `web`.
+- **stable address** identifies the module without breaking existing links;
+- **`kind` + `domains`** describe what the subject is and where it belongs;
+- **`relationships`** connect it to other modules using typed graph edges.
 
-For example, the legacy address `ai/tensorflow` remains valid, while the search index classifies TensorFlow as `kind: framework` with `domains: [ai, machine-learning]`. This keeps existing links stable without forcing ambiguous technologies into one-dimensional categories.
+For example, the legacy address `ai/tensorflow` remains valid while discovery can classify TensorFlow as a framework in AI and machine learning. A hardware module can separately point to the architecture it implements, a protocol it uses, compatible tools, alternatives, or predecessor/successor technologies.
+
+Existing schema v1/v2 modules remain supported. New modules should use schema v3 when they need the richer technology-wide taxonomy and relationship graph.
 
 See [`docs/TAXONOMY.md`](docs/TAXONOMY.md).
 
@@ -137,20 +141,36 @@ See [`docs/EDITORIAL_POLICY.md`](docs/EDITORIAL_POLICY.md).
 
 ## Address prefixes
 
+OpenDevIndex keeps legacy prefixes for compatibility and adds canonical technology-wide namespaces for new coverage.
+
 | Prefix | Stable address scope |
 | --- | --- |
-| `tool/` | Developer and software tools |
-| `language/` | Programming languages and runtimes |
+| `tool/` | Developer, diagnostic and operational tools |
+| `language/` | Programming languages |
 | `framework/` | Frameworks, SDKs and major libraries |
+| `library/` | Reusable software libraries |
+| `runtime/` | Language and execution runtimes |
+| `platform/` | Software and computing platforms |
+| `database/` | Databases, storage and data systems |
+| `protocol/` | Protocols and interoperability mechanisms |
+| `standard/` | Standards and specifications |
+| `system/` | Computing and software systems |
+| `toolchain/` | Compilers, build and development toolchains |
+| `service/` | Hosted or network-accessible technology services |
+| `project/` | Major open-source or technology projects |
+| `concept/` | Technical concepts and practical explainers |
+| `hardware/` | Processors, accelerators and hardware technologies |
+| `architecture/` | Computer, instruction-set and system architectures |
+| `algorithm/` | Algorithms and computational methods |
+| `model/` | AI/ML models and model families |
+| `format/` | Data, media, binary and interchange formats |
+| `device/` | Technology devices and device classes |
+| `dataset/` | Important datasets and benchmarks |
+| `technique/` | Engineering, security and computing techniques |
 | `ai/` | Legacy AI-focused module addresses |
 | `security/` | Legacy security-focused module addresses |
 | `cloud/` | Legacy cloud/DevOps-focused module addresses |
-| `database/` | Databases, storage and data systems |
-| `protocol/` | Protocols, standards and interoperability |
-| `concept/` | Technical concepts and practical explainers |
-| `opensource/` | Major open-source projects and ecosystems |
-
-New modules use canonical taxonomy metadata even when a stable address prefix is retained for compatibility.
+| `opensource/` | Legacy open-source ecosystem addresses |
 
 ## Quality bar
 
