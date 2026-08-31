@@ -24,7 +24,7 @@ The module focuses on the technology's practical role, high-signal characteristi
 ## Taxonomy
 
 - Kind: `tool`
-- Domains: `security`
+- Domains: `security`, `supply-chain`
 - Deployment: not yet curated
 - License metadata: `not yet curated`
 
