@@ -2,6 +2,10 @@ schema_version: 1
 id: helm
 name: Helm
 category: cloud
+kind: tool
+domains:
+- cloud
+- devops
 summary: Package manager for Kubernetes that bundles templated resource manifests into versioned charts for installation, upgrades, and reuse.
 homepage: https://helm.sh/
 repository: https://github.com/helm/helm
