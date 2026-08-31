@@ -1,0 +1,28 @@
+schema_version: 2
+id: owasp-zap
+name: OWASP ZAP
+category: security
+kind: tool
+domains:
+- security
+- testing
+- web
+summary: Open-source web application security scanner and intercepting proxy maintained under OWASP, used for manual testing and automated dynamic application security testing.
+homepage: https://www.zaproxy.org/
+repository: https://github.com/zaproxy/zaproxy
+deployment_types:
+- desktop
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- security
+- web
+- dast
+sources:
+- title: ZAP official site
+  url: https://www.zaproxy.org/
+  type: official
+- title: ZAP source repository
+  url: https://github.com/zaproxy/zaproxy
+  type: repository
