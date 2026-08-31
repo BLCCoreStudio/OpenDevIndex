@@ -1,0 +1,30 @@
+schema_version: 2
+id: elixir
+name: Elixir
+category: language
+kind: language
+domains:
+- distributed-systems
+- programming-languages
+- web
+summary: Functional programming language that runs on the Erlang VM and targets scalable, fault-tolerant, concurrent applications with modern tooling and metaprogramming.
+homepage: https://elixir-lang.org/
+repository: https://github.com/elixir-lang/elixir
+license: Apache-2.0
+deployment_types:
+- local
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- distributed-systems
+- functional
+sources:
+- title: Elixir official site
+  url: https://elixir-lang.org/
+  type: official
+- title: Elixir source repository
+  url: https://github.com/elixir-lang/elixir
+  type: repository
