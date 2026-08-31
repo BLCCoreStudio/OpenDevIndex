@@ -2,6 +2,9 @@ schema_version: 1
 id: neovim
 name: Neovim
 category: tool
+kind: tool
+domains:
+- developer-tools
 summary: Extensible text editor derived from Vim with a modernized architecture, Lua configuration, asynchronous APIs, and a large plugin ecosystem.
 homepage: https://neovim.io/
 repository: https://github.com/neovim/neovim

@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Neovim official site** — https://neovim.io/ (`official`)
 - **Neovim repository** — https://github.com/neovim/neovim (`repository`)
