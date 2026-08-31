@@ -1,0 +1,28 @@
+schema_version: 2
+id: haskell
+name: Haskell
+category: language
+kind: language
+domains:
+- programming-languages
+- software-development
+summary: Statically typed purely functional programming language with lazy evaluation, type inference, algebraic data types, and a strong research and library ecosystem.
+homepage: https://www.haskell.org/
+repository: https://github.com/ghc/ghc
+license: BSD-3-Clause
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- functional
+- type-system
+sources:
+- title: Haskell official site
+  url: https://www.haskell.org/
+  type: official
+- title: GHC source repository
+  url: https://github.com/ghc/ghc
+  type: repository
