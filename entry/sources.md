@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **FastAPI documentation** — https://fastapi.tiangolo.com/ (`documentation`)
 - **FastAPI repository** — https://github.com/fastapi/fastapi (`repository`)
