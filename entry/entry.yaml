@@ -1,0 +1,29 @@
+schema_version: 2
+id: gstreamer
+name: GStreamer
+category: framework
+kind: framework
+domains:
+- media
+- multimedia
+summary: Cross-platform multimedia framework based on composable pipeline elements for capturing, decoding, processing, encoding, and streaming audio and video.
+homepage: https://gstreamer.freedesktop.org/
+repository: https://gitlab.freedesktop.org/gstreamer/gstreamer
+license: LGPL-2.1-or-later
+deployment_types:
+- library
+- embedded
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- media
+- audio
+- video
+sources:
+- title: GStreamer official site
+  url: https://gstreamer.freedesktop.org/
+  type: official
+- title: GStreamer repository
+  url: https://gitlab.freedesktop.org/gstreamer/gstreamer
+  type: repository
