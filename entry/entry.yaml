@@ -1,0 +1,19 @@
+schema_version: 1
+id: make
+name: GNU Make
+category: tool
+summary: Classic build automation tool that evaluates dependency rules and shell recipes to update files and targets when their inputs change.
+homepage: https://www.gnu.org/software/make/
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- gnu
+- automation
+sources:
+- title: GNU Make project
+  url: https://www.gnu.org/software/make/
+  type: official
+- title: GNU Make manual
+  url: https://www.gnu.org/software/make/manual/
+  type: documentation
