@@ -1,0 +1,24 @@
+schema_version: 2
+id: webgpu
+name: WebGPU
+category: standard
+kind: standard
+domains:
+- graphics
+- web
+summary: Web standard and API family for modern GPU access from web applications, providing programmable rendering and general-purpose compute capabilities.
+homepage: https://www.w3.org/TR/webgpu/
+repository: https://github.com/gpuweb/gpuweb
+status: active
+verified_at: '2026-08-31'
+tags:
+- graphics
+- gpu
+- web
+sources:
+- title: W3C WebGPU specification
+  url: https://www.w3.org/TR/webgpu/
+  type: standard
+- title: GPU for the Web repository
+  url: https://github.com/gpuweb/gpuweb
+  type: repository
