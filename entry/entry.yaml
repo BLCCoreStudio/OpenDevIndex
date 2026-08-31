@@ -1,0 +1,30 @@
+schema_version: 2
+id: nestjs
+name: NestJS
+category: framework
+kind: framework
+domains:
+- api
+- software-development
+- web
+summary: TypeScript-first server application framework for Node.js that organizes backend software around modules, dependency injection, decorators, and adapters for common HTTP platforms.
+homepage: https://nestjs.com/
+repository: https://github.com/nestjs/nest
+license: MIT
+deployment_types:
+- local
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- typescript
+- web
+- backend
+sources:
+- title: NestJS official site
+  url: https://nestjs.com/
+  type: official
+- title: NestJS source repository
+  url: https://github.com/nestjs/nest
+  type: repository
