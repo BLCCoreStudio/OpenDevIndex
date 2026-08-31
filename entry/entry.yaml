@@ -1,0 +1,27 @@
+schema_version: 2
+id: poetry
+name: Poetry
+category: tool
+kind: tool
+domains:
+- developer-tools
+- python
+summary: Python packaging and dependency-management tool that manages project metadata, dependency resolution, virtual environments, builds, and package publishing workflows.
+homepage: https://python-poetry.org/
+repository: https://github.com/python-poetry/poetry
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- packaging
+- dependencies
+sources:
+- title: Poetry official site
+  url: https://python-poetry.org/
+  type: official
+- title: Poetry source repository
+  url: https://github.com/python-poetry/poetry
+  type: repository
