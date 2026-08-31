@@ -1,0 +1,20 @@
+schema_version: 1
+id: sigstore
+name: Sigstore
+category: security
+summary: Open-source ecosystem for signing and verifying software artifacts using short-lived identities, transparency logs, and supply-chain security tooling.
+homepage: https://www.sigstore.dev/
+repository: https://github.com/sigstore/sigstore
+status: active
+verified_at: '2026-08-31'
+tags:
+- supply-chain
+- signing
+- provenance
+sources:
+- title: Sigstore official site
+  url: https://www.sigstore.dev/
+  type: official
+- title: Sigstore repository
+  url: https://github.com/sigstore/sigstore
+  type: repository
