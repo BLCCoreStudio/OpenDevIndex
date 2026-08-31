@@ -1,0 +1,17 @@
+schema_version: 1
+id: ripgrep
+name: ripgrep
+category: tool
+summary: Fast recursive text-search command-line tool that respects common ignore files and is optimized for searching source trees and large directories.
+homepage: https://github.com/BurntSushi/ripgrep
+repository: https://github.com/BurntSushi/ripgrep
+status: active
+verified_at: '2026-08-31'
+tags:
+- search
+- cli
+- rust
+sources:
+- title: ripgrep repository
+  url: https://github.com/BurntSushi/ripgrep
+  type: repository
