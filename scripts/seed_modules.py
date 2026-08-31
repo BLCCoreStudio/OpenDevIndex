@@ -150,6 +150,8 @@ def seed_entry(base_sha: str, entry: dict, verified_at: str, push: bool) -> str:
     worktree = temp_root / "worktree"
     try:
         run("git", "worktree", "add", "--detach", str(worktree), base_sha)
+        run("git", "config", "user.name", "OpenDevIndex Seeder", cwd=worktree)
+        run("git", "config", "user.email", "207100624+BLCCoreStudio@users.noreply.github.com", cwd=worktree)
         write_entry(worktree, entry, verified_at)
         run(sys.executable, "scripts/validate_entry.py", "--branch", branch, cwd=worktree)
         run("git", "add", "entry", cwd=worktree)
