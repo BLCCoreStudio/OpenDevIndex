@@ -1,0 +1,27 @@
+schema_version: 2
+id: lit
+name: Lit
+category: library
+kind: library
+domains:
+- software-development
+- web
+summary: Lightweight library for building standards-based web components using reactive properties and declarative templates while staying close to native browser APIs.
+homepage: https://lit.dev/
+repository: https://github.com/lit/lit
+deployment_types:
+- web
+- library
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- web-components
+- javascript
+sources:
+- title: Lit official site
+  url: https://lit.dev/
+  type: official
+- title: Lit source repository
+  url: https://github.com/lit/lit
+  type: repository
