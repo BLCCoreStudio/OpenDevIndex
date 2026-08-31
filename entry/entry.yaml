@@ -1,0 +1,28 @@
+schema_version: 2
+id: esbuild
+name: esbuild
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+- web
+summary: Extremely fast JavaScript and TypeScript bundler and minifier written in Go, commonly used as a low-level engine inside modern development tooling.
+homepage: https://esbuild.github.io/
+repository: https://github.com/evanw/esbuild
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- javascript
+- typescript
+sources:
+- title: esbuild documentation
+  url: https://esbuild.github.io/
+  type: documentation
+- title: esbuild source repository
+  url: https://github.com/evanw/esbuild
+  type: repository
