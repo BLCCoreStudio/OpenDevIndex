@@ -2,7 +2,7 @@
 
 This file is generated from validated OpenDevIndex catalogs. Each module link opens its independently versioned knowledge entry.
 
-**Indexed modules:** 251
+**Indexed modules:** 253
 
 ## Browse by kind
 
@@ -21,6 +21,7 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | `service` | 3 |
 | `concept` | 5 |
 | `architecture` | 1 |
+| `format` | 2 |
 | `operating-system` | 1 |
 | `kernel` | 1 |
 
@@ -30,8 +31,8 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | --- | ---: |
 | `accessibility` | 2 |
 | `ai` | 31 |
-| `analytics` | 12 |
-| `api` | 21 |
+| `analytics` | 13 |
+| `api` | 22 |
 | `build` | 18 |
 | `ci-cd` | 5 |
 | `cli` | 12 |
@@ -40,7 +41,8 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | `computer-architecture` | 1 |
 | `containers` | 8 |
 | `cryptography` | 2 |
-| `data` | 47 |
+| `data` | 49 |
+| `data-engineering` | 1 |
 | `developer-experience` | 13 |
 | `developer-tools` | 45 |
 | `devops` | 16 |
@@ -64,20 +66,22 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | `python` | 22 |
 | `security` | 18 |
 | `software-development` | 40 |
-| `storage` | 1 |
+| `storage` | 2 |
 | `supply-chain` | 2 |
 | `sustainability` | 1 |
 | `systems` | 30 |
 | `testing` | 8 |
 | `virtualization` | 2 |
-| `web` | 60 |
+| `web` | 61 |
 | `webassembly` | 1 |
 
 ## Technology Universe coverage
 
 | Area | Mapped modules |
 | --- | ---: |
+| `databases-data` | 1 |
 | `hardware-architecture` | 1 |
+| `standards-protocols-formats` | 1 |
 
 ## tool
 
@@ -392,6 +396,13 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | Module | Domains | Summary |
 | --- | --- | --- |
 | [RISC-V](https://github.com/BLCCoreStudio/OpenDevIndex/tree/architecture/risc-v/entry) (`architecture/risc-v`) | `computer-architecture`, `hardware`, `systems` | An open-standard instruction set architecture built around a small base ISA plus optional extensions for processors ranging from embedded systems to general-purpose computing. |
+
+## format
+
+| Module | Domains | Summary |
+| --- | --- | --- |
+| [Apache Parquet](https://github.com/BLCCoreStudio/OpenDevIndex/tree/format/apache-parquet/entry) (`format/apache-parquet`) | `analytics`, `data`, `data-engineering`, `storage` | An open, column-oriented data file format designed for efficient storage, compression, selective reads, and analytics across large structured datasets. |
+| [JSON](https://github.com/BLCCoreStudio/OpenDevIndex/tree/format/json/entry) (`format/json`) | `api`, `data`, `web` | A lightweight, text-based, language-independent data interchange format standardized by IETF RFC 8259 and ECMA-404 for portable structured data exchange. |
 
 ## operating-system
 
