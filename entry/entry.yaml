@@ -1,0 +1,20 @@
+schema_version: 1
+id: nix
+name: Nix
+category: tool
+summary: Functional package manager and build system focused on reproducible environments, isolated package stores, and declarative software composition.
+homepage: https://nixos.org/
+repository: https://github.com/NixOS/nix
+status: active
+verified_at: '2026-08-31'
+tags:
+- package-manager
+- reproducibility
+- linux
+sources:
+- title: Nix project
+  url: https://nixos.org/
+  type: official
+- title: Nix manual
+  url: https://nix.dev/manual/nix/latest/
+  type: documentation
