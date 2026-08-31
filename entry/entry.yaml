@@ -1,0 +1,27 @@
+schema_version: 2
+id: vault
+name: HashiCorp Vault
+category: platform
+kind: platform
+domains:
+- cloud
+- security
+summary: Secrets-management and cryptographic platform for securely storing credentials, issuing dynamic secrets, managing encryption keys, and brokering machine identities.
+homepage: https://developer.hashicorp.com/vault
+repository: https://github.com/hashicorp/vault
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- security
+- secrets
+- identity
+sources:
+- title: Vault documentation
+  url: https://developer.hashicorp.com/vault
+  type: documentation
+- title: Vault source repository
+  url: https://github.com/hashicorp/vault
+  type: repository
