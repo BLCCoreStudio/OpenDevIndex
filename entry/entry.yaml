@@ -1,0 +1,27 @@
+schema_version: 2
+id: hono
+name: Hono
+category: framework
+kind: framework
+domains:
+- software-development
+- web
+summary: Small web framework built around Web Standards that targets JavaScript and TypeScript runtimes including edge platforms, Node.js, Bun, and Deno.
+homepage: https://hono.dev/
+repository: https://github.com/honojs/hono
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- typescript
+- edge
+sources:
+- title: Hono documentation
+  url: https://hono.dev/
+  type: documentation
+- title: Hono source repository
+  url: https://github.com/honojs/hono
+  type: repository
