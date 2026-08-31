@@ -1,0 +1,28 @@
+schema_version: 2
+id: apache-kafka
+name: Apache Kafka
+category: platform
+kind: platform
+domains:
+- data
+- distributed-systems
+summary: Distributed event-streaming platform for durable publish-subscribe messaging, stream processing, and high-throughput data pipelines across services.
+homepage: https://kafka.apache.org/
+repository: https://github.com/apache/kafka
+license: Apache-2.0
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- data
+- streaming
+- distributed-systems
+sources:
+- title: Apache Kafka official site
+  url: https://kafka.apache.org/
+  type: official
+- title: Apache Kafka repository
+  url: https://github.com/apache/kafka
+  type: repository
