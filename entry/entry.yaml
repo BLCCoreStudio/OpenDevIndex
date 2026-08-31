@@ -1,0 +1,27 @@
+schema_version: 1
+id: qemu
+name: QEMU
+category: tool
+summary: An open-source machine emulator and virtualizer for full-system VMs, cross-architecture execution, device emulation, and hardware-accelerated virtualization.
+homepage: https://www.qemu.org
+repository: https://gitlab.com/qemu-project/qemu
+status: active
+verified_at: 2026-08-31
+tags:
+  - virtualization
+  - emulation
+  - virtual-machines
+platforms:
+  - Linux
+  - macOS
+  - Windows
+sources:
+  - title: QEMU documentation
+    url: https://www.qemu.org/docs/master/
+    type: documentation
+  - title: QEMU system emulation introduction
+    url: https://www.qemu.org/docs/master/system/introduction.html
+    type: documentation
+  - title: QEMU source repository
+    url: https://gitlab.com/qemu-project/qemu
+    type: repository
