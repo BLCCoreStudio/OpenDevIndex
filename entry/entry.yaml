@@ -1,0 +1,28 @@
+schema_version: 2
+id: vite
+name: Vite
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+- web
+summary: Frontend build tool and development server that provides fast module serving during development and optimized production builds for modern web projects.
+homepage: https://vite.dev/
+repository: https://github.com/vitejs/vite
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- web
+- javascript
+sources:
+- title: Vite official site
+  url: https://vite.dev/
+  type: official
+- title: Vite source repository
+  url: https://github.com/vitejs/vite
+  type: repository
