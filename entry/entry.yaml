@@ -2,6 +2,9 @@ schema_version: 1
 id: postgresql
 name: PostgreSQL
 category: database
+kind: database
+domains:
+- data
 summary: Open-source relational database known for standards-oriented SQL, transactions, extensibility, advanced data types, indexing, and reliable server workloads.
 homepage: https://www.postgresql.org/
 repository: https://github.com/postgres/postgres
