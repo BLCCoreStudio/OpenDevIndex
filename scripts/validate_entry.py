@@ -11,6 +11,7 @@ from pathlib import Path
 
 import yaml
 
+from coverage_metadata import validate_coverage_metadata
 from taxonomy import load_taxonomy, supported_address_categories, supported_relationship_types
 from url_safety import is_safe_https_url
 
@@ -87,6 +88,8 @@ def validate(branch: str, root: Path | None = None) -> list[str]:
         for key in ("kind", "domains"):
             if key not in data:
                 fail(f"schema v{schema_version} requires metadata key: {key}", errors)
+    if schema_version == 3 and "coverage" not in data:
+        fail("schema v3 requires metadata key: coverage", errors)
 
     if data.get("id") != slug:
         fail(f"metadata id must match module slug '{slug}'.", errors)
@@ -105,6 +108,9 @@ def validate(branch: str, root: Path | None = None) -> list[str]:
             fail("domains must be unique.", errors)
         elif any(domain not in domains_allowed for domain in domains):
             fail("domains contain an unsupported taxonomy value.", errors)
+
+    for coverage_error in validate_coverage_metadata(data.get("coverage")):
+        fail(coverage_error, errors)
 
     deployments = data.get("deployment_types")
     if deployments is not None:
