@@ -1,0 +1,20 @@
+schema_version: 1
+id: kubernetes
+name: Kubernetes
+category: cloud
+summary: Open-source orchestration system for deploying, scaling, networking, and operating containerized applications across clusters of machines.
+homepage: https://kubernetes.io/
+repository: https://github.com/kubernetes/kubernetes
+status: active
+verified_at: '2026-08-31'
+tags:
+- containers
+- orchestration
+- cloud-native
+sources:
+- title: Kubernetes official site
+  url: https://kubernetes.io/
+  type: official
+- title: Kubernetes repository
+  url: https://github.com/kubernetes/kubernetes
+  type: repository
