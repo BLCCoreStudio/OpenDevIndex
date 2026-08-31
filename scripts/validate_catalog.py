@@ -12,12 +12,17 @@ from pathlib import Path
 
 import yaml
 
-from taxonomy import load_taxonomy, supported_address_categories
+from taxonomy import (
+    load_taxonomy,
+    supported_address_categories,
+    supported_relationship_types,
+)
 from url_safety import is_safe_https_url
 
 SOURCE_TYPES = {"official", "repository", "standard", "advisory", "research", "documentation"}
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
 TAG_RE = re.compile(r"^[a-z0-9][a-z0-9.+_-]*$")
+MODULE_REF_RE = re.compile(r"^[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9._-]*$")
 
 
 def validate(path: Path) -> list[str]:
@@ -31,8 +36,8 @@ def validate(path: Path) -> list[str]:
         return [f"{path}: top level must be a mapping"]
 
     schema_version = data.get("schema_version")
-    if schema_version not in {1, 2}:
-        errors.append("schema_version must be 1 or 2")
+    if schema_version not in {1, 2, 3}:
+        errors.append("schema_version must be 1, 2, or 3")
 
     try:
         taxonomy = load_taxonomy()
@@ -43,6 +48,7 @@ def validate(path: Path) -> list[str]:
     kinds = set(taxonomy["canonical_kinds"])
     domains_allowed = set(taxonomy["domains"])
     deployments_allowed = set(taxonomy["deployment_types"])
+    relationships_allowed = supported_relationship_types(taxonomy)
 
     target = data.get("target_modules")
     entries = data.get("entries")
@@ -96,7 +102,7 @@ def validate(path: Path) -> list[str]:
         if not isinstance(summary, str) or not 40 <= len(summary.strip()) <= 320:
             errors.append(f"{prefix}: summary must be 40..320 characters")
 
-        min_curated = 3 if schema_version == 2 else 2
+        min_curated = 3 if schema_version in {2, 3} else 2
         tags = entry.get("tags")
         if not isinstance(tags, list) or len(tags) < min_curated:
             errors.append(f"{prefix}: tags must contain at least {min_curated} values")
@@ -107,12 +113,12 @@ def validate(path: Path) -> list[str]:
 
         kind = entry.get("kind")
         domains = entry.get("domains")
-        if schema_version == 2 and kind is None:
-            errors.append(f"{prefix}: taxonomy v2 entries require kind")
+        if schema_version in {2, 3} and kind is None:
+            errors.append(f"{prefix}: taxonomy v{schema_version} entries require kind")
         if kind is not None and kind not in kinds:
             errors.append(f"{prefix}: unsupported kind {kind!r}")
-        if schema_version == 2 and not domains:
-            errors.append(f"{prefix}: taxonomy v2 entries require domains")
+        if schema_version in {2, 3} and not domains:
+            errors.append(f"{prefix}: taxonomy v{schema_version} entries require domains")
         if domains is not None:
             if not isinstance(domains, list) or not domains:
                 errors.append(f"{prefix}: domains must be a non-empty list")
@@ -130,6 +136,42 @@ def validate(path: Path) -> list[str]:
             elif any(value not in deployments_allowed for value in deployment_types):
                 errors.append(f"{prefix}: unsupported deployment type")
 
+        relationships = entry.get("relationships")
+        if relationships is not None:
+            if schema_version != 3:
+                errors.append(f"{prefix}: relationships require schema_version 3")
+            if not isinstance(relationships, list):
+                errors.append(f"{prefix}: relationships must be a list when present")
+            else:
+                seen_relationships: set[tuple[str, str]] = set()
+                for relation_number, relationship in enumerate(relationships, start=1):
+                    relation_prefix = f"{prefix}: relationship #{relation_number}"
+                    if not isinstance(relationship, dict):
+                        errors.append(f"{relation_prefix} must be a mapping")
+                        continue
+                    unexpected = set(relationship) - {"type", "target", "note"}
+                    if unexpected:
+                        errors.append(
+                            f"{relation_prefix} contains unsupported keys: {', '.join(sorted(unexpected))}"
+                        )
+                    relationship_type = relationship.get("type")
+                    relationship_target = relationship.get("target")
+                    if relationship_type not in relationships_allowed:
+                        errors.append(f"{relation_prefix} has unsupported type")
+                    if not isinstance(relationship_target, str) or not MODULE_REF_RE.fullmatch(relationship_target):
+                        errors.append(f"{relation_prefix} target must use <category>/<slug>")
+                    pair = (relationship_type, relationship_target)
+                    if pair in seen_relationships:
+                        errors.append(f"{relation_prefix} duplicates an existing type/target pair")
+                    seen_relationships.add(pair)
+                    note = relationship.get("note")
+                    if note is not None and (
+                        not isinstance(note, str) or not note.strip() or len(note) > 240
+                    ):
+                        errors.append(
+                            f"{relation_prefix} note must be a non-empty string up to 240 characters"
+                        )
+
         license_value = entry.get("license")
         if license_value is not None and (not isinstance(license_value, str) or not license_value.strip() or len(license_value) > 100):
             errors.append(f"{prefix}: license must be a non-empty string up to 100 characters")
@@ -140,7 +182,7 @@ def validate(path: Path) -> list[str]:
                 errors.append(f"{prefix}: {field} must be a public HTTPS URL")
 
         sources = entry.get("sources")
-        min_sources = 2 if schema_version == 2 else 1
+        min_sources = 2 if schema_version in {2, 3} else 1
         if not isinstance(sources, list) or len(sources) < min_sources:
             errors.append(f"{prefix}: sources must contain at least {min_sources} reference(s)")
         else:
