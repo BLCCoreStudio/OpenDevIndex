@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Svelte official site** — https://svelte.dev/ (`official`)
 - **Svelte repository** — https://github.com/sveltejs/svelte (`repository`)

@@ -2,6 +2,11 @@ schema_version: 1
 id: svelte
 name: Svelte
 category: framework
+kind: framework
+domains:
+- build
+- software-development
+- web
 summary: Web UI framework that shifts substantial work to compile time and provides component syntax with built-in reactivity and application tooling.
 homepage: https://svelte.dev/
 repository: https://github.com/sveltejs/svelte
