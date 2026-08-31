@@ -1,0 +1,20 @@
+schema_version: 1
+id: wazuh
+name: Wazuh
+category: security
+summary: Open-source security platform combining endpoint monitoring, log analysis, threat detection, compliance capabilities, and security analytics.
+homepage: https://wazuh.com/
+repository: https://github.com/wazuh/wazuh
+status: active
+verified_at: '2026-08-31'
+tags:
+- siem
+- endpoint
+- monitoring
+sources:
+- title: Wazuh official site
+  url: https://wazuh.com/
+  type: official
+- title: Wazuh repository
+  url: https://github.com/wazuh/wazuh
+  type: repository
