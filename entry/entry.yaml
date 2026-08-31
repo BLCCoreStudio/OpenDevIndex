@@ -1,0 +1,20 @@
+schema_version: 1
+id: semgrep
+name: Semgrep
+category: security
+summary: Static-analysis platform and open-source engine for matching code patterns, enforcing secure coding rules, and detecting classes of defects across languages.
+homepage: https://semgrep.dev/
+repository: https://github.com/semgrep/semgrep
+status: active
+verified_at: '2026-08-31'
+tags:
+- static-analysis
+- sast
+- code
+sources:
+- title: Semgrep official site
+  url: https://semgrep.dev/
+  type: official
+- title: Semgrep repository
+  url: https://github.com/semgrep/semgrep
+  type: repository
