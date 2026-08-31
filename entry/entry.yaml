@@ -1,0 +1,27 @@
+schema_version: 2
+id: milvus
+name: Milvus
+category: database
+kind: database
+domains:
+- ai
+- data
+summary: Open-source vector database built for large-scale similarity search over embeddings, with indexing, filtering, distributed deployment, and AI retrieval workflows.
+homepage: https://milvus.io/
+repository: https://github.com/milvus-io/milvus
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- vector-database
+- ai
+- search
+sources:
+- title: Milvus official site
+  url: https://milvus.io/
+  type: official
+- title: Milvus source repository
+  url: https://github.com/milvus-io/milvus
+  type: repository
