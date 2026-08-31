@@ -35,3 +35,11 @@ jobs:
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         run: python scripts/validate_entry.py --branch "$BRANCH_NAME"
+
+      - name: Smoke-test module generator without pushing
+        if: github.event_name == 'pull_request' || github.ref_name == 'main'
+        run: |
+          python scripts/seed_modules.py \
+            --catalog catalog/v0.1.yaml \
+            --base-ref HEAD \
+            --limit 1
