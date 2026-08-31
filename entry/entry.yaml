@@ -1,0 +1,30 @@
+schema_version: 2
+id: lighthouse
+name: Lighthouse
+category: tool
+kind: tool
+domains:
+- accessibility
+- testing
+- web
+summary: Automated auditing tool for web pages that evaluates performance, accessibility, best practices, and related quality signals in browser-based workflows.
+homepage: https://developer.chrome.com/docs/lighthouse/overview/
+repository: https://github.com/GoogleChrome/lighthouse
+license: Apache-2.0
+deployment_types:
+- cli
+- desktop
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- accessibility
+- performance
+sources:
+- title: Lighthouse documentation
+  url: https://developer.chrome.com/docs/lighthouse/overview/
+  type: documentation
+- title: Lighthouse repository
+  url: https://github.com/GoogleChrome/lighthouse
+  type: repository
