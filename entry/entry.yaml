@@ -1,0 +1,28 @@
+schema_version: 2
+id: eza
+name: eza
+category: tool
+kind: tool
+domains:
+- cli
+- developer-experience
+summary: Modern command-line directory listing utility derived from exa, adding readable defaults, colors, Git metadata, tree views, and structured file information.
+homepage: https://eza.rocks/
+repository: https://github.com/eza-community/eza
+license: MIT
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- cli
+- filesystem
+- rust
+sources:
+- title: eza official site
+  url: https://eza.rocks/
+  type: official
+- title: eza repository
+  url: https://github.com/eza-community/eza
+  type: repository
