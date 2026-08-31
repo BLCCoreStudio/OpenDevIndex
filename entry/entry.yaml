@@ -2,9 +2,10 @@ schema_version: 1
 id: linux-kernel
 name: Linux Kernel
 category: opensource
-kind: system
+kind: kernel
 domains:
 - open-source
+- operating-systems
 - systems
 summary: Open-source kernel at the core of Linux operating systems, providing process scheduling, memory management, device drivers, networking, and hardware abstractions.
 homepage: https://www.kernel.org/

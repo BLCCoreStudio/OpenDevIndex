@@ -4,7 +4,7 @@
 
 ## What it is
 
-Linux Kernel is indexed as a **system**. Its stable OpenDevIndex address is `opensource/linux-kernel`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+Linux Kernel is indexed as a **kernel**. Its stable OpenDevIndex address is `opensource/linux-kernel`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
 
 ## Why it matters
 
@@ -23,8 +23,8 @@ The module focuses on the technology's practical role, high-signal characteristi
 
 ## Taxonomy
 
-- Kind: `system`
-- Domains: `open-source`, `systems`
+- Kind: `kernel`
+- Domains: `open-source`, `operating-systems`, `systems`
 - Deployment: not yet curated
 - License metadata: `not yet curated`
 
