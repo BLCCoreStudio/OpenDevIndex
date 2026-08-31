@@ -1,0 +1,65 @@
+schema_version: 1
+name: OpenDevIndex Topic Allocation
+target_modules: 10000
+source: technology-universe-v1
+areas:
+  - id: computer-science
+    target_modules: 600
+    topic_targets: {algorithms: 60, data-structures: 60, complexity: 60, computability: 60, information-theory: 60, logic: 60, discrete-mathematics: 60, numerical-computing: 60, programming-paradigms: 60, theory: 60}
+  - id: programming-languages
+    target_modules: 650
+    topic_targets: {languages: 65, runtimes: 65, virtual-machines: 65, compilers: 65, interpreters: 65, type-systems: 65, package-ecosystems: 65, language-tools: 65, interoperability: 65, memory-models: 65}
+  - id: software-engineering
+    target_modules: 600
+    topic_targets: {architecture: 60, design-patterns: 60, api-design: 60, system-design: 60, concurrency: 60, software-principles: 60, refactoring: 60, documentation: 60, collaboration: 60, engineering-practices: 60}
+  - id: operating-systems
+    target_modules: 450
+    topic_targets: {kernels: 35, linux: 35, unix: 35, windows: 35, macos: 35, android: 35, ios: 35, filesystems: 35, processes: 34, scheduling: 34, memory-management: 34, shells: 34, system-services: 34}
+  - id: hardware-architecture
+    target_modules: 550
+    topic_targets: {cpus: 46, gpus: 46, accelerators: 46, instruction-sets: 46, microarchitecture: 46, memory: 46, storage: 46, buses: 46, motherboards: 46, firmware: 46, semiconductors: 45, computer-architecture: 45}
+  - id: networking-internet
+    target_modules: 600
+    topic_targets: {tcp-ip: 47, dns: 47, http: 46, tls: 46, routing: 46, switching: 46, wireless: 46, cdn: 46, proxies: 46, vpn: 46, internet-infrastructure: 46, network-tools: 46, network-architecture: 46}
+  - id: cybersecurity-privacy
+    target_modules: 700
+    topic_targets: {application-security: 54, network-security: 54, identity: 54, authentication: 54, authorization: 54, cryptography: 54, privacy: 54, vulnerability-research: 54, defensive-security: 54, threat-intelligence: 54, malware-analysis: 54, security-tools: 53, supply-chain-security: 53}
+  - id: web
+    target_modules: 500
+    topic_targets: {browsers: 42, html: 42, css: 42, javascript: 42, frontend: 42, backend: 42, web-frameworks: 42, web-apis: 42, accessibility: 41, web-performance: 41, web-security: 41, web-standards: 41}
+  - id: mobile-desktop
+    target_modules: 400
+    topic_targets: {android: 40, ios: 40, desktop-frameworks: 40, cross-platform: 40, app-architecture: 40, ui-systems: 40, device-apis: 40, application-packaging: 40, app-security: 40, platform-tooling: 40}
+  - id: databases-data
+    target_modules: 550
+    topic_targets: {relational-databases: 46, nosql: 46, storage-engines: 46, search: 46, caching: 46, streaming: 46, analytics: 46, data-formats: 46, data-pipelines: 46, warehouses: 46, lakes: 45, query-engines: 45}
+  - id: cloud-devops-sre
+    target_modules: 600
+    topic_targets: {cloud-platforms: 50, containers: 50, orchestration: 50, ci-cd: 50, infrastructure-as-code: 50, configuration-management: 50, observability: 50, sre: 50, reliability: 50, deployment: 50, service-mesh: 50, platform-engineering: 50}
+  - id: ai-ml
+    target_modules: 750
+    topic_targets: {machine-learning: 58, deep-learning: 58, llms: 58, multimodal-ai: 58, agents: 58, model-architectures: 58, training: 58, inference: 58, datasets: 58, evaluation: 57, ai-infrastructure: 57, mlops: 57, responsible-ai: 57}
+  - id: graphics-games-media-xr
+    target_modules: 350
+    topic_targets: {computer-graphics: 27, rendering: 27, shaders: 27, game-engines: 27, audio: 27, video: 27, codecs: 27, image-processing: 27, animation: 27, vr: 27, ar: 27, xr: 27, creative-tools: 26}
+  - id: embedded-iot-robotics
+    target_modules: 400
+    topic_targets: {microcontrollers: 37, embedded-linux: 37, rtos: 37, firmware: 37, sensors: 36, actuators: 36, iot-protocols: 36, edge-computing: 36, robotics: 36, control-systems: 36, hardware-software-integration: 36}
+  - id: open-source-ecosystems
+    target_modules: 300
+    topic_targets: {major-projects: 30, foundations: 30, distributions: 30, communities: 30, governance: 30, licensing: 30, package-ecosystems: 30, collaboration-models: 30, project-history: 30, sustainability: 30}
+  - id: standards-protocols-formats
+    target_modules: 400
+    topic_targets: {internet-standards: 40, web-standards: 40, data-formats: 40, binary-formats: 40, media-formats: 40, interoperability: 40, specifications: 40, apis: 40, serialization: 40, industry-standards: 40}
+  - id: developer-tools
+    target_modules: 450
+    topic_targets: {editors: 38, ides: 38, terminals: 38, shells: 38, version-control: 38, build-systems: 38, package-managers: 37, linters: 37, formatters: 37, code-search: 37, developer-experience: 37, automation: 37}
+  - id: testing-debugging-performance
+    target_modules: 350
+    topic_targets: {testing: 32, test-frameworks: 32, debugging: 32, profiling: 32, tracing: 32, benchmarking: 32, fuzzing: 32, static-analysis: 32, dynamic-analysis: 32, performance: 31, reliability-testing: 31}
+  - id: distributed-systems
+    target_modules: 450
+    topic_targets: {distributed-systems: 41, consensus: 41, replication: 41, messaging: 41, queues: 41, event-streaming: 41, distributed-storage: 41, scalability: 41, fault-tolerance: 41, coordination: 41, architectures: 40}
+  - id: emerging-historical
+    target_modules: 350
+    topic_targets: {quantum-computing: 39, neuromorphic-computing: 39, spatial-computing: 39, decentralized-systems: 39, experimental-systems: 39, computing-history: 39, legacy-platforms: 39, influential-projects: 39, research-systems: 38}

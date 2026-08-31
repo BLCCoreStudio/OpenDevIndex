@@ -2,7 +2,9 @@
 
 OpenDevIndex plans its first 10,000 validated knowledge modules as a balanced technology universe rather than as one long unstructured list.
 
-The machine-readable source of truth is [`coverage/technology-universe-v1.yaml`](../coverage/technology-universe-v1.yaml). The allocation is a planning envelope, not permission to publish filler: every module must still pass the normal source, structure, taxonomy, and editorial checks.
+The high-level source of truth is [`coverage/technology-universe-v1.yaml`](../coverage/technology-universe-v1.yaml). Exact per-topic capacity is defined in [`coverage/topic-allocation-v1.yaml`](../coverage/topic-allocation-v1.yaml). CI verifies that every topic target matches its parent area and that all topic allocations add up to exactly 10,000 modules.
+
+These allocations are a planning envelope, not permission to publish filler: every module must still pass the normal source, structure, taxonomy, and editorial checks.
 
 ## Contents
 
@@ -18,7 +20,7 @@ The machine-readable source of truth is [`coverage/technology-universe-v1.yaml`]
 - [Databases, Storage and Data Engineering](#databases-storage-and-data-engineering) — 550
 - [Cloud, DevOps, Infrastructure and SRE](#cloud-devops-infrastructure-and-sre) — 600
 - [Artificial Intelligence and Machine Learning](#artificial-intelligence-and-machine-learning) — 750
-- [Graphics, Games, Media and XR](#graphics-games-media-and-xr) — 350
+- [Graphics, Games, Media and XR](#graphics-games-media-xr) — 350
 - [Embedded Systems, IoT and Robotics](#embedded-systems-iot-and-robotics) — 400
 - [Open Source Ecosystems](#open-source-ecosystems) — 300
 - [Standards, Protocols and Formats](#standards-protocols-and-formats) — 400
