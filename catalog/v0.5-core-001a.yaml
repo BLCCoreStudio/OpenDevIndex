@@ -1,0 +1,174 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 5
+expected_categories:
+  language: 5
+entries:
+- category: language
+  id: zig
+  name: Zig
+  summary: General-purpose systems programming language focused on explicit control, predictable performance, cross-compilation, and straightforward interoperability with C code.
+  homepage: https://ziglang.org/
+  repository: https://github.com/ziglang/zig
+  license: MIT
+  tags:
+  - programming-language
+  - systems
+  - compiler
+  sources:
+  - title: Zig official site
+    url: https://ziglang.org/
+    type: official
+  - title: Zig source repository
+    url: https://github.com/ziglang/zig
+    type: repository
+  use_cases:
+  - Build native systems software and command-line applications
+  - Cross-compile programs and libraries for multiple target platforms
+  - Integrate with existing C libraries and low-level operating-system interfaces
+  key_points:
+  - Zig emphasizes explicit memory management and predictable control flow
+  - The toolchain includes a compiler, build system, package-management features, and C interoperability
+  - Cross-compilation is a first-class workflow rather than an add-on
+  kind: language
+  domains:
+  - programming-languages
+  - systems
+  deployment_types:
+  - local
+  - system
+- category: language
+  id: lua
+  name: Lua
+  summary: Lightweight embeddable programming language with a small runtime, dynamic semantics, and a long history in games, applications, scripting, and embedded software.
+  homepage: https://www.lua.org/
+  license: MIT
+  tags:
+  - programming-language
+  - scripting
+  - embedded
+  sources:
+  - title: Lua official site
+    url: https://www.lua.org/
+    type: official
+  - title: Lua 5.4 reference manual
+    url: https://www.lua.org/manual/5.4/
+    type: documentation
+  use_cases:
+  - Embed scripting inside native applications and game engines
+  - Write lightweight automation and configuration logic
+  - Build portable command-line and application scripting layers
+  key_points:
+  - Lua is designed around a compact interpreter and a small C API
+  - Tables are the central data structure used for arrays, maps, objects, and modules
+  - The language is commonly embedded rather than deployed as a standalone application platform
+  kind: language
+  domains:
+  - programming-languages
+  - systems
+  deployment_types:
+  - embedded
+  - local
+- category: language
+  id: elixir
+  name: Elixir
+  summary: Functional programming language that runs on the Erlang VM and targets scalable, fault-tolerant, concurrent applications with modern tooling and metaprogramming.
+  homepage: https://elixir-lang.org/
+  repository: https://github.com/elixir-lang/elixir
+  license: Apache-2.0
+  tags:
+  - programming-language
+  - distributed-systems
+  - functional
+  sources:
+  - title: Elixir official site
+    url: https://elixir-lang.org/
+    type: official
+  - title: Elixir source repository
+    url: https://github.com/elixir-lang/elixir
+    type: repository
+  use_cases:
+  - Build highly concurrent network services and backend systems
+  - Create web applications with frameworks such as Phoenix
+  - Develop fault-tolerant distributed applications on the BEAM virtual machine
+  key_points:
+  - Elixir inherits lightweight processes and supervision concepts from the Erlang ecosystem
+  - Pattern matching and immutable data are central language features
+  - Mix and Hex provide the standard project, build, testing, and package workflows
+  kind: language
+  domains:
+  - programming-languages
+  - distributed-systems
+  - web
+  deployment_types:
+  - local
+  - self-hosted
+  - service
+- category: language
+  id: erlang
+  name: Erlang
+  summary: Functional concurrent programming language and runtime ecosystem designed for fault-tolerant, distributed, soft-real-time systems that can run continuously.
+  homepage: https://www.erlang.org/
+  repository: https://github.com/erlang/otp
+  license: Apache-2.0
+  tags:
+  - programming-language
+  - distributed-systems
+  - concurrency
+  sources:
+  - title: Erlang official site
+    url: https://www.erlang.org/
+    type: official
+  - title: Erlang/OTP source repository
+    url: https://github.com/erlang/otp
+    type: repository
+  use_cases:
+  - Build telecom, messaging, and distributed backend services
+  - Run fault-tolerant systems using OTP supervision patterns
+  - Implement concurrent services that need lightweight isolated processes
+  key_points:
+  - Erlang processes are lightweight runtime abstractions rather than operating-system processes
+  - OTP supplies reusable behaviors for supervisors, servers, applications, and releases
+  - Hot-code and fault-isolation capabilities influenced many always-on distributed systems
+  kind: language
+  domains:
+  - programming-languages
+  - distributed-systems
+  deployment_types:
+  - local
+  - self-hosted
+  - service
+- category: language
+  id: haskell
+  name: Haskell
+  summary: Statically typed purely functional programming language with lazy evaluation, type inference, algebraic data types, and a strong research and library ecosystem.
+  homepage: https://www.haskell.org/
+  repository: https://github.com/ghc/ghc
+  license: BSD-3-Clause
+  tags:
+  - programming-language
+  - functional
+  - type-system
+  sources:
+  - title: Haskell official site
+    url: https://www.haskell.org/
+    type: official
+  - title: GHC source repository
+    url: https://github.com/ghc/ghc
+    type: repository
+  use_cases:
+  - Build type-safe compilers, developer tools, and backend services
+  - Explore functional programming and advanced type-system techniques
+  - Create data-processing and domain-specific language tooling
+  key_points:
+  - Pure functions and immutable values are the default programming model
+  - GHC is the dominant production compiler and implements many widely used language extensions
+  - The type system supports abstractions such as algebraic data types, type classes, and higher-kinded patterns
+  kind: language
+  domains:
+  - programming-languages
+  - software-development
+  deployment_types:
+  - local
+  - self-hosted
