@@ -1,0 +1,26 @@
+schema_version: 2
+id: yara
+name: YARA
+category: security
+kind: tool
+domains:
+- security
+summary: Pattern-matching tool and rule language for identifying and classifying files, memory, and malware samples using textual, binary, and structural signatures.
+homepage: https://virustotal.github.io/yara/
+repository: https://github.com/VirusTotal/yara
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- security
+- malware
+- detection
+sources:
+- title: YARA documentation
+  url: https://virustotal.github.io/yara/
+  type: documentation
+- title: YARA source repository
+  url: https://github.com/VirusTotal/yara
+  type: repository
