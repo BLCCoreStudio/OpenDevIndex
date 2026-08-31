@@ -2,9 +2,13 @@
 
 > Python web framework providing an integrated ORM, routing, templates, forms, authentication, administration, and security-focused defaults.
 
+## What it is
+
+Django is indexed as a **framework**. Its stable OpenDevIndex address is `framework/django`; taxonomy facets are kept separate from that address so classification can improve without breaking links.
+
 ## Why it matters
 
-Django is indexed by OpenDevIndex as a `framework` knowledge module. This page is intentionally concise: it explains the technology's role, common uses, and high-signal facts while linking back to authoritative sources for details that can change over time.
+The module focuses on the technology's practical role, high-signal characteristics, common use cases, and authoritative references. Fast-changing details should be verified against the sources below rather than inferred from stale copies.
 
 ## Typical use cases
 
@@ -17,6 +21,13 @@ Django is indexed by OpenDevIndex as a `framework` knowledge module. This page i
 - Includes a built-in ORM
 - The admin application can generate management interfaces from models
 
+## Taxonomy
+
+- Kind: `framework`
+- Domains: `software-development`, `web`
+- Deployment: not yet curated
+- License metadata: `not yet curated`
+
 ## Primary links
 
 - Homepage: https://www.djangoproject.com/
@@ -27,6 +38,10 @@ Django is indexed by OpenDevIndex as a `framework` knowledge module. This page i
 - [Django official site](https://www.djangoproject.com/) — `official`
 - [Django documentation](https://docs.djangoproject.com/) — `documentation`
 
+## Verification
+
+The catalog metadata and source references for this module were reviewed on **2026-08-31**. Automated checks validate structure and source reachability; factual updates still require source-backed editorial review.
+
 ## Maintenance
 
-This module is independently versioned on branch `framework/django`. When the technology, specification, project status, or canonical documentation changes, update this branch and refresh the verification date instead of silently changing unrelated modules.
+Update this independently versioned module when material facts, project status, canonical documentation, or important trade-offs change. Preserve the stable module address unless a compatibility migration is explicitly documented.
