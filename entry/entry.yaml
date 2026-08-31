@@ -1,0 +1,27 @@
+schema_version: 2
+id: symfony
+name: Symfony
+category: framework
+kind: framework
+domains:
+- software-development
+- web
+summary: Mature PHP framework and reusable component ecosystem for building web applications, APIs, console tools, and long-lived enterprise services.
+homepage: https://symfony.com/
+repository: https://github.com/symfony/symfony
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- php
+- framework
+sources:
+- title: Symfony official site
+  url: https://symfony.com/
+  type: official
+- title: Symfony source repository
+  url: https://github.com/symfony/symfony
+  type: repository
