@@ -1,0 +1,27 @@
+schema_version: 2
+id: minio
+name: MinIO
+category: platform
+kind: platform
+domains:
+- cloud
+- data
+summary: High-performance object storage server compatible with the Amazon S3 API, commonly used for self-hosted cloud-native storage and data infrastructure.
+homepage: https://min.io/
+repository: https://github.com/minio/minio
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- object-storage
+- s3
+- cloud
+sources:
+- title: MinIO official site
+  url: https://min.io/
+  type: official
+- title: MinIO source repository
+  url: https://github.com/minio/minio
+  type: repository
