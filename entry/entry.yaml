@@ -1,0 +1,26 @@
+schema_version: 2
+id: r
+name: R
+category: language
+kind: language
+domains:
+- analytics
+- data
+- programming-languages
+summary: Programming language and environment focused on statistical computing, data analysis, scientific visualization, and reproducible research workflows.
+homepage: https://www.r-project.org/
+deployment_types:
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- statistics
+- data
+sources:
+- title: The R Project
+  url: https://www.r-project.org/
+  type: official
+- title: CRAN manuals
+  url: https://cran.r-project.org/manuals.html
+  type: documentation
