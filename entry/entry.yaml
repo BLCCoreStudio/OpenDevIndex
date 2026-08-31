@@ -1,0 +1,20 @@
+schema_version: 1
+id: podman
+name: Podman
+category: tool
+summary: Daemonless container engine for building, running, and managing OCI containers and pods with strong support for rootless operation.
+homepage: https://podman.io/
+repository: https://github.com/containers/podman
+status: active
+verified_at: '2026-08-31'
+tags:
+- containers
+- oci
+- rootless
+sources:
+- title: Podman official site
+  url: https://podman.io/
+  type: official
+- title: Podman repository
+  url: https://github.com/containers/podman
+  type: repository
