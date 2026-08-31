@@ -1,0 +1,27 @@
+schema_version: 2
+id: jenkins
+name: Jenkins
+category: tool
+kind: tool
+domains:
+- ci-cd
+- devops
+summary: Extensible automation server used to orchestrate continuous integration and delivery pipelines across self-hosted infrastructure and diverse toolchains.
+homepage: https://www.jenkins.io/
+repository: https://github.com/jenkinsci/jenkins
+license: MIT
+deployment_types:
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- ci
+- cd
+- automation
+sources:
+- title: Jenkins official site
+  url: https://www.jenkins.io/
+  type: official
+- title: Jenkins repository
+  url: https://github.com/jenkinsci/jenkins
+  type: repository
