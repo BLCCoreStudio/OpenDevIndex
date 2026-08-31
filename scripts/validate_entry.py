@@ -11,7 +11,7 @@ from pathlib import Path
 
 import yaml
 
-from taxonomy import load_taxonomy, supported_address_categories
+from taxonomy import load_taxonomy, supported_address_categories, supported_relationship_types
 from url_safety import is_safe_https_url
 
 CORE_PREFIXES = ("feat/", "fix/", "docs/", "chore/", "ci/", "refactor/", "release/")
@@ -23,6 +23,7 @@ REQUIRED_FILES = (
 )
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
 TAG_RE = re.compile(r"^[a-z0-9][a-z0-9.+_-]*$")
+MODULE_REF_RE = re.compile(r"^[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9._-]*$")
 
 
 def fail(message: str, errors: list[str]) -> None:
@@ -45,6 +46,7 @@ def validate(branch: str, root: Path | None = None) -> list[str]:
     kinds = set(taxonomy["canonical_kinds"])
     domains_allowed = set(taxonomy["domains"])
     deployment_allowed = set(taxonomy["deployment_types"])
+    relationship_allowed = supported_relationship_types(taxonomy)
 
     category, slug = branch.split("/", 1)
     if category not in categories:
@@ -71,27 +73,20 @@ def validate(branch: str, root: Path | None = None) -> list[str]:
         return errors
 
     required = {
-        "schema_version",
-        "id",
-        "name",
-        "category",
-        "summary",
-        "status",
-        "verified_at",
-        "tags",
-        "sources",
+        "schema_version", "id", "name", "category", "summary", "status",
+        "verified_at", "tags", "sources",
     }
     missing = sorted(required - data.keys())
     if missing:
         fail(f"Missing metadata keys: {', '.join(missing)}", errors)
 
     schema_version = data.get("schema_version")
-    if schema_version not in {1, 2}:
-        fail("schema_version must be 1 or 2.", errors)
-    if schema_version == 2:
+    if schema_version not in {1, 2, 3}:
+        fail("schema_version must be 1, 2, or 3.", errors)
+    if schema_version in {2, 3}:
         for key in ("kind", "domains"):
             if key not in data:
-                fail(f"schema v2 requires metadata key: {key}", errors)
+                fail(f"schema v{schema_version} requires metadata key: {key}", errors)
 
     if data.get("id") != slug:
         fail(f"metadata id must match module slug '{slug}'.", errors)
@@ -119,6 +114,30 @@ def validate(branch: str, root: Path | None = None) -> list[str]:
             fail("deployment_types must be unique.", errors)
         elif any(value not in deployment_allowed for value in deployments):
             fail("deployment_types contain an unsupported value.", errors)
+
+    relationships = data.get("relationships")
+    if relationships is not None:
+        if not isinstance(relationships, list):
+            fail("relationships must be a list when present.", errors)
+        else:
+            seen_relationships: set[tuple[str, str]] = set()
+            for index, relationship in enumerate(relationships, start=1):
+                if not isinstance(relationship, dict):
+                    fail(f"relationship #{index} must be an object.", errors)
+                    continue
+                relationship_type = relationship.get("type")
+                target = relationship.get("target")
+                if relationship_type not in relationship_allowed:
+                    fail(f"relationship #{index} has unsupported type.", errors)
+                if not isinstance(target, str) or not MODULE_REF_RE.fullmatch(target):
+                    fail(f"relationship #{index} target must use <category>/<slug>.", errors)
+                pair = (relationship_type, target)
+                if pair in seen_relationships:
+                    fail(f"relationship #{index} duplicates an existing type/target pair.", errors)
+                seen_relationships.add(pair)
+                note = relationship.get("note")
+                if note is not None and (not isinstance(note, str) or not note.strip() or len(note) > 240):
+                    fail(f"relationship #{index} note must be a non-empty string up to 240 characters.", errors)
 
     license_value = data.get("license")
     if license_value is not None and (not isinstance(license_value, str) or not license_value.strip() or len(license_value) > 100):
@@ -150,7 +169,7 @@ def validate(branch: str, root: Path | None = None) -> list[str]:
     elif verified_date > dt.date.today():
         fail("verified_at cannot be in the future.", errors)
 
-    min_curated = 3 if schema_version == 2 else 2
+    min_curated = 3 if schema_version in {2, 3} else 2
     tags = data.get("tags")
     if not isinstance(tags, list) or len(tags) < min_curated:
         fail(f"tags must contain at least {min_curated} values.", errors)
@@ -165,7 +184,7 @@ def validate(branch: str, root: Path | None = None) -> list[str]:
             fail(f"{field} must be a public HTTPS URL when present.", errors)
 
     sources = data.get("sources")
-    min_sources = 2 if schema_version == 2 else 1
+    min_sources = 2 if schema_version in {2, 3} else 1
     if not isinstance(sources, list) or len(sources) < min_sources:
         fail(f"sources must contain at least {min_sources} source(s).", errors)
     else:
@@ -182,7 +201,7 @@ def validate(branch: str, root: Path | None = None) -> list[str]:
                 fail(f"source #{index} has unsupported type.", errors)
 
     readme = root / "entry/README.md"
-    minimum_readme = 450 if schema_version == 2 else 300
+    minimum_readme = 600 if schema_version == 3 else (450 if schema_version == 2 else 300)
     if readme.is_file() and len(readme.read_text(encoding="utf-8").strip()) < minimum_readme:
         fail(f"entry/README.md is too short to be useful (minimum {minimum_readme} characters).", errors)
 
