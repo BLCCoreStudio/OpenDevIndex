@@ -2,6 +2,9 @@ schema_version: 1
 id: opentelemetry
 name: OpenTelemetry
 category: cloud
+kind: standard
+domains:
+- observability
 summary: Vendor-neutral observability project defining APIs, SDKs, semantic conventions, and protocols for producing and transporting traces, metrics, and logs.
 homepage: https://opentelemetry.io/
 repository: https://github.com/open-telemetry/opentelemetry-specification
