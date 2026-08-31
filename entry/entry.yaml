@@ -1,0 +1,28 @@
+schema_version: 2
+id: spacy
+name: spaCy
+category: library
+kind: library
+domains:
+- ai
+- machine-learning
+- python
+summary: Industrial natural-language-processing library for Python offering tokenization, linguistic pipelines, named-entity recognition, text classification, and extensible components.
+homepage: https://spacy.io/
+repository: https://github.com/explosion/spaCy
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- ai
+- nlp
+- python
+sources:
+- title: spaCy official site
+  url: https://spacy.io/
+  type: official
+- title: spaCy source repository
+  url: https://github.com/explosion/spaCy
+  type: repository
