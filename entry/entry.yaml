@@ -1,0 +1,31 @@
+schema_version: 2
+id: bruno
+name: Bruno
+category: tool
+kind: tool
+domains:
+- api
+- developer-experience
+- developer-tools
+- testing
+summary: API client focused on local, Git-friendly collections stored as plain text, providing an alternative workflow to cloud-centric API testing tools.
+homepage: https://www.usebruno.com/
+repository: https://github.com/usebruno/bruno
+license: MIT
+deployment_types:
+- desktop
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- api
+- testing
+- developer-tools
+sources:
+- title: Bruno official site
+  url: https://www.usebruno.com/
+  type: official
+- title: Bruno repository
+  url: https://github.com/usebruno/bruno
+  type: repository
