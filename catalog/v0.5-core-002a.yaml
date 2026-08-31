@@ -1,0 +1,180 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 5
+expected_categories:
+  framework: 3
+  tool: 2
+entries:
+- category: framework
+  id: express
+  name: Express
+  summary: Minimal Node.js web framework centered on routing and middleware, commonly used to build HTTP APIs, web backends, and server-side applications in the JavaScript ecosystem.
+  homepage: https://expressjs.com/
+  repository: https://github.com/expressjs/express
+  license: MIT
+  tags:
+  - javascript
+  - web
+  - nodejs
+  sources:
+  - title: Express official site
+    url: https://expressjs.com/
+    type: official
+  - title: Express source repository
+    url: https://github.com/expressjs/express
+    type: repository
+  use_cases:
+  - Build REST-style APIs and HTTP backend services
+  - Implement server-rendered or middleware-driven Node.js web applications
+  - Create lightweight service layers around existing JavaScript libraries and databases
+  key_points:
+  - Express is intentionally small and delegates many concerns to middleware packages
+  - Routing, request handling, response helpers, and middleware composition form the core API
+  - Its ecosystem is closely tied to Node.js package tooling and CommonJS or ECMAScript module applications
+  kind: framework
+  domains:
+  - web
+  - software-development
+  deployment_types:
+  - local
+  - self-hosted
+  - service
+- category: framework
+  id: nestjs
+  name: NestJS
+  summary: TypeScript-first server application framework for Node.js that organizes backend software around modules, dependency injection, decorators, and adapters for common HTTP platforms.
+  homepage: https://nestjs.com/
+  repository: https://github.com/nestjs/nest
+  license: MIT
+  tags:
+  - typescript
+  - web
+  - backend
+  sources:
+  - title: NestJS official site
+    url: https://nestjs.com/
+    type: official
+  - title: NestJS source repository
+    url: https://github.com/nestjs/nest
+    type: repository
+  use_cases:
+  - Build structured TypeScript APIs and backend services
+  - Develop modular monoliths and microservice-oriented Node.js applications
+  - Create server applications that benefit from dependency injection, testing conventions, and framework-managed modules
+  key_points:
+  - NestJS uses decorators and dependency injection to structure application modules and providers
+  - It can run on top of adapters such as Express or Fastify
+  - The framework includes integrations for validation, WebSockets, GraphQL, queues, microservices, and testing
+  kind: framework
+  domains:
+  - web
+  - software-development
+  - api
+  deployment_types:
+  - local
+  - self-hosted
+  - service
+- category: framework
+  id: aspnet-core
+  name: ASP.NET Core
+  summary: Cross-platform open-source framework from Microsoft for building web applications, HTTP APIs, real-time services, and cloud backends on the modern .NET platform.
+  homepage: https://dotnet.microsoft.com/apps/aspnet
+  repository: https://github.com/dotnet/aspnetcore
+  license: MIT
+  tags:
+  - dotnet
+  - web
+  - backend
+  sources:
+  - title: ASP.NET official site
+    url: https://dotnet.microsoft.com/apps/aspnet
+    type: official
+  - title: ASP.NET Core source repository
+    url: https://github.com/dotnet/aspnetcore
+    type: repository
+  use_cases:
+  - Build high-performance HTTP APIs and web backends
+  - Create server-rendered web applications and real-time services
+  - Develop cross-platform services that integrate with the broader .NET runtime and library ecosystem
+  key_points:
+  - ASP.NET Core runs on the cross-platform .NET runtime
+  - The framework includes routing, dependency injection, configuration, logging, authentication, and hosting abstractions
+  - Kestrel is the default cross-platform web server used by ASP.NET Core applications
+  kind: framework
+  domains:
+  - web
+  - software-development
+  - api
+  deployment_types:
+  - local
+  - self-hosted
+  - service
+- category: tool
+  id: uv
+  name: uv
+  summary: Fast Python package and project manager from Astral that combines environment creation, dependency installation, lockfiles, tool execution, and Python version management.
+  homepage: https://docs.astral.sh/uv/
+  repository: https://github.com/astral-sh/uv
+  license: Apache-2.0 OR MIT
+  tags:
+  - python
+  - developer-tools
+  - cli
+  sources:
+  - title: uv documentation
+    url: https://docs.astral.sh/uv/
+    type: documentation
+  - title: uv source repository
+    url: https://github.com/astral-sh/uv
+    type: repository
+  use_cases:
+  - Create and synchronize reproducible Python project environments
+  - Install and run Python command-line tools in isolated environments
+  - Manage Python versions, dependencies, lockfiles, and workspace-style projects from one CLI
+  key_points:
+  - uv is implemented in Rust and optimized for fast dependency and package operations
+  - It supports common Python packaging standards while combining workflows traditionally handled by several tools
+  - The project includes commands for projects, virtual environments, package installation, tools, and Python runtimes
+  kind: tool
+  domains:
+  - python
+  - developer-tools
+  - cli
+  deployment_types:
+  - cli
+  - local
+- category: tool
+  id: ruff
+  name: Ruff
+  summary: High-performance Python linter and formatter from Astral implemented in Rust, designed to replace or consolidate many common Python code-quality checks in one tool.
+  homepage: https://docs.astral.sh/ruff/
+  repository: https://github.com/astral-sh/ruff
+  license: MIT
+  tags:
+  - python
+  - linting
+  - developer-tools
+  sources:
+  - title: Ruff documentation
+    url: https://docs.astral.sh/ruff/
+    type: documentation
+  - title: Ruff source repository
+    url: https://github.com/astral-sh/ruff
+    type: repository
+  use_cases:
+  - Lint Python code locally and in continuous-integration pipelines
+  - Format Python source with a fast standardized formatter
+  - Consolidate rules previously provided by multiple Flake8-style plugins and standalone linters
+  key_points:
+  - Ruff is implemented in Rust with performance as a primary design goal
+  - It supports a broad rule set inspired by or compatible with many established Python linting tools
+  - Configuration can be stored in common Python project files such as pyproject.toml
+  kind: tool
+  domains:
+  - python
+  - developer-tools
+  - developer-experience
+  deployment_types:
+  - cli
+  - local
