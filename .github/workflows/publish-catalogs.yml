@@ -1,0 +1,143 @@
+name: Publish OpenDevIndex catalogs
+
+on:
+  workflow_dispatch:
+    inputs:
+      catalog:
+        description: Optional future catalog path, for example catalog/v0.5-core-001a.yaml
+        required: false
+        default: ''
+      limit:
+        description: Maximum number of missing modules to publish per catalog; 0 publishes all
+        required: false
+        default: '0'
+  push:
+    branches:
+      - main
+    paths:
+      - 'catalog/v*.yaml'
+      - '!catalog/v0.1.yaml'
+      - '!catalog/v0.2-*.yaml'
+      - '.github/workflows/publish-catalogs.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: opendevindex-catalog-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Check out trusted main with history
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-ci.txt
+
+      - name: Install publication dependencies
+        run: python -m pip install -r requirements-ci.txt
+
+      - name: Configure publication identity
+        run: |
+          git config user.name "OpenDevIndex Publisher"
+          git config user.email "207100624+BLCCoreStudio@users.noreply.github.com"
+
+      - name: Select trusted catalogs
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_CATALOG: ${{ github.event.inputs.catalog || '' }}
+          BEFORE_SHA: ${{ github.event.before || '' }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          : > selected-catalogs.txt
+
+          validate_future_catalog_path() {
+            case "$1" in
+              catalog/v0.1.yaml|catalog/v0.2-*.yaml)
+                echo "Legacy catalog is handled by its dedicated publisher: $1" >&2
+                return 1
+                ;;
+              catalog/v*.yaml) ;;
+              *)
+                echo "Catalog must be a top-level catalog/v*.yaml file: $1" >&2
+                return 1
+                ;;
+            esac
+            test -f "$1" || { echo "Catalog does not exist: $1" >&2; return 1; }
+          }
+
+          if [ "$EVENT_NAME" = workflow_dispatch ] && [ -n "$INPUT_CATALOG" ]; then
+            validate_future_catalog_path "$INPUT_CATALOG"
+            printf '%s\n' "$INPUT_CATALOG" > selected-catalogs.txt
+          elif [ "$EVENT_NAME" = push ] && [ -n "$BEFORE_SHA" ] && ! printf '%s' "$BEFORE_SHA" | grep -Eq '^0+$'; then
+            git diff --name-only "$BEFORE_SHA" "$HEAD_SHA" -- 'catalog/*.yaml' \
+              | grep -E '^catalog/v[^/]*\.yaml$' \
+              | grep -v -E '^catalog/v0\.1\.yaml$|^catalog/v0\.2-.*\.yaml$' \
+              | sort -u > selected-catalogs.txt || true
+          else
+            find catalog -maxdepth 1 -type f -name 'v*.yaml' \
+              ! -name 'v0.1.yaml' ! -name 'v0.2-*.yaml' \
+              | sort > selected-catalogs.txt
+          fi
+
+          while IFS= read -r catalog; do
+            [ -z "$catalog" ] && continue
+            validate_future_catalog_path "$catalog"
+          done < selected-catalogs.txt
+
+          echo 'Selected catalogs:'
+          cat selected-catalogs.txt
+
+      - name: Validate publication limit
+        env:
+          INPUT_LIMIT: ${{ github.event.inputs.limit || '0' }}
+        run: |
+          printf '%s' "$INPUT_LIMIT" | grep -Eq '^[0-9]+$' || {
+            echo 'limit must be a non-negative integer' >&2
+            exit 1
+          }
+
+      - name: Validate and publish selected catalogs
+        env:
+          INPUT_LIMIT: ${{ github.event.inputs.limit || '0' }}
+        run: |
+          set -euo pipefail
+          : > publication-summary.md
+
+          if [ ! -s selected-catalogs.txt ]; then
+            echo 'No future catalog changes require publication.' | tee -a publication-summary.md
+            exit 0
+          fi
+
+          while IFS= read -r catalog; do
+            [ -z "$catalog" ] && continue
+            python scripts/validate_catalog.py "$catalog"
+            report="publication-$(basename "$catalog" .yaml).md"
+            python scripts/seed_modules.py \
+              --catalog "$catalog" \
+              --base-ref origin/main \
+              --limit "$INPUT_LIMIT" \
+              --push \
+              --report "$report"
+            cat "$report" >> publication-summary.md
+            printf '\n' >> publication-summary.md
+          done < selected-catalogs.txt
+
+      - name: Publish run summary
+        if: always()
+        run: |
+          if [ -f publication-summary.md ]; then
+            cat publication-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
