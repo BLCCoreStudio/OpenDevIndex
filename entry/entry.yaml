@@ -1,0 +1,27 @@
+schema_version: 2
+id: ccache
+name: ccache
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+summary: Compiler cache for C and C++ toolchains that detects equivalent compilations and reuses previous outputs to reduce incremental build times.
+homepage: https://ccache.dev/
+repository: https://github.com/ccache/ccache
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- cache
+- compiler
+sources:
+- title: ccache official site
+  url: https://ccache.dev/
+  type: official
+- title: ccache source repository
+  url: https://github.com/ccache/ccache
+  type: repository
