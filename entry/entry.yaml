@@ -1,0 +1,27 @@
+schema_version: 2
+id: perl
+name: Perl
+category: language
+kind: language
+domains:
+- programming-languages
+- systems
+summary: Mature dynamic programming language known for text processing, systems administration, automation, and a long-running package ecosystem centered on CPAN.
+homepage: https://www.perl.org/
+repository: https://github.com/Perl/perl5
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- scripting
+- automation
+sources:
+- title: Perl official site
+  url: https://www.perl.org/
+  type: official
+- title: Perl 5 source repository
+  url: https://github.com/Perl/perl5
+  type: repository
