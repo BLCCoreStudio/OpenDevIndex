@@ -1,0 +1,29 @@
+schema_version: 2
+id: ninja
+name: Ninja
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+- systems
+summary: Small build system focused on executing generated build graphs as quickly as possible, commonly used as a backend for higher-level generators such as CMake and Meson.
+homepage: https://ninja-build.org/
+repository: https://github.com/ninja-build/ninja
+license: Apache-2.0
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- native
+- developer-tools
+sources:
+- title: Ninja official site
+  url: https://ninja-build.org/
+  type: official
+- title: Ninja source repository
+  url: https://github.com/ninja-build/ninja
+  type: repository
