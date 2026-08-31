@@ -2,6 +2,10 @@ schema_version: 1
 id: javascript
 name: JavaScript
 category: language
+kind: language
+domains:
+- programming-languages
+- web
 summary: ECMAScript-based programming language that powers browser scripting and is also widely used on servers, tooling, desktop, and mobile platforms.
 homepage: https://tc39.es/ecma262/
 status: active
