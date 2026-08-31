@@ -1,0 +1,20 @@
+schema_version: 1
+id: wireguard
+name: WireGuard
+category: security
+summary: Modern VPN protocol and implementation designed around a small codebase, contemporary cryptography, and simple peer-to-peer configuration.
+homepage: https://www.wireguard.com/
+repository: https://github.com/WireGuard/wireguard-tools
+status: active
+verified_at: '2026-08-31'
+tags:
+- vpn
+- networking
+- cryptography
+sources:
+- title: WireGuard official site
+  url: https://www.wireguard.com/
+  type: official
+- title: WireGuard tools repository
+  url: https://github.com/WireGuard/wireguard-tools
+  type: repository
