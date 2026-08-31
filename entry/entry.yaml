@@ -1,0 +1,20 @@
+schema_version: 1
+id: tensorflow
+name: TensorFlow
+category: ai
+summary: Open-source machine-learning platform for tensor computation, model training, deployment, and production pipelines across CPUs, GPUs, and accelerators.
+homepage: https://www.tensorflow.org/
+repository: https://github.com/tensorflow/tensorflow
+status: active
+verified_at: '2026-08-31'
+tags:
+- machine-learning
+- deep-learning
+- python
+sources:
+- title: TensorFlow official site
+  url: https://www.tensorflow.org/
+  type: official
+- title: TensorFlow repository
+  url: https://github.com/tensorflow/tensorflow
+  type: repository
