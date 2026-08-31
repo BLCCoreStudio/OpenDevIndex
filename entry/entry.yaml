@@ -5,6 +5,7 @@ category: database
 kind: database
 domains:
 - data
+- embedded
 summary: Embedded relational database engine that stores a complete database in ordinary files and requires no separate database server process.
 homepage: https://www.sqlite.org/
 status: active
