@@ -1,0 +1,27 @@
+schema_version: 2
+id: shellcheck
+name: ShellCheck
+category: tool
+kind: tool
+domains:
+- cli
+- developer-tools
+summary: Static-analysis tool for shell scripts that detects common syntax mistakes, quoting errors, portability problems, and suspicious shell programming patterns.
+homepage: https://www.shellcheck.net/
+repository: https://github.com/koalaman/shellcheck
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- shell
+- linting
+- static-analysis
+sources:
+- title: ShellCheck official site
+  url: https://www.shellcheck.net/
+  type: official
+- title: ShellCheck source repository
+  url: https://github.com/koalaman/shellcheck
+  type: repository
