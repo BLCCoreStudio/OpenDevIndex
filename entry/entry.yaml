@@ -1,0 +1,27 @@
+schema_version: 2
+id: objective-c
+name: Objective-C
+category: language
+kind: language
+domains:
+- mobile
+- programming-languages
+summary: Object-oriented programming language built on C that remains important for understanding and maintaining Apple platform software and established Cocoa codebases.
+homepage: https://developer.apple.com/documentation/objectivec
+repository: https://github.com/llvm/llvm-project
+deployment_types:
+- local
+- mobile
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- apple
+- cocoa
+sources:
+- title: Apple Objective-C documentation
+  url: https://developer.apple.com/documentation/objectivec
+  type: documentation
+- title: LLVM project repository
+  url: https://github.com/llvm/llvm-project
+  type: repository
