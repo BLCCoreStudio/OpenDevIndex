@@ -1,0 +1,29 @@
+schema_version: 2
+id: onnxruntime
+name: ONNX Runtime
+category: library
+kind: runtime
+domains:
+- ai
+- machine-learning
+- systems
+summary: Cross-platform inference and training accelerator for models represented in ONNX, with execution providers targeting CPUs, GPUs, mobile devices, and specialized hardware.
+homepage: https://onnxruntime.ai/
+repository: https://github.com/microsoft/onnxruntime
+deployment_types:
+- library
+- local
+- mobile
+status: active
+verified_at: '2026-08-31'
+tags:
+- ai
+- inference
+- onnx
+sources:
+- title: ONNX Runtime official site
+  url: https://onnxruntime.ai/
+  type: official
+- title: ONNX Runtime source repository
+  url: https://github.com/microsoft/onnxruntime
+  type: repository
