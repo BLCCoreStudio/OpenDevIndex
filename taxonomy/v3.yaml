@@ -68,6 +68,7 @@ domains:
   - performance
   - privacy
   - programming-languages
+  - python
   - quantum-computing
   - reliability
   - robotics
@@ -180,6 +181,7 @@ tag_domains:
   operating-system: operating-systems
   performance: performance
   privacy: privacy
+  python: python
   quantum: quantum-computing
   reliability: reliability
   robotics: robotics
