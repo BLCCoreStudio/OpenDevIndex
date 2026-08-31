@@ -1,0 +1,16 @@
+schema_version: 1
+id: retrieval-augmented-generation
+name: Retrieval-Augmented Generation
+category: concept
+summary: AI pattern that retrieves external information at inference time and provides it to a generative model so answers can use data beyond model parameters.
+homepage: https://arxiv.org/abs/2005.11401
+status: active
+verified_at: '2026-08-31'
+tags:
+- rag
+- llm
+- retrieval
+sources:
+- title: Retrieval-Augmented Generation paper
+  url: https://arxiv.org/abs/2005.11401
+  type: research
