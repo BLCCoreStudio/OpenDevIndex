@@ -1,0 +1,88 @@
+name: Build Search Index
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'catalog/**'
+      - 'scripts/build_index.py'
+      - 'scripts/catalog_utils.py'
+      - 'scripts/search_index.py'
+      - 'scripts/url_safety.py'
+      - 'scripts/validate_catalog.py'
+      - 'tests/**'
+      - '.github/workflows/index.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'catalog/**'
+      - 'scripts/build_index.py'
+      - 'scripts/catalog_utils.py'
+      - 'scripts/search_index.py'
+      - 'scripts/url_safety.py'
+      - 'scripts/validate_catalog.py'
+      - 'tests/**'
+      - '.github/workflows/index.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: opendevindex-search-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-search-index:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-ci.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements-ci.txt
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Build deterministic catalog and search artifacts
+        run: python scripts/build_index.py --catalog-dir catalog --output-dir dist/index
+
+      - name: Smoke-test search
+        run: |
+          python scripts/search_index.py "container development" --index dist/index/search.json --limit 5
+          python scripts/search_index.py "machine learning" --index dist/index/search.json --limit 5
+
+      - name: Publish build summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+          data = json.loads(Path('dist/index/catalog.json').read_text(encoding='utf-8'))
+          print('# OpenDevIndex Search Index')
+          print()
+          print(f"Generated **{data['module_count']}** validated modules.")
+          print()
+          print('| Category | Modules |')
+          print('| --- | ---: |')
+          for category, count in data['category_counts'].items():
+              print(f'| `{category}` | {count} |')
+          PY
+
+      - name: Upload generated search artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: opendevindex-search-index
+          path: dist/index
+          if-no-files-found: error
+          retention-days: 30
