@@ -1,0 +1,20 @@
+schema_version: 1
+id: prometheus
+name: Prometheus
+category: cloud
+summary: Open-source monitoring and alerting system built around time-series metrics, label-based queries, pull-oriented scraping, and rule evaluation.
+homepage: https://prometheus.io/
+repository: https://github.com/prometheus/prometheus
+status: active
+verified_at: '2026-08-31'
+tags:
+- monitoring
+- metrics
+- observability
+sources:
+- title: Prometheus official site
+  url: https://prometheus.io/
+  type: official
+- title: Prometheus repository
+  url: https://github.com/prometheus/prometheus
+  type: repository
