@@ -11,6 +11,9 @@ from pathlib import Path
 from catalog_utils import collect_entries, discover_catalogs
 
 
+PRIMARY_SOURCE_TYPES = {"official", "repository", "standard", "documentation", "research"}
+
+
 def score_entry(entry: dict) -> tuple[int, list[str], list[str]]:
     score = 0
     critical: list[str] = []
@@ -39,7 +42,7 @@ def score_entry(entry: dict) -> tuple[int, list[str], list[str]]:
     else:
         critical.append("no verified sources")
     source_types = {source.get("type") for source in sources if isinstance(source, dict)}
-    if source_types & {"official", "repository", "standard", "documentation"}:
+    if source_types & PRIMARY_SOURCE_TYPES:
         score += 10
     else:
         critical.append("no primary or canonical source type")
