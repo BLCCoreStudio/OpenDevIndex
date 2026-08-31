@@ -1,0 +1,27 @@
+schema_version: 2
+id: qdrant
+name: Qdrant
+category: database
+kind: database
+domains:
+- ai
+- data
+summary: Vector similarity search engine and database written in Rust, providing filtered nearest-neighbor search, persistence, payload metadata, and APIs for embedding workloads.
+homepage: https://qdrant.tech/
+repository: https://github.com/qdrant/qdrant
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- vector-database
+- ai
+- rust
+sources:
+- title: Qdrant official site
+  url: https://qdrant.tech/
+  type: official
+- title: Qdrant source repository
+  url: https://github.com/qdrant/qdrant
+  type: repository
