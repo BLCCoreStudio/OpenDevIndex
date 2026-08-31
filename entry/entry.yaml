@@ -2,6 +2,10 @@ schema_version: 1
 id: ray
 name: Ray
 category: ai
+kind: framework
+domains:
+- ai
+- distributed-systems
 summary: Distributed computing framework for scaling Python and AI workloads from a single machine to clusters with task, actor, training, and serving abstractions.
 homepage: https://docs.ray.io/
 repository: https://github.com/ray-project/ray

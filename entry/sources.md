@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **Ray documentation** — https://docs.ray.io/ (`documentation`)
 - **Ray repository** — https://github.com/ray-project/ray (`repository`)
