@@ -1,0 +1,325 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 10
+expected_categories:
+  library: 10
+entries:
+- category: library
+  id: numpy
+  name: NumPy
+  homepage: https://numpy.org/
+  repository: https://github.com/numpy/numpy
+  tags:
+  - python
+  - numerical
+  - arrays
+  kind: library
+  domains:
+  - python
+  - data
+  deployment_types:
+  - library
+  summary: NumPy is a foundational Python numerical-computing library providing multidimensional arrays, vectorized operations, linear algebra primitives, random sampling, and scientific ecosystem interoperability.
+  sources:
+  - title: NumPy official site or documentation
+    url: https://numpy.org/
+    type: official
+  - title: NumPy source repository
+    url: https://github.com/numpy/numpy
+    type: repository
+  use_cases:
+  - Use NumPy as a reusable library in applications that need its python capabilities
+  - Compose NumPy with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate NumPy's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - NumPy is a foundational Python numerical-computing library providing multidimensional arrays, vectorized operations, linear algebra primitives, random sampling, and scientific ecosystem interoperability.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: pandas
+  name: pandas
+  homepage: https://pandas.pydata.org/
+  repository: https://github.com/pandas-dev/pandas
+  tags:
+  - python
+  - dataframe
+  - analytics
+  kind: library
+  domains:
+  - python
+  - data
+  - analytics
+  deployment_types:
+  - library
+  summary: pandas is a Python data-analysis library centered on labeled Series and DataFrame structures for tabular cleaning, transformation, joining, aggregation, time-series work, and file interchange.
+  sources:
+  - title: pandas official site or documentation
+    url: https://pandas.pydata.org/
+    type: official
+  - title: pandas source repository
+    url: https://github.com/pandas-dev/pandas
+    type: repository
+  use_cases:
+  - Use pandas as a reusable library in applications that need its python capabilities
+  - Compose pandas with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate pandas's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - pandas is a Python data-analysis library centered on labeled Series and DataFrame structures for tabular cleaning, transformation, joining, aggregation, time-series work, and file interchange.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: scipy
+  name: SciPy
+  homepage: https://scipy.org/
+  repository: https://github.com/scipy/scipy
+  tags:
+  - python
+  - scientific-computing
+  - numerical
+  kind: library
+  domains:
+  - python
+  - data
+  deployment_types:
+  - library
+  summary: SciPy is a scientific Python library providing algorithms for optimization, integration, interpolation, signal processing, statistics, sparse matrices, differential equations, and numerical methods.
+  sources:
+  - title: SciPy official site or documentation
+    url: https://scipy.org/
+    type: official
+  - title: SciPy source repository
+    url: https://github.com/scipy/scipy
+    type: repository
+  use_cases:
+  - Use SciPy as a reusable library in applications that need its python capabilities
+  - Compose SciPy with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate SciPy's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - SciPy is a scientific Python library providing algorithms for optimization, integration, interpolation, signal processing, statistics, sparse matrices, differential equations, and numerical methods.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: matplotlib
+  name: Matplotlib
+  homepage: https://matplotlib.org/
+  repository: https://github.com/matplotlib/matplotlib
+  tags:
+  - python
+  - visualization
+  - plotting
+  kind: library
+  domains:
+  - python
+  - data
+  - analytics
+  deployment_types:
+  - library
+  summary: Matplotlib is a Python plotting library for static, animated, and interactive visualizations with detailed control over figures, axes, charts, annotations, and publication-quality output.
+  sources:
+  - title: Matplotlib official site or documentation
+    url: https://matplotlib.org/
+    type: official
+  - title: Matplotlib source repository
+    url: https://github.com/matplotlib/matplotlib
+    type: repository
+  use_cases:
+  - Use Matplotlib as a reusable library in applications that need its python capabilities
+  - Compose Matplotlib with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate Matplotlib's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - Matplotlib is a Python plotting library for static, animated, and interactive visualizations with detailed control over figures, axes, charts, annotations, and publication-quality output.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: polars
+  name: Polars
+  homepage: https://pola.rs/
+  repository: https://github.com/pola-rs/polars
+  tags:
+  - dataframe
+  - rust
+  - analytics
+  kind: library
+  domains:
+  - data
+  - analytics
+  - python
+  deployment_types:
+  - library
+  summary: Polars is a high-performance DataFrame library written in Rust with Python and other bindings, providing eager and lazy query APIs, columnar execution, parallelism, and Arrow interoperability.
+  sources:
+  - title: Polars official site or documentation
+    url: https://pola.rs/
+    type: official
+  - title: Polars source repository
+    url: https://github.com/pola-rs/polars
+    type: repository
+  use_cases:
+  - Use Polars as a reusable library in applications that need its dataframe capabilities
+  - Compose Polars with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate Polars's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - Polars is a high-performance DataFrame library written in Rust with Python and other bindings, providing eager and lazy query APIs, columnar execution, parallelism, and Arrow interoperability.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: sqlalchemy
+  name: SQLAlchemy
+  homepage: https://www.sqlalchemy.org/
+  repository: https://github.com/sqlalchemy/sqlalchemy
+  tags:
+  - python
+  - sql
+  - orm
+  kind: library
+  domains:
+  - python
+  - data
+  - software-development
+  deployment_types:
+  - library
+  summary: SQLAlchemy is a Python SQL toolkit and object-relational mapper providing composable SQL expressions, database abstraction, connection management, and ORM patterns for relational applications.
+  sources:
+  - title: SQLAlchemy official site or documentation
+    url: https://www.sqlalchemy.org/
+    type: official
+  - title: SQLAlchemy source repository
+    url: https://github.com/sqlalchemy/sqlalchemy
+    type: repository
+  use_cases:
+  - Use SQLAlchemy as a reusable library in applications that need its python capabilities
+  - Compose SQLAlchemy with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate SQLAlchemy's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - SQLAlchemy is a Python SQL toolkit and object-relational mapper providing composable SQL expressions, database abstraction, connection management, and ORM patterns for relational applications.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: pydantic
+  name: Pydantic
+  homepage: https://docs.pydantic.dev/
+  repository: https://github.com/pydantic/pydantic
+  tags:
+  - python
+  - validation
+  - types
+  kind: library
+  domains:
+  - python
+  - api
+  - software-development
+  deployment_types:
+  - library
+  summary: Pydantic is a Python data-validation library using type annotations to parse, validate, serialize, and document structured data for application models, APIs, settings, and configuration.
+  sources:
+  - title: Pydantic official site or documentation
+    url: https://docs.pydantic.dev/
+    type: official
+  - title: Pydantic source repository
+    url: https://github.com/pydantic/pydantic
+    type: repository
+  use_cases:
+  - Use Pydantic as a reusable library in applications that need its python capabilities
+  - Compose Pydantic with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate Pydantic's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - Pydantic is a Python data-validation library using type annotations to parse, validate, serialize, and document structured data for application models, APIs, settings, and configuration.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: tokio
+  name: Tokio
+  homepage: https://tokio.rs/
+  repository: https://github.com/tokio-rs/tokio
+  tags:
+  - rust
+  - async
+  - runtime
+  kind: library
+  domains:
+  - systems
+  - networking
+  - software-development
+  deployment_types:
+  - library
+  summary: Tokio is an asynchronous runtime for Rust providing an event-driven scheduler, networking, timers, synchronization primitives, and foundational infrastructure for concurrent network services.
+  sources:
+  - title: Tokio official site or documentation
+    url: https://tokio.rs/
+    type: official
+  - title: Tokio source repository
+    url: https://github.com/tokio-rs/tokio
+    type: repository
+  use_cases:
+  - Use Tokio as a reusable library in applications that need its rust capabilities
+  - Compose Tokio with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate Tokio's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - Tokio is an asynchronous runtime for Rust providing an event-driven scheduler, networking, timers, synchronization primitives, and foundational infrastructure for concurrent network services.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: serde
+  name: Serde
+  homepage: https://serde.rs/
+  repository: https://github.com/serde-rs/serde
+  tags:
+  - rust
+  - serialization
+  - data
+  kind: library
+  domains:
+  - systems
+  - data
+  - software-development
+  deployment_types:
+  - library
+  summary: Serde is a Rust serialization framework providing efficient generic traits and derive macros for converting strongly typed data structures to and from JSON, YAML, binary, and other formats.
+  sources:
+  - title: Serde official site or documentation
+    url: https://serde.rs/
+    type: official
+  - title: Serde source repository
+    url: https://github.com/serde-rs/serde
+    type: repository
+  use_cases:
+  - Use Serde as a reusable library in applications that need its rust capabilities
+  - Compose Serde with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate Serde's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - Serde is a Rust serialization framework providing efficient generic traits and derive macros for converting strongly typed data structures to and from JSON, YAML, binary, and other formats.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
+- category: library
+  id: requests
+  name: Requests
+  homepage: https://requests.readthedocs.io/
+  repository: https://github.com/psf/requests
+  tags:
+  - python
+  - http
+  - client
+  kind: library
+  domains:
+  - python
+  - api
+  - networking
+  deployment_types:
+  - library
+  summary: Requests is a popular Python HTTP client library with a high-level API for sending requests, handling sessions, headers, cookies, authentication, TLS, and common web-service interactions.
+  sources:
+  - title: Requests official site or documentation
+    url: https://requests.readthedocs.io/
+    type: official
+  - title: Requests source repository
+    url: https://github.com/psf/requests
+    type: repository
+  use_cases:
+  - Use Requests as a reusable library in applications that need its python capabilities
+  - Compose Requests with the surrounding language ecosystem to avoid reimplementing established data or systems functionality
+  - Evaluate Requests's API, performance, compatibility, and maintenance model before adopting it as a project dependency
+  key_points:
+  - Requests is a popular Python HTTP client library with a high-level API for sending requests, handling sessions, headers, cookies, authentication, TLS, and common web-service interactions.
+  - Library behavior and compatibility depend on language versions, transitive dependencies, optional features, and release policy
+  - Applications should pin and test versions appropriately and verify API or migration changes against primary documentation
