@@ -1,0 +1,27 @@
+schema_version: 2
+id: pydantic
+name: Pydantic
+category: library
+kind: library
+domains:
+- python
+- software-development
+summary: Python data validation library that uses type annotations to parse, validate, serialize, and document structured application data with explicit models.
+homepage: https://docs.pydantic.dev/
+repository: https://github.com/pydantic/pydantic
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- validation
+- typing
+sources:
+- title: Pydantic documentation
+  url: https://docs.pydantic.dev/
+  type: documentation
+- title: Pydantic source repository
+  url: https://github.com/pydantic/pydantic
+  type: repository
