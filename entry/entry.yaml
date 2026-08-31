@@ -1,0 +1,27 @@
+schema_version: 2
+id: eslint
+name: ESLint
+category: tool
+kind: tool
+domains:
+- developer-tools
+- web
+summary: Pluggable static-analysis and linting tool for JavaScript and related ecosystems, used to detect problematic patterns and enforce project coding rules.
+homepage: https://eslint.org/
+repository: https://github.com/eslint/eslint
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- linting
+- javascript
+- static-analysis
+sources:
+- title: ESLint official site
+  url: https://eslint.org/
+  type: official
+- title: ESLint source repository
+  url: https://github.com/eslint/eslint
+  type: repository
