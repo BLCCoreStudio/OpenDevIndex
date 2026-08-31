@@ -1,0 +1,288 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 9
+expected_categories:
+  framework: 9
+entries:
+- category: framework
+  id: symfony
+  name: Symfony
+  homepage: https://symfony.com/
+  repository: https://github.com/symfony/symfony
+  tags:
+  - php
+  - web
+  - backend
+  kind: framework
+  domains:
+  - web
+  - software-development
+  deployment_types:
+  - web
+  summary: Symfony is a PHP web application framework and reusable component ecosystem focused on structured architecture, maintainability, and composable server-side development.
+  sources:
+  - title: Symfony official site or documentation
+    url: https://symfony.com/
+    type: official
+  - title: Symfony source repository
+    url: https://github.com/symfony/symfony
+    type: repository
+  use_cases:
+  - Build applications with Symfony using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Symfony's documented APIs and tooling
+  - Evaluate Symfony against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Symfony is a PHP web application framework and reusable component ecosystem focused on structured architecture, maintainability, and composable server-side development.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: phoenix
+  name: Phoenix
+  homepage: https://www.phoenixframework.org/
+  repository: https://github.com/phoenixframework/phoenix
+  tags:
+  - elixir
+  - web
+  - realtime
+  kind: framework
+  domains:
+  - web
+  - distributed-systems
+  deployment_types:
+  - web
+  summary: Phoenix is an Elixir web framework built on the Erlang VM, combining server-rendered applications, real-time communication, fault-tolerant concurrency, and scalable web services.
+  sources:
+  - title: Phoenix official site or documentation
+    url: https://www.phoenixframework.org/
+    type: official
+  - title: Phoenix source repository
+    url: https://github.com/phoenixframework/phoenix
+    type: repository
+  use_cases:
+  - Build applications with Phoenix using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Phoenix's documented APIs and tooling
+  - Evaluate Phoenix against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Phoenix is an Elixir web framework built on the Erlang VM, combining server-rendered applications, real-time communication, fault-tolerant concurrency, and scalable web services.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: nuxt
+  name: Nuxt
+  homepage: https://nuxt.com/
+  repository: https://github.com/nuxt/nuxt
+  tags:
+  - vue
+  - web
+  - full-stack
+  kind: framework
+  domains:
+  - web
+  - software-development
+  deployment_types:
+  - web
+  summary: Nuxt is a full-stack Vue framework with file-based routing, server rendering, data fetching, deployment adapters, and conventions for production web applications.
+  sources:
+  - title: Nuxt official site or documentation
+    url: https://nuxt.com/
+    type: official
+  - title: Nuxt source repository
+    url: https://github.com/nuxt/nuxt
+    type: repository
+  use_cases:
+  - Build applications with Nuxt using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Nuxt's documented APIs and tooling
+  - Evaluate Nuxt against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Nuxt is a full-stack Vue framework with file-based routing, server rendering, data fetching, deployment adapters, and conventions for production web applications.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: fastify
+  name: Fastify
+  homepage: https://fastify.dev/
+  repository: https://github.com/fastify/fastify
+  tags:
+  - nodejs
+  - web
+  - api
+  kind: framework
+  domains:
+  - web
+  - api
+  deployment_types:
+  - web
+  summary: Fastify is a performance-focused Node.js web framework with schema-based validation, a plugin architecture, structured logging integration, and low-overhead HTTP handling.
+  sources:
+  - title: Fastify official site or documentation
+    url: https://fastify.dev/
+    type: official
+  - title: Fastify source repository
+    url: https://github.com/fastify/fastify
+    type: repository
+  use_cases:
+  - Build applications with Fastify using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Fastify's documented APIs and tooling
+  - Evaluate Fastify against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Fastify is a performance-focused Node.js web framework with schema-based validation, a plugin architecture, structured logging integration, and low-overhead HTTP handling.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: hono
+  name: Hono
+  homepage: https://hono.dev/
+  repository: https://github.com/honojs/hono
+  tags:
+  - javascript
+  - web
+  - edge
+  kind: framework
+  domains:
+  - web
+  - api
+  deployment_types:
+  - web
+  summary: Hono is a small web framework built on Web Standards APIs for JavaScript runtimes and edge platforms, with lightweight routing, middleware, and cross-runtime portability.
+  sources:
+  - title: Hono official site or documentation
+    url: https://hono.dev/
+    type: official
+  - title: Hono source repository
+    url: https://github.com/honojs/hono
+    type: repository
+  use_cases:
+  - Build applications with Hono using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Hono's documented APIs and tooling
+  - Evaluate Hono against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Hono is a small web framework built on Web Standards APIs for JavaScript runtimes and edge platforms, with lightweight routing, middleware, and cross-runtime portability.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: gin
+  name: Gin
+  homepage: https://gin-gonic.com/
+  repository: https://github.com/gin-gonic/gin
+  tags:
+  - go
+  - web
+  - api
+  kind: framework
+  domains:
+  - web
+  - api
+  deployment_types:
+  - web
+  summary: Gin is a Go HTTP framework providing fast routing, middleware, request binding, rendering helpers, and a compact API for building web services and JSON APIs.
+  sources:
+  - title: Gin official site or documentation
+    url: https://gin-gonic.com/
+    type: official
+  - title: Gin source repository
+    url: https://github.com/gin-gonic/gin
+    type: repository
+  use_cases:
+  - Build applications with Gin using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Gin's documented APIs and tooling
+  - Evaluate Gin against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Gin is a Go HTTP framework providing fast routing, middleware, request binding, rendering helpers, and a compact API for building web services and JSON APIs.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: fiber
+  name: Fiber
+  homepage: https://gofiber.io/
+  repository: https://github.com/gofiber/fiber
+  tags:
+  - go
+  - web
+  - api
+  kind: framework
+  domains:
+  - web
+  - api
+  deployment_types:
+  - web
+  summary: Fiber is an Express-inspired Go web framework built on fasthttp, offering familiar routing and middleware patterns for performance-oriented HTTP applications.
+  sources:
+  - title: Fiber official site or documentation
+    url: https://gofiber.io/
+    type: official
+  - title: Fiber source repository
+    url: https://github.com/gofiber/fiber
+    type: repository
+  use_cases:
+  - Build applications with Fiber using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Fiber's documented APIs and tooling
+  - Evaluate Fiber against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Fiber is an Express-inspired Go web framework built on fasthttp, offering familiar routing and middleware patterns for performance-oriented HTTP applications.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: axum
+  name: Axum
+  homepage: https://docs.rs/axum/
+  repository: https://github.com/tokio-rs/axum
+  tags:
+  - rust
+  - web
+  - async
+  kind: framework
+  domains:
+  - web
+  - api
+  - systems
+  deployment_types:
+  - web
+  summary: Axum is a Rust web framework from the Tokio ecosystem emphasizing ergonomic routing, typed extractors, middleware composition, and asynchronous service integration.
+  sources:
+  - title: Axum official site or documentation
+    url: https://docs.rs/axum/
+    type: official
+  - title: Axum source repository
+    url: https://github.com/tokio-rs/axum
+    type: repository
+  use_cases:
+  - Build applications with Axum using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Axum's documented APIs and tooling
+  - Evaluate Axum against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Axum is a Rust web framework from the Tokio ecosystem emphasizing ergonomic routing, typed extractors, middleware composition, and asynchronous service integration.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
+- category: framework
+  id: actix-web
+  name: Actix Web
+  homepage: https://actix.rs/
+  repository: https://github.com/actix/actix-web
+  tags:
+  - rust
+  - web
+  - async
+  kind: framework
+  domains:
+  - web
+  - api
+  - systems
+  deployment_types:
+  - web
+  summary: Actix Web is a mature Rust web framework for asynchronous HTTP applications with routing, typed extractors, middleware, WebSocket support, and a high-performance server runtime.
+  sources:
+  - title: Actix Web official site or documentation
+    url: https://actix.rs/
+    type: official
+  - title: Actix Web source repository
+    url: https://github.com/actix/actix-web
+    type: repository
+  use_cases:
+  - Build applications with Actix Web using its framework conventions, reusable components, and supported runtime ecosystem
+  - Standardize project structure and common implementation patterns around Actix Web's documented APIs and tooling
+  - Evaluate Actix Web against alternative frameworks for architecture, deployment targets, performance, and ecosystem fit
+  key_points:
+  - Actix Web is a mature Rust web framework for asynchronous HTTP applications with routing, typed extractors, middleware, WebSocket support, and a high-performance server runtime.
+  - Framework behavior is shaped by its supported runtimes, extension ecosystem, release lifecycle, and deployment model
+  - Projects should verify version-specific APIs, compatibility requirements, and migration guidance in the primary documentation
