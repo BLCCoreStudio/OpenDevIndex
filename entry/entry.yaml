@@ -1,0 +1,20 @@
+schema_version: 1
+id: homebrew
+name: Homebrew
+category: tool
+summary: Package manager for macOS and Linux that installs command-line tools and applications through versioned formulae and casks.
+homepage: https://brew.sh/
+repository: https://github.com/Homebrew/brew
+status: active
+verified_at: '2026-08-31'
+tags:
+- package-manager
+- macos
+- linux
+sources:
+- title: Homebrew official site
+  url: https://brew.sh/
+  type: official
+- title: Homebrew repository
+  url: https://github.com/Homebrew/brew
+  type: repository
