@@ -1,0 +1,17 @@
+schema_version: 1
+id: fd
+name: fd
+category: tool
+summary: Simple and fast alternative to the traditional Unix find command, optimized for ergonomic filename and path searches from the command line.
+homepage: https://github.com/sharkdp/fd
+repository: https://github.com/sharkdp/fd
+status: active
+verified_at: '2026-08-31'
+tags:
+- search
+- filesystem
+- rust
+sources:
+- title: fd repository
+  url: https://github.com/sharkdp/fd
+  type: repository
