@@ -1,0 +1,28 @@
+schema_version: 2
+id: deno
+name: Deno
+category: runtime
+kind: runtime
+domains:
+- programming-languages
+- web
+summary: JavaScript and TypeScript runtime with secure-by-default permissions, built-in developer tooling, web-standard APIs, and modern package compatibility.
+homepage: https://deno.com/
+repository: https://github.com/denoland/deno
+license: MIT
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- javascript
+- typescript
+- runtime
+sources:
+- title: Deno official site
+  url: https://deno.com/
+  type: official
+- title: Deno repository
+  url: https://github.com/denoland/deno
+  type: repository
