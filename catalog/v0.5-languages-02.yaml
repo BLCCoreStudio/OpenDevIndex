@@ -1,0 +1,389 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 12
+expected_categories:
+  language: 12
+entries:
+- category: language
+  id: r
+  name: R
+  homepage: https://www.r-project.org/
+  repository: https://svn.r-project.org/R/trunk/
+  tags:
+  - programming-language
+  - data
+  - statistics
+  kind: language
+  domains:
+  - programming-languages
+  - data
+  - analytics
+  deployment_types:
+  - local
+  summary: R is a statistical programming language and environment widely used for data analysis, visualization, scientific computing, and reproducible research.
+  sources:
+  - title: R official site or documentation
+    url: https://www.r-project.org/
+    type: official
+  - title: R source repository
+    url: https://svn.r-project.org/R/trunk/
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where R's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in R across supported development environments
+  - Evaluate R against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - R is a statistical programming language and environment widely used for data analysis, visualization, scientific computing, and reproducible research.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: perl
+  name: Perl
+  homepage: https://www.perl.org/
+  repository: https://github.com/Perl/perl5
+  tags:
+  - programming-language
+  - scripting
+  - text-processing
+  kind: language
+  domains:
+  - programming-languages
+  - systems
+  - software-development
+  deployment_types:
+  - local
+  summary: Perl is a dynamic programming language with strong text-processing capabilities and a mature ecosystem for scripting, automation, systems administration, and web software.
+  sources:
+  - title: Perl official site or documentation
+    url: https://www.perl.org/
+    type: official
+  - title: Perl source repository
+    url: https://github.com/Perl/perl5
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where Perl's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in Perl across supported development environments
+  - Evaluate Perl against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - Perl is a dynamic programming language with strong text-processing capabilities and a mature ecosystem for scripting, automation, systems administration, and web software.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: clojure
+  name: Clojure
+  homepage: https://clojure.org/
+  repository: https://github.com/clojure/clojure
+  tags:
+  - programming-language
+  - functional
+  - jvm
+  kind: language
+  domains:
+  - programming-languages
+  - software-development
+  deployment_types:
+  - local
+  summary: Clojure is a dynamic functional language in the Lisp family for the JVM, emphasizing immutable data, interactive development, macros, and concurrency-friendly design.
+  sources:
+  - title: Clojure official site or documentation
+    url: https://clojure.org/
+    type: official
+  - title: Clojure source repository
+    url: https://github.com/clojure/clojure
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where Clojure's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in Clojure across supported development environments
+  - Evaluate Clojure against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - Clojure is a dynamic functional language in the Lisp family for the JVM, emphasizing immutable data, interactive development, macros, and concurrency-friendly design.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: fsharp
+  name: F#
+  homepage: https://fsharp.org/
+  repository: https://github.com/dotnet/fsharp
+  tags:
+  - programming-language
+  - functional
+  - dotnet
+  kind: language
+  domains:
+  - programming-languages
+  - software-development
+  deployment_types:
+  - local
+  summary: F# is a strongly typed functional-first language in the .NET ecosystem that combines concise functional programming with object-oriented interoperability and cross-platform tooling.
+  sources:
+  - title: F# official site or documentation
+    url: https://fsharp.org/
+    type: official
+  - title: F# source repository
+    url: https://github.com/dotnet/fsharp
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where F#'s language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in F# across supported development environments
+  - Evaluate F# against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - F# is a strongly typed functional-first language in the .NET ecosystem that combines concise functional programming with object-oriented interoperability and cross-platform tooling.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: ocaml
+  name: OCaml
+  homepage: https://ocaml.org/
+  repository: https://github.com/ocaml/ocaml
+  tags:
+  - programming-language
+  - functional
+  - native
+  kind: language
+  domains:
+  - programming-languages
+  - systems
+  - software-development
+  deployment_types:
+  - local
+  summary: OCaml is a statically typed functional language with type inference, algebraic data types, native compilation, and a mature ecosystem for compilers, systems, and verified software.
+  sources:
+  - title: OCaml official site or documentation
+    url: https://ocaml.org/
+    type: official
+  - title: OCaml source repository
+    url: https://github.com/ocaml/ocaml
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where OCaml's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in OCaml across supported development environments
+  - Evaluate OCaml against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - OCaml is a statically typed functional language with type inference, algebraic data types, native compilation, and a mature ecosystem for compilers, systems, and verified software.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: nim
+  name: Nim
+  homepage: https://nim-lang.org/
+  repository: https://github.com/nim-lang/Nim
+  tags:
+  - programming-language
+  - native
+  - systems
+  kind: language
+  domains:
+  - programming-languages
+  - systems
+  - software-development
+  deployment_types:
+  - local
+  summary: Nim is a statically typed compiled language focused on efficiency, expressive metaprogramming, and native binaries while keeping syntax readable and runtime overhead low.
+  sources:
+  - title: Nim official site or documentation
+    url: https://nim-lang.org/
+    type: official
+  - title: Nim source repository
+    url: https://github.com/nim-lang/Nim
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where Nim's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in Nim across supported development environments
+  - Evaluate Nim against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - Nim is a statically typed compiled language focused on efficiency, expressive metaprogramming, and native binaries while keeping syntax readable and runtime overhead low.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: crystal
+  name: Crystal
+  homepage: https://crystal-lang.org/
+  repository: https://github.com/crystal-lang/crystal
+  tags:
+  - programming-language
+  - native
+  - web
+  kind: language
+  domains:
+  - programming-languages
+  - web
+  - software-development
+  deployment_types:
+  - local
+  summary: Crystal is a compiled language with Ruby-inspired syntax, static type inference, native code generation, and concurrency primitives for productive high-performance application development.
+  sources:
+  - title: Crystal official site or documentation
+    url: https://crystal-lang.org/
+    type: official
+  - title: Crystal source repository
+    url: https://github.com/crystal-lang/crystal
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where Crystal's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in Crystal across supported development environments
+  - Evaluate Crystal against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - Crystal is a compiled language with Ruby-inspired syntax, static type inference, native code generation, and concurrency primitives for productive high-performance application development.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: groovy
+  name: Apache Groovy
+  homepage: https://groovy-lang.org/
+  repository: https://github.com/apache/groovy
+  tags:
+  - programming-language
+  - jvm
+  - scripting
+  kind: language
+  domains:
+  - programming-languages
+  - build
+  - software-development
+  deployment_types:
+  - local
+  summary: Apache Groovy is a dynamic JVM language with Java interoperability, scripting features, concise syntax, and strong adoption in build automation and JVM application ecosystems.
+  sources:
+  - title: Apache Groovy official site or documentation
+    url: https://groovy-lang.org/
+    type: official
+  - title: Apache Groovy source repository
+    url: https://github.com/apache/groovy
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where Apache Groovy's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in Apache Groovy across supported development environments
+  - Evaluate Apache Groovy against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - Apache Groovy is a dynamic JVM language with Java interoperability, scripting features, concise syntax, and strong adoption in build automation and JVM application ecosystems.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: powershell
+  name: PowerShell
+  homepage: https://learn.microsoft.com/powershell/
+  repository: https://github.com/PowerShell/PowerShell
+  tags:
+  - programming-language
+  - shell
+  - automation
+  kind: language
+  domains:
+  - programming-languages
+  - systems
+  - devops
+  deployment_types:
+  - local
+  summary: PowerShell is a cross-platform command shell and scripting language built around structured .NET objects for automation, administration, configuration, and systems management.
+  sources:
+  - title: PowerShell official site or documentation
+    url: https://learn.microsoft.com/powershell/
+    type: official
+  - title: PowerShell source repository
+    url: https://github.com/PowerShell/PowerShell
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where PowerShell's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in PowerShell across supported development environments
+  - Evaluate PowerShell against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - PowerShell is a cross-platform command shell and scripting language built around structured .NET objects for automation, administration, configuration, and systems management.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: solidity
+  name: Solidity
+  homepage: https://soliditylang.org/
+  repository: https://github.com/ethereum/solidity
+  tags:
+  - programming-language
+  - smart-contracts
+  - blockchain
+  kind: language
+  domains:
+  - programming-languages
+  - software-development
+  - security
+  deployment_types:
+  - local
+  summary: Solidity is a statically typed contract-oriented language for implementing smart contracts on Ethereum-compatible virtual machines and blockchain application platforms.
+  sources:
+  - title: Solidity official site or documentation
+    url: https://soliditylang.org/
+    type: official
+  - title: Solidity source repository
+    url: https://github.com/ethereum/solidity
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where Solidity's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in Solidity across supported development environments
+  - Evaluate Solidity against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - Solidity is a statically typed contract-oriented language for implementing smart contracts on Ethereum-compatible virtual machines and blockchain application platforms.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: fortran
+  name: Fortran
+  homepage: https://fortran-lang.org/
+  repository: https://github.com/gcc-mirror/gcc
+  tags:
+  - programming-language
+  - scientific-computing
+  - native
+  kind: language
+  domains:
+  - programming-languages
+  - systems
+  - data
+  deployment_types:
+  - local
+  summary: Fortran is a standardized compiled language family for numerical and scientific computing, with modern features for modules, arrays, parallelism, and high-performance workloads.
+  sources:
+  - title: Fortran official site or documentation
+    url: https://fortran-lang.org/
+    type: official
+  - title: Fortran source repository
+    url: https://github.com/gcc-mirror/gcc
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where Fortran's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in Fortran across supported development environments
+  - Evaluate Fortran against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - Fortran is a standardized compiled language family for numerical and scientific computing, with modern features for modules, arrays, parallelism, and high-performance workloads.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
+- category: language
+  id: bash
+  name: GNU Bash
+  homepage: https://www.gnu.org/software/bash/
+  repository: https://git.savannah.gnu.org/cgit/bash.git
+  tags:
+  - programming-language
+  - shell
+  - automation
+  kind: language
+  domains:
+  - programming-languages
+  - cli
+  - systems
+  deployment_types:
+  - local
+  summary: GNU Bash is a Unix shell and command language widely used for interactive terminals, automation scripts, build steps, deployment pipelines, and systems administration.
+  sources:
+  - title: GNU Bash official site or documentation
+    url: https://www.gnu.org/software/bash/
+    type: official
+  - title: GNU Bash source repository
+    url: https://git.savannah.gnu.org/cgit/bash.git
+    type: repository
+  use_cases:
+  - Build applications, automation, or libraries where GNU Bash's language model and ecosystem are a good fit
+  - Maintain and integrate existing software written in GNU Bash across supported development environments
+  - Evaluate GNU Bash against alternative languages for portability, tooling, performance, and ecosystem needs
+  key_points:
+  - GNU Bash is a Unix shell and command language widely used for interactive terminals, automation scripts, build steps, deployment pipelines, and systems administration.
+  - Its practical fit depends on the surrounding compiler or runtime, package ecosystem, tooling, and deployment target
+  - Version-specific syntax, standard-library behavior, and toolchain support should be checked against the primary sources
