@@ -2,6 +2,10 @@ schema_version: 1
 id: trivy
 name: Trivy
 category: security
+kind: tool
+domains:
+- containers
+- security
 summary: Open-source security scanner for container images, filesystems, repositories, infrastructure configuration, dependencies, and software supply chains.
 homepage: https://trivy.dev/
 repository: https://github.com/aquasecurity/trivy
