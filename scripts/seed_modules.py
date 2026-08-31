@@ -59,6 +59,7 @@ def render_metadata(entry: dict, verified_at: str, schema_version: int) -> str:
         "repository": entry.get("repository"),
         "license": entry.get("license"),
         "deployment_types": entry.get("deployment_types"),
+        "relationships": entry.get("relationships"),
         "status": "active",
         "verified_at": verified_at,
         "tags": entry["tags"],
@@ -66,6 +67,21 @@ def render_metadata(entry: dict, verified_at: str, schema_version: int) -> str:
     }
     metadata = {key: value for key, value in metadata.items() if value is not None}
     return yaml.safe_dump(metadata, sort_keys=False, allow_unicode=True, width=1000)
+
+
+def render_relationships(entry: dict) -> str:
+    relationships = entry.get("relationships") or []
+    if not relationships:
+        return "- No curated graph relationships yet."
+
+    lines: list[str] = []
+    for relationship in relationships:
+        relationship_type = relationship["type"]
+        target = relationship["target"]
+        note = relationship.get("note")
+        suffix = f" — {note}" if note else ""
+        lines.append(f"- `{relationship_type}` → `{target}`{suffix}")
+    return "\n".join(lines)
 
 
 def render_readme(entry: dict) -> str:
@@ -84,6 +100,7 @@ def render_readme(entry: dict) -> str:
     domains = ", ".join(f"`{value}`" for value in entry.get("domains", [])) or "none"
     deployments = ", ".join(f"`{value}`" for value in entry.get("deployment_types", [])) or "not yet curated"
     license_text = entry.get("license") or "not yet curated"
+    relationships_text = render_relationships(entry)
 
     return f"""# {entry['name']}
 
@@ -111,6 +128,10 @@ The module focuses on the technology's practical role, high-signal characteristi
 - Domains: {domains}
 - Deployment: {deployments}
 - License metadata: `{license_text}`
+
+## Relationships
+
+{relationships_text}
 
 ## Primary links
 
@@ -146,13 +167,19 @@ Sources are selected to prefer official project pages, canonical documentation, 
 
 
 def render_history(entry: dict, verified_at: str, milestone: str, previous: str | None = None) -> str:
+    relationship_count = len(entry.get("relationships") or [])
+    relationship_line = (
+        f"- Recorded **{relationship_count}** typed knowledge-graph relationship(s).\n"
+        if relationship_count
+        else ""
+    )
     update = f"""# History
 
 ## {verified_at} — {milestone}
 
 - Reviewed `{entry['module_ref']}` against the current OpenDevIndex catalog and taxonomy.
 - Recorded canonical kind `{entry['kind']}` and domain facets: {', '.join(entry.get('domains', []))}.
-- Re-rendered module documentation from validated source-backed metadata.
+{relationship_line}- Re-rendered module documentation from validated source-backed metadata.
 """
     if previous:
         body = previous.strip()
