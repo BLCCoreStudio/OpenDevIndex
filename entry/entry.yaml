@@ -1,0 +1,28 @@
+schema_version: 2
+id: packer
+name: Packer
+category: tool
+kind: tool
+domains:
+- build
+- cloud
+- devops
+summary: HashiCorp image-building tool that creates repeatable machine images for multiple platforms from declarative templates and pluggable builders and provisioners.
+homepage: https://developer.hashicorp.com/packer
+repository: https://github.com/hashicorp/packer
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- image-build
+- cloud
+- automation
+sources:
+- title: Packer documentation
+  url: https://developer.hashicorp.com/packer
+  type: documentation
+- title: Packer source repository
+  url: https://github.com/hashicorp/packer
+  type: repository
