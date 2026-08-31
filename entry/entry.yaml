@@ -1,0 +1,20 @@
+schema_version: 1
+id: helm
+name: Helm
+category: cloud
+summary: Package manager for Kubernetes that bundles templated resource manifests into versioned charts for installation, upgrades, and reuse.
+homepage: https://helm.sh/
+repository: https://github.com/helm/helm
+status: active
+verified_at: '2026-08-31'
+tags:
+- kubernetes
+- packages
+- cloud-native
+sources:
+- title: Helm official site
+  url: https://helm.sh/
+  type: official
+- title: Helm repository
+  url: https://github.com/helm/helm
+  type: repository
