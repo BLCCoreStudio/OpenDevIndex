@@ -65,6 +65,9 @@ def enrich_entry(entry: dict, taxonomy: dict | None = None) -> dict:
 
     The branch address remains stable. Taxonomy v2 deliberately separates the
     address namespace (`category`) from the technology's semantic type (`kind`).
+    Domain facets are additive: category defaults provide a baseline, curated
+    overrides and explicit catalog metadata refine it, and recognized tags add
+    discoverability without removing earlier facets.
     """
     taxonomy = taxonomy or load_taxonomy()
     enriched = dict(entry)
@@ -78,17 +81,14 @@ def enrich_entry(entry: dict, taxonomy: dict | None = None) -> dict:
     if kind not in set(taxonomy["canonical_kinds"]):
         raise ValueError(f"{module_ref}: unsupported canonical kind {kind!r}")
 
-    if enriched.get("domains"):
-        base_domains = list(enriched["domains"])
-    elif override.get("domains"):
-        base_domains = list(override["domains"])
-    else:
-        base_domains = list(default.get("domains", []))
+    default_domains = list(default.get("domains", []))
+    override_domains = list(override.get("domains", []))
+    explicit_domains = list(enriched.get("domains", []))
 
     tag_domains = taxonomy.get("tag_domains", {})
     derived_domains = [tag_domains[tag] for tag in enriched.get("tags", []) if tag in tag_domains]
     domains = stable_unique(
-        [*base_domains, *derived_domains],
+        [*default_domains, *override_domains, *explicit_domains, *derived_domains],
         order=list(taxonomy["domains"]),
     )
     unknown = sorted(set(domains) - set(taxonomy["domains"]))
