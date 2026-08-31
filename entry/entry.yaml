@@ -5,7 +5,7 @@ category: tool
 kind: tool
 domains:
 - developer-tools
-- systems
+- operating-systems
 summary: Package manager for macOS and Linux that installs command-line tools and applications through versioned formulae and casks.
 homepage: https://brew.sh/
 repository: https://github.com/Homebrew/brew
