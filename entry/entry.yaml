@@ -2,6 +2,11 @@ schema_version: 1
 id: llvm
 name: LLVM
 category: opensource
+kind: toolchain
+domains:
+- build
+- open-source
+- systems
 summary: Open-source compiler infrastructure ecosystem containing reusable optimization, code-generation, linker, debugger, and language-tooling projects including Clang.
 homepage: https://llvm.org/
 repository: https://github.com/llvm/llvm-project
