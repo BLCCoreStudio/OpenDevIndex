@@ -1,0 +1,159 @@
+schema_version: 2
+canonical_kinds:
+  - tool
+  - language
+  - framework
+  - library
+  - runtime
+  - platform
+  - database
+  - protocol
+  - standard
+  - system
+  - toolchain
+  - service
+  - project
+  - concept
+legacy_address_categories:
+  - ai
+  - security
+  - cloud
+  - opensource
+domains:
+  - accessibility
+  - ai
+  - analytics
+  - api
+  - build
+  - ci-cd
+  - cli
+  - cloud
+  - containers
+  - data
+  - developer-experience
+  - developer-tools
+  - devops
+  - distributed-systems
+  - graphics
+  - machine-learning
+  - media
+  - mobile
+  - multimedia
+  - networking
+  - observability
+  - open-source
+  - programming-languages
+  - python
+  - security
+  - software-development
+  - sustainability
+  - systems
+  - testing
+  - virtualization
+  - web
+  - webassembly
+deployment_types:
+  - cli
+  - desktop
+  - embedded
+  - hybrid
+  - library
+  - local
+  - mobile
+  - saas
+  - self-hosted
+  - service
+  - system
+  - web
+category_defaults:
+  tool: {kind: tool, domains: [developer-tools]}
+  language: {kind: language, domains: [programming-languages]}
+  framework: {kind: framework, domains: [software-development]}
+  library: {kind: library, domains: [software-development]}
+  runtime: {kind: runtime, domains: [software-development]}
+  platform: {kind: platform, domains: [software-development]}
+  database: {kind: database, domains: [data]}
+  protocol: {kind: protocol, domains: [networking]}
+  standard: {kind: standard, domains: [software-development]}
+  system: {kind: system, domains: [systems]}
+  toolchain: {kind: toolchain, domains: [build, systems]}
+  service: {kind: service, domains: [api]}
+  project: {kind: project, domains: [open-source]}
+  concept: {kind: concept, domains: [software-development]}
+  ai: {kind: tool, domains: [ai]}
+  security: {kind: tool, domains: [security]}
+  cloud: {kind: platform, domains: [cloud, devops]}
+  opensource: {kind: project, domains: [open-source]}
+tag_domains:
+  accessibility: accessibility
+  ai: ai
+  analytics: analytics
+  api: api
+  build-system: build
+  ci: ci-cd
+  cli: cli
+  cloud: cloud
+  compiler: build
+  containers: containers
+  data: data
+  database: data
+  deep-learning: machine-learning
+  devops: devops
+  distributed-systems: distributed-systems
+  graphics: graphics
+  http: api
+  linux: systems
+  machine-learning: machine-learning
+  media: media
+  mobile: mobile
+  networking: networking
+  observability: observability
+  privacy: security
+  security: security
+  systems: systems
+  testing: testing
+  virtualization: virtualization
+  web: web
+  webassembly: webassembly
+overrides:
+  ai/anthropic-api: {kind: service, domains: [ai, api]}
+  ai/gemini-api: {kind: service, domains: [ai, api]}
+  ai/jax: {kind: library, domains: [ai, machine-learning]}
+  ai/keras: {kind: framework, domains: [ai, machine-learning]}
+  ai/langchain: {kind: framework, domains: [ai]}
+  ai/llama.cpp: {kind: runtime, domains: [ai, systems]}
+  ai/llamaindex: {kind: framework, domains: [ai, data]}
+  ai/mlflow: {kind: platform, domains: [ai, machine-learning, devops]}
+  ai/onnx: {kind: standard, domains: [ai, machine-learning]}
+  ai/openai-api: {kind: service, domains: [ai, api]}
+  ai/ray: {kind: framework, domains: [ai, distributed-systems]}
+  ai/scikit-learn: {kind: library, domains: [ai, machine-learning]}
+  ai/tensorflow: {kind: framework, domains: [ai, machine-learning]}
+  ai/transformers: {kind: library, domains: [ai, machine-learning]}
+  ai/vllm: {kind: runtime, domains: [ai, machine-learning]}
+  framework/pytorch: {kind: framework, domains: [ai, machine-learning]}
+  tool/ollama: {kind: tool, domains: [ai, developer-experience]}
+  tool/qemu: {kind: tool, domains: [systems, virtualization]}
+  tool/docker: {kind: tool, domains: [containers, devops]}
+  tool/podman: {kind: tool, domains: [containers, devops]}
+  security/openssl: {kind: library, domains: [security]}
+  security/wazuh: {kind: platform, domains: [security, observability]}
+  security/wireguard: {kind: protocol, domains: [security, networking]}
+  cloud/ansible: {kind: tool, domains: [cloud, devops]}
+  cloud/envoy: {kind: tool, domains: [cloud, networking]}
+  cloud/grafana: {kind: platform, domains: [observability]}
+  cloud/helm: {kind: tool, domains: [cloud, devops]}
+  cloud/istio: {kind: platform, domains: [cloud, networking]}
+  cloud/kubernetes: {kind: platform, domains: [cloud, containers]}
+  cloud/opentelemetry: {kind: standard, domains: [observability]}
+  cloud/prometheus: {kind: platform, domains: [observability]}
+  cloud/pulumi: {kind: tool, domains: [cloud, devops]}
+  cloud/terraform: {kind: tool, domains: [cloud, devops]}
+  protocol/mcp: {kind: protocol, domains: [ai, api]}
+  protocol/oauth2: {kind: protocol, domains: [security, api]}
+  concept/retrieval-augmented-generation: {kind: concept, domains: [ai, data]}
+  opensource/debian: {kind: platform, domains: [open-source, systems]}
+  opensource/gnome: {kind: platform, domains: [open-source, systems]}
+  opensource/kde: {kind: platform, domains: [open-source, systems]}
+  opensource/linux-kernel: {kind: system, domains: [open-source, systems]}
+  opensource/llvm: {kind: toolchain, domains: [open-source, build, systems]}
