@@ -1,0 +1,28 @@
+schema_version: 2
+id: matplotlib
+name: Matplotlib
+category: library
+kind: library
+domains:
+- analytics
+- data
+- python
+summary: Python plotting library for creating static, animated, and interactive visualizations with fine-grained control over figures, axes, styles, and output formats.
+homepage: https://matplotlib.org/
+repository: https://github.com/matplotlib/matplotlib
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- python
+- visualization
+- data
+sources:
+- title: Matplotlib official site
+  url: https://matplotlib.org/
+  type: official
+- title: Matplotlib source repository
+  url: https://github.com/matplotlib/matplotlib
+  type: repository
