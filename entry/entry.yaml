@@ -1,0 +1,29 @@
+schema_version: 2
+id: julia
+name: Julia
+category: language
+kind: language
+domains:
+- data
+- machine-learning
+- programming-languages
+summary: High-level dynamic programming language designed for numerical and scientific computing while providing multiple dispatch and native-code performance through JIT compilation.
+homepage: https://julialang.org/
+repository: https://github.com/JuliaLang/julia
+license: MIT
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- data
+- scientific-computing
+sources:
+- title: Julia official site
+  url: https://julialang.org/
+  type: official
+- title: Julia source repository
+  url: https://github.com/JuliaLang/julia
+  type: repository
