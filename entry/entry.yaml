@@ -1,0 +1,32 @@
+schema_version: 2
+id: hoppscotch
+name: Hoppscotch
+category: platform
+kind: platform
+domains:
+- api
+- developer-experience
+- developer-tools
+- testing
+summary: Open-source API development client with web and desktop workflows for composing requests, organizing collections, testing endpoints, and collaborating on APIs.
+homepage: https://hoppscotch.io/
+repository: https://github.com/hoppscotch/hoppscotch
+license: MIT
+deployment_types:
+- web
+- desktop
+- self-hosted
+- saas
+status: active
+verified_at: '2026-08-31'
+tags:
+- api
+- testing
+- developer-tools
+sources:
+- title: Hoppscotch official site
+  url: https://hoppscotch.io/
+  type: official
+- title: Hoppscotch repository
+  url: https://github.com/hoppscotch/hoppscotch
+  type: repository
