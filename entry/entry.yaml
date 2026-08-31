@@ -1,0 +1,27 @@
+schema_version: 2
+id: csharp
+name: C#
+category: language
+kind: language
+domains:
+- programming-languages
+- software-development
+summary: Modern statically typed programming language in the .NET ecosystem, used for cloud services, desktop software, games, web backends, and cross-platform applications.
+homepage: https://learn.microsoft.com/en-us/dotnet/csharp/
+repository: https://github.com/dotnet/roslyn
+deployment_types:
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- programming-language
+- dotnet
+- managed
+sources:
+- title: C# documentation
+  url: https://learn.microsoft.com/en-us/dotnet/csharp/
+  type: documentation
+- title: Roslyn source repository
+  url: https://github.com/dotnet/roslyn
+  type: repository
