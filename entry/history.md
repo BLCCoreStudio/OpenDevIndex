@@ -16,6 +16,14 @@
 
 ## Earlier history
 
+## 2026-08-31 — v0.1
+
+- Reviewed `security/age` against the current OpenDevIndex catalog and taxonomy.
+- Recorded canonical kind `tool` and domain facets: cli, security.
+- Re-rendered module documentation from validated source-backed metadata.
+
+## Earlier history
+
 ## 2026-08-31
 
 - Added `security/age` to the curated OpenDevIndex v0.1 catalog.
