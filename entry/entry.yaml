@@ -1,0 +1,20 @@
+schema_version: 1
+id: go
+name: Go
+category: language
+summary: Compiled programming language designed for simple tooling, efficient concurrency, and maintainable network and systems software.
+homepage: https://go.dev/
+repository: https://github.com/golang/go
+status: active
+verified_at: '2026-08-31'
+tags:
+- compiled
+- concurrency
+- cloud
+sources:
+- title: Go official site
+  url: https://go.dev/
+  type: official
+- title: Go documentation
+  url: https://go.dev/doc/
+  type: documentation
