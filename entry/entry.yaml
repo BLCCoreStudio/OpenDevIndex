@@ -2,6 +2,9 @@ schema_version: 1
 id: sqlite
 name: SQLite
 category: database
+kind: database
+domains:
+- data
 summary: Embedded relational database engine that stores a complete database in ordinary files and requires no separate database server process.
 homepage: https://www.sqlite.org/
 status: active
