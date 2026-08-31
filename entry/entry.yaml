@@ -1,0 +1,19 @@
+schema_version: 1
+id: debian
+name: Debian
+category: opensource
+summary: Community-developed GNU/Linux distribution and package ecosystem known for its social contract, large repositories, stable releases, and downstream influence.
+homepage: https://www.debian.org/
+status: active
+verified_at: '2026-08-31'
+tags:
+- linux
+- distribution
+- packages
+sources:
+- title: Debian official site
+  url: https://www.debian.org/
+  type: official
+- title: Debian documentation
+  url: https://www.debian.org/doc/
+  type: documentation
