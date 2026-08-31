@@ -1,0 +1,16 @@
+schema_version: 1
+id: virtualization
+name: Virtualization
+category: concept
+summary: Technique for presenting virtual hardware or execution environments so multiple or foreign operating systems and workloads can run on shared physical machines.
+homepage: https://www.kernel.org/doc/html/latest/virt/kvm/index.html
+status: active
+verified_at: '2026-08-31'
+tags:
+- virtualization
+- hypervisor
+- systems
+sources:
+- title: Linux KVM documentation
+  url: https://www.kernel.org/doc/html/latest/virt/kvm/index.html
+  type: documentation
