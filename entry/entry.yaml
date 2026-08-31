@@ -1,0 +1,20 @@
+schema_version: 1
+id: jq
+name: jq
+category: tool
+summary: Lightweight command-line processor for selecting, transforming, filtering, and composing JSON data in shell scripts and data pipelines.
+homepage: https://jqlang.org/
+repository: https://github.com/jqlang/jq
+status: active
+verified_at: '2026-08-31'
+tags:
+- json
+- cli
+- data
+sources:
+- title: jq official site
+  url: https://jqlang.org/
+  type: official
+- title: jq repository
+  url: https://github.com/jqlang/jq
+  type: repository
