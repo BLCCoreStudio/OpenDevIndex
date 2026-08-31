@@ -1,0 +1,27 @@
+schema_version: 2
+id: mold
+name: mold
+category: tool
+kind: tool
+domains:
+- build
+- systems
+summary: High-speed linker for Unix-like systems designed as a drop-in alternative for common ELF linkers, reducing the final link stage of large native builds.
+homepage: https://github.com/rui314/mold
+repository: https://github.com/rui314/mold
+deployment_types:
+- cli
+- system
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- linker
+- native
+sources:
+- title: mold source repository
+  url: https://github.com/rui314/mold
+  type: repository
+- title: mold documentation
+  url: https://github.com/rui314/mold/blob/main/docs/mold.md
+  type: documentation
