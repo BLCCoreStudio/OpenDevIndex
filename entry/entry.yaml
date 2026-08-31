@@ -1,0 +1,27 @@
+schema_version: 2
+id: koa
+name: Koa
+category: framework
+kind: framework
+domains:
+- api
+- web
+summary: Minimal Node.js web framework from the team behind Express that uses async middleware composition to provide a small foundation for APIs and web applications.
+homepage: https://koajs.com/
+repository: https://github.com/koajs/koa
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- nodejs
+- middleware
+sources:
+- title: Koa official site
+  url: https://koajs.com/
+  type: official
+- title: Koa source repository
+  url: https://github.com/koajs/koa
+  type: repository
