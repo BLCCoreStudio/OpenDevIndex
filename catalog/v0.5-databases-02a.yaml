@@ -1,0 +1,257 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 8
+expected_categories:
+  database: 8
+entries:
+- category: database
+  id: mariadb
+  name: MariaDB
+  homepage: https://mariadb.org/
+  repository: https://github.com/MariaDB/server
+  tags:
+  - sql
+  - relational
+  - database
+  kind: database
+  domains:
+  - data
+  deployment_types:
+  - self-hosted
+  summary: MariaDB is an open-source relational database server derived from MySQL, offering SQL compatibility, transactional storage engines, replication, clustering options, and a community-governed ecosystem.
+  sources:
+  - title: MariaDB official site or documentation
+    url: https://mariadb.org/
+    type: official
+  - title: MariaDB source repository
+    url: https://github.com/MariaDB/server
+    type: repository
+  use_cases:
+  - Store and query application data using MariaDB's sql data model and operational features
+  - Evaluate MariaDB for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate MariaDB with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - MariaDB is an open-source relational database server derived from MySQL, offering SQL compatibility, transactional storage engines, replication, clustering options, and a community-governed ecosystem.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: cockroachdb
+  name: CockroachDB
+  homepage: https://www.cockroachlabs.com/docs/stable/
+  repository: https://github.com/cockroachdb/cockroach
+  tags:
+  - sql
+  - distributed
+  - transactional
+  kind: database
+  domains:
+  - data
+  - distributed-systems
+  deployment_types:
+  - self-hosted
+  summary: CockroachDB is a distributed SQL database designed for transactional consistency, horizontal scaling, replication, and survivability across nodes and regions with PostgreSQL-oriented compatibility.
+  sources:
+  - title: CockroachDB official site or documentation
+    url: https://www.cockroachlabs.com/docs/stable/
+    type: official
+  - title: CockroachDB source repository
+    url: https://github.com/cockroachdb/cockroach
+    type: repository
+  use_cases:
+  - Store and query application data using CockroachDB's sql data model and operational features
+  - Evaluate CockroachDB for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate CockroachDB with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - CockroachDB is a distributed SQL database designed for transactional consistency, horizontal scaling, replication, and survivability across nodes and regions with PostgreSQL-oriented compatibility.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: timescaledb
+  name: TimescaleDB
+  homepage: https://docs.timescale.com/
+  repository: https://github.com/timescale/timescaledb
+  tags:
+  - time-series
+  - postgresql
+  - analytics
+  kind: database
+  domains:
+  - data
+  - analytics
+  deployment_types:
+  - self-hosted
+  summary: TimescaleDB is a PostgreSQL extension for time-series and analytical workloads that adds hypertables, compression, continuous aggregates, and time-oriented query capabilities.
+  sources:
+  - title: TimescaleDB official site or documentation
+    url: https://docs.timescale.com/
+    type: official
+  - title: TimescaleDB source repository
+    url: https://github.com/timescale/timescaledb
+    type: repository
+  use_cases:
+  - Store and query application data using TimescaleDB's time series data model and operational features
+  - Evaluate TimescaleDB for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate TimescaleDB with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - TimescaleDB is a PostgreSQL extension for time-series and analytical workloads that adds hypertables, compression, continuous aggregates, and time-oriented query capabilities.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: influxdb
+  name: InfluxDB
+  homepage: https://www.influxdata.com/products/influxdb-overview/
+  repository: https://github.com/influxdata/influxdb
+  tags:
+  - time-series
+  - observability
+  - database
+  kind: database
+  domains:
+  - data
+  - observability
+  deployment_types:
+  - self-hosted
+  summary: InfluxDB is a time-series database and data platform designed for timestamped metrics, events, telemetry, and observability workloads with specialized ingestion and query capabilities.
+  sources:
+  - title: InfluxDB official site or documentation
+    url: https://www.influxdata.com/products/influxdb-overview/
+    type: official
+  - title: InfluxDB source repository
+    url: https://github.com/influxdata/influxdb
+    type: repository
+  use_cases:
+  - Store and query application data using InfluxDB's time series data model and operational features
+  - Evaluate InfluxDB for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate InfluxDB with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - InfluxDB is a time-series database and data platform designed for timestamped metrics, events, telemetry, and observability workloads with specialized ingestion and query capabilities.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: elasticsearch
+  name: Elasticsearch
+  homepage: https://www.elastic.co/elasticsearch
+  repository: https://github.com/elastic/elasticsearch
+  tags:
+  - search
+  - analytics
+  - distributed
+  kind: database
+  domains:
+  - data
+  - analytics
+  - distributed-systems
+  deployment_types:
+  - self-hosted
+  summary: Elasticsearch is a distributed search and analytics engine built around Lucene, providing full-text indexing, structured search, aggregations, and scalable document-oriented retrieval.
+  sources:
+  - title: Elasticsearch official site or documentation
+    url: https://www.elastic.co/elasticsearch
+    type: official
+  - title: Elasticsearch source repository
+    url: https://github.com/elastic/elasticsearch
+    type: repository
+  use_cases:
+  - Store and query application data using Elasticsearch's search data model and operational features
+  - Evaluate Elasticsearch for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate Elasticsearch with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - Elasticsearch is a distributed search and analytics engine built around Lucene, providing full-text indexing, structured search, aggregations, and scalable document-oriented retrieval.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: opensearch
+  name: OpenSearch
+  homepage: https://opensearch.org/
+  repository: https://github.com/opensearch-project/OpenSearch
+  tags:
+  - search
+  - analytics
+  - open-source
+  kind: database
+  domains:
+  - data
+  - analytics
+  - observability
+  deployment_types:
+  - self-hosted
+  summary: OpenSearch is an open-source distributed search and analytics suite supporting text search, log analytics, observability, dashboards, and scalable index-based workloads.
+  sources:
+  - title: OpenSearch official site or documentation
+    url: https://opensearch.org/
+    type: official
+  - title: OpenSearch source repository
+    url: https://github.com/opensearch-project/OpenSearch
+    type: repository
+  use_cases:
+  - Store and query application data using OpenSearch's search data model and operational features
+  - Evaluate OpenSearch for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate OpenSearch with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - OpenSearch is an open-source distributed search and analytics suite supporting text search, log analytics, observability, dashboards, and scalable index-based workloads.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: meilisearch
+  name: Meilisearch
+  homepage: https://www.meilisearch.com/
+  repository: https://github.com/meilisearch/meilisearch
+  tags:
+  - search
+  - api
+  - rust
+  kind: database
+  domains:
+  - data
+  - api
+  deployment_types:
+  - self-hosted
+  summary: Meilisearch is an open-source search engine focused on developer-friendly application search, fast indexing, typo tolerance, filtering, ranking, and straightforward HTTP API integration.
+  sources:
+  - title: Meilisearch official site or documentation
+    url: https://www.meilisearch.com/
+    type: official
+  - title: Meilisearch source repository
+    url: https://github.com/meilisearch/meilisearch
+    type: repository
+  use_cases:
+  - Store and query application data using Meilisearch's search data model and operational features
+  - Evaluate Meilisearch for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate Meilisearch with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - Meilisearch is an open-source search engine focused on developer-friendly application search, fast indexing, typo tolerance, filtering, ranking, and straightforward HTTP API integration.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: qdrant
+  name: Qdrant
+  homepage: https://qdrant.tech/
+  repository: https://github.com/qdrant/qdrant
+  tags:
+  - vector-database
+  - ai
+  - search
+  kind: database
+  domains:
+  - data
+  - ai
+  - machine-learning
+  deployment_types:
+  - self-hosted
+  summary: Qdrant is an open-source vector similarity search engine and database written in Rust for embeddings, metadata filtering, and nearest-neighbor retrieval in AI applications.
+  sources:
+  - title: Qdrant official site or documentation
+    url: https://qdrant.tech/
+    type: official
+  - title: Qdrant source repository
+    url: https://github.com/qdrant/qdrant
+    type: repository
+  use_cases:
+  - Store and query application data using Qdrant's vector database data model and operational features
+  - Evaluate Qdrant for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate Qdrant with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - Qdrant is an open-source vector similarity search engine and database written in Rust for embeddings, metadata filtering, and nearest-neighbor retrieval in AI applications.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
