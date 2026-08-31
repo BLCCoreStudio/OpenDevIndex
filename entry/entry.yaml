@@ -1,0 +1,27 @@
+schema_version: 2
+id: cockroachdb
+name: CockroachDB
+category: database
+kind: database
+domains:
+- data
+- distributed-systems
+summary: Distributed SQL database designed for horizontal scale and resilience while presenting a PostgreSQL-compatible SQL interface and transactional consistency model.
+homepage: https://www.cockroachlabs.com/docs/
+repository: https://github.com/cockroachdb/cockroach
+deployment_types:
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- database
+- sql
+- distributed
+sources:
+- title: CockroachDB documentation
+  url: https://www.cockroachlabs.com/docs/
+  type: documentation
+- title: CockroachDB source repository
+  url: https://github.com/cockroachdb/cockroach
+  type: repository
