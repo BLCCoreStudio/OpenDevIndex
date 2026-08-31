@@ -1,0 +1,30 @@
+schema_version: 2
+id: aspnet-core
+name: ASP.NET Core
+category: framework
+kind: framework
+domains:
+- api
+- software-development
+- web
+summary: Cross-platform open-source framework from Microsoft for building web applications, HTTP APIs, real-time services, and cloud backends on the modern .NET platform.
+homepage: https://dotnet.microsoft.com/apps/aspnet
+repository: https://github.com/dotnet/aspnetcore
+license: MIT
+deployment_types:
+- local
+- self-hosted
+- service
+status: active
+verified_at: '2026-08-31'
+tags:
+- dotnet
+- web
+- backend
+sources:
+- title: ASP.NET official site
+  url: https://dotnet.microsoft.com/apps/aspnet
+  type: official
+- title: ASP.NET Core source repository
+  url: https://github.com/dotnet/aspnetcore
+  type: repository
