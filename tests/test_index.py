@@ -50,41 +50,57 @@ class IndexTests(unittest.TestCase):
             root = Path(temp)
             catalog_dir = root / "catalog"
             output_dir = root / "dist"
+            public_index = root / "INDEX.md"
             catalog_dir.mkdir()
             (catalog_dir / "test.yaml").write_text(CATALOG, encoding="utf-8")
 
-            result = build(catalog_dir, output_dir)
+            result = build(catalog_dir, output_dir, public_index)
             self.assertEqual(result["module_count"], 1)
             self.assertTrue((output_dir / "catalog.json").is_file())
             self.assertTrue((output_dir / "search.json").is_file())
             self.assertTrue((output_dir / "catalog.md").is_file())
+            self.assertTrue(public_index.is_file())
 
             entries = load_index(output_dir / "search.json")
             matches = search(entries, "example developer", None, 10)
             self.assertEqual(len(matches), 1)
             self.assertEqual(matches[0]["ref"], "tool/example-tool")
+            self.assertEqual(matches[0]["kind"], "tool")
+            self.assertIn("developer-tools", matches[0]["domains"])
             self.assertGreater(matches[0]["score"], 0)
 
             payload = json.loads((output_dir / "catalog.json").read_text(encoding="utf-8"))
+            self.assertEqual(payload["schema_version"], 2)
             self.assertEqual(payload["module_count"], 1)
-            self.assertEqual(payload["category_counts"], {"tool": 1})
+            self.assertEqual(payload["address_category_counts"], {"tool": 1})
+            self.assertEqual(payload["kind_counts"], {"tool": 1})
+            self.assertEqual(payload["domain_counts"], {"developer-tools": 1})
+            self.assertIn("/tree/tool/example-tool/entry", public_index.read_text(encoding="utf-8"))
 
-    def test_search_category_filter(self) -> None:
+    def test_search_filters(self) -> None:
         entries = [
             {
                 "ref": "tool/demo",
                 "slug": "demo",
                 "name": "Demo",
-                "category": "tool",
-                "summary": "A demo tool for testing search behavior.",
-                "tags": ["demo", "tool"],
+                "address_category": "tool",
+                "kind": "tool",
+                "domains": ["security", "developer-tools"],
+                "deployment_types": ["cli"],
+                "license": "MIT",
+                "summary": "A demo security tool for testing search behavior.",
+                "tags": ["demo", "security"],
                 "use_cases": [],
                 "key_points": [],
-                "search_text": "tool demo demo tool testing search behavior",
+                "search_text": "tool demo security developer-tools cli mit testing search behavior",
             }
         ]
         self.assertEqual(search(entries, "demo", "security", 5), [])
         self.assertEqual(search(entries, "demo", "tool", 5)[0]["ref"], "tool/demo")
+        self.assertEqual(search(entries, "demo", kind="framework"), [])
+        self.assertEqual(search(entries, "demo", domain="security")[0]["ref"], "tool/demo")
+        self.assertEqual(search(entries, "demo", deployment="cli")[0]["ref"], "tool/demo")
+        self.assertEqual(search(entries, "demo", license_value="mit")[0]["ref"], "tool/demo")
 
 
 if __name__ == "__main__":
