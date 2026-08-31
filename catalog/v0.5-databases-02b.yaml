@@ -1,0 +1,229 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-08-31'
+target_modules: 7
+expected_categories:
+  database: 7
+entries:
+- category: database
+  id: milvus
+  name: Milvus
+  homepage: https://milvus.io/
+  repository: https://github.com/milvus-io/milvus
+  tags:
+  - vector-database
+  - ai
+  - distributed
+  kind: database
+  domains:
+  - data
+  - ai
+  - machine-learning
+  deployment_types:
+  - self-hosted
+  summary: Milvus is an open-source distributed vector database for large-scale embedding search, approximate nearest-neighbor indexing, metadata filtering, and AI retrieval workloads.
+  sources:
+  - title: Milvus official site or documentation
+    url: https://milvus.io/
+    type: official
+  - title: Milvus source repository
+    url: https://github.com/milvus-io/milvus
+    type: repository
+  use_cases:
+  - Store and query application data using Milvus's vector database data model and operational features
+  - Evaluate Milvus for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate Milvus with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - Milvus is an open-source distributed vector database for large-scale embedding search, approximate nearest-neighbor indexing, metadata filtering, and AI retrieval workloads.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: weaviate
+  name: Weaviate
+  homepage: https://weaviate.io/
+  repository: https://github.com/weaviate/weaviate
+  tags:
+  - vector-database
+  - ai
+  - search
+  kind: database
+  domains:
+  - data
+  - ai
+  - machine-learning
+  deployment_types:
+  - self-hosted
+  summary: Weaviate is an open-source vector database for semantic and hybrid search that stores objects with vectors, supports metadata filtering, and integrates with embedding workflows.
+  sources:
+  - title: Weaviate official site or documentation
+    url: https://weaviate.io/
+    type: official
+  - title: Weaviate source repository
+    url: https://github.com/weaviate/weaviate
+    type: repository
+  use_cases:
+  - Store and query application data using Weaviate's vector database data model and operational features
+  - Evaluate Weaviate for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate Weaviate with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - Weaviate is an open-source vector database for semantic and hybrid search that stores objects with vectors, supports metadata filtering, and integrates with embedding workflows.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: chroma
+  name: Chroma
+  homepage: https://www.trychroma.com/
+  repository: https://github.com/chroma-core/chroma
+  tags:
+  - vector-database
+  - ai
+  - rag
+  kind: database
+  domains:
+  - data
+  - ai
+  - developer-experience
+  deployment_types:
+  - self-hosted
+  summary: Chroma is an open-source embedding database and retrieval component focused on simple local and server-based storage, metadata, and similarity search for AI applications.
+  sources:
+  - title: Chroma official site or documentation
+    url: https://www.trychroma.com/
+    type: official
+  - title: Chroma source repository
+    url: https://github.com/chroma-core/chroma
+    type: repository
+  use_cases:
+  - Store and query application data using Chroma's vector database data model and operational features
+  - Evaluate Chroma for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate Chroma with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - Chroma is an open-source embedding database and retrieval component focused on simple local and server-based storage, metadata, and similarity search for AI applications.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: etcd
+  name: etcd
+  homepage: https://etcd.io/
+  repository: https://github.com/etcd-io/etcd
+  tags:
+  - key-value
+  - distributed
+  - consensus
+  kind: database
+  domains:
+  - data
+  - distributed-systems
+  - cloud
+  deployment_types:
+  - self-hosted
+  summary: etcd is a distributed strongly consistent key-value store used for coordination and critical configuration data in distributed systems, most notably as Kubernetes backing state.
+  sources:
+  - title: etcd official site or documentation
+    url: https://etcd.io/
+    type: official
+  - title: etcd source repository
+    url: https://github.com/etcd-io/etcd
+    type: repository
+  use_cases:
+  - Store and query application data using etcd's key value data model and operational features
+  - Evaluate etcd for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate etcd with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - etcd is a distributed strongly consistent key-value store used for coordination and critical configuration data in distributed systems, most notably as Kubernetes backing state.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: rocksdb
+  name: RocksDB
+  homepage: https://rocksdb.org/
+  repository: https://github.com/facebook/rocksdb
+  tags:
+  - embedded-database
+  - key-value
+  - storage
+  kind: database
+  domains:
+  - data
+  - systems
+  deployment_types:
+  - self-hosted
+  summary: RocksDB is an embeddable persistent key-value storage engine optimized for fast local SSD access using a log-structured merge-tree design and configurable compaction strategies.
+  sources:
+  - title: RocksDB official site or documentation
+    url: https://rocksdb.org/
+    type: official
+  - title: RocksDB source repository
+    url: https://github.com/facebook/rocksdb
+    type: repository
+  use_cases:
+  - Store and query application data using RocksDB's embedded database data model and operational features
+  - Evaluate RocksDB for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate RocksDB with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - RocksDB is an embeddable persistent key-value storage engine optimized for fast local SSD access using a log-structured merge-tree design and configurable compaction strategies.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: couchdb
+  name: Apache CouchDB
+  homepage: https://couchdb.apache.org/
+  repository: https://github.com/apache/couchdb
+  tags:
+  - document-database
+  - json
+  - replication
+  kind: database
+  domains:
+  - data
+  - distributed-systems
+  deployment_types:
+  - self-hosted
+  summary: Apache CouchDB is an open-source document database using JSON documents and HTTP APIs, designed around replication, offline-friendly synchronization, and a distributed multi-version data model.
+  sources:
+  - title: Apache CouchDB official site or documentation
+    url: https://couchdb.apache.org/
+    type: official
+  - title: Apache CouchDB source repository
+    url: https://github.com/apache/couchdb
+    type: repository
+  use_cases:
+  - Store and query application data using Apache CouchDB's document database data model and operational features
+  - Evaluate Apache CouchDB for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate Apache CouchDB with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - Apache CouchDB is an open-source document database using JSON documents and HTTP APIs, designed around replication, offline-friendly synchronization, and a distributed multi-version data model.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
+- category: database
+  id: tidb
+  name: TiDB
+  homepage: https://www.pingcap.com/tidb/
+  repository: https://github.com/pingcap/tidb
+  tags:
+  - sql
+  - distributed
+  - mysql
+  kind: database
+  domains:
+  - data
+  - distributed-systems
+  - analytics
+  deployment_types:
+  - self-hosted
+  summary: TiDB is an open-source distributed SQL database compatible with the MySQL protocol, designed for horizontal scaling, transactional workloads, and hybrid transactional and analytical processing.
+  sources:
+  - title: TiDB official site or documentation
+    url: https://www.pingcap.com/tidb/
+    type: official
+  - title: TiDB source repository
+    url: https://github.com/pingcap/tidb
+    type: repository
+  use_cases:
+  - Store and query application data using TiDB's sql data model and operational features
+  - Evaluate TiDB for production workloads based on consistency, scaling, indexing, backup, and recovery requirements
+  - Integrate TiDB with application, analytics, observability, or data-platform workflows suited to its query model
+  key_points:
+  - TiDB is an open-source distributed SQL database compatible with the MySQL protocol, designed for horizontal scaling, transactional workloads, and hybrid transactional and analytical processing.
+  - Database suitability depends on workload shape, consistency needs, indexing strategy, operational model, and failure handling
+  - Production deployments should verify version-specific compatibility, backup procedures, replication behavior, and upgrade guidance
