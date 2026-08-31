@@ -1,0 +1,28 @@
+schema_version: 2
+id: rollup
+name: Rollup
+category: tool
+kind: tool
+domains:
+- build
+- developer-tools
+- web
+summary: JavaScript module bundler focused on ES modules, tree shaking, library packaging, and a plugin architecture used directly and by higher-level build tools.
+homepage: https://rollupjs.org/
+repository: https://github.com/rollup/rollup
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- build-system
+- javascript
+- bundler
+sources:
+- title: Rollup official site
+  url: https://rollupjs.org/
+  type: official
+- title: Rollup source repository
+  url: https://github.com/rollup/rollup
+  type: repository
