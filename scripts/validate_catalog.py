@@ -12,6 +12,7 @@ from pathlib import Path
 
 import yaml
 
+from coverage_metadata import validate_coverage_metadata
 from taxonomy import load_taxonomy, supported_address_categories
 from url_safety import is_safe_https_url
 
@@ -31,8 +32,8 @@ def validate(path: Path) -> list[str]:
         return [f"{path}: top level must be a mapping"]
 
     schema_version = data.get("schema_version")
-    if schema_version not in {1, 2}:
-        errors.append("schema_version must be 1 or 2")
+    if schema_version not in {1, 2, 3}:
+        errors.append("schema_version must be 1, 2, or 3")
 
     try:
         taxonomy = load_taxonomy()
@@ -96,7 +97,7 @@ def validate(path: Path) -> list[str]:
         if not isinstance(summary, str) or not 40 <= len(summary.strip()) <= 320:
             errors.append(f"{prefix}: summary must be 40..320 characters")
 
-        min_curated = 3 if schema_version == 2 else 2
+        min_curated = 3 if schema_version in {2, 3} else 2
         tags = entry.get("tags")
         if not isinstance(tags, list) or len(tags) < min_curated:
             errors.append(f"{prefix}: tags must contain at least {min_curated} values")
@@ -107,12 +108,12 @@ def validate(path: Path) -> list[str]:
 
         kind = entry.get("kind")
         domains = entry.get("domains")
-        if schema_version == 2 and kind is None:
-            errors.append(f"{prefix}: taxonomy v2 entries require kind")
+        if schema_version in {2, 3} and kind is None:
+            errors.append(f"{prefix}: taxonomy v{schema_version} entries require kind")
         if kind is not None and kind not in kinds:
             errors.append(f"{prefix}: unsupported kind {kind!r}")
-        if schema_version == 2 and not domains:
-            errors.append(f"{prefix}: taxonomy v2 entries require domains")
+        if schema_version in {2, 3} and not domains:
+            errors.append(f"{prefix}: taxonomy v{schema_version} entries require domains")
         if domains is not None:
             if not isinstance(domains, list) or not domains:
                 errors.append(f"{prefix}: domains must be a non-empty list")
@@ -120,6 +121,12 @@ def validate(path: Path) -> list[str]:
                 errors.append(f"{prefix}: domains must be unique")
             elif any(domain not in domains_allowed for domain in domains):
                 errors.append(f"{prefix}: unsupported domain")
+
+        coverage = entry.get("coverage")
+        if schema_version == 3 and coverage is None:
+            errors.append(f"{prefix}: taxonomy v3 entries require coverage")
+        for coverage_error in validate_coverage_metadata(coverage):
+            errors.append(f"{prefix}: {coverage_error}")
 
         deployment_types = entry.get("deployment_types")
         if deployment_types is not None:
@@ -140,7 +147,7 @@ def validate(path: Path) -> list[str]:
                 errors.append(f"{prefix}: {field} must be a public HTTPS URL")
 
         sources = entry.get("sources")
-        min_sources = 2 if schema_version == 2 else 1
+        min_sources = 2 if schema_version in {2, 3} else 1
         if not isinstance(sources, list) or len(sources) < min_sources:
             errors.append(f"{prefix}: sources must contain at least {min_sources} reference(s)")
         else:
