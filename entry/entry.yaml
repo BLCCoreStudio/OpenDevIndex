@@ -1,0 +1,20 @@
+schema_version: 1
+id: astro
+name: Astro
+category: framework
+summary: Web framework focused on content-driven sites and server-rendered applications, with island architecture and support for multiple UI component frameworks.
+homepage: https://astro.build/
+repository: https://github.com/withastro/astro
+status: active
+verified_at: '2026-08-31'
+tags:
+- web
+- static-site
+- javascript
+sources:
+- title: Astro official site
+  url: https://astro.build/
+  type: official
+- title: Astro repository
+  url: https://github.com/withastro/astro
+  type: repository
