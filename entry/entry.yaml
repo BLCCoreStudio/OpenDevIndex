@@ -1,0 +1,27 @@
+schema_version: 2
+id: clang
+name: Clang
+category: tool
+kind: toolchain
+domains:
+- build
+- systems
+summary: LLVM-native compiler front end for C, C++, Objective-C, and related languages, providing diagnostics, tooling libraries, and standards-oriented language support.
+homepage: https://clang.llvm.org/
+repository: https://github.com/llvm/llvm-project
+deployment_types:
+- cli
+- system
+status: active
+verified_at: '2026-08-31'
+tags:
+- compiler
+- cpp
+- llvm
+sources:
+- title: Clang official site
+  url: https://clang.llvm.org/
+  type: official
+- title: LLVM project repository
+  url: https://github.com/llvm/llvm-project
+  type: repository
