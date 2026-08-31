@@ -1,0 +1,27 @@
+schema_version: 2
+id: biome
+name: Biome
+category: tool
+kind: tool
+domains:
+- developer-tools
+- web
+summary: Fast formatter and linter for JavaScript, TypeScript, JSON, CSS, and related web code, designed as an integrated toolchain with a Rust implementation.
+homepage: https://biomejs.dev/
+repository: https://github.com/biomejs/biome
+deployment_types:
+- cli
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- javascript
+- linting
+- formatting
+sources:
+- title: Biome official site
+  url: https://biomejs.dev/
+  type: official
+- title: Biome source repository
+  url: https://github.com/biomejs/biome
+  type: repository
