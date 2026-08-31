@@ -1,0 +1,20 @@
+schema_version: 1
+id: tauri
+name: Tauri
+category: framework
+summary: Framework for building lightweight desktop and mobile applications with web front ends and a Rust-based native application core.
+homepage: https://tauri.app/
+repository: https://github.com/tauri-apps/tauri
+status: active
+verified_at: '2026-08-31'
+tags:
+- desktop
+- rust
+- cross-platform
+sources:
+- title: Tauri official site
+  url: https://tauri.app/
+  type: official
+- title: Tauri repository
+  url: https://github.com/tauri-apps/tauri
+  type: repository
