@@ -1,0 +1,36 @@
+schema_version: 3
+id: apache-parquet
+name: Apache Parquet
+category: format
+kind: format
+domains:
+  - data
+  - data-engineering
+  - storage
+  - analytics
+summary: An open, column-oriented data file format designed for efficient storage, compression, selective reads, and analytics across large structured datasets.
+homepage: https://parquet.apache.org/
+repository: https://github.com/apache/parquet-format
+license: Apache-2.0
+status: active
+verified_at: 2026-08-31
+tags:
+  - parquet
+  - data
+  - storage
+  - analytics
+coverage:
+  area: databases-data
+  topics:
+    - data-formats
+    - analytics
+sources:
+  - title: Apache Parquet overview
+    url: https://parquet.apache.org/docs/overview/
+    type: official
+  - title: Apache Parquet file format documentation
+    url: https://parquet.apache.org/docs/file-format/
+    type: documentation
+  - title: Apache Parquet format repository
+    url: https://github.com/apache/parquet-format
+    type: repository
