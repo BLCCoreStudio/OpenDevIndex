@@ -16,7 +16,7 @@
     "sources"
   ],
   "properties": {
-    "schema_version": { "enum": [1, 2, 3] },
+    "schema_version": { "enum": [1, 2, 3, 4] },
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
     "name": { "type": "string", "minLength": 1, "maxLength": 100 },
     "category": {
@@ -85,6 +85,59 @@
         }
       }
     },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "what_it_is", "why_it_exists", "how_it_works", "architecture", "concepts",
+        "use_cases", "alternatives", "security", "performance", "learning_path"
+      ],
+      "properties": {
+        "what_it_is": { "type": "string", "minLength": 80 },
+        "why_it_exists": { "type": "string", "minLength": 80 },
+        "how_it_works": { "type": "string", "minLength": 120 },
+        "architecture": {
+          "type": "array", "minItems": 2,
+          "items": { "type": "string", "minLength": 20 }
+        },
+        "concepts": {
+          "type": "array", "minItems": 3,
+          "items": { "type": "string", "minLength": 10 }
+        },
+        "use_cases": {
+          "type": "array", "minItems": 3,
+          "items": { "type": "string", "minLength": 15 }
+        },
+        "alternatives": {
+          "type": "array", "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "tradeoff"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "tradeoff": { "type": "string", "minLength": 30 }
+            }
+          }
+        },
+        "security": { "type": "string", "minLength": 80 },
+        "performance": { "type": "string", "minLength": 80 },
+        "learning_path": {
+          "type": "array", "minItems": 4,
+          "items": { "type": "string", "minLength": 10 }
+        },
+        "operations": { "type": "string", "minLength": 60 },
+        "ecosystem": { "type": "string", "minLength": 60 },
+        "examples": {
+          "type": "array", "minItems": 1,
+          "items": { "type": "string", "minLength": 15 }
+        },
+        "prerequisites": {
+          "type": "array", "minItems": 1,
+          "items": { "type": "string", "minLength": 10 }
+        }
+      }
+    },
     "relationships": {
       "type": "array",
       "uniqueItems": true,
@@ -125,12 +178,16 @@
   },
   "allOf": [
     {
-      "if": { "properties": { "schema_version": { "enum": [2, 3] } } },
+      "if": { "properties": { "schema_version": { "enum": [2, 3, 4] } } },
       "then": { "required": ["kind", "domains"] }
     },
     {
-      "if": { "properties": { "schema_version": { "const": 3 } } },
+      "if": { "properties": { "schema_version": { "enum": [3, 4] } } },
       "then": { "required": ["coverage"] }
+    },
+    {
+      "if": { "properties": { "schema_version": { "const": 4 } } },
+      "then": { "required": ["content"] }
     }
   ]
 }
