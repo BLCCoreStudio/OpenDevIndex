@@ -1,0 +1,20 @@
+schema_version: 1
+id: just
+name: just
+category: tool
+summary: Command runner for project-specific recipes, offering a focused alternative to using Makefiles for development commands that are not build graphs.
+homepage: https://just.systems/
+repository: https://github.com/casey/just
+status: active
+verified_at: '2026-08-31'
+tags:
+- command-runner
+- automation
+- developer-tools
+sources:
+- title: just documentation
+  url: https://just.systems/
+  type: documentation
+- title: just repository
+  url: https://github.com/casey/just
+  type: repository
