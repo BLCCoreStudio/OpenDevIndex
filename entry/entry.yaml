@@ -1,0 +1,28 @@
+schema_version: 2
+id: pytest
+name: pytest
+category: library
+kind: library
+domains:
+- python
+- testing
+summary: Python testing framework that emphasizes readable tests, powerful fixtures, plugin extensibility, and scalable execution from small unit suites to large projects.
+homepage: https://pytest.org/
+repository: https://github.com/pytest-dev/pytest
+license: MIT
+deployment_types:
+- library
+- local
+status: active
+verified_at: '2026-08-31'
+tags:
+- testing
+- python
+- library
+sources:
+- title: pytest official site
+  url: https://pytest.org/
+  type: official
+- title: pytest repository
+  url: https://github.com/pytest-dev/pytest
+  type: repository
