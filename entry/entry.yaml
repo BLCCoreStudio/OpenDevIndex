@@ -1,0 +1,20 @@
+schema_version: 1
+id: tmux
+name: tmux
+category: tool
+summary: Terminal multiplexer that creates persistent shell sessions and supports multiple windows and panes inside a single terminal connection.
+homepage: https://github.com/tmux/tmux
+repository: https://github.com/tmux/tmux
+status: active
+verified_at: '2026-08-31'
+tags:
+- terminal
+- shell
+- productivity
+sources:
+- title: tmux repository
+  url: https://github.com/tmux/tmux
+  type: repository
+- title: tmux manual
+  url: https://man.openbsd.org/tmux
+  type: documentation
