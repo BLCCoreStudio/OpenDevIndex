@@ -1,0 +1,29 @@
+schema_version: 2
+id: dbt
+name: dbt Core
+category: tool
+kind: tool
+domains:
+- analytics
+- data
+summary: Open-source transformation framework for analytics engineering that applies software-development practices to SQL-based data models and data pipelines.
+homepage: https://docs.getdbt.com/docs/core
+repository: https://github.com/dbt-labs/dbt-core
+license: Apache-2.0
+deployment_types:
+- cli
+- local
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- data
+- analytics
+- sql
+sources:
+- title: dbt Core documentation
+  url: https://docs.getdbt.com/docs/core
+  type: documentation
+- title: dbt Core repository
+  url: https://github.com/dbt-labs/dbt-core
+  type: repository
