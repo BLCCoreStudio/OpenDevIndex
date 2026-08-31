@@ -46,7 +46,7 @@ jobs:
 
       - name: Publish only when the index changed
         run: |
-          if git diff --quiet -- INDEX.md; then
+          if [ -z "$(git status --porcelain -- INDEX.md)" ]; then
             echo 'INDEX.md is already current.' >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
