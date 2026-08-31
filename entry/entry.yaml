@@ -1,0 +1,30 @@
+schema_version: 3
+id: json
+name: JSON
+category: format
+kind: format
+domains:
+  - data
+  - api
+  - web
+summary: A lightweight, text-based, language-independent data interchange format standardized by IETF RFC 8259 and ECMA-404 for portable structured data exchange.
+homepage: https://www.rfc-editor.org/info/rfc8259/
+status: active
+verified_at: 2026-08-31
+tags:
+  - json
+  - data
+  - serialization
+  - web
+coverage:
+  area: standards-protocols-formats
+  topics:
+    - data-formats
+    - serialization
+sources:
+  - title: RFC 8259 — The JavaScript Object Notation Data Interchange Format
+    url: https://www.rfc-editor.org/rfc/rfc8259.html
+    type: standard
+  - title: ECMA-404 — The JSON data interchange syntax
+    url: https://ecma-international.org/publications-and-standards/standards/ecma-404/
+    type: standard
