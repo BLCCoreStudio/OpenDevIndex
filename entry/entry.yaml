@@ -1,0 +1,20 @@
+schema_version: 1
+id: istio
+name: Istio
+category: cloud
+summary: Open-source service mesh that adds traffic management, security policy, and observability controls to distributed applications, commonly on Kubernetes.
+homepage: https://istio.io/
+repository: https://github.com/istio/istio
+status: active
+verified_at: '2026-08-31'
+tags:
+- service-mesh
+- kubernetes
+- networking
+sources:
+- title: Istio official site
+  url: https://istio.io/
+  type: official
+- title: Istio repository
+  url: https://github.com/istio/istio
+  type: repository
