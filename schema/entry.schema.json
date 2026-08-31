@@ -127,6 +127,10 @@
     {
       "if": { "properties": { "schema_version": { "enum": [2, 3] } } },
       "then": { "required": ["kind", "domains"] }
+    },
+    {
+      "if": { "properties": { "schema_version": { "const": 3 } } },
+      "then": { "required": ["coverage"] }
     }
   ]
 }
