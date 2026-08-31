@@ -1,0 +1,20 @@
+schema_version: 1
+id: ray
+name: Ray
+category: ai
+summary: Distributed computing framework for scaling Python and AI workloads from a single machine to clusters with task, actor, training, and serving abstractions.
+homepage: https://docs.ray.io/
+repository: https://github.com/ray-project/ray
+status: active
+verified_at: '2026-08-31'
+tags:
+- distributed
+- python
+- ml
+sources:
+- title: Ray documentation
+  url: https://docs.ray.io/
+  type: documentation
+- title: Ray repository
+  url: https://github.com/ray-project/ray
+  type: repository
