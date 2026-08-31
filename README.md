@@ -11,23 +11,26 @@ Instead of keeping thousands of unrelated notes in one giant document, OpenDevIn
 - **Structured + human-readable** — every module has machine-readable metadata and a concise guide.
 - **Source-backed** — important claims should point to primary or reputable sources.
 - **Independently versioned** — one subject can evolve without rewriting the entire index.
-- **Broad by design** — tools, languages, frameworks, AI, security, cloud, databases, protocols, concepts, and open-source projects belong here.
-- **Automation-friendly** — schemas and CI make the index usable by humans, scripts, search engines, and future applications.
+- **Broad by design** — tools, languages, frameworks, AI, security, cloud, databases, protocols, concepts, and open-source ecosystems belong here.
+- **Automation-friendly** — catalogs, schemas, and CI make the index usable by humans, scripts, search engines, and future applications.
+- **Quality before branch count** — an empty ref is not a knowledge module.
 
 ## Knowledge branches
 
 Each knowledge module lives on a dedicated branch:
 
 ```text
+tool/git
 tool/qemu
-tool/docker
-tool/ffmpeg
 language/rust
 framework/pytorch
-ai/ollama
-security/passkeys
+ai/tensorflow
+security/sigstore
+cloud/kubernetes
+database/postgresql
 protocol/mcp
 concept/virtualization
+opensource/linux-kernel
 ```
 
 A module contains:
@@ -41,6 +44,30 @@ entry/
 ```
 
 Branches must contain real, useful information. Empty or artificial branches are explicitly rejected by the project rules.
+
+## v0.1 curated catalog
+
+The first milestone is defined in [`catalog/v0.1.yaml`](catalog/v0.1.yaml):
+
+| Category | Modules |
+| --- | ---: |
+| Developer tools | 20 |
+| Languages | 10 |
+| Frameworks | 15 |
+| AI / ML | 15 |
+| Security | 10 |
+| Cloud / DevOps | 10 |
+| Databases | 5 |
+| Protocols | 5 |
+| Concepts | 5 |
+| Open-source ecosystems | 5 |
+| **Total** | **100** |
+
+Every catalog record has a stable slug, a human-written summary, tags, curated use cases, key points, and authoritative HTTPS sources.
+
+The trusted seeding pipeline is **idempotent**: it skips branches that already exist, renders missing modules from the reviewed catalog, runs the entry validator before every commit, and only then pushes the branch. Pull requests never receive seed write permission.
+
+See [`catalog/README.md`](catalog/README.md) and [`docs/SEEDING.md`](docs/SEEDING.md).
 
 ## Categories
 
@@ -65,12 +92,18 @@ Every module should answer, where applicable:
 2. What problem does it solve?
 3. Who should use it?
 4. How does it work at a high level?
-5. What platforms or environments does it support?
-6. What are the important trade-offs and alternatives?
+5. What are its common use cases?
+6. What are its important characteristics and trade-offs?
 7. Where are the primary sources?
 8. When was the information last verified?
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+## Validation and supply-chain hygiene
+
+OpenDevIndex validates both the curated catalog and individual knowledge branches in GitHub Actions. Third-party Actions used by the core workflows are pinned to exact commit SHAs.
+
+A branch only counts toward a milestone when its required files and metadata pass validation.
 
 ## Roadmap
 
@@ -78,11 +111,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/ARCHITECTURE.md](docs/ARCHITECT
 - **v0.5:** 1,000 verified knowledge modules + generated search catalog
 - **v1.0:** 10,000 verified knowledge modules + public searchable index
 
-The 10,000-module goal is a **content goal, not a branch-count stunt**: a module only counts when it passes the schema and quality checks.
-
-## Project status
-
-OpenDevIndex is in its foundation phase. The schema, validation pipeline, first modules, and catalog tooling are being built now.
+The 10,000-module goal is a **content goal, not a branch-count stunt**.
 
 ## License
 
