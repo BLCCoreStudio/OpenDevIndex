@@ -2,19 +2,19 @@
 
 This file is generated from validated OpenDevIndex catalogs. Each module link opens its independently versioned knowledge entry.
 
-**Indexed modules:** 135
+**Indexed modules:** 160
 
 ## Browse by kind
 
 | Kind | Modules |
 | --- | ---: |
-| `tool` | 46 |
-| `language` | 12 |
-| `framework` | 23 |
+| `tool` | 54 |
+| `language` | 20 |
+| `framework` | 28 |
 | `library` | 7 |
 | `runtime` | 6 |
 | `platform` | 15 |
-| `database` | 5 |
+| `database` | 9 |
 | `protocol` | 6 |
 | `standard` | 4 |
 | `system` | 1 |
@@ -28,35 +28,35 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | --- | ---: |
 | `accessibility` | 2 |
 | `ai` | 21 |
-| `analytics` | 3 |
-| `api` | 13 |
-| `build` | 7 |
+| `analytics` | 5 |
+| `api` | 15 |
+| `build` | 11 |
 | `ci-cd` | 3 |
-| `cli` | 8 |
-| `cloud` | 11 |
-| `containers` | 6 |
-| `data` | 16 |
-| `developer-experience` | 11 |
-| `developer-tools` | 19 |
+| `cli` | 9 |
+| `cloud` | 12 |
+| `containers` | 7 |
+| `data` | 22 |
+| `developer-experience` | 13 |
+| `developer-tools` | 26 |
 | `devops` | 11 |
-| `distributed-systems` | 4 |
+| `distributed-systems` | 9 |
 | `graphics` | 2 |
-| `machine-learning` | 9 |
+| `machine-learning` | 10 |
 | `media` | 2 |
-| `mobile` | 2 |
+| `mobile` | 3 |
 | `multimedia` | 2 |
-| `networking` | 9 |
-| `observability` | 5 |
+| `networking` | 10 |
+| `observability` | 6 |
 | `open-source` | 5 |
-| `programming-languages` | 15 |
-| `python` | 1 |
-| `security` | 11 |
-| `software-development` | 18 |
+| `programming-languages` | 23 |
+| `python` | 4 |
+| `security` | 12 |
+| `software-development` | 26 |
 | `sustainability` | 1 |
-| `systems` | 17 |
+| `systems` | 21 |
 | `testing` | 7 |
 | `virtualization` | 2 |
-| `web` | 23 |
+| `web` | 32 |
 | `webassembly` | 1 |
 
 ## tool
@@ -66,11 +66,13 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | [age](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/age/entry) (`security/age`) | `cli`, `security` | Simple file-encryption format and tool designed as a modern, composable way to encrypt files to public-key or passphrase recipients. |
 | [Ansible](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/ansible/entry) (`cloud/ansible`) | `cloud`, `devops` | Automation system for configuration management, application deployment, orchestration, and infrastructure tasks using agentless remote execution. |
 | [Apache Airflow](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/apache-airflow/entry) (`tool/apache-airflow`) | `data`, `devops` | Workflow orchestration platform for defining, scheduling, and monitoring data pipelines as code using Python-based directed acyclic graphs. |
+| [Apache Maven](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/maven/entry) (`tool/maven`) | `build`, `developer-tools`, `software-development` | Build and project-management tool for Java and JVM ecosystems that uses declarative project models, dependency coordinates, lifecycle phases, and a large plugin repository. |
 | [bat](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/bat/entry) (`tool/bat`) | `cli`, `developer-experience` | Command-line text viewer inspired by cat that adds syntax highlighting, Git-aware changes, line numbers, and paging while remaining pipeline friendly. |
 | [Bazel](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/bazel/entry) (`tool/bazel`) | `build`, `developer-tools` | Build and test system designed for large multi-language codebases with explicit dependencies, caching, and reproducible build graphs. |
 | [Bruno](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/bruno/entry) (`tool/bruno`) | `api`, `developer-experience`, `developer-tools`, `testing` | API client focused on local, Git-friendly collections stored as plain text, providing an alternative workflow to cloud-centric API testing tools. |
 | [ClamAV](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/clamav/entry) (`security/clamav`) | `security` | Open-source antivirus engine and scanning toolkit commonly used for malware detection in mail gateways, file-processing systems, and servers. |
 | [CMake](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/cmake/entry) (`tool/cmake`) | `build`, `developer-tools` | Cross-platform build-system generator used to describe native software builds independently of a specific compiler, IDE, or underlying build tool. |
+| [containerd](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/containerd/entry) (`tool/containerd`) | `cloud`, `containers`, `systems` | Industry-standard container runtime focused on managing the complete container lifecycle, including image transfer, storage, execution, supervision, and low-level runtime integration. |
 | [Continue](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/continue/entry) (`tool/continue`) | `ai`, `developer-experience`, `developer-tools` | Open-source AI coding assistant platform for integrating language models into developer workflows with configurable models, context providers, and editor integrations. |
 | [curl](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/curl/entry) (`tool/curl`) | `api`, `cli`, `developer-tools`, `networking` | Command-line tool and transfer library for moving data using URLs across many network protocols, commonly used for HTTP automation and debugging. |
 | [dbt Core](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/dbt/entry) (`tool/dbt`) | `analytics`, `data` | Open-source transformation framework for analytics engineering that applies software-development practices to SQL-based data models and data pipelines. |
@@ -83,6 +85,7 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | [GitHub Actions](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/github-actions/entry) (`tool/github-actions`) | `ci-cd`, `devops` | GitHub-native automation platform for continuous integration, delivery, scheduled jobs, and repository workflows defined as versioned YAML files. |
 | [GitHub CLI](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/gh/entry) (`tool/gh`) | `cli`, `developer-tools` | Official GitHub command-line interface for repositories, issues, pull requests, releases, workflows, and other GitHub operations. |
 | [GNU Make](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/make/entry) (`tool/make`) | `build`, `developer-tools` | Classic build automation tool that evaluates dependency rules and shell recipes to update files and targets when their inputs change. |
+| [Gradle](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/gradle/entry) (`tool/gradle`) | `build`, `developer-tools`, `software-development` | General-purpose build automation system widely used for JVM and Android projects, with programmable build logic, incremental execution, dependency management, and caching. |
 | [Helm](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/helm/entry) (`cloud/helm`) | `cloud`, `devops` | Package manager for Kubernetes that bundles templated resource manifests into versioned charts for installation, upgrades, and reuse. |
 | [Homebrew](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/homebrew/entry) (`tool/homebrew`) | `developer-tools`, `systems` | Package manager for macOS and Linux that installs command-line tools and applications through versioned formulae and casks. |
 | [Jenkins](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/jenkins/entry) (`tool/jenkins`) | `ci-cd`, `devops` | Extensible automation server used to orchestrate continuous integration and delivery pipelines across self-hosted infrastructure and diverse toolchains. |
@@ -93,14 +96,17 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | [LM Studio](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/lm-studio/entry) (`tool/lm-studio`) | `ai`, `developer-experience` | Desktop application and local inference environment for discovering, downloading, running, and serving supported language models on personal computers. |
 | [Meson](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/meson/entry) (`tool/meson`) | `build`, `developer-tools` | High-productivity build system focused on fast, reliable native builds with concise project definitions and first-class Ninja integration. |
 | [Neovim](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/neovim/entry) (`tool/neovim`) | `developer-tools` | Extensible text editor derived from Vim with a modernized architecture, Lua configuration, asynchronous APIs, and a large plugin ecosystem. |
+| [Ninja](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/ninja/entry) (`tool/ninja`) | `build`, `developer-tools`, `systems` | Small build system focused on executing generated build graphs as quickly as possible, commonly used as a backend for higher-level generators such as CMake and Meson. |
 | [Nix](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/nix/entry) (`tool/nix`) | `developer-tools`, `systems` | Functional package manager and build system focused on reproducible environments, isolated package stores, and declarative software composition. |
 | [Nmap](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/nmap/entry) (`security/nmap`) | `security` | Network exploration and security-auditing tool for discovering hosts, identifying open ports, fingerprinting services, and running scriptable network probes. |
 | [Ollama](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/ollama/entry) (`tool/ollama`) | `ai`, `developer-experience` | Local model runtime and developer tool for downloading, managing, and serving large language models through a simple command-line and HTTP interface. |
 | [OpenSSH](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/openssh/entry) (`security/openssh`) | `security` | Open-source implementation of the SSH protocol suite used for encrypted remote login, command execution, tunneling, and secure file transfer. |
+| [pnpm](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/pnpm/entry) (`tool/pnpm`) | `developer-experience`, `developer-tools`, `web` | JavaScript package manager that uses a content-addressable store and linked dependency layout to reduce duplicated files while supporting workspaces and modern Node.js projects. |
 | [Podman](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/podman/entry) (`tool/podman`) | `containers`, `devops` | Daemonless container engine for building, running, and managing OCI containers and pods with strong support for rootless operation. |
 | [Pulumi](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/pulumi/entry) (`cloud/pulumi`) | `cloud`, `devops` | Infrastructure-as-code platform that lets developers define cloud resources using general-purpose programming languages and provider packages. |
 | [QEMU](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/qemu/entry) (`tool/qemu`) | `systems`, `virtualization` | Open-source machine emulator and virtualizer that can emulate full systems or individual processes across many CPU architectures. |
 | [ripgrep](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/ripgrep/entry) (`tool/ripgrep`) | `cli`, `developer-tools` | Fast recursive text-search command-line tool that respects common ignore files and is optimized for searching source trees and large directories. |
+| [Ruff](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/ruff/entry) (`tool/ruff`) | `developer-experience`, `developer-tools`, `python` | High-performance Python linter and formatter from Astral implemented in Rust, designed to replace or consolidate many common Python code-quality checks in one tool. |
 | [Scaphandre](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/scaphandre/entry) (`tool/scaphandre`) | `observability`, `sustainability` | Open-source energy-consumption monitoring agent designed to expose power-related metrics for processes and hosts, supporting sustainable software measurement. |
 | [Semgrep](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/semgrep/entry) (`security/semgrep`) | `security` | Static-analysis platform and open-source engine for matching code patterns, enforcing secure coding rules, and detecting classes of defects across languages. |
 | [Sigstore](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/sigstore/entry) (`security/sigstore`) | `security` | Open-source ecosystem for signing and verifying software artifacts using short-lived identities, transparency logs, and supply-chain security tooling. |
@@ -108,7 +114,9 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | [tmux](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/tmux/entry) (`tool/tmux`) | `developer-tools` | Terminal multiplexer that creates persistent shell sessions and supports multiple windows and panes inside a single terminal connection. |
 | [Traefik Proxy](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/traefik/entry) (`tool/traefik`) | `cloud`, `containers`, `devops`, `networking` | Cloud-native reverse proxy and application proxy that discovers services dynamically and configures routing for containers and orchestration platforms. |
 | [Trivy](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/trivy/entry) (`security/trivy`) | `containers`, `security` | Open-source security scanner for container images, filesystems, repositories, infrastructure configuration, dependencies, and software supply chains. |
+| [uv](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/uv/entry) (`tool/uv`) | `cli`, `developer-tools`, `python` | Fast Python package and project manager from Astral that combines environment creation, dependency installation, lockfiles, tool execution, and Python version management. |
 | [Visual Studio Code](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/vscode/entry) (`tool/vscode`) | `developer-tools` | Open-source-based code editor from Microsoft with extension support, integrated debugging, language tooling, terminals, and remote development features. |
+| [Wireshark](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/wireshark/entry) (`tool/wireshark`) | `developer-tools`, `networking`, `security` | Open-source network protocol analyzer with graphical and command-line tooling for capturing, decoding, filtering, and inspecting packets across a large range of protocols. |
 
 ## language
 
@@ -116,33 +124,46 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 | --- | --- | --- |
 | [C](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/c/entry) (`language/c`) | `programming-languages`, `systems` | Foundational compiled systems programming language standardized by ISO and widely used for operating systems, embedded software, libraries, and low-level interfaces. |
 | [C++](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/cpp/entry) (`language/cpp`) | `programming-languages`, `systems` | Multi-paradigm compiled programming language built on C heritage and widely used for performance-sensitive systems, applications, games, and infrastructure. |
+| [Dart](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/dart/entry) (`language/dart`) | `mobile`, `programming-languages`, `web` | Client-optimized programming language from Google used for cross-platform applications, especially with Flutter, with ahead-of-time and just-in-time compilation modes. |
+| [Elixir](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/elixir/entry) (`language/elixir`) | `distributed-systems`, `programming-languages`, `web` | Functional programming language that runs on the Erlang VM and targets scalable, fault-tolerant, concurrent applications with modern tooling and metaprogramming. |
+| [Erlang](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/erlang/entry) (`language/erlang`) | `distributed-systems`, `programming-languages` | Functional concurrent programming language and runtime ecosystem designed for fault-tolerant, distributed, soft-real-time systems that can run continuously. |
 | [Go](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/go/entry) (`language/go`) | `cloud`, `programming-languages` | Compiled programming language designed for simple tooling, efficient concurrency, and maintainable network and systems software. |
+| [Haskell](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/haskell/entry) (`language/haskell`) | `programming-languages`, `software-development` | Statically typed purely functional programming language with lazy evaluation, type inference, algebraic data types, and a strong research and library ecosystem. |
 | [Java](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/java/entry) (`language/java`) | `programming-languages` | Class-based general-purpose programming language and platform centered on the Java Virtual Machine, with a large server and enterprise ecosystem. |
 | [JavaScript](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/javascript/entry) (`language/javascript`) | `programming-languages`, `web` | ECMAScript-based programming language that powers browser scripting and is also widely used on servers, tooling, desktop, and mobile platforms. |
+| [Julia](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/julia/entry) (`language/julia`) | `data`, `machine-learning`, `programming-languages` | High-level dynamic programming language designed for numerical and scientific computing while providing multiple dispatch and native-code performance through JIT compilation. |
 | [Kotlin](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/kotlin/entry) (`language/kotlin`) | `programming-languages` | Modern statically typed language from JetBrains targeting the JVM, Android, JavaScript, WebAssembly, and native platforms. |
+| [Lua](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/lua/entry) (`language/lua`) | `programming-languages`, `systems` | Lightweight embeddable programming language with a small runtime, dynamic semantics, and a long history in games, applications, scripting, and embedded software. |
 | [PHP](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/php/entry) (`language/php`) | `programming-languages`, `web` | Widely deployed server-side programming language with a large web ecosystem, mature package tooling, and direct integration with common web servers. |
 | [Python](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/python/entry) (`language/python`) | `data`, `programming-languages` | High-level general-purpose programming language known for readable syntax and a broad ecosystem spanning automation, web development, science, and AI. |
 | [Ruby](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/ruby/entry) (`language/ruby`) | `programming-languages`, `web` | Dynamic general-purpose programming language emphasizing developer productivity and expressive object-oriented code, best known for the Ruby on Rails ecosystem. |
 | [Rust](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/rust/entry) (`language/rust`) | `programming-languages`, `systems` | Systems programming language focused on memory safety, performance, and concurrency without requiring a garbage collector. |
+| [Scala](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/scala/entry) (`language/scala`) | `data`, `distributed-systems`, `programming-languages` | Statically typed language for the JVM that combines object-oriented and functional programming and is widely used in distributed systems and data platforms. |
 | [Swift](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/swift/entry) (`language/swift`) | `programming-languages`, `systems` | Compiled programming language developed for Apple platforms and also available as open source for systems, server, and cross-platform development. |
 | [TypeScript](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/typescript/entry) (`language/typescript`) | `programming-languages`, `web` | Statically typed superset of JavaScript that adds compile-time type checking while emitting JavaScript for existing runtimes and browsers. |
+| [Zig](https://github.com/BLCCoreStudio/OpenDevIndex/tree/language/zig/entry) (`language/zig`) | `build`, `programming-languages`, `systems` | General-purpose systems programming language focused on explicit control, predictable performance, cross-compilation, and straightforward interoperability with C code. |
 
 ## framework
 
 | Module | Domains | Summary |
 | --- | --- | --- |
+| [Angular](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/angular/entry) (`framework/angular`) | `software-development`, `web` | Full-featured web application framework maintained by Google with components, dependency injection, routing, forms, testing support, and an integrated development toolchain. |
 | [Apache Flink](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/apache-flink/entry) (`framework/apache-flink`) | `data`, `distributed-systems` | Distributed processing framework designed for stateful stream processing and batch workloads with event-time semantics and fault-tolerant execution. |
 | [Apache Spark](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/apache-spark/entry) (`framework/apache-spark`) | `analytics`, `data`, `distributed-systems` | Distributed data-processing engine for large-scale analytics with APIs for SQL, batch processing, streaming, machine learning, and graph workloads. |
+| [ASP.NET Core](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/aspnet-core/entry) (`framework/aspnet-core`) | `api`, `software-development`, `web` | Cross-platform open-source framework from Microsoft for building web applications, HTTP APIs, real-time services, and cloud backends on the modern .NET platform. |
 | [Astro](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/astro/entry) (`framework/astro`) | `software-development`, `web` | Web framework focused on content-driven sites and server-rendered applications, with island architecture and support for multiple UI component frameworks. |
 | [Django](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/django/entry) (`framework/django`) | `software-development`, `web` | Python web framework providing an integrated ORM, routing, templates, forms, authentication, administration, and security-focused defaults. |
 | [Electron](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/electron/entry) (`framework/electron`) | `software-development` | Framework for building cross-platform desktop applications using web technologies by packaging Chromium and Node.js with an application runtime. |
+| [Express](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/express/entry) (`framework/express`) | `software-development`, `web` | Minimal Node.js web framework centered on routing and middleware, commonly used to build HTTP APIs, web backends, and server-side applications in the JavaScript ecosystem. |
 | [FastAPI](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/fastapi/entry) (`framework/fastapi`) | `api`, `software-development` | Python framework for building typed HTTP APIs using standard type hints, automatic validation, OpenAPI generation, and asynchronous server support. |
+| [Flask](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/flask/entry) (`framework/flask`) | `python`, `software-development`, `web` | Lightweight Python web framework built around Werkzeug and Jinja that provides routing and request handling while leaving many architectural choices to extensions and applications. |
 | [Flutter](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/flutter/entry) (`framework/flutter`) | `mobile`, `software-development` | Cross-platform application UI toolkit using Dart to build natively compiled mobile, web, desktop, and embedded interfaces from shared code. |
 | [GStreamer](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/gstreamer/entry) (`framework/gstreamer`) | `media`, `multimedia` | Cross-platform multimedia framework based on composable pipeline elements for capturing, decoding, processing, encoding, and streaming audio and video. |
 | [Keras](https://github.com/BLCCoreStudio/OpenDevIndex/tree/ai/keras/entry) (`ai/keras`) | `ai`, `machine-learning` | High-level deep-learning API designed for readable model construction and training workflows while supporting multiple tensor-computation backends. |
 | [LangChain](https://github.com/BLCCoreStudio/OpenDevIndex/tree/ai/langchain/entry) (`ai/langchain`) | `ai` | Application framework and ecosystem for composing language-model calls with tools, retrieval, structured workflows, and agent-oriented application logic. |
 | [Laravel](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/laravel/entry) (`framework/laravel`) | `software-development`, `web` | PHP web application framework with routing, ORM, queues, authentication, templating, testing, and a broad first-party tooling ecosystem. |
 | [LlamaIndex](https://github.com/BLCCoreStudio/OpenDevIndex/tree/ai/llamaindex/entry) (`ai/llamaindex`) | `ai`, `data` | Framework for connecting language-model applications to private or external data through indexing, retrieval, workflows, and agent-oriented abstractions. |
+| [NestJS](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/nestjs/entry) (`framework/nestjs`) | `api`, `software-development`, `web` | TypeScript-first server application framework for Node.js that organizes backend software around modules, dependency injection, decorators, and adapters for common HTTP platforms. |
 | [Next.js](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/nextjs/entry) (`framework/nextjs`) | `software-development`, `web` | React framework for full-stack web applications with routing, server rendering, static generation, data loading, and deployment-oriented tooling. |
 | [PyTorch](https://github.com/BLCCoreStudio/OpenDevIndex/tree/framework/pytorch/entry) (`framework/pytorch`) | `ai`, `machine-learning` | Open-source tensor and deep-learning framework with automatic differentiation, GPU acceleration, and a large research and production ecosystem. |
 | [Ray](https://github.com/BLCCoreStudio/OpenDevIndex/tree/ai/ray/entry) (`ai/ray`) | `ai`, `distributed-systems` | Distributed computing framework for scaling Python and AI workloads from a single machine to clusters with task, actor, training, and serving abstractions. |
@@ -202,8 +223,12 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 
 | Module | Domains | Summary |
 | --- | --- | --- |
+| [Apache Cassandra](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/cassandra/entry) (`database/cassandra`) | `data`, `distributed-systems` | Distributed wide-column database designed for high availability, horizontal scale, multi-node replication, and predictable write-heavy workloads without a single primary server. |
+| [ClickHouse](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/clickhouse/entry) (`database/clickhouse`) | `analytics`, `data`, `observability` | Open-source column-oriented database management system optimized for high-volume analytical queries, real-time reporting, compression, and large-scale event or telemetry data. |
 | [DuckDB](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/duckdb/entry) (`database/duckdb`) | `analytics`, `data` | In-process analytical SQL database designed for fast OLAP-style queries over local data files and data frames without a separate server. |
+| [MongoDB](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/mongodb/entry) (`database/mongodb`) | `data`, `distributed-systems`, `web` | Document-oriented database that stores records in BSON-like documents and provides indexing, replication, aggregation, transactions, and distributed deployment capabilities. |
 | [MySQL](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/mysql/entry) (`database/mysql`) | `data` | Widely used relational database management system implementing SQL for transactional and web workloads with a large ecosystem of tools and integrations. |
+| [Neo4j](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/neo4j/entry) (`database/neo4j`) | `analytics`, `data` | Graph database platform centered on property graphs and the Cypher query language, designed for traversing and analyzing highly connected data and relationship-heavy domains. |
 | [PostgreSQL](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/postgresql/entry) (`database/postgresql`) | `data` | Open-source relational database known for standards-oriented SQL, transactions, extensibility, advanced data types, indexing, and reliable server workloads. |
 | [Redis](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/redis/entry) (`database/redis`) | `data` | In-memory data platform centered on key-value structures and low-latency operations, commonly used for caching, messaging, counters, and real-time state. |
 | [SQLite](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/sqlite/entry) (`database/sqlite`) | `data` | Embedded relational database engine that stores a complete database in ordinary files and requires no separate database server process. |
