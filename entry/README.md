@@ -24,7 +24,7 @@ The module focuses on the technology's practical role, high-signal characteristi
 ## Taxonomy
 
 - Kind: `framework`
-- Domains: `software-development`, `web`
+- Domains: `python`, `software-development`, `web`
 - Deployment: not yet curated
 - License metadata: `not yet curated`
 

@@ -4,6 +4,7 @@ name: Django
 category: framework
 kind: framework
 domains:
+- python
 - software-development
 - web
 summary: Python web framework providing an integrated ORM, routing, templates, forms, authentication, administration, and security-focused defaults.
