@@ -1,0 +1,29 @@
+schema_version: 2
+id: traefik
+name: Traefik Proxy
+category: tool
+kind: tool
+domains:
+- cloud
+- containers
+- devops
+- networking
+summary: Cloud-native reverse proxy and application proxy that discovers services dynamically and configures routing for containers and orchestration platforms.
+homepage: https://traefik.io/traefik
+repository: https://github.com/traefik/traefik
+license: MIT
+deployment_types:
+- self-hosted
+status: active
+verified_at: '2026-08-31'
+tags:
+- proxy
+- cloud
+- containers
+sources:
+- title: Traefik Proxy official site
+  url: https://traefik.io/traefik
+  type: official
+- title: Traefik repository
+  url: https://github.com/traefik/traefik
+  type: repository
