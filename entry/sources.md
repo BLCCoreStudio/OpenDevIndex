@@ -1,6 +1,6 @@
 # Sources
 
-Verified for the OpenDevIndex v0.1 catalog on **2026-08-31**.
+Verified for the OpenDevIndex **v0.1** catalog on **2026-08-31**.
 
 - **LangChain documentation** — https://docs.langchain.com/ (`documentation`)
 - **LangChain repository** — https://github.com/langchain-ai/langchain (`repository`)
