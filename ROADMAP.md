@@ -1,79 +1,198 @@
 # OpenDevIndex Roadmap
 
-## v0.1 — Foundation / 100 modules
+OpenDevIndex is not being developed as a race to publish the largest number of module branches. The roadmap is organized around **trust, depth, discovery, and useful connections between technologies**.
 
-- Stable entry schema v1
-- CI validation for knowledge modules
-- Contribution templates
-- First 100 source-backed modules
-- Category and duplicate checks
-- Reproducible search-index generator and local search CLI
-- Automated source health workflow
+Coverage still matters, but raw module count is not a quality metric.
 
-## v0.2 — Discovery and taxonomy / 135 modules
+## Foundation — complete
 
-- Generated public `INDEX.md`
-- Taxonomy v2 with stable addresses plus `kind` and `domains`
-- Editorial quality scoring and source-health reporting
-- Expanded language, framework, runtime, library, platform, standard, toolchain, and tool coverage
+The project already has the core infrastructure needed to grow safely:
 
-## v0.5 — Searchable / 1,000 modules
+- stable knowledge-module addresses;
+- independently versioned module branches;
+- machine-readable entry schemas;
+- generated public index and search artifacts;
+- source-backed catalogs;
+- taxonomy with `kind` and `domains` facets;
+- CI validation;
+- editorial quality scoring;
+- source-health monitoring;
+- reproducible trusted publication workflows;
+- a Technology Universe coverage map to prevent topic blind spots.
 
-Current growth model: reviewed catalog shards published from trusted `main`. The first v0.5 core shard set contains 25 source-backed modules and establishes the reusable publisher for future batches.
+## Current priority — depth
 
-- Scale from the 135-module v0.2 baseline to 1,000 validated modules
-- Keep catalog batches small enough for meaningful source and editorial review
-- Use the generic trusted catalog publisher for future milestone shards
-- Generated global catalog
-- Fast static search index
-- Cross-links between related technologies
-- Staleness detection based on `verified_at`
-- Automated source/link health reporting
-- Contributor quality dashboard
-- Introduce deeper module sections for architecture, concepts, tools, examples, alternatives, risks and learning paths
+The most important next step is to turn high-value overview modules into genuinely useful technical references.
 
-## v1.0 — Open technology map / 10,000 modules
+Priority work:
 
-The 10,000-module destination is now represented by a machine-readable **Technology Universe** coverage plan. Its 20 major areas and allocations are validated in CI so growth stays broad instead of drifting toward whichever topic is easiest to add.
+- establish and enforce the Overview / Guide / Deep dive editorial model;
+- deepen foundational technologies before expanding low-value edge coverage;
+- explain internal architecture instead of stopping at product descriptions;
+- add practical mental models, workflows, commands, APIs, and examples;
+- document alternatives and real engineering trade-offs;
+- add performance, reliability, security, and privacy sections where relevant;
+- build beginner-to-advanced learning paths;
+- make authoritative sources easy to audit;
+- protect curated deep content from automated publisher regressions.
 
-- 10,000 validated knowledge modules
-- CI-validated 10,000-module coverage allocation
-- Public searchable web index
-- API-friendly catalog artifacts
-- Topic relationships, dependencies and alternatives graph
-- Technology comparison views
-- Learning-path generation from prerequisites and relationships
-- Security, privacy and operational-risk facets
-- Trend/change feeds for fast-moving technologies
-- Translation-ready content model
-- Broad coverage across software, systems, infrastructure, security, AI, hardware and emerging technology
+`tool/git` is the first flagship deep-dive module and acts as the reference quality bar for future upgrades.
 
-See [`docs/COVERAGE.md`](docs/COVERAGE.md) and [`coverage/technology-universe-v1.yaml`](coverage/technology-universe-v1.yaml).
+## Current priority — connected knowledge graph
 
-## Beyond v1 — Technology knowledge graph
+OpenDevIndex should behave like a navigable technology map rather than a collection of isolated articles.
 
-- Expand from a software-centric catalog into a comprehensive map of computing and technology
-- Connect concepts, implementations, tools, standards, protocols, ecosystems and historical lineage
-- Support graph navigation such as `built-with`, `depends-on`, `alternative-to`, `implements`, `successor-of`, `used-by` and `related-to`
-- Add generated comparison matrices without vendor-sponsored ranking
-- Add curated beginner-to-advanced learning journeys
-- Add structured architecture and data-flow representations where appropriate
-- Add stronger provenance, freshness and confidence metadata
-- Add historical snapshots for fast-changing technologies
-- Make the reviewed catalog reusable by websites, CLIs, educational tools and other open-source applications
+Priority work:
 
-## Coverage domains
+- validate typed schema-v3 relationships in CI;
+- progressively connect foundational modules using meaningful graph edges;
+- distinguish architecture, dependency, compatibility, history, and alternative relationships;
+- expose graph relationships in human-readable module pages;
+- avoid artificial links created only to inflate graph density;
+- use relationships to power learning paths and comparison views.
 
-OpenDevIndex is designed to include programming languages, computer-science foundations, operating systems, hardware and computer architecture, networking and internet infrastructure, cybersecurity and privacy, web and mobile development, databases and data engineering, cloud and DevOps, observability and reliability, AI and machine learning, graphics and games, embedded systems and IoT, robotics, open-source ecosystems, standards and protocols, developer tooling, software architecture, testing and debugging, supply-chain engineering, and emerging technology.
+Important relationship types include:
 
-See [`docs/VISION.md`](docs/VISION.md) for the full long-term scope.
+```text
+depends-on
+uses
+implements
+integrates-with
+part-of
+alternative-to
+based-on
+predecessor-of
+successor-of
+related-to
+```
+
+## Discovery and navigation
+
+The index should make a large body of technical material easy to explore without overwhelming the reader.
+
+Planned improvements:
+
+- clearer public browsing by technology area, kind, and domain;
+- fast static search with useful facets;
+- related-module navigation;
+- "what to learn next" navigation;
+- comparison views for technologies that solve similar problems;
+- curated learning journeys;
+- better discovery of deep-dive modules;
+- stronger mobile-friendly GitHub browsing;
+- eventually, a public searchable web interface built from the same validated data.
+
+## Module quality model
+
+A module can mature independently:
+
+### Overview
+
+A concise, source-backed node that establishes identity, taxonomy, use cases, key points, and authoritative references.
+
+### Guide
+
+A practical explanation with a useful mental model, workflows, important concepts, tools, alternatives, and examples.
+
+### Deep dive
+
+A standalone technical reference that can additionally cover internals, architecture, object/data models, protocols, performance, reliability, security, ecosystem, failure modes, learning paths, and meaningful graph relationships.
+
+See [`docs/MODULE_STANDARD.md`](docs/MODULE_STANDARD.md).
+
+## Technology coverage
+
+OpenDevIndex is intended to map the wider computing ecosystem, including:
+
+- computer-science foundations;
+- programming languages and runtimes;
+- software engineering and architecture;
+- operating systems and systems software;
+- hardware and computer architecture;
+- networking and internet infrastructure;
+- cybersecurity, cryptography, and privacy;
+- web, mobile, and desktop platforms;
+- databases, storage, and data engineering;
+- cloud, DevOps, infrastructure, and SRE;
+- AI and machine learning;
+- graphics, games, media, and XR;
+- embedded systems, IoT, and robotics;
+- open-source ecosystems;
+- standards, protocols, and formats;
+- developer tools and environments;
+- testing, debugging, and performance engineering;
+- distributed and large-scale systems;
+- important historical and emerging technologies.
+
+The machine-readable coverage plan exists to expose gaps and keep growth balanced. It should not encourage placeholder modules or public count chasing.
+
+See [`docs/COVERAGE.md`](docs/COVERAGE.md).
+
+## Search and application layer
+
+The structured catalog should become useful beyond GitHub Markdown pages.
+
+Planned work:
+
+- API-friendly static catalog artifacts;
+- graph-friendly exports;
+- searchable web UI;
+- topic comparison views;
+- generated but editorially constrained learning paths;
+- filters for technology kind, domain, deployment model, and coverage area;
+- provenance and freshness indicators;
+- change feeds for fast-moving technologies;
+- translation-ready content structures where they do not weaken source traceability.
+
+## Provenance and maintenance
+
+Long-term usefulness depends on keeping information trustworthy after publication.
+
+Planned work:
+
+- stronger claim-to-source provenance where practical;
+- clearer freshness rules by technology type;
+- historical snapshots for fast-changing subjects;
+- confidence and verification metadata;
+- automated stale-source detection without treating network failures as factual invalidation;
+- security/advisory-aware maintenance for sensitive modules;
+- safeguards against accidental schema or content regression.
+
+## Contribution experience
+
+Contributors should be able to improve one useful piece of the map without understanding every repository automation detail.
+
+Planned improvements:
+
+- clearer templates for deepening existing modules;
+- kind-specific editorial checklists;
+- relationship suggestions with validation;
+- source-quality guidance;
+- easier preview of generated index/search changes;
+- contribution paths for corrections, sources, examples, architecture explanations, and graph links—not only new modules.
 
 ## Non-goals
 
-- Publishing placeholder or unverified modules
-- Mirroring proprietary documentation
-- Ranking products based on sponsorship
-- Treating generated AI text as a source
-- Sacrificing accuracy, provenance or usefulness merely to increase raw content volume
+OpenDevIndex does **not** aim to:
 
-Each knowledge module is independently validated for structure, accuracy, and quality before being included in the index.
+- publish empty or placeholder modules to increase repository size;
+- mirror proprietary documentation;
+- copy upstream manuals wholesale;
+- rank products based on sponsorship;
+- treat generated AI text as an authoritative source;
+- add relationships only to make the graph look larger;
+- sacrifice accuracy, provenance, readability, or usefulness for raw content volume.
+
+## Definition of progress
+
+Progress should be visible when:
+
+- an important module becomes substantially more useful to learn from;
+- a reader can navigate naturally to a related technology;
+- a source or factual weakness is corrected;
+- search and browsing make existing knowledge easier to find;
+- automation catches a real quality regression;
+- a contributor can improve the project with less friction;
+- an uncovered area of the technology map gains trustworthy content.
+
+That is a better measure of OpenDevIndex than a headline branch count.
