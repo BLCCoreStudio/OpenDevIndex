@@ -13,6 +13,7 @@ from pathlib import Path
 
 import yaml
 
+from module_workflow import sync_module_workflow
 from taxonomy import enrich_entry, load_taxonomy
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -204,6 +205,17 @@ def write_entry(worktree: Path, entry: dict, verified_at: str, milestone: str, s
     (entry_dir / "history.md").write_text(render_history(entry, verified_at, milestone, old_history), encoding="utf-8")
 
 
+def commit_worktree(worktree: Path, branch: str, message: str, push: bool) -> tuple[str, bool]:
+    if not run("git", "status", "--porcelain", cwd=worktree, capture=True):
+        return run("git", "rev-parse", "HEAD", cwd=worktree, capture=True), False
+    run("git", "add", "entry", ".github/workflows", cwd=worktree)
+    run("git", "commit", "-m", message, cwd=worktree)
+    commit_sha = run("git", "rev-parse", "HEAD", cwd=worktree, capture=True)
+    if push:
+        run("git", "push", "origin", f"HEAD:refs/heads/{branch}", cwd=worktree)
+    return commit_sha, True
+
+
 def publish_entry(
     base_ref: str,
     entry: dict,
@@ -219,19 +231,29 @@ def publish_entry(
     worktree = temp_root / "worktree"
     try:
         run("git", "worktree", "add", "--detach", str(worktree), base_ref)
+        run("git", "config", "user.name", "OpenDevIndex Publisher", cwd=worktree)
+        run("git", "config", "user.email", "207100624+BLCCoreStudio@users.noreply.github.com", cwd=worktree)
+
         if refresh and not overwrite_curated:
             protection_reason = refresh_protection_reason(worktree, schema_version)
             if protection_reason:
+                workflow_changed = sync_module_workflow(worktree)
                 print(
-                    f"Protecting {branch} from automatic refresh ({protection_reason}). "
-                    "Use --overwrite-curated for an intentional replacement.",
+                    f"Protecting {branch} from automatic content refresh ({protection_reason}). "
+                    "Module CI may still be synchronized. Use --overwrite-curated for an intentional content replacement.",
                     flush=True,
                 )
-                return run("git", "rev-parse", "HEAD", cwd=worktree, capture=True), False
+                if not workflow_changed:
+                    return run("git", "rev-parse", "HEAD", cwd=worktree, capture=True), False
+                return commit_worktree(
+                    worktree,
+                    branch,
+                    "ci: sync module validation workflow",
+                    push,
+                )
 
-        run("git", "config", "user.name", "OpenDevIndex Publisher", cwd=worktree)
-        run("git", "config", "user.email", "207100624+BLCCoreStudio@users.noreply.github.com", cwd=worktree)
         write_entry(worktree, entry, verified_at, milestone, schema_version, preserve_history=refresh)
+        sync_module_workflow(worktree)
         run(
             sys.executable,
             str(ROOT / "scripts/validate_entry.py"),
@@ -241,15 +263,8 @@ def publish_entry(
             str(worktree),
             cwd=ROOT,
         )
-        if not run("git", "status", "--porcelain", cwd=worktree, capture=True):
-            return run("git", "rev-parse", "HEAD", cwd=worktree, capture=True), False
-        run("git", "add", "entry", cwd=worktree)
-        message = "entry: refresh taxonomy and metadata [skip ci]" if refresh else f"entry: add {entry['name']} knowledge module"
-        run("git", "commit", "-m", message, cwd=worktree)
-        commit_sha = run("git", "rev-parse", "HEAD", cwd=worktree, capture=True)
-        if push:
-            run("git", "push", "origin", f"HEAD:refs/heads/{branch}", cwd=worktree)
-        return commit_sha, True
+        message = "entry: refresh taxonomy and metadata" if refresh else f"entry: add {entry['name']} knowledge module"
+        return commit_worktree(worktree, branch, message, push)
     finally:
         try:
             run("git", "worktree", "remove", "--force", str(worktree))
