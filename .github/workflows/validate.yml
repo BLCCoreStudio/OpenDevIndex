@@ -48,6 +48,9 @@ jobs:
       - name: Validate knowledge graph relationships
         run: python scripts/validate_relationships.py catalog/*.yaml
 
+      - name: Validate module maturity manifest
+        run: python scripts/module_maturity.py quality/module-maturity.yaml --catalog-dir catalog
+
       - name: Audit editorial quality
         run: |
           python scripts/audit_quality.py \
