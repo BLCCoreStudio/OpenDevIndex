@@ -1,31 +1,22 @@
 # History
 
-## 2026-08-31 — v0.1
+## 2026-09-01 — flagship deep-dive upgrade
 
-- Reviewed `tool/git` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `tool` and domain facets: cli, developer-tools.
-- Re-rendered module documentation from validated source-backed metadata.
+- Expanded `tool/git` from an overview module into the first flagship OpenDevIndex deep-dive module.
+- Added the working tree / index / repository mental model and detailed coverage of blobs, trees, commits, tags, refs, HEAD, branches, merges, rebases, remotes, refspecs, packfiles, transfer protocols, recovery, performance, and security boundaries.
+- Upgraded metadata to schema v3 with Technology Universe coverage and typed relationships to Git LFS, GitHub CLI, and GitHub Actions.
+- Expanded the authoritative source set to official Git documentation and the canonical Git source repository.
+- Removed duplicated historical entries created by earlier refresh cycles.
 
-## Earlier history
+## 2026-08-31 — v0.1 overview
 
-## 2026-08-31 — v0.1
+- Reviewed `tool/git` against the initial OpenDevIndex catalog and taxonomy.
+- Recorded canonical kind `tool` and domain facets `cli` and `developer-tools`.
+- Published the original source-backed overview module.
 
-- Reviewed `tool/git` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `tool` and domain facets: cli, developer-tools.
-- Re-rendered module documentation from validated source-backed metadata.
+## Historical context
 
-## Earlier history
+- **2005** — Git was created during Linux kernel development as a new distributed source-control system.
+- **2008** — GitHub launched as a separate Git hosting and collaboration service, helping popularize Git-based workflows.
 
-## 2026-08-31 — v0.1
-
-- Reviewed `tool/git` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `tool` and domain facets: cli, developer-tools.
-- Re-rendered module documentation from validated source-backed metadata.
-
-## Earlier history
-
-- **2005** — Git was created for development of the Linux kernel and quickly evolved into a general distributed version control system.
-- **2008** — GitHub launched, helping make Git-based collaboration mainstream, while remaining a separate hosting platform from Git itself.
-- **2026-06-29** — Git 2.55.0 was listed as the latest source release on the official Git website when this module was verified.
-
-This file records only notable context. Detailed release history belongs in the upstream Git release notes.
+Detailed Git release history belongs in the upstream Git release notes rather than this maintenance log.
