@@ -54,6 +54,16 @@ entries:
   - Carries explicit area and topic coverage metadata
 """
 
+MATURITY = """schema_version: 1
+default_level: overview
+levels: [overview, guide, deep-dive]
+modules:
+  tool/example-tool:
+    level: deep-dive
+    reviewed_at: '2026-08-31'
+    note: Deep fixture used to verify index maturity discovery.
+"""
+
 
 class IndexTests(unittest.TestCase):
     def test_build_and_search(self) -> None:
@@ -62,11 +72,14 @@ class IndexTests(unittest.TestCase):
             catalog_dir = root / "catalog"
             output_dir = root / "dist"
             public_index = root / "INDEX.md"
+            maturity_manifest = root / "maturity.yaml"
             catalog_dir.mkdir()
             (catalog_dir / "test.yaml").write_text(CATALOG, encoding="utf-8")
+            maturity_manifest.write_text(MATURITY, encoding="utf-8")
 
-            result = build(catalog_dir, output_dir, public_index)
+            result = build(catalog_dir, output_dir, public_index, maturity_manifest)
             self.assertEqual(result["module_count"], 1)
+            self.assertEqual(result["maturity_counts"], {"deep-dive": 1})
             self.assertTrue((output_dir / "catalog.json").is_file())
             self.assertTrue((output_dir / "search.json").is_file())
             self.assertTrue((output_dir / "catalog.md").is_file())
@@ -77,10 +90,13 @@ class IndexTests(unittest.TestCase):
             self.assertEqual(len(matches), 1)
             self.assertEqual(matches[0]["ref"], "tool/example-tool")
             self.assertEqual(matches[0]["kind"], "tool")
+            self.assertEqual(matches[0]["maturity"], "deep-dive")
             self.assertIn("developer-tools", matches[0]["domains"])
             self.assertEqual(matches[0]["coverage_area"], "developer-tools")
             self.assertEqual(matches[0]["coverage_topics"], ["developer-experience"])
             self.assertGreater(matches[0]["score"], 0)
+            self.assertEqual(search(entries, "example", maturity="deep-dive")[0]["ref"], "tool/example-tool")
+            self.assertEqual(search(entries, "example", maturity="overview"), [])
 
             payload = json.loads((output_dir / "catalog.json").read_text(encoding="utf-8"))
             self.assertEqual(payload["schema_version"], 3)
@@ -88,9 +104,26 @@ class IndexTests(unittest.TestCase):
             self.assertEqual(payload["address_category_counts"], {"tool": 1})
             self.assertEqual(payload["kind_counts"], {"tool": 1})
             self.assertEqual(payload["domain_counts"], {"cli": 1, "developer-tools": 1})
+            self.assertEqual(payload["maturity_counts"], {"deep-dive": 1})
+            self.assertEqual(payload["entries"][0]["maturity"], "deep-dive")
             self.assertEqual(payload["coverage_area_counts"], {"developer-tools": 1})
             self.assertEqual(payload["coverage_topic_counts"], {"developer-tools/developer-experience": 1})
-            self.assertIn("/tree/tool/example-tool/entry", public_index.read_text(encoding="utf-8"))
+            rendered = public_index.read_text(encoding="utf-8")
+            self.assertIn("/tree/tool/example-tool/entry", rendered)
+            self.assertIn("## Content depth", rendered)
+            self.assertIn("`deep-dive`", rendered)
+
+    def test_build_without_manifest_defaults_to_overview(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            catalog_dir = root / "catalog"
+            output_dir = root / "dist"
+            catalog_dir.mkdir()
+            (catalog_dir / "test.yaml").write_text(CATALOG, encoding="utf-8")
+            result = build(catalog_dir, output_dir)
+            self.assertEqual(result["maturity_counts"], {"overview": 1})
+            payload = json.loads((output_dir / "catalog.json").read_text(encoding="utf-8"))
+            self.assertEqual(payload["entries"][0]["maturity"], "overview")
 
     def test_search_filters(self) -> None:
         entries = [
@@ -100,6 +133,7 @@ class IndexTests(unittest.TestCase):
                 "name": "Demo",
                 "address_category": "tool",
                 "kind": "tool",
+                "maturity": "guide",
                 "domains": ["security", "developer-tools"],
                 "coverage_area": "cybersecurity-privacy",
                 "coverage_topics": ["security-tools"],
@@ -109,12 +143,14 @@ class IndexTests(unittest.TestCase):
                 "tags": ["demo", "security"],
                 "use_cases": [],
                 "key_points": [],
-                "search_text": "tool demo security developer-tools cybersecurity-privacy security-tools cli mit testing search behavior",
+                "search_text": "tool demo guide security developer-tools cybersecurity-privacy security-tools cli mit testing search behavior",
             }
         ]
         self.assertEqual(search(entries, "demo", "security", 5), [])
         self.assertEqual(search(entries, "demo", "tool", 5)[0]["ref"], "tool/demo")
         self.assertEqual(search(entries, "demo", kind="framework"), [])
+        self.assertEqual(search(entries, "demo", maturity="guide")[0]["ref"], "tool/demo")
+        self.assertEqual(search(entries, "demo", maturity="deep-dive"), [])
         self.assertEqual(search(entries, "demo", domain="security")[0]["ref"], "tool/demo")
         self.assertEqual(search(entries, "demo", deployment="cli")[0]["ref"], "tool/demo")
         self.assertEqual(search(entries, "demo", license_value="mit")[0]["ref"], "tool/demo")
