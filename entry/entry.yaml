@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 3
 id: git
 name: Git
 category: tool
@@ -6,19 +6,65 @@ kind: tool
 domains:
 - cli
 - developer-tools
-summary: Distributed version control system used to track source history, collaborate through branches, and exchange changes across software projects.
+summary: Distributed version control system built around a content-addressed object database, a commit graph, movable references, and local-first collaboration.
 homepage: https://git-scm.com/
 repository: https://github.com/git/git
+license: GPL-2.0-only
+deployment_types:
+- cli
+- local
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-01'
 tags:
 - version-control
 - scm
 - cli
+- git
+coverage:
+  area: developer-tools
+  topics:
+  - version-control
+relationships:
+- type: related-to
+  target: tool/git-lfs
+  note: Git LFS extends Git workflows for repositories that need to manage large binary assets outside normal object history.
+- type: integrates-with
+  target: tool/gh
+  note: GitHub CLI adds forge-specific pull request, issue, release, and repository workflows around Git repositories.
+- type: integrates-with
+  target: tool/github-actions
+  note: GitHub Actions commonly uses Git commits, branches, and tags as automation and CI/CD triggers.
 sources:
 - title: Git official site
   url: https://git-scm.com/
   type: official
+- title: Pro Git book
+  url: https://git-scm.com/book/en/v2
+  type: documentation
+- title: Git Internals - Plumbing and Porcelain
+  url: https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain
+  type: documentation
+- title: Git Internals - Git Objects
+  url: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
+  type: documentation
+- title: Git Internals - Git References
+  url: https://git-scm.com/book/en/v2/Git-Internals-Git-References
+  type: documentation
+- title: Git Internals - Packfiles
+  url: https://git-scm.com/book/en/v2/Git-Internals-Packfiles
+  type: documentation
+- title: Git transfer protocols
+  url: https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols
+  type: documentation
+- title: Git index format
+  url: https://git-scm.com/docs/index-format
+  type: documentation
+- title: Git pack format
+  url: https://git-scm.com/docs/gitformat-pack
+  type: documentation
+- title: Git hash-function transition
+  url: https://git-scm.com/docs/hash-function-transition
+  type: documentation
 - title: Git source repository
   url: https://github.com/git/git
   type: repository
