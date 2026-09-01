@@ -19,6 +19,14 @@
 ## 2026-08-31 — v0.1
 
 - Reviewed `database/sqlite` against the current OpenDevIndex catalog and taxonomy.
+- Recorded canonical kind `database` and domain facets: data, embedded.
+- Re-rendered module documentation from validated source-backed metadata.
+
+## Earlier history
+
+## 2026-08-31 — v0.1
+
+- Reviewed `database/sqlite` against the current OpenDevIndex catalog and taxonomy.
 - Recorded canonical kind `database` and domain facets: data.
 - Re-rendered module documentation from validated source-backed metadata.
 
