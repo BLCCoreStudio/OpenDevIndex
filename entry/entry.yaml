@@ -20,6 +20,7 @@ tags:
 - scm
 - cli
 - git
+- deep-dive
 coverage:
   area: developer-tools
   topics:
