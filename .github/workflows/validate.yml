@@ -45,6 +45,9 @@ jobs:
             python scripts/validate_catalog.py "$catalog"
           done
 
+      - name: Validate knowledge graph relationships
+        run: python scripts/validate_relationships.py catalog/*.yaml
+
       - name: Audit editorial quality
         run: |
           python scripts/audit_quality.py \
@@ -69,5 +72,9 @@ jobs:
             --limit 1
           python scripts/seed_modules.py \
             --catalog catalog/v0.5-core-001a.yaml \
+            --base-ref HEAD \
+            --limit 1
+          python scripts/seed_modules_v3.py \
+            --catalog catalog/v0.5-architecture-001.yaml \
             --base-ref HEAD \
             --limit 1
