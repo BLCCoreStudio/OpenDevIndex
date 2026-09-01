@@ -16,6 +16,7 @@ import yaml
 from taxonomy import enrich_entry, load_taxonomy
 
 ROOT = Path(__file__).resolve().parents[1]
+CURATED_CONTENT_TAGS = {"deep-dive"}
 
 
 def run(*args: str, cwd: Path | None = None, capture: bool = False) -> str:
@@ -163,6 +164,32 @@ def render_history(entry: dict, verified_at: str, milestone: str, previous: str 
     return update
 
 
+def load_existing_metadata(worktree: Path) -> dict:
+    metadata_path = worktree / "entry" / "entry.yaml"
+    if not metadata_path.is_file():
+        return {}
+    try:
+        data = yaml.safe_load(metadata_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def refresh_protection_reason(worktree: Path, incoming_schema_version: int) -> str | None:
+    """Return why an existing module refresh should be protected by default."""
+    metadata = load_existing_metadata(worktree)
+    tags = metadata.get("tags") or []
+    if isinstance(tags, list):
+        curated = sorted(CURATED_CONTENT_TAGS.intersection(str(tag) for tag in tags))
+        if curated:
+            return f"curated content tag(s): {', '.join(curated)}"
+
+    existing_schema = metadata.get("schema_version")
+    if isinstance(existing_schema, int) and incoming_schema_version < existing_schema:
+        return f"schema downgrade {existing_schema} -> {incoming_schema_version}"
+    return None
+
+
 def write_entry(worktree: Path, entry: dict, verified_at: str, milestone: str, schema_version: int, preserve_history: bool) -> None:
     entry_dir = worktree / "entry"
     old_history = None
@@ -177,12 +204,31 @@ def write_entry(worktree: Path, entry: dict, verified_at: str, milestone: str, s
     (entry_dir / "history.md").write_text(render_history(entry, verified_at, milestone, old_history), encoding="utf-8")
 
 
-def publish_entry(base_ref: str, entry: dict, verified_at: str, milestone: str, schema_version: int, push: bool, refresh: bool) -> tuple[str, bool]:
+def publish_entry(
+    base_ref: str,
+    entry: dict,
+    verified_at: str,
+    milestone: str,
+    schema_version: int,
+    push: bool,
+    refresh: bool,
+    overwrite_curated: bool = False,
+) -> tuple[str, bool]:
     branch = entry["module_ref"]
     temp_root = Path(tempfile.mkdtemp(prefix="opendevindex-"))
     worktree = temp_root / "worktree"
     try:
         run("git", "worktree", "add", "--detach", str(worktree), base_ref)
+        if refresh and not overwrite_curated:
+            protection_reason = refresh_protection_reason(worktree, schema_version)
+            if protection_reason:
+                print(
+                    f"Protecting {branch} from automatic refresh ({protection_reason}). "
+                    "Use --overwrite-curated for an intentional replacement.",
+                    flush=True,
+                )
+                return run("git", "rev-parse", "HEAD", cwd=worktree, capture=True), False
+
         run("git", "config", "user.name", "OpenDevIndex Publisher", cwd=worktree)
         run("git", "config", "user.email", "207100624+BLCCoreStudio@users.noreply.github.com", cwd=worktree)
         write_entry(worktree, entry, verified_at, milestone, schema_version, preserve_history=refresh)
@@ -221,6 +267,11 @@ def main() -> int:
     parser.add_argument("--report", default="seed-report.md")
     parser.add_argument("--refresh-existing", action="store_true", help="Refresh entry files on existing module branches")
     parser.add_argument("--refresh-only", action="store_true", help="Do not create missing module branches")
+    parser.add_argument(
+        "--overwrite-curated",
+        action="store_true",
+        help="Allow refreshes to replace deep-dive modules or downgrade an existing module schema",
+    )
     args = parser.parse_args()
 
     catalog_path = ROOT / args.catalog
@@ -259,7 +310,14 @@ def main() -> int:
             print(f"Refreshing {branch} ...", flush=True)
             run("git", "fetch", "origin", f"refs/heads/{branch}:refs/remotes/origin/{branch}")
             commit_sha, changed = publish_entry(
-                f"origin/{branch}", entry, verified_at, milestone, schema_version, args.push, refresh=True
+                f"origin/{branch}",
+                entry,
+                verified_at,
+                milestone,
+                schema_version,
+                args.push,
+                refresh=True,
+                overwrite_curated=args.overwrite_curated,
             )
             (refreshed if changed else unchanged).append((branch, commit_sha) if changed else branch)
             processed += 1
