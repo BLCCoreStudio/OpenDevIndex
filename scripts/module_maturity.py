@@ -97,13 +97,31 @@ def maturity_counts(module_refs: list[str], manifest: dict | None) -> dict[str, 
     return {level: counts.get(level, 0) for level in LEVELS if counts.get(level, 0)}
 
 
+def known_refs_from_catalogs(catalog_dir: Path) -> set[str]:
+    from catalog_utils import collect_entries, discover_catalogs
+
+    entries, _ = collect_entries(discover_catalogs(catalog_dir))
+    return {entry["module_ref"] for entry in entries}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("manifest", nargs="?", default="quality/module-maturity.yaml")
+    parser.add_argument("--catalog-dir", help="Validate maturity references against curated catalogs")
     parser.add_argument("--known-ref", action="append", default=[])
     args = parser.parse_args()
 
-    known_refs = set(args.known_ref) if args.known_ref else None
+    known_refs: set[str] | None = None
+    if args.catalog_dir:
+        try:
+            known_refs = known_refs_from_catalogs(Path(args.catalog_dir))
+        except Exception as exc:
+            print(f"OpenDevIndex maturity validation failed: could not load catalogs: {exc}", file=sys.stderr)
+            return 1
+    if args.known_ref:
+        explicit = set(args.known_ref)
+        known_refs = explicit if known_refs is None else known_refs.intersection(explicit)
+
     try:
         manifest = load_maturity_manifest(Path(args.manifest), known_refs)
     except (OSError, ValueError) as exc:
