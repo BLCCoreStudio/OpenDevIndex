@@ -1,0 +1,11 @@
+schema_version: 1
+default_level: overview
+levels:
+  - overview
+  - guide
+  - deep-dive
+modules:
+  tool/git:
+    level: deep-dive
+    reviewed_at: '2026-09-01'
+    note: First flagship deep-dive module and reference quality bar for future module upgrades.

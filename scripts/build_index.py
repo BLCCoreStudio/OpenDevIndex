@@ -10,6 +10,7 @@ from collections import Counter
 from pathlib import Path
 
 from catalog_utils import category_counts, collect_entries, discover_catalogs, domain_counts, kind_counts
+from module_maturity import load_maturity_manifest, maturity_counts, module_level
 
 TOKEN_RE = re.compile(r"[^a-z0-9.+_-]+")
 REPOSITORY_URL = "https://github.com/BLCCoreStudio/OpenDevIndex"
@@ -45,7 +46,7 @@ def coverage_topic_counts(entries: list[dict]) -> dict[str, int]:
     return dict(sorted(counts.items()))
 
 
-def search_text(entry: dict) -> str:
+def search_text(entry: dict, maturity: str = "overview") -> str:
     coverage = entry.get("coverage") or {}
     values: list[str] = [
         entry["module_ref"],
@@ -53,6 +54,7 @@ def search_text(entry: dict) -> str:
         entry["name"],
         entry["category"],
         entry["kind"],
+        maturity,
         entry["summary"],
         *entry.get("domains", []),
         *entry.get("tags", []),
@@ -66,7 +68,7 @@ def search_text(entry: dict) -> str:
     return normalize_text(" ".join(values))
 
 
-def public_record(entry: dict) -> dict:
+def public_record(entry: dict, maturity: str = "overview") -> dict:
     coverage = entry.get("coverage") or {}
     return {
         "ref": entry["module_ref"],
@@ -75,6 +77,7 @@ def public_record(entry: dict) -> dict:
         "name": entry["name"],
         "address_category": entry["category"],
         "kind": entry["kind"],
+        "maturity": maturity,
         "domains": entry.get("domains", []),
         "coverage_area": coverage.get("area"),
         "coverage_topics": coverage.get("topics", []),
@@ -92,13 +95,20 @@ def public_record(entry: dict) -> dict:
     }
 
 
-def search_record(entry: dict) -> dict:
-    record = public_record(entry)
-    record["search_text"] = search_text(entry)
+def search_record(entry: dict, maturity: str = "overview") -> dict:
+    record = public_record(entry, maturity)
+    record["search_text"] = search_text(entry, maturity)
     return record
 
 
-def render_markdown(entries: list[dict], kinds: dict[str, int], domains: dict[str, int], coverage_areas: dict[str, int]) -> str:
+def render_markdown(
+    entries: list[dict],
+    kinds: dict[str, int],
+    domains: dict[str, int],
+    coverage_areas: dict[str, int],
+    maturity_manifest: dict | None = None,
+) -> str:
+    depth_counts = maturity_counts([entry["module_ref"] for entry in entries], maturity_manifest)
     lines = [
         "# OpenDevIndex — Browse the Index",
         "",
@@ -106,11 +116,18 @@ def render_markdown(entries: list[dict], kinds: dict[str, int], domains: dict[st
         "",
         f"**Indexed modules:** {len(entries)}",
         "",
-        "## Browse by kind",
+        "## Content depth",
         "",
-        "| Kind | Modules |",
+        "Depth describes how far a module has progressed beyond its source-backed overview. See [`docs/MODULE_STANDARD.md`](docs/MODULE_STANDARD.md).",
+        "",
+        "| Level | Modules |",
         "| --- | ---: |",
     ]
+    for level in ("deep-dive", "guide", "overview"):
+        if level in depth_counts:
+            lines.append(f"| `{level}` | {depth_counts[level]} |")
+
+    lines.extend(["", "## Browse by kind", "", "| Kind | Modules |", "| --- | ---: |"])
     for kind, count in kinds.items():
         lines.append(f"| `{kind}` | {count} |")
 
@@ -132,22 +149,25 @@ def render_markdown(entries: list[dict], kinds: dict[str, int], domains: dict[st
                     "",
                     f"## {current}",
                     "",
-                    "| Module | Domains | Summary |",
-                    "| --- | --- | --- |",
+                    "| Module | Depth | Domains | Summary |",
+                    "| --- | --- | --- | --- |",
                 ]
             )
         domains_text = ", ".join(f"`{domain}`" for domain in entry.get("domains", []))
         summary = entry["summary"].replace("|", "\\|")
         name = entry["name"].replace("|", "\\|")
         ref = entry["module_ref"]
-        lines.append(f"| [{name}]({module_url(ref)}) (`{ref}`) | {domains_text} | {summary} |")
+        maturity = module_level(ref, maturity_manifest)
+        lines.append(
+            f"| [{name}]({module_url(ref)}) (`{ref}`) | `{maturity}` | {domains_text} | {summary} |"
+        )
 
     lines.extend(
         [
             "",
             "---",
             "",
-            "OpenDevIndex separates stable module addresses from taxonomy facets. Legacy addresses remain valid while `kind`, `domains`, and schema v3 coverage metadata provide consistent discovery and filtering.",
+            "OpenDevIndex separates stable module addresses from taxonomy facets. Legacy addresses remain valid while `kind`, `domains`, schema-v3 coverage metadata, and independently reviewed maturity metadata provide consistent discovery and filtering.",
             "",
         ]
     )
@@ -161,7 +181,12 @@ def write_json(path: Path, payload: object) -> None:
     )
 
 
-def build(catalog_dir: Path, output_dir: Path, public_index: Path | None = None) -> dict:
+def build(
+    catalog_dir: Path,
+    output_dir: Path,
+    public_index: Path | None = None,
+    maturity_manifest_path: Path | None = None,
+) -> dict:
     paths = discover_catalogs(catalog_dir)
     entries, catalogs = collect_entries(paths)
     categories = category_counts(entries)
@@ -169,6 +194,13 @@ def build(catalog_dir: Path, output_dir: Path, public_index: Path | None = None)
     domains = domain_counts(entries)
     coverage_areas = coverage_area_counts(entries)
     coverage_topics = coverage_topic_counts(entries)
+
+    maturity_manifest = None
+    if maturity_manifest_path is not None:
+        known_refs = {entry["module_ref"] for entry in entries}
+        maturity_manifest = load_maturity_manifest(maturity_manifest_path, known_refs)
+    depth_counts = maturity_counts([entry["module_ref"] for entry in entries], maturity_manifest)
+
     output_dir.mkdir(parents=True, exist_ok=True)
 
     catalog_payload = {
@@ -177,22 +209,30 @@ def build(catalog_dir: Path, output_dir: Path, public_index: Path | None = None)
         "address_category_counts": categories,
         "kind_counts": kinds,
         "domain_counts": domains,
+        "maturity_counts": depth_counts,
         "coverage_area_counts": coverage_areas,
         "coverage_topic_counts": coverage_topics,
         "catalogs": catalogs,
-        "entries": [public_record(entry) for entry in entries],
+        "entries": [
+            public_record(entry, module_level(entry["module_ref"], maturity_manifest))
+            for entry in entries
+        ],
     }
     search_payload = {
         "schema_version": 3,
         "module_count": len(entries),
         "kind_counts": kinds,
         "domain_counts": domains,
+        "maturity_counts": depth_counts,
         "coverage_area_counts": coverage_areas,
         "coverage_topic_counts": coverage_topics,
-        "entries": [search_record(entry) for entry in entries],
+        "entries": [
+            search_record(entry, module_level(entry["module_ref"], maturity_manifest))
+            for entry in entries
+        ],
     }
 
-    markdown = render_markdown(entries, kinds, domains, coverage_areas)
+    markdown = render_markdown(entries, kinds, domains, coverage_areas, maturity_manifest)
     write_json(output_dir / "catalog.json", catalog_payload)
     write_json(output_dir / "search.json", search_payload)
     (output_dir / "catalog.md").write_text(markdown, encoding="utf-8")
@@ -204,6 +244,7 @@ def build(catalog_dir: Path, output_dir: Path, public_index: Path | None = None)
         "address_category_counts": categories,
         "kind_counts": kinds,
         "domain_counts": domains,
+        "maturity_counts": depth_counts,
         "coverage_area_counts": coverage_areas,
         "coverage_topic_counts": coverage_topics,
         "catalogs": [item["path"] for item in catalogs],
@@ -216,12 +257,18 @@ def main() -> int:
     parser.add_argument("--catalog-dir", default="catalog")
     parser.add_argument("--output-dir", default="dist/index")
     parser.add_argument("--public-index", help="Optional generated Markdown index path, e.g. INDEX.md")
+    parser.add_argument(
+        "--maturity-manifest",
+        default="quality/module-maturity.yaml",
+        help="Validated Overview / Guide / Deep-dive quality manifest",
+    )
     args = parser.parse_args()
 
     result = build(
         Path(args.catalog_dir),
         Path(args.output_dir),
         Path(args.public_index) if args.public_index else None,
+        Path(args.maturity_manifest) if args.maturity_manifest else None,
     )
     print(
         "OpenDevIndex search index built: "
@@ -229,6 +276,8 @@ def main() -> int:
     )
     for kind, count in result["kind_counts"].items():
         print(f"- {kind}: {count}")
+    for level, count in result["maturity_counts"].items():
+        print(f"- maturity/{level}: {count}")
     return 0
 
 

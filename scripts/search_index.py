@@ -33,6 +33,7 @@ def score_entry(entry: dict, query: str) -> int:
     ref = normalize(entry.get("ref"))
     category = normalize(entry.get("address_category") or entry.get("category"))
     kind = normalize(entry.get("kind"))
+    maturity = normalize(entry.get("maturity"))
     domains = [normalize(value) for value in entry.get("domains", [])]
     coverage_area = normalize(entry.get("coverage_area"))
     coverage_topics = [normalize(value) for value in entry.get("coverage_topics", [])]
@@ -43,7 +44,7 @@ def score_entry(entry: dict, query: str) -> int:
     key_points = normalize(" ".join(entry.get("key_points", [])))
     haystack = entry.get("search_text") or normalize(
         " ".join([
-            ref, slug, name, category, kind, summary, coverage_area,
+            ref, slug, name, category, kind, maturity, summary, coverage_area,
             *coverage_topics, *domains, *tags, *deployment, use_cases, key_points,
         ])
     )
@@ -66,6 +67,8 @@ def score_entry(entry: dict, query: str) -> int:
             score += 22
         if token == kind:
             score += 20
+        if token == maturity:
+            score += 12
         if token == category:
             score += 12
         if token == coverage_area:
@@ -95,6 +98,7 @@ def search(
     limit: int = 10,
     *,
     kind: str | None = None,
+    maturity: str | None = None,
     domain: str | None = None,
     deployment: str | None = None,
     license_value: str | None = None,
@@ -107,6 +111,8 @@ def search(
         if category and address_category != category:
             continue
         if kind and entry.get("kind") != kind:
+            continue
+        if maturity and entry.get("maturity", "overview") != maturity:
             continue
         if domain and domain not in entry.get("domains", []):
             continue
@@ -144,6 +150,7 @@ def main() -> int:
     parser.add_argument("--index", default="dist/index/search.json")
     parser.add_argument("--category", help="Legacy/stable address namespace filter")
     parser.add_argument("--kind", help="Canonical taxonomy kind filter")
+    parser.add_argument("--maturity", choices=["overview", "guide", "deep-dive"], help="Module content-depth filter")
     parser.add_argument("--domain", help="Domain facet filter")
     parser.add_argument("--coverage-area", help="Technology Universe area filter")
     parser.add_argument("--coverage-topic", help="Technology Universe topic filter")
@@ -168,6 +175,7 @@ def main() -> int:
         args.category,
         args.limit,
         kind=args.kind,
+        maturity=args.maturity,
         domain=args.domain,
         deployment=args.deployment,
         license_value=args.license_value,
@@ -187,7 +195,10 @@ def main() -> int:
         coverage = entry.get("coverage_area") or "unmapped"
         topics_text = ", ".join(entry.get("coverage_topics", [])) or "none"
         print(f"{number}. {entry['name']} [{entry['ref']}] — score {entry['score']}")
-        print(f"   kind: {entry.get('kind', 'unknown')} | domains: {domains or 'none'}")
+        print(
+            f"   kind: {entry.get('kind', 'unknown')} | "
+            f"depth: {entry.get('maturity', 'overview')} | domains: {domains or 'none'}"
+        )
         print(f"   coverage: {coverage} | topics: {topics_text}")
         print(f"   {entry['summary']}")
         if entry.get("url"):
