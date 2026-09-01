@@ -15,10 +15,31 @@ tags:
 - systems
 - memory-safety
 - compiled
+- concurrency
+- ownership
+- cargo
 sources:
 - title: Rust official site
   url: https://www.rust-lang.org/
   type: official
 - title: The Rust Programming Language
   url: https://doc.rust-lang.org/book/
+  type: documentation
+- title: The Rust Reference
+  url: https://doc.rust-lang.org/reference/
+  type: documentation
+- title: Rust standard library documentation
+  url: https://doc.rust-lang.org/std/
+  type: documentation
+- title: The Cargo Book
+  url: https://doc.rust-lang.org/cargo/
+  type: documentation
+- title: The Rustonomicon
+  url: https://doc.rust-lang.org/nomicon/
+  type: documentation
+- title: Rust Edition Guide
+  url: https://doc.rust-lang.org/edition-guide/
+  type: documentation
+- title: Rust Compiler Development Guide
+  url: https://rustc-dev-guide.rust-lang.org/
   type: documentation
