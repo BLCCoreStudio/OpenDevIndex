@@ -24,6 +24,14 @@
 
 ## Earlier history
 
+## 2026-08-31 — v0.1
+
+- Reviewed `concept/containers` against the current OpenDevIndex catalog and taxonomy.
+- Recorded canonical kind `concept` and domain facets: containers, software-development.
+- Re-rendered module documentation from validated source-backed metadata.
+
+## Earlier history
+
 ## 2026-08-31
 
 - Added `concept/containers` to the curated OpenDevIndex v0.1 catalog.
