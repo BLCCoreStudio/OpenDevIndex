@@ -3,8 +3,8 @@ name: Validate Module Pull Request
 on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches-ignore:
-      - main
+    branches:
+      - '*/*'
 
 # pull_request_target is deliberately constrained here. The workflow runs only
 # trusted default-branch code, has a read-only token, does not use repository
