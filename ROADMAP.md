@@ -36,7 +36,7 @@ Priority work:
 - make authoritative sources easy to audit;
 - protect curated deep content from automated publisher regressions.
 
-`tool/git` is the first flagship deep-dive module. `tool/docker` is the second flagship and extends the quality bar into container architecture, OCI/runtime boundaries, build systems, storage, networking, security, and operational failure modes. `concept/containers` adds the foundational model beneath that tooling: Linux process isolation, cgroups, OCI image/runtime/distribution boundaries, storage, networking, security, performance, and failure modes. Future upgrades should match their source discipline and technical usefulness rather than copy their exact section layout.
+`tool/git` is the first flagship deep-dive module. `tool/docker` extends that quality bar into container tooling and OCI/runtime boundaries. `concept/containers` establishes the Linux isolation and OCI foundation beneath the tooling, `tool/containerd` covers the node runtime/object-lifecycle layer, and `cloud/kubernetes` now carries that chain into API-driven reconciliation, scheduling, networking, storage, security, and distributed cluster operations. Future upgrades should match this source discipline and technical usefulness without copying any one module's section layout mechanically.
 
 ## Current priority — connected knowledge graph
 
