@@ -17,3 +17,7 @@ modules:
     level: deep-dive
     reviewed_at: '2026-09-05'
     note: Foundational deep-dive on Linux process isolation, cgroups, OCI image/runtime/distribution boundaries, storage, networking, security, performance, and failure modes.
+  tool/containerd:
+    level: deep-dive
+    reviewed_at: '2026-09-05'
+    note: Runtime-layer deep-dive on content, images, snapshotters, tasks, shims, plugins, CRI, node operations, security, performance, reliability, and upgrades.
