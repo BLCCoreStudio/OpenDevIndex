@@ -91,6 +91,15 @@ def _contents_url(repository: str, sha: str, path: str) -> str:
     )
 
 
+def _decode_contents_base64(content: str, path: str) -> bytes:
+    """Decode GitHub Contents API base64 while allowing its line wrapping."""
+    compact = "".join(content.split())
+    try:
+        return base64.b64decode(compact, validate=True)
+    except (ValueError, TypeError) as exc:
+        raise PullRequestEntryError(f"{path} returned invalid base64 content") from exc
+
+
 def fetch_contents_api(repository: str, sha: str, path: str, token: str | None) -> bytes:
     request = urllib.request.Request(
         _contents_url(repository, sha, path),
@@ -112,11 +121,7 @@ def fetch_contents_api(repository: str, sha: str, path: str, token: str | None) 
     if payload.get("encoding") != "base64" or not isinstance(payload.get("content"), str):
         raise PullRequestEntryError(f"{path} did not return base64 file content")
 
-    try:
-        data = base64.b64decode(payload["content"], validate=True)
-    except (ValueError, TypeError) as exc:
-        raise PullRequestEntryError(f"{path} returned invalid base64 content") from exc
-    return data
+    return _decode_contents_base64(payload["content"], path)
 
 
 def materialize_entry(
