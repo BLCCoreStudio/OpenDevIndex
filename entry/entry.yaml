@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 3
 id: docker
 name: Docker
 category: tool
@@ -6,19 +6,81 @@ kind: tool
 domains:
 - containers
 - devops
-summary: Container development platform centered on portable images and isolated application processes, widely used for packaging and deployment workflows.
+summary: Container development platform and engine ecosystem for building OCI-compatible images, running isolated processes, managing networks and volumes, and packaging reproducible application environments.
 homepage: https://www.docker.com/
-repository: https://github.com/docker/cli
+repository: https://github.com/moby/moby
+deployment_types:
+- cli
+- local
+- self-hosted
+- system
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - containers
 - devops
 - packaging
+- oci
+- buildkit
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - containers
+  - deployment
+relationships:
+- type: related-to
+  target: concept/containers
+  note: Docker packages and runs applications using operating-system container primitives and image-based distribution workflows.
+- type: uses
+  target: tool/containerd
+  note: Docker Engine uses containerd for container lifecycle and, on current Engine installations, can also use containerd-backed image storage.
+- type: alternative-to
+  target: tool/podman
+  note: Podman provides an alternative container workflow with strong OCI compatibility and a daemonless architecture.
+- type: integrates-with
+  target: cloud/kubernetes
+  note: Docker-built OCI-compatible images are commonly deployed to Kubernetes even though Kubernetes no longer requires Docker Engine as a node runtime.
+- type: related-to
+  target: opensource/linux-kernel
+  note: Linux containers rely on kernel primitives such as namespaces, cgroups, capabilities, and filesystem isolation rather than hardware virtualization.
 sources:
-- title: Docker documentation
-  url: https://docs.docker.com/
+- title: Docker Engine documentation
+  url: https://docs.docker.com/engine/
   type: documentation
+- title: Docker architecture overview
+  url: https://docs.docker.com/get-started/docker-overview/
+  type: documentation
+- title: Docker Engine security
+  url: https://docs.docker.com/engine/security/
+  type: documentation
+- title: Docker rootless mode
+  url: https://docs.docker.com/engine/security/rootless/
+  type: documentation
+- title: Docker networking overview
+  url: https://docs.docker.com/engine/network/
+  type: documentation
+- title: Docker storage drivers
+  url: https://docs.docker.com/engine/storage/drivers/
+  type: documentation
+- title: Docker containerd image store
+  url: https://docs.docker.com/engine/storage/containerd/
+  type: documentation
+- title: Docker BuildKit documentation
+  url: https://docs.docker.com/build/buildkit/
+  type: documentation
+- title: Docker Compose documentation
+  url: https://docs.docker.com/compose/
+  type: documentation
+- title: Moby Engine repository
+  url: https://github.com/moby/moby
+  type: repository
 - title: Docker CLI repository
   url: https://github.com/docker/cli
   type: repository
+- title: OCI Image Specification
+  url: https://specs.opencontainers.org/image-spec/
+  type: standard
+- title: OCI Runtime Specification
+  url: https://specs.opencontainers.org/runtime-spec/
+  type: standard
