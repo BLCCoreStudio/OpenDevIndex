@@ -27,6 +27,14 @@
 ## 2026-08-31 — v0.1
 
 - Reviewed `protocol/oauth2` against the current OpenDevIndex catalog and taxonomy.
+- Recorded canonical kind `protocol` and domain facets: api, identity, security.
+- Re-rendered module documentation from validated source-backed metadata.
+
+## Earlier history
+
+## 2026-08-31 — v0.1
+
+- Reviewed `protocol/oauth2` against the current OpenDevIndex catalog and taxonomy.
 - Recorded canonical kind `protocol` and domain facets: api, security.
 - Re-rendered module documentation from validated source-backed metadata.
 
