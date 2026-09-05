@@ -1,24 +1,75 @@
-schema_version: 1
+schema_version: 3
 id: containers
 name: Containers
 category: concept
 kind: concept
 domains:
 - containers
-- software-development
-summary: Operating-system-level isolation model that packages applications with dependencies while sharing a host kernel and using standardized image and runtime formats.
+- operating-systems
+- virtualization
+- security
+- devops
+summary: Operating-system process isolation and packaging model that combines kernel isolation, resource controls, layered images, runtime configuration, and standardized distribution workflows.
 homepage: https://opencontainers.org/
 repository: https://github.com/opencontainers/runtime-spec
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-05'
 tags:
 - containers
 - isolation
 - oci
+- namespaces
+- cgroups
+- images
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - containers
+  - deployment
+relationships:
+- type: related-to
+  target: opensource/linux-kernel
+  note: Linux containers rely on kernel primitives such as namespaces, cgroups, capabilities, seccomp, and filesystem isolation.
+- type: used-by
+  target: tool/docker
+  note: Docker builds, distributes, and runs application containers while adding developer tooling, image workflows, networking, storage, and lifecycle management.
+- type: used-by
+  target: tool/containerd
+  note: containerd manages image and container lifecycle services and commonly drives OCI-compatible low-level runtimes.
+- type: used-by
+  target: tool/podman
+  note: Podman exposes container and pod workflows while using OCI-compatible image and runtime conventions.
+- type: used-by
+  target: cloud/kubernetes
+  note: Kubernetes schedules containerized workloads and delegates node-level image and runtime operations through the Container Runtime Interface.
 sources:
 - title: Open Container Initiative
   url: https://opencontainers.org/
   type: official
-- title: OCI Runtime Specification
-  url: https://github.com/opencontainers/runtime-spec
+- title: OCI Image Specification
+  url: https://specs.opencontainers.org/image-spec/
   type: standard
+- title: OCI Runtime Specification
+  url: https://specs.opencontainers.org/runtime-spec/
+  type: standard
+- title: OCI Distribution Specification
+  url: https://specs.opencontainers.org/distribution-spec/
+  type: standard
+- title: Linux namespaces manual page
+  url: https://man7.org/linux/man-pages/man7/namespaces.7.html
+  type: documentation
+- title: Linux user namespaces manual page
+  url: https://man7.org/linux/man-pages/man7/user_namespaces.7.html
+  type: documentation
+- title: Linux control group v2 documentation
+  url: https://docs.kernel.org/admin-guide/cgroup-v2.html
+  type: documentation
+- title: Linux capabilities manual page
+  url: https://man7.org/linux/man-pages/man7/capabilities.7.html
+  type: documentation
+- title: Linux seccomp filter documentation
+  url: https://docs.kernel.org/userspace-api/seccomp_filter.html
+  type: documentation
+- title: Kubernetes Container Runtime Interface
+  url: https://kubernetes.io/docs/concepts/containers/cri/
+  type: documentation
