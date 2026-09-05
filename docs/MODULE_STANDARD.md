@@ -125,4 +125,4 @@ Priority for deepening modules:
 4. security-sensitive or operationally complex subjects;
 5. areas where the current index is broad but shallow.
 
-The first flagship deep module is `tool/git`. Its purpose is to establish a quality reference that future deep modules can match or exceed.
+The first flagship deep module is `tool/git`. The second is `tool/docker`. Together they demonstrate that deep modules should adapt to the subject: Git emphasizes object/commit/ref models and history manipulation, while Docker emphasizes layered architecture, OCI/runtime boundaries, build systems, isolation, storage, networking, and operational security. Future deep modules should match their source discipline and explanatory depth without mechanically copying either structure.
