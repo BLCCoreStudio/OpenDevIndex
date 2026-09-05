@@ -17,7 +17,7 @@ deployment_types:
 - self-hosted
 - service
 status: active
-verified_at: '2026-09-06'
+verified_at: '2026-09-05'
 tags:
 - containers
 - orchestration
