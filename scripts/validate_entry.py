@@ -16,6 +16,8 @@ from taxonomy import load_taxonomy, supported_address_categories, supported_rela
 from url_safety import is_safe_https_url
 
 CORE_PREFIXES = ("feat/", "fix/", "docs/", "chore/", "ci/", "refactor/", "release/")
+AUTOMATION_PREFIXES = ("dependabot/",)
+NON_MODULE_PREFIXES = CORE_PREFIXES + AUTOMATION_PREFIXES
 REQUIRED_FILES = (
     Path("entry/README.md"),
     Path("entry/entry.yaml"),
@@ -31,11 +33,16 @@ def fail(message: str, errors: list[str]) -> None:
     errors.append(message)
 
 
+def is_non_module_ref(branch: str) -> bool:
+    """Return whether a ref belongs to core/automation work rather than a module."""
+    return branch == "main" or branch.startswith(NON_MODULE_PREFIXES)
+
+
 def validate(branch: str, root: Path | None = None) -> list[str]:
     errors: list[str] = []
     root = root or Path.cwd()
 
-    if branch == "main" or branch.startswith(CORE_PREFIXES):
+    if is_non_module_ref(branch):
         return errors
 
     if "/" not in branch:
