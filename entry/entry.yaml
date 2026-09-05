@@ -1,4 +1,4 @@
-schema_version: 2
+schema_version: 3
 id: containerd
 name: containerd
 category: tool
@@ -7,7 +7,8 @@ domains:
 - cloud
 - containers
 - systems
-summary: Industry-standard container runtime focused on managing the complete container lifecycle, including image transfer, storage, execution, supervision, and low-level runtime integration.
+- devops
+summary: Container lifecycle daemon and API that manages content, images, snapshots, containers, tasks, runtimes, and plugins beneath higher-level platforms such as Docker and Kubernetes.
 homepage: https://containerd.io/
 repository: https://github.com/containerd/containerd
 license: Apache-2.0
@@ -16,11 +17,29 @@ deployment_types:
 - system
 - self-hosted
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-05'
 tags:
 - containers
 - runtime
+- oci
+- cri
+- snapshotters
 - systems
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - containers
+  - deployment
+relationships:
+- type: related-to
+  target: concept/containers
+  note: containerd manages image, filesystem, process, and lifecycle objects that realize container workflows on a host.
+- type: used-by
+  target: tool/docker
+  note: Docker Engine uses containerd for container lifecycle services and can use containerd-backed image storage.
+- type: integrates-with
+  target: cloud/kubernetes
+  note: containerd includes CRI support so Kubernetes kubelet can delegate image and runtime operations to containerd on a node.
 sources:
 - title: containerd official site
   url: https://containerd.io/
@@ -28,3 +47,24 @@ sources:
 - title: containerd source repository
   url: https://github.com/containerd/containerd
   type: repository
+- title: containerd Getting Started
+  url: https://github.com/containerd/containerd/blob/main/docs/getting-started.md
+  type: documentation
+- title: containerd Operations Guide
+  url: https://github.com/containerd/containerd/blob/main/docs/ops.md
+  type: documentation
+- title: containerd Releases and Stability
+  url: https://github.com/containerd/containerd/blob/main/RELEASES.md
+  type: documentation
+- title: containerd CRI Plugin Configuration
+  url: https://github.com/containerd/containerd/blob/main/docs/cri/config.md
+  type: documentation
+- title: containerd NRI Documentation
+  url: https://github.com/containerd/containerd/blob/main/docs/NRI.md
+  type: documentation
+- title: OCI Runtime Specification
+  url: https://specs.opencontainers.org/runtime-spec/
+  type: standard
+- title: Kubernetes Container Runtime Interface
+  url: https://kubernetes.io/docs/concepts/containers/cri/
+  type: documentation
