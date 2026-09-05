@@ -11,30 +11,6 @@
 ## 2026-08-31 — v0.1
 
 - Reviewed `tool/nix` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `tool` and domain facets: developer-tools, operating-systems.
-- Re-rendered module documentation from validated source-backed metadata.
-
-## Earlier history
-
-## 2026-08-31 — v0.1
-
-- Reviewed `tool/nix` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `tool` and domain facets: developer-tools, operating-systems.
-- Re-rendered module documentation from validated source-backed metadata.
-
-## Earlier history
-
-## 2026-08-31 — v0.1
-
-- Reviewed `tool/nix` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `tool` and domain facets: developer-tools, operating-systems.
-- Re-rendered module documentation from validated source-backed metadata.
-
-## Earlier history
-
-## 2026-08-31 — v0.1
-
-- Reviewed `tool/nix` against the current OpenDevIndex catalog and taxonomy.
 - Recorded canonical kind `tool` and domain facets: developer-tools, systems.
 - Re-rendered module documentation from validated source-backed metadata.
 
