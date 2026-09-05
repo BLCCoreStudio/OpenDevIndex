@@ -11,30 +11,6 @@
 ## 2026-08-31 — v0.1
 
 - Reviewed `opensource/kde` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `platform` and domain facets: open-source, operating-systems, systems.
-- Re-rendered module documentation from validated source-backed metadata.
-
-## Earlier history
-
-## 2026-08-31 — v0.1
-
-- Reviewed `opensource/kde` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `platform` and domain facets: open-source, operating-systems, systems.
-- Re-rendered module documentation from validated source-backed metadata.
-
-## Earlier history
-
-## 2026-08-31 — v0.1
-
-- Reviewed `opensource/kde` against the current OpenDevIndex catalog and taxonomy.
-- Recorded canonical kind `platform` and domain facets: open-source, operating-systems, systems.
-- Re-rendered module documentation from validated source-backed metadata.
-
-## Earlier history
-
-## 2026-08-31 — v0.1
-
-- Reviewed `opensource/kde` against the current OpenDevIndex catalog and taxonomy.
 - Recorded canonical kind `platform` and domain facets: open-source, systems.
 - Re-rendered module documentation from validated source-backed metadata.
 
