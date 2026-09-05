@@ -9,3 +9,7 @@ modules:
     level: deep-dive
     reviewed_at: '2026-09-01'
     note: First flagship deep-dive module and reference quality bar for future module upgrades.
+  tool/docker:
+    level: deep-dive
+    reviewed_at: '2026-09-06'
+    note: Second flagship deep-dive; covers container architecture, OCI/runtime boundaries, build, storage, networking, security, reliability, and operational trade-offs.
