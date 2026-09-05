@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import base64
 import sys
 import tempfile
 import unittest
@@ -14,6 +15,7 @@ from fetch_pr_entry import (  # noqa: E402
     MAX_FILE_BYTES,
     PullRequestEntryError,
     REQUIRED_ENTRY_PATHS,
+    _decode_contents_base64,
     head_coordinates,
     materialize_entry,
     module_ref_from_event,
@@ -48,6 +50,16 @@ class FetchPullRequestEntryTests(unittest.TestCase):
     def test_head_sha_must_be_full_hex(self) -> None:
         with self.assertRaisesRegex(PullRequestEntryError, "40-character"):
             head_coordinates(event(head_sha="main"))
+
+    def test_contents_api_wrapped_base64_is_accepted(self) -> None:
+        raw = b"GitHub wraps Contents API base64 across lines."
+        encoded = base64.b64encode(raw).decode("ascii")
+        wrapped = "\n".join(encoded[index : index + 12] for index in range(0, len(encoded), 12))
+        self.assertEqual(_decode_contents_base64(wrapped, "entry/README.md"), raw)
+
+    def test_invalid_base64_is_still_rejected(self) -> None:
+        with self.assertRaisesRegex(PullRequestEntryError, "invalid base64"):
+            _decode_contents_base64("not-base64!!!", "entry/README.md")
 
     def test_materializes_only_required_entry_text_files(self) -> None:
         seen: list[str] = []
