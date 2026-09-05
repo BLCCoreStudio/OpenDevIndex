@@ -1,6 +1,6 @@
 # Sources
 
-Reviewed for the Kubernetes deep-dive on **2026-09-06**. The source set intentionally prefers upstream Kubernetes documentation, canonical project repositories, and the standards/interfaces Kubernetes actually delegates to.
+Reviewed for the Kubernetes deep-dive on **2026-09-05**. The source set intentionally prefers upstream Kubernetes documentation, canonical project repositories, and the standards/interfaces Kubernetes actually delegates to.
 
 ## Project and architecture
 
