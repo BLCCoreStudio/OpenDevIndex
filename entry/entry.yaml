@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 3
 id: kubernetes
 name: Kubernetes
 category: cloud
@@ -6,19 +6,78 @@ kind: platform
 domains:
 - cloud
 - containers
-summary: Open-source orchestration system for deploying, scaling, networking, and operating containerized applications across clusters of machines.
+- devops
+- distributed-systems
+- reliability
+summary: Declarative container orchestration platform whose API, controllers, scheduler, and node agents continuously reconcile application and infrastructure state across a cluster.
 homepage: https://kubernetes.io/
 repository: https://github.com/kubernetes/kubernetes
+license: Apache-2.0
+deployment_types:
+- self-hosted
+- service
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-05'
 tags:
 - containers
 - orchestration
 - cloud-native
+- control-plane
+- scheduling
+- reconciliation
+- platform-engineering
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - containers
+  - orchestration
+  - deployment
+  - reliability
+  - platform-engineering
+relationships:
+- type: related-to
+  target: concept/containers
+  note: Kubernetes schedules and manages workloads built from the container process-isolation and OCI image/runtime model.
+- type: integrates-with
+  target: tool/containerd
+  note: Kubelet communicates with CRI-compatible runtimes such as containerd to pull images and manage pod sandboxes and containers on nodes.
+- type: compatible-with
+  target: tool/docker
+  note: Images built with Docker can be distributed through OCI-compatible registries and run in Kubernetes even though Kubernetes does not require Docker Engine on nodes.
 sources:
 - title: Kubernetes official site
   url: https://kubernetes.io/
   type: official
-- title: Kubernetes repository
+- title: Kubernetes source repository
   url: https://github.com/kubernetes/kubernetes
   type: repository
+- title: Kubernetes Components
+  url: https://kubernetes.io/docs/concepts/overview/components/
+  type: documentation
+- title: Objects In Kubernetes
+  url: https://kubernetes.io/docs/concepts/overview/working-with-objects/
+  type: documentation
+- title: Kubernetes API
+  url: https://kubernetes.io/docs/concepts/overview/kubernetes-api/
+  type: documentation
+- title: Kubernetes Scheduler
+  url: https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/
+  type: documentation
+- title: Resource Management for Pods and Containers
+  url: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+  type: documentation
+- title: Services, Load Balancing, and Networking
+  url: https://kubernetes.io/docs/concepts/services-networking/
+  type: documentation
+- title: Persistent Volumes
+  url: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+  type: documentation
+- title: Kubernetes Container Runtime Interface
+  url: https://kubernetes.io/docs/concepts/containers/cri/
+  type: documentation
+- title: Kubernetes API Access Control
+  url: https://kubernetes.io/docs/reference/access-authn-authz/
+  type: documentation
+- title: Operating etcd clusters for Kubernetes
+  url: https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/
+  type: documentation
