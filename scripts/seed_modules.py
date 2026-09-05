@@ -146,22 +146,50 @@ Sources are selected to prefer official project pages, canonical documentation, 
 """
 
 
-def render_history(entry: dict, verified_at: str, milestone: str, previous: str | None = None) -> str:
-    update = f"""# History
-
-## {verified_at} — {milestone}
+def _render_history_section(entry: dict, verified_at: str, milestone: str) -> str:
+    return f"""## {verified_at} — {milestone}
 
 - Reviewed `{entry['module_ref']}` against the current OpenDevIndex catalog and taxonomy.
 - Recorded canonical kind `{entry['kind']}` and domain facets: {', '.join(entry.get('domains', []))}.
-- Re-rendered module documentation from validated source-backed metadata.
-"""
+- Re-rendered module documentation from validated source-backed metadata."""
+
+
+def _history_body(history: str) -> str:
+    body = history.strip()
+    if body.startswith("# History"):
+        body = body[len("# History"):].lstrip()
+    return body
+
+
+def _strip_repeated_generated_history(body: str, current_section: str) -> str:
+    """Remove legacy duplicate wrappers for the same generated refresh event."""
+    remainder = body.strip()
+    current = current_section.strip()
+    marker = "\n\n## Earlier history\n\n"
+
+    while remainder:
+        if remainder == current:
+            return ""
+        prefix = current + marker
+        if not remainder.startswith(prefix):
+            break
+        remainder = remainder[len(prefix):].strip()
+    return remainder
+
+
+def render_history(entry: dict, verified_at: str, milestone: str, previous: str | None = None) -> str:
+    current_section = _render_history_section(entry, verified_at, milestone)
+    older_history = ""
     if previous:
-        body = previous.strip()
-        if body.startswith("# History"):
-            body = body[len("# History"):].lstrip()
-        if body:
-            update += "\n## Earlier history\n\n" + body + "\n"
-    return update
+        older_history = _strip_repeated_generated_history(
+            _history_body(previous),
+            current_section,
+        )
+
+    result = f"# History\n\n{current_section}\n"
+    if older_history:
+        result += f"\n## Earlier history\n\n{older_history}\n"
+    return result
 
 
 def load_existing_metadata(worktree: Path) -> dict:
