@@ -1,0 +1,12 @@
+# Default ownership
+* @BLCCoreStudio
+
+# Canonical knowledge and automation surfaces
+/.github/ @BLCCoreStudio
+/catalog/ @BLCCoreStudio
+/taxonomy/ @BLCCoreStudio
+/schema/ @BLCCoreStudio
+/quality/ @BLCCoreStudio
+/scripts/ @BLCCoreStudio
+/INDEX.md @BLCCoreStudio
+/ROADMAP.md @BLCCoreStudio
