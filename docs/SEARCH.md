@@ -46,11 +46,15 @@ python scripts/build_comparisons.py \
 
 Generated files include:
 
-- `dist/comparisons/comparisons.json` — machine-readable curated comparison payload;
+- `dist/comparisons/comparisons.json` — machine-readable comparison-first payload;
+- `dist/comparisons/module-comparisons.json` — reverse module-to-comparison discovery payload;
 - `dist/comparisons/index.md` — comparison directory;
+- `dist/comparisons/by-module.md` — every compared module mapped to its containing comparison views;
 - `dist/comparisons/<comparison-id>.md` — one human-readable view per comparison.
 
 The comparison builder validates every referenced module against the catalog and joins module maturity metadata. Every declared dimension must contain a value for every module in the comparison, preventing asymmetric generated tables.
+
+The reverse index is derived from the same validated records, so contributors do not maintain a second manual module-to-comparison mapping. Modules and their containing comparison lists are emitted in deterministic order.
 
 The public publisher can additionally render the Markdown set under `docs/comparisons/`:
 
@@ -62,7 +66,7 @@ python scripts/build_comparisons.py \
   --public-dir docs/comparisons
 ```
 
-Comparison artifacts are intentionally curated rather than inferred from tags or generated from arbitrary module prose. See [`COMPARISONS.md`](COMPARISONS.md) for the editorial and validation model.
+Comparison artifacts are intentionally curated rather than inferred from tags or generated from arbitrary module prose. See [`COMPARISONS.md`](COMPARISONS.md) for the editorial, validation, and bidirectional-discovery model.
 
 ## Coverage progress
 
@@ -83,14 +87,14 @@ The report compares real mapped modules with the 10,000-module Technology Univer
 The **Build Search Index** workflow:
 
 1. validates catalog data through the shared loader;
-2. runs unit tests, including curated-comparison validation tests;
+2. runs unit tests, including curated-comparison and reverse-index tests;
 3. builds module catalog and search artifacts;
-4. builds curated comparison artifacts;
+4. builds comparison-first and module-first curated comparison artifacts;
 5. builds coverage-progress artifacts;
 6. audits editorial quality;
 7. smoke-tests representative searches;
 8. uploads discovery, comparison, quality, and coverage output as workflow artifacts.
 
-The **Publish Public Index** workflow rebuilds `INDEX.md` and the generated `docs/comparisons/` Markdown views when their validated inputs change.
+The **Publish Public Index** workflow rebuilds `INDEX.md` and the generated `docs/comparisons/` Markdown views—including the module-first reverse index—when their validated inputs change.
 
-This makes the structured discovery layer suitable for GitHub browsing, future web search, APIs, editor integrations, learning tools, comparison interfaces, coverage dashboards, and other downstream clients without requiring those consumers to parse the source YAML directly.
+This makes the structured discovery layer suitable for GitHub browsing, future web search, APIs, editor integrations, learning tools, comparison interfaces, coverage dashboards, and other downstream clients without requiring those consumers to parse the source YAML directly or reconstruct comparison joins themselves.
