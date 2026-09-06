@@ -4,6 +4,12 @@ Curated comparison views connect technologies that solve related problems withou
 
 [Browse comparisons by module](by-module.md)
 
+## [OpenTelemetry vs Prometheus vs Grafana](observability-roles.md)
+
+A role- and data-flow-first comparison of three observability technologies that often work together, clarifying which layer owns instrumentation, collection, metrics storage and query, visualization, and alert interaction.
+
+Compared modules: `cloud/opentelemetry`, `cloud/prometheus`, `cloud/grafana`
+
 ## [PostgreSQL vs MySQL vs SQLite](relational-databases.md)
 
 A deployment- and architecture-first comparison of three mature relational databases, focused on where the engine runs, how concurrency and durability work, and which operational boundary fits the application.

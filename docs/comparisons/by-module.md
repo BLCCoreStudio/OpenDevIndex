@@ -4,11 +4,23 @@ This reverse index shows every OpenDevIndex module currently included in at leas
 
 [Browse all comparisons](index.md)
 
+## [Grafana](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/grafana/entry)
+
+`cloud/grafana` — `deep-dive`
+
+- [OpenTelemetry vs Prometheus vs Grafana](observability-roles.md) — A role- and data-flow-first comparison of three observability technologies that often work together, clarifying which layer owns instrumentation, collection, metrics storage and query, visualization, and alert interaction.
+
 ## [MySQL](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/mysql/entry)
 
 `database/mysql` — `deep-dive`
 
 - [PostgreSQL vs MySQL vs SQLite](relational-databases.md) — A deployment- and architecture-first comparison of three mature relational databases, focused on where the engine runs, how concurrency and durability work, and which operational boundary fits the application.
+
+## [OpenTelemetry](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/opentelemetry/entry)
+
+`cloud/opentelemetry` — `deep-dive`
+
+- [OpenTelemetry vs Prometheus vs Grafana](observability-roles.md) — A role- and data-flow-first comparison of three observability technologies that often work together, clarifying which layer owns instrumentation, collection, metrics storage and query, visualization, and alert interaction.
 
 ## [OpenTofu](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/opentofu/entry)
 
@@ -21,6 +33,12 @@ This reverse index shows every OpenDevIndex module currently included in at leas
 `database/postgresql` — `deep-dive`
 
 - [PostgreSQL vs MySQL vs SQLite](relational-databases.md) — A deployment- and architecture-first comparison of three mature relational databases, focused on where the engine runs, how concurrency and durability work, and which operational boundary fits the application.
+
+## [Prometheus](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/prometheus/entry)
+
+`cloud/prometheus` — `deep-dive`
+
+- [OpenTelemetry vs Prometheus vs Grafana](observability-roles.md) — A role- and data-flow-first comparison of three observability technologies that often work together, clarifying which layer owns instrumentation, collection, metrics storage and query, visualization, and alert interaction.
 
 ## [SQLite](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/sqlite/entry)
 
