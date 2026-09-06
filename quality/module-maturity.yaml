@@ -25,3 +25,7 @@ modules:
     level: deep-dive
     reviewed_at: '2026-09-05'
     note: Orchestration deep-dive on API-driven reconciliation, control-plane architecture, scheduling, kubelet/CRI boundaries, networking, storage, security, extensibility, reliability, and cluster operations.
+  cloud/helm:
+    level: deep-dive
+    reviewed_at: '2026-09-06'
+    note: Kubernetes packaging and release-management deep-dive on charts, values, rendering, releases, upgrades, hooks, CRDs, OCI distribution, security, supply chain, GitOps boundaries, and failure diagnosis.
