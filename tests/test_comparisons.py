@@ -32,7 +32,7 @@ entries:
   summary: Alpha is a sufficiently detailed example technology used to verify curated comparison generation.
   homepage: https://example.com/alpha
   repository: https://github.com/example/alpha
-  tags: [alpha, developer-tools]
+  tags: [alpha, developer-tools, comparison-fixture]
   sources:
   - title: Alpha documentation
     url: https://example.com/alpha/docs
@@ -59,7 +59,7 @@ entries:
   summary: Beta is a sufficiently detailed example technology used to verify curated comparison generation.
   homepage: https://example.com/beta
   repository: https://github.com/example/beta
-  tags: [beta, developer-tools]
+  tags: [beta, developer-tools, comparison-fixture]
   sources:
   - title: Beta documentation
     url: https://example.com/beta/docs
