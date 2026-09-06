@@ -33,3 +33,7 @@ modules:
     level: deep-dive
     reviewed_at: '2026-09-06'
     note: GitOps delivery-control-plane deep-dive on source resolution, manifest generation, desired/live comparison, health, synchronization, ApplicationSets, multi-cluster policy, security, recovery, and operational failure diagnosis.
+  cloud/prometheus:
+    level: deep-dive
+    reviewed_at: '2026-09-06'
+    note: Metrics observability deep-dive on scraping, discovery, relabeling, PromQL, TSDB/WAL storage, rules, alerting, cardinality, federation, remote write, HA, scaling, and failure diagnosis.
