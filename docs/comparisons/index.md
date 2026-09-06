@@ -4,6 +4,12 @@ Curated comparison views connect technologies that solve related problems withou
 
 [Browse comparisons by module](by-module.md)
 
+## [GitHub Actions vs Argo CD](github-actions-argocd.md)
+
+An execution- and ownership-first comparison of GitHub Actions and Argo CD, focused on event-triggered CI/CD jobs versus continuous Kubernetes GitOps reconciliation and where the two commonly compose.
+
+Compared modules: `tool/github-actions`, `platform/argocd`
+
 ## [Kubernetes vs Helm vs Argo CD](kubernetes-helm-argocd.md)
 
 A control-plane- and ownership-first comparison of Kubernetes, Helm, and Argo CD, clarifying the difference between cluster reconciliation, package and release rendering, and continuous GitOps delivery.

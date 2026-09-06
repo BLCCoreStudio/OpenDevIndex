@@ -14,7 +14,14 @@ This reverse index shows every OpenDevIndex module currently included in at leas
 
 `platform/argocd` — `deep-dive`
 
+- [GitHub Actions vs Argo CD](github-actions-argocd.md) — An execution- and ownership-first comparison of GitHub Actions and Argo CD, focused on event-triggered CI/CD jobs versus continuous Kubernetes GitOps reconciliation and where the two commonly compose.
 - [Kubernetes vs Helm vs Argo CD](kubernetes-helm-argocd.md) — A control-plane- and ownership-first comparison of Kubernetes, Helm, and Argo CD, clarifying the difference between cluster reconciliation, package and release rendering, and continuous GitOps delivery.
+
+## [GitHub Actions](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/github-actions/entry)
+
+`tool/github-actions` — `deep-dive`
+
+- [GitHub Actions vs Argo CD](github-actions-argocd.md) — An execution- and ownership-first comparison of GitHub Actions and Argo CD, focused on event-triggered CI/CD jobs versus continuous Kubernetes GitOps reconciliation and where the two commonly compose.
 
 ## [Grafana](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/grafana/entry)
 
