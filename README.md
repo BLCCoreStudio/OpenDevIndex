@@ -10,6 +10,7 @@
 
 <p align="center">
   <a href="INDEX.md">Browse the Index</a> ·
+  <a href="docs/COMPARISONS.md">Compare Technologies</a> ·
   <a href="docs/COVERAGE.md">Explore Technology Areas</a> ·
   <a href="docs/MODULE_STANDARD.md">Module Standard</a> ·
   <a href="CONTRIBUTING.md">Contribute</a> ·
@@ -106,6 +107,20 @@ related-to
 
 This makes it possible to move naturally from a tool to the protocol it implements, the libraries it depends on, alternatives worth comparing, related standards, or the next concept in a learning path.
 
+## Compare technologies
+
+OpenDevIndex also builds curated comparison views from reviewed modules. Comparisons focus on architecture, deployment boundaries, correctness, operations, security, recovery, and other dimensions that can change an engineering decision.
+
+The first comparison connects the three relational-database deep dives:
+
+- PostgreSQL — networked client/server database with PostgreSQL's MVCC, WAL, planner, replication, and extensibility model;
+- MySQL — networked client/server database centered on the SQL/storage-engine boundary and InnoDB;
+- SQLite — embedded database library with B-tree/pager/VFS storage and a one-writer-per-database-file concurrency model.
+
+Comparison views deliberately avoid universal scores, popularity rankings, and context-free benchmark winners. Each generated view links back to the independently versioned modules where technical depth and authoritative sources live.
+
+See [`docs/COMPARISONS.md`](docs/COMPARISONS.md) for the comparison model and the generated [`docs/comparisons/`](docs/comparisons/index.md) directory for published views.
+
 ## Explore by technology area
 
 The Technology Universe coverage map keeps growth broad across computing rather than clustering around whatever happens to be easiest to add.
@@ -161,14 +176,15 @@ Independent module branches let one subject evolve without rewriting the entire 
 
 ## Searchable by humans and tools
 
-OpenDevIndex generates machine-readable search artifacts alongside the public Markdown directory.
+OpenDevIndex generates machine-readable search and comparison artifacts alongside public Markdown discovery views.
 
 ```bash
 python scripts/build_index.py --catalog-dir catalog --output-dir dist/index --public-index INDEX.md
 python scripts/search_index.py "local ai" --index dist/index/search.json
+python scripts/build_comparisons.py --comparisons-dir comparisons --catalog-dir catalog --output-dir dist/comparisons
 ```
 
-Search can use taxonomy-aware fields including kind, domains, tags, deployment type, licensing metadata, and Technology Universe coverage facets.
+Search can use taxonomy-aware fields including maturity, kind, domains, tags, deployment type, licensing metadata, and Technology Universe coverage facets. Comparison artifacts expose reviewed dimensions, module metadata, and requirement-oriented decision guidance for downstream interfaces.
 
 The structured model is intended to work for:
 
@@ -194,6 +210,8 @@ Core quality controls include:
 - duplicate and category checks;
 - Technology Universe coverage validation;
 - relationship validation for schema-v3 graph edges;
+- maturity-manifest validation;
+- curated-comparison validation with complete per-module dimension coverage;
 - pinned third-party GitHub Actions in core workflows.
 
 Automated checks can validate structure and source reachability. They do **not** replace factual editorial review.
@@ -205,6 +223,8 @@ Primary and authoritative sources are preferred: official documentation, standar
 Reviewed catalogs on trusted `main` drive reproducible module publication. The publisher is idempotent and validation-gated.
 
 Curated deep-dive modules are protected from accidental automatic replacement, and an older catalog cannot silently downgrade a newer module schema. Intentional replacement requires an explicit override.
+
+Curated comparison manifests are also kept on trusted `main`. CI validates and renders them deterministically; the public publisher writes browsable Markdown views under `docs/comparisons/` while the linked modules remain the technical source of truth.
 
 This is important because OpenDevIndex treats hand-curated depth as durable project content rather than disposable generated output.
 
@@ -220,6 +240,7 @@ You can help by:
 - documenting architecture or internal concepts;
 - improving examples and workflows;
 - connecting related technologies with meaningful graph edges;
+- adding or refining a curated comparison after the underlying modules are mature enough;
 - documenting alternatives and trade-offs;
 - improving security, reliability, or performance coverage;
 - proposing a missing technology that fills a real coverage gap.
@@ -233,6 +254,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/EDITORIAL_POLICY.md`](docs/E
 - **Stable links matter.**
 - **Depth and coverage are separate quality dimensions.**
 - **Relationships should teach something.**
+- **Comparisons should clarify decisions, not manufacture winners.**
 - **Automation should protect curated work, not overwrite it.**
 - **No placeholder-content races.**
 - **No sponsored rankings.**
@@ -240,11 +262,12 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/EDITORIAL_POLICY.md`](docs/E
 ## Documentation
 
 - [`docs/MODULE_STANDARD.md`](docs/MODULE_STANDARD.md) — module depth and editorial expectations
+- [`docs/COMPARISONS.md`](docs/COMPARISONS.md) — curated comparison manifests, validation, and publication model
 - [`docs/COVERAGE.md`](docs/COVERAGE.md) — technology-area coverage model
 - [`docs/TAXONOMY.md`](docs/TAXONOMY.md) — stable addresses, kinds, domains, and relationships
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — repository and publication architecture
 - [`docs/EDITORIAL_POLICY.md`](docs/EDITORIAL_POLICY.md) — quality rules
-- [`docs/SEARCH.md`](docs/SEARCH.md) — generated search artifacts
+- [`docs/SEARCH.md`](docs/SEARCH.md) — generated search and comparison artifacts
 - [`docs/SOURCE_HEALTH.md`](docs/SOURCE_HEALTH.md) — source monitoring
 - [`docs/VISION.md`](docs/VISION.md) — long-term scope
 - [`ROADMAP.md`](ROADMAP.md) — development direction
