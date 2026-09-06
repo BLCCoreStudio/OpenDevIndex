@@ -7,8 +7,10 @@ on:
       - main
     paths:
       - 'catalog/**'
+      - 'comparisons/**'
       - 'quality/module-maturity.yaml'
       - 'taxonomy/**'
+      - 'scripts/build_comparisons.py'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/module_maturity.py'
@@ -46,15 +48,23 @@ jobs:
       - name: Generate public module index
         run: python scripts/build_index.py --catalog-dir catalog --output-dir dist/index --public-index INDEX.md
 
-      - name: Publish only when the index changed
+      - name: Generate public comparison views
         run: |
-          if [ -z "$(git status --porcelain -- INDEX.md)" ]; then
-            echo 'INDEX.md is already current.' >> "$GITHUB_STEP_SUMMARY"
+          python scripts/build_comparisons.py \
+            --comparisons-dir comparisons \
+            --catalog-dir catalog \
+            --output-dir dist/comparisons \
+            --public-dir docs/comparisons
+
+      - name: Publish only when discovery views changed
+        run: |
+          if [ -z "$(git status --porcelain -- INDEX.md docs/comparisons)" ]; then
+            echo 'Public index and comparison views are already current.' >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           git config user.name "OpenDevIndex Publisher"
           git config user.email "207100624+BLCCoreStudio@users.noreply.github.com"
-          git add INDEX.md
-          git commit -m "docs: refresh public module index [skip ci]"
+          git add INDEX.md docs/comparisons
+          git commit -m "docs: refresh public discovery views [skip ci]"
           git push origin HEAD:main
-          echo 'Published updated INDEX.md.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Published updated INDEX.md and comparison views.' >> "$GITHUB_STEP_SUMMARY"
