@@ -1,23 +1,97 @@
-schema_version: 1
+schema_version: 3
 id: prometheus
 name: Prometheus
 category: cloud
 kind: platform
 domains:
 - observability
-summary: Open-source monitoring and alerting system built around time-series metrics, label-based queries, pull-oriented scraping, and rule evaluation.
+- cloud
+- devops
+summary: Open-source metrics monitoring and alerting platform built around labeled time series, pull-oriented scraping, PromQL, local TSDB storage, rule evaluation, and integrations for visualization and long-term or distributed storage.
 homepage: https://prometheus.io/
 repository: https://github.com/prometheus/prometheus
+license: Apache-2.0
+deployment_types:
+- self-hosted
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - monitoring
 - metrics
 - observability
+- prometheus
+- promql
+- time-series
+- alerting
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - observability
+  - sre
+  - reliability
+relationships:
+- type: integrates-with
+  target: cloud/kubernetes
+  note: Prometheus commonly discovers and scrapes Kubernetes workloads and infrastructure, while Kubernetes provides dynamic target metadata used by discovery and relabeling.
+- type: integrates-with
+  target: cloud/grafana
+  note: Grafana commonly queries the Prometheus HTTP API as a data source for dashboards and exploratory visualization.
+- type: integrates-with
+  target: cloud/opentelemetry
+  note: OpenTelemetry collectors and SDK pipelines can expose, receive, or translate metrics for Prometheus-compatible collection and remote-write architectures.
 sources:
-- title: Prometheus official site
-  url: https://prometheus.io/
+- title: Prometheus official documentation
+  url: https://prometheus.io/docs/introduction/overview/
   type: official
-- title: Prometheus repository
+- title: Prometheus source repository
   url: https://github.com/prometheus/prometheus
   type: repository
+- title: Prometheus data model
+  url: https://prometheus.io/docs/concepts/data_model/
+  type: documentation
+- title: Prometheus metric types
+  url: https://prometheus.io/docs/concepts/metric_types/
+  type: documentation
+- title: Prometheus querying basics
+  url: https://prometheus.io/docs/prometheus/latest/querying/basics/
+  type: documentation
+- title: Prometheus operators
+  url: https://prometheus.io/docs/prometheus/latest/querying/operators/
+  type: documentation
+- title: Prometheus functions
+  url: https://prometheus.io/docs/prometheus/latest/querying/functions/
+  type: documentation
+- title: Prometheus configuration
+  url: https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+  type: documentation
+- title: Prometheus recording rules
+  url: https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+  type: documentation
+- title: Prometheus alerting rules
+  url: https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+  type: documentation
+- title: Prometheus storage
+  url: https://prometheus.io/docs/prometheus/latest/storage/
+  type: documentation
+- title: Prometheus remote write tuning
+  url: https://prometheus.io/docs/practices/remote_write/
+  type: documentation
+- title: Prometheus federation
+  url: https://prometheus.io/docs/prometheus/latest/federation/
+  type: documentation
+- title: Prometheus instrumentation practices
+  url: https://prometheus.io/docs/practices/instrumentation/
+  type: documentation
+- title: Prometheus metric and label naming
+  url: https://prometheus.io/docs/practices/naming/
+  type: documentation
+- title: Prometheus histogram and summary practices
+  url: https://prometheus.io/docs/practices/histograms/
+  type: documentation
+- title: Prometheus alerting practices
+  url: https://prometheus.io/docs/practices/alerting/
+  type: documentation
+- title: Prometheus HTTP API
+  url: https://prometheus.io/docs/prometheus/latest/querying/api/
+  type: documentation
