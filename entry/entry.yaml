@@ -1,23 +1,86 @@
-schema_version: 1
+schema_version: 3
 id: opentelemetry
 name: OpenTelemetry
 category: cloud
 kind: standard
 domains:
 - observability
-summary: Vendor-neutral observability project defining APIs, SDKs, semantic conventions, and protocols for producing and transporting traces, metrics, and logs.
+summary: Vendor-neutral observability framework and specification for instrumenting, generating, correlating, collecting, processing, and exporting traces, metrics, logs, and evolving telemetry signals through common APIs, SDKs, semantic conventions, context propagation, OTLP, and the OpenTelemetry Collector.
 homepage: https://opentelemetry.io/
 repository: https://github.com/open-telemetry/opentelemetry-specification
+license: Apache-2.0
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - observability
 - tracing
+- metrics
+- logs
+- otlp
+- semantic-conventions
+- context-propagation
+- collector
 - standards
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - observability
+  - distributed-systems
+  - standards
+relationships:
+- type: integrates-with
+  target: cloud/prometheus
+  note: OpenTelemetry metrics can interoperate with Prometheus through Prometheus-compatible instrumentation, scraping, exposition, remote-write, and Collector pipelines while retaining different metric data-model and transport semantics.
 sources:
-- title: OpenTelemetry official site
-  url: https://opentelemetry.io/
+- title: What is OpenTelemetry
+  url: https://opentelemetry.io/docs/what-is-opentelemetry/
   type: official
-- title: OpenTelemetry specification
+- title: OpenTelemetry specification repository
   url: https://github.com/open-telemetry/opentelemetry-specification
   type: standard
+- title: OpenTelemetry concepts
+  url: https://opentelemetry.io/docs/concepts/
+  type: documentation
+- title: OpenTelemetry components
+  url: https://opentelemetry.io/docs/concepts/components/
+  type: documentation
+- title: OpenTelemetry signals
+  url: https://opentelemetry.io/docs/concepts/signals/
+  type: documentation
+- title: Context propagation
+  url: https://opentelemetry.io/docs/concepts/context-propagation/
+  type: documentation
+- title: OpenTelemetry resources
+  url: https://opentelemetry.io/docs/concepts/resources/
+  type: documentation
+- title: Instrumentation scope
+  url: https://opentelemetry.io/docs/concepts/instrumentation-scope/
+  type: documentation
+- title: OpenTelemetry sampling
+  url: https://opentelemetry.io/docs/concepts/sampling/
+  type: documentation
+- title: OpenTelemetry semantic conventions
+  url: https://opentelemetry.io/docs/specs/semconv/
+  type: standard
+- title: OTLP specification
+  url: https://opentelemetry.io/docs/specs/otlp/
+  type: standard
+- title: OTLP exporter specification
+  url: https://opentelemetry.io/docs/specs/otel/protocol/exporter/
+  type: standard
+- title: OpenTelemetry Collector
+  url: https://opentelemetry.io/docs/collector/
+  type: documentation
+- title: Collector components
+  url: https://opentelemetry.io/docs/collector/components/
+  type: documentation
+- title: Collector configuration
+  url: https://opentelemetry.io/docs/collector/configuration/
+  type: documentation
+- title: Collector resiliency
+  url: https://opentelemetry.io/docs/collector/resiliency/
+  type: documentation
+- title: Collector internal telemetry
+  url: https://opentelemetry.io/docs/collector/internal-telemetry/
+  type: documentation
