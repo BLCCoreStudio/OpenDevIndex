@@ -53,3 +53,7 @@ modules:
     level: deep-dive
     reviewed_at: '2026-09-06'
     note: Open-source IaC deep-dive on provider compatibility, state and locking, native state/plan encryption, registry security, Terraform migration, compatibility promises, recovery, and portability.
+  cloud/ansible:
+    level: deep-dive
+    reviewed_at: '2026-09-06'
+    note: Automation deep-dive on inventory, variables, play execution, plugins, Collections, idempotency, concurrency, Vault, supply-chain security, rolling changes, debugging, and failure handling.
