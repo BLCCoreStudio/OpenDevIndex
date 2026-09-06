@@ -1,4 +1,4 @@
-schema_version: 2
+schema_version: 3
 id: argocd
 name: Argo CD
 category: platform
@@ -7,22 +7,91 @@ domains:
 - ci-cd
 - cloud
 - devops
-summary: Declarative continuous-delivery platform for Kubernetes that reconciles cluster applications from Git repositories and provides synchronization, health, and rollout visibility.
+summary: Declarative GitOps continuous-delivery platform for Kubernetes that renders desired application state from versioned sources, compares it with live clusters, and reconciles drift through controlled synchronization.
 homepage: https://argo-cd.readthedocs.io/
 repository: https://github.com/argoproj/argo-cd
+license: Apache-2.0
 deployment_types:
 - self-hosted
-- service
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - kubernetes
 - gitops
-- ci
+- continuous-delivery
+- reconciliation
+- multi-cluster
+- applicationset
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - orchestration
+  - deployment
+  - ci-cd
+  - platform-engineering
+relationships:
+- type: integrates-with
+  target: cloud/kubernetes
+  note: Argo CD runs as Kubernetes controllers and services and reconciles generated desired resources against Kubernetes API state in one or more target clusters.
+- type: uses
+  target: tool/git
+  note: Git repositories are a primary versioned source for application definitions, revisions, review history, and declarative promotion workflows.
+- type: integrates-with
+  target: cloud/helm
+  note: Argo CD can consume and render Helm charts as a manifest-generation source while retaining Argo CD application reconciliation and release visibility.
+- type: alternative-to
+  target: platform/flux
+  note: Argo CD and Flux are Kubernetes GitOps reconciliation platforms with different APIs, component models, workflows, and operational trade-offs.
 sources:
-- title: Argo CD documentation
-  url: https://argo-cd.readthedocs.io/
-  type: documentation
+- title: Argo CD official documentation
+  url: https://argo-cd.readthedocs.io/en/stable/
+  type: official
 - title: Argo CD source repository
   url: https://github.com/argoproj/argo-cd
   type: repository
+- title: Argo CD architectural overview
+  url: https://argo-cd.readthedocs.io/en/stable/operator-manual/architecture/
+  type: documentation
+- title: Argo CD component architecture
+  url: https://argo-cd.readthedocs.io/en/stable/developer-guide/architecture/components/
+  type: documentation
+- title: Application specification reference
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/application-specification/
+  type: documentation
+- title: Automated sync policy
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/
+  type: documentation
+- title: Sync options
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/
+  type: documentation
+- title: Sync phases and waves
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/
+  type: documentation
+- title: Diffing customization
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
+  type: documentation
+- title: Resource tracking
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/resource_tracking/
+  type: documentation
+- title: Resource health
+  url: https://argo-cd.readthedocs.io/en/stable/operator-manual/health/
+  type: documentation
+- title: Argo CD Helm integration
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/helm/
+  type: documentation
+- title: Projects
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/projects/
+  type: documentation
+- title: RBAC configuration
+  url: https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
+  type: documentation
+- title: ApplicationSet generators
+  url: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators/
+  type: documentation
+- title: Argo CD security overview
+  url: https://argo-cd.readthedocs.io/en/stable/operator-manual/security/
+  type: documentation
+- title: Argo CD disaster recovery
+  url: https://argo-cd.readthedocs.io/en/stable/operator-manual/disaster_recovery/
+  type: documentation
