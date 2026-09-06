@@ -1,0 +1,12 @@
+schema_version: 1
+cases:
+- comparison: kubernetes-helm-argocd
+  query: desired live comparison
+- comparison: observability-roles
+  query: application instrumentation
+- comparison: relational-databases
+  query: wal checkpoints
+- comparison: terraform-ansible
+  query: inventory target selection
+- comparison: terraform-opentofu
+  query: state encryption
