@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 3
 id: terraform
 name: Terraform
 category: cloud
@@ -6,19 +6,93 @@ kind: tool
 domains:
 - cloud
 - devops
-summary: Infrastructure-as-code tool for declaring and applying resource graphs through provider plugins across cloud, SaaS, and infrastructure platforms.
+summary: Infrastructure-as-code tool that evaluates declarative configuration into a dependency graph, coordinates provider plugins, compares configuration with prior state and remote objects, and applies planned lifecycle changes across cloud, SaaS, and infrastructure APIs.
 homepage: https://developer.hashicorp.com/terraform
 repository: https://github.com/hashicorp/terraform
+license: BUSL-1.1
+deployment_types:
+- cli
+- local
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
+- infrastructure-as-code
 - iac
-- automation
 - cloud
+- devops
+- providers
+- state
+- automation
+- provisioning
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - infrastructure-as-code
+  - deployment
+  - platform-engineering
+relationships:
+- type: alternative-to
+  target: tool/opentofu
+  note: OpenTofu is a community-governed open-source Terraform-compatible infrastructure-as-code implementation that shares substantial workflow and configuration heritage while evolving independently.
+- type: integrates-with
+  target: cloud/kubernetes
+  note: Terraform providers can provision Kubernetes clusters and manage Kubernetes API resources, though infrastructure provisioning and in-cluster reconciliation have different lifecycle and ownership models.
+- type: related-to
+  target: cloud/ansible
+  note: Terraform is primarily declarative infrastructure lifecycle management, while Ansible is commonly used for configuration management and procedural orchestration; teams may combine them with explicit ownership boundaries.
 sources:
 - title: Terraform documentation
   url: https://developer.hashicorp.com/terraform
   type: documentation
-- title: Terraform repository
+- title: Terraform source repository
   url: https://github.com/hashicorp/terraform
   type: repository
+- title: Terraform license
+  url: https://github.com/hashicorp/terraform/blob/main/LICENSE
+  type: repository
+- title: Terraform state
+  url: https://developer.hashicorp.com/terraform/language/state
+  type: documentation
+- title: State storage and locking
+  url: https://developer.hashicorp.com/terraform/language/state/backends
+  type: documentation
+- title: State locking
+  url: https://developer.hashicorp.com/terraform/language/state/locking
+  type: documentation
+- title: Terraform dependency graph
+  url: https://developer.hashicorp.com/terraform/internals/graph
+  type: documentation
+- title: Terraform plugin architecture
+  url: https://developer.hashicorp.com/terraform/plugin/how-terraform-works
+  type: documentation
+- title: Terraform plugin protocol
+  url: https://developer.hashicorp.com/terraform/plugin/terraform-plugin-protocol
+  type: documentation
+- title: Provider configuration
+  url: https://developer.hashicorp.com/terraform/language/block/provider
+  type: documentation
+- title: Terraform modules
+  url: https://developer.hashicorp.com/terraform/language/modules
+  type: documentation
+- title: Terraform plan
+  url: https://developer.hashicorp.com/terraform/cli/commands/plan
+  type: documentation
+- title: Terraform apply
+  url: https://developer.hashicorp.com/terraform/cli/commands/apply
+  type: documentation
+- title: Dependency lock file
+  url: https://developer.hashicorp.com/terraform/language/files/dependency-lock
+  type: documentation
+- title: Manage sensitive data
+  url: https://developer.hashicorp.com/terraform/language/manage-sensitive-data
+  type: documentation
+- title: Import resources
+  url: https://developer.hashicorp.com/terraform/language/import
+  type: documentation
+- title: Refactor modules with moved blocks
+  url: https://developer.hashicorp.com/terraform/language/modules/develop/refactoring
+  type: documentation
+- title: Terraform tests
+  url: https://developer.hashicorp.com/terraform/language/tests
+  type: documentation
