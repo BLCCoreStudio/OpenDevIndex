@@ -22,6 +22,21 @@ def tokens(value: str) -> list[str]:
     return normalize(value).split()
 
 
+def comparison_search_fields(entry: dict) -> tuple[list[str], list[str]]:
+    ids: list[str] = []
+    titles: list[str] = []
+    for comparison in entry.get("comparisons", []):
+        if not isinstance(comparison, dict):
+            continue
+        comparison_id = normalize(comparison.get("id"))
+        title = normalize(comparison.get("title"))
+        if comparison_id:
+            ids.append(comparison_id)
+        if title:
+            titles.append(title)
+    return ids, titles
+
+
 def score_entry(entry: dict, query: str) -> int:
     query_norm = normalize(query)
     query_tokens = tokens(query)
@@ -42,10 +57,13 @@ def score_entry(entry: dict, query: str) -> int:
     deployment = [normalize(value) for value in entry.get("deployment_types", [])]
     use_cases = normalize(" ".join(entry.get("use_cases", [])))
     key_points = normalize(" ".join(entry.get("key_points", [])))
+    comparison_ids, comparison_titles = comparison_search_fields(entry)
+    comparison_text = normalize(" ".join([*comparison_ids, *comparison_titles]))
     haystack = entry.get("search_text") or normalize(
         " ".join([
             ref, slug, name, category, kind, maturity, summary, coverage_area,
             *coverage_topics, *domains, *tags, *deployment, use_cases, key_points,
+            comparison_text,
         ])
     )
 
@@ -55,10 +73,16 @@ def score_entry(entry: dict, query: str) -> int:
     score = 0
     if query_norm in {name, slug, ref}:
         score += 120
+    elif query_norm in comparison_ids:
+        score += 90
+    elif query_norm in comparison_titles:
+        score += 80
     elif name.startswith(query_norm) or slug.startswith(query_norm):
         score += 70
     elif query_norm in name:
         score += 45
+    elif any(query_norm in title for title in comparison_titles):
+        score += 35
 
     for token in query_tokens:
         if token == name or token == slug:
@@ -87,6 +111,14 @@ def score_entry(entry: dict, query: str) -> int:
             score += 4
         if token in key_points:
             score += 4
+        if token in comparison_ids:
+            score += 24
+        elif any(token in comparison_id for comparison_id in comparison_ids):
+            score += 14
+        if any(token == title for title in comparison_titles):
+            score += 20
+        elif any(token in title for title in comparison_titles):
+            score += 12
 
     return score
 
@@ -203,6 +235,13 @@ def main() -> int:
         print(f"   {entry['summary']}")
         if entry.get("url"):
             print(f"   module: {entry['url']}")
+        for comparison in entry.get("comparisons", []):
+            if not isinstance(comparison, dict):
+                continue
+            title = comparison.get("title")
+            url = comparison.get("url")
+            if title and url:
+                print(f"   comparison: {title} — {url}")
         if entry.get("homepage"):
             print(f"   homepage: {entry['homepage']}")
     return 0
