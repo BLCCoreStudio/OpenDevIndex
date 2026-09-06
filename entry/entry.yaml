@@ -1,23 +1,111 @@
-schema_version: 1
+schema_version: 3
 id: postgresql
 name: PostgreSQL
 category: database
 kind: database
 domains:
 - data
-summary: Open-source relational database known for standards-oriented SQL, transactions, extensibility, advanced data types, indexing, and reliable server workloads.
+summary: Open-source relational database whose server combines SQL, MVCC transactions, WAL durability, cost-based query planning, extensible types and indexes, replication, and rich operational tooling for transactional and analytical workloads.
 homepage: https://www.postgresql.org/
 repository: https://github.com/postgres/postgres
+license: PostgreSQL
+deployment_types:
+- self-hosted
+- service
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - sql
 - relational
 - database
+- mvcc
+- transactions
+- wal
+- replication
+- indexing
+- query-planner
+- extensibility
+- deep-dive
+coverage:
+  area: databases-data
+  topics:
+  - relational-databases
+  - storage-engines
+  - query-engines
+relationships:
+- type: alternative-to
+  target: database/mysql
+  note: PostgreSQL and MySQL are widely used client-server relational databases with different SQL behavior, extensibility, storage, replication, operational tooling, and ecosystem trade-offs.
+- type: alternative-to
+  target: database/sqlite
+  note: PostgreSQL is a multi-process client-server database built for concurrent networked workloads; SQLite is an embedded database library with a very different deployment and concurrency model.
 sources:
-- title: PostgreSQL official site
-  url: https://www.postgresql.org/
-  type: official
 - title: PostgreSQL documentation
-  url: https://www.postgresql.org/docs/
+  url: https://www.postgresql.org/docs/current/
+  type: documentation
+- title: PostgreSQL source repository
+  url: https://github.com/postgres/postgres
+  type: repository
+- title: PostgreSQL license and copyright
+  url: https://github.com/postgres/postgres/blob/master/COPYRIGHT
+  type: repository
+- title: Architectural fundamentals
+  url: https://www.postgresql.org/docs/current/tutorial-arch.html
+  type: documentation
+- title: Concurrency control and MVCC
+  url: https://www.postgresql.org/docs/current/mvcc.html
+  type: documentation
+- title: Transaction isolation
+  url: https://www.postgresql.org/docs/current/transaction-iso.html
+  type: documentation
+- title: Explicit locking and deadlocks
+  url: https://www.postgresql.org/docs/current/explicit-locking.html
+  type: documentation
+- title: Routine vacuuming and autovacuum
+  url: https://www.postgresql.org/docs/current/routine-vacuuming.html
+  type: documentation
+- title: Write-ahead logging
+  url: https://www.postgresql.org/docs/current/wal-intro.html
+  type: documentation
+- title: Physical storage
+  url: https://www.postgresql.org/docs/current/storage.html
+  type: documentation
+- title: Index types
+  url: https://www.postgresql.org/docs/current/indexes-types.html
+  type: documentation
+- title: Using EXPLAIN
+  url: https://www.postgresql.org/docs/current/using-explain.html
+  type: documentation
+- title: Planner statistics
+  url: https://www.postgresql.org/docs/current/planner-stats.html
+  type: documentation
+- title: Backup and restore
+  url: https://www.postgresql.org/docs/current/backup.html
+  type: documentation
+- title: Continuous archiving and point-in-time recovery
+  url: https://www.postgresql.org/docs/current/continuous-archiving.html
+  type: documentation
+- title: Warm standby and streaming replication
+  url: https://www.postgresql.org/docs/current/warm-standby.html
+  type: documentation
+- title: Logical replication
+  url: https://www.postgresql.org/docs/current/logical-replication.html
+  type: documentation
+- title: Client authentication
+  url: https://www.postgresql.org/docs/current/client-authentication.html
+  type: documentation
+- title: pg_hba.conf
+  url: https://www.postgresql.org/docs/current/auth-pg-hba-conf.html
+  type: documentation
+- title: Row security policies
+  url: https://www.postgresql.org/docs/current/ddl-rowsecurity.html
+  type: documentation
+- title: Table partitioning
+  url: https://www.postgresql.org/docs/current/ddl-partitioning.html
+  type: documentation
+- title: JSON types
+  url: https://www.postgresql.org/docs/current/datatype-json.html
+  type: documentation
+- title: Monitoring database activity
+  url: https://www.postgresql.org/docs/current/monitoring-stats.html
   type: documentation
