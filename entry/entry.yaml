@@ -26,8 +26,8 @@ coverage:
   area: cloud-devops-sre
   topics:
   - observability
-  - distributed-systems
-  - standards
+  - sre
+  - reliability
 relationships:
 - type: integrates-with
   target: cloud/prometheus
