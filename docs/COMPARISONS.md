@@ -2,9 +2,7 @@
 
 OpenDevIndex comparison views connect mature knowledge modules that solve related problems. They are designed to answer **which architectural and operational boundary fits a requirement**, not to produce popularity rankings, synthetic scores, or universal winners.
 
-Published comparisons currently include `PostgreSQL vs MySQL vs SQLite` and `Terraform vs OpenTofu`, built from independently maintained deep-dive modules.
-
-Generated public views are published under [`docs/comparisons/`](comparisons/index.md). A generated [`by-module`](comparisons/by-module.md) reverse index lets readers start from a technology and discover every curated comparison that currently includes it.
+The current published set is generated from reviewed manifests under `comparisons/`; use [`docs/comparisons/index.md`](comparisons/index.md) for the live list. A generated [`by-module`](comparisons/by-module.md) reverse index lets readers start from a technology and discover every curated comparison that currently includes it.
 
 ## Design principles
 
@@ -13,7 +11,7 @@ A comparison should:
 - compare technologies only when the relationship is meaningful;
 - use dimensions that change an engineering decision;
 - prefer architecture, deployment, correctness, reliability, security, and operational trade-offs over marketing claims;
-- link back to the independently versioned modules for detailed explanations and source provenance;
+- link back to independently versioned modules for detailed explanations and source provenance;
 - avoid benchmark claims unless the benchmark context is itself reviewed and reproducible;
 - avoid a numeric winner, score, or sponsor-driven recommendation;
 - make version-sensitive claims explicit and keep a verification date.
@@ -49,7 +47,7 @@ notes:
   - Recheck version-sensitive capabilities against the linked modules before production decisions.
 ```
 
-## Validation invariants
+## Manifest validation invariants
 
 `scripts/build_comparisons.py` validates comparison manifests before rendering them.
 
@@ -59,9 +57,9 @@ The current invariants include:
 - the filename must match the comparison `id`;
 - every referenced module must already exist in the validated catalog;
 - a comparison contains 2–6 unique modules;
-- every comparison dimension must contain one value for **every** compared module;
-- dimension identifiers must be unique;
-- decision rules may only recommend modules already present in that comparison;
+- every comparison dimension contains one value for **every** compared module;
+- dimension identifiers are unique;
+- decision rules may recommend only modules already present in that comparison;
 - verification dates cannot be in the future;
 - text fields are bounded to keep generated views reviewable and readable.
 
@@ -69,9 +67,9 @@ These constraints prevent a comparison from silently omitting one technology on 
 
 ## Bidirectional discovery
 
-Comparison manifests are authored comparison-first, but discovery should work in both directions.
+Comparison manifests are authored comparison-first, but discovery works in both directions.
 
-The builder therefore derives a reverse index automatically:
+The builder derives a reverse index automatically:
 
 ```text
 comparison manifest
@@ -80,29 +78,99 @@ comparison manifest
   -> module-to-comparison reverse index
 ```
 
-A module appears only once in the reverse index, with a deterministic list of every comparison that contains it. The reverse index is derived data; contributors never maintain a second manual mapping that could drift from the comparison manifests.
+A module appears only once in the reverse index, with a deterministic list of every comparison that contains it. The reverse index is derived data; contributors do not maintain a second manual mapping that could drift from the comparison manifests.
 
-This supports two navigation paths:
+This supports both navigation paths:
 
 ```text
 comparison -> modules
 module -> comparisons
 ```
 
-For example, `database/sqlite` can lead to the relational-database comparison, while `tool/opentofu` can lead to the Terraform/OpenTofu comparison.
+A module may participate in multiple comparisons. The generated ordering is deterministic, so downstream interfaces can rely on stable output without inventing their own graph reconstruction.
+
+## Discovery consistency validation
+
+Once comparison, reverse-index, comparison-search, and module-search artifacts exist, `scripts/validate_comparison_discovery.py` cross-validates the complete graph.
+
+It checks automatically that:
+
+- `comparisons.json` and comparison `search.json` contain exactly the same comparison ids;
+- compact comparison-search records preserve each comparison's title and ordered module refs;
+- exact comparison-id and exact-title searches rank that comparison first;
+- module search filtered by a comparison returns exactly the modules declared by that comparison;
+- the derived reverse index contains exactly the modules that participate in comparisons;
+- every module's comparison list has the expected deterministic membership and order;
+- module-search backlinks match the reverse index and `comparison_count` exactly;
+- comparison search filtered by a module returns exactly that module's containing comparisons in deterministic order;
+- the top-level `comparison_linked_module_count` equals the graph-derived count.
+
+These are graph invariants, so they apply automatically to every new comparison. CI no longer needs a hand-written assertion block for each new module/comparison pair.
+
+## Semantic search registry
+
+Structural consistency cannot prove that a human engineering phrase finds the intended comparison. Those expectations live in `comparisons/search-smoke.yaml`.
+
+Example:
+
+```yaml
+schema_version: 1
+cases:
+  - comparison: example-comparison
+    query: deployment boundary
+```
+
+The discovery validator requires **at least one semantic search case for every comparison** and verifies that the expected comparison ranks first for each query.
+
+This separates two concerns cleanly:
+
+```text
+graph correctness
+  -> derived automatically from artifacts
+
+human search intent
+  -> small reviewed semantic-case registry
+```
+
+Adding a comparison therefore requires one meaningful search phrase, not new workflow code.
 
 ## Build locally
 
-Install the normal CI dependencies, then run:
+Install the normal CI dependencies, then build the comparison views and search artifact:
 
 ```bash
 python scripts/build_comparisons.py \
   --comparisons-dir comparisons \
   --catalog-dir catalog \
   --output-dir dist/comparisons
+
+python scripts/build_comparison_search.py \
+  --input dist/comparisons/comparisons.json \
+  --output dist/comparisons/search.json
 ```
 
-To render the public Markdown views as well:
+Build the comparison-aware module search index:
+
+```bash
+python scripts/build_index.py \
+  --catalog-dir catalog \
+  --output-dir dist/index \
+  --comparison-index dist/comparisons/module-comparisons.json
+```
+
+Then validate the entire discovery graph:
+
+```bash
+python scripts/validate_comparison_discovery.py \
+  --comparisons dist/comparisons/comparisons.json \
+  --reverse-index dist/comparisons/module-comparisons.json \
+  --comparison-search dist/comparisons/search.json \
+  --module-search dist/index/search.json \
+  --semantic-cases comparisons/search-smoke.yaml \
+  --output dist/comparisons/discovery-validation.json
+```
+
+To render public Markdown views as well:
 
 ```bash
 python scripts/build_comparisons.py \
@@ -112,37 +180,32 @@ python scripts/build_comparisons.py \
   --public-dir docs/comparisons
 ```
 
-Generated artifacts include:
+Generated comparison artifacts include:
 
 ```text
 dist/comparisons/
 ├── comparisons.json
 ├── module-comparisons.json
+├── search.json
+├── discovery-validation.json
 ├── index.md
 ├── by-module.md
 └── <comparison-id>.md
 ```
 
-The public publisher writes the Markdown equivalents under `docs/comparisons/`.
+The public publisher writes the Markdown equivalents under `docs/comparisons/`; compact search and validation JSON remain discovery artifacts for CI and downstream clients.
 
 ## Machine-readable output
 
-`comparisons.json` contains:
+`comparisons.json` contains full curated comparison records: identity, verification date, modules, dimensions, decision rules, and notes.
 
-- comparison identity and verification date;
-- the compared module references;
-- module names, URLs, summaries, and reviewed maturity levels;
-- normalized dimensions and per-module values;
-- curated decision rules;
-- editorial notes.
+`module-comparisons.json` contains the reverse discovery view: one record per compared module plus every containing comparison.
 
-`module-comparisons.json` contains the reverse discovery view:
+`search.json` contains compact comparison-search records built from full reviewed content.
 
-- one record per module currently present in at least one comparison;
-- stable module ref, name, URL, summary, and maturity;
-- every containing comparison's id, title, summary, verification date, and generated Markdown path.
+`discovery-validation.json` records the validated comparison count, linked-module count, number of modules participating in multiple comparisons, and semantic search-case count.
 
-Both artifacts are deterministic. Future web interfaces, APIs, editor integrations, and learning tools can therefore traverse comparisons in either direction without parsing Markdown or reconstructing joins themselves.
+All are deterministic. Future web interfaces, APIs, editor integrations, and learning tools can traverse comparisons in either direction without parsing Markdown or reconstructing joins themselves.
 
 ## Source discipline
 
@@ -158,8 +221,9 @@ When adding or changing a comparison:
 2. choose decision-relevant dimensions rather than feature-count trivia;
 3. update a module first if its current content cannot support the comparison claim;
 4. add or update the YAML manifest under `comparisons/`;
-5. run the comparison builder and unit tests;
-6. review the generated comparison page **and** `by-module.md` for correct bidirectional discovery;
-7. update `verified_at` when the comparison has actually been re-reviewed.
+5. add at least one meaningful rank-1 query to `comparisons/search-smoke.yaml`;
+6. run unit tests, comparison builds, and `validate_comparison_discovery.py`;
+7. review the generated comparison page and `by-module.md` for useful bidirectional navigation;
+8. update `verified_at` when the comparison has actually been re-reviewed.
 
 A good comparison should help a reader decide **what to investigate next and why**, while preserving the nuance of the underlying technologies.
