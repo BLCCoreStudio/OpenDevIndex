@@ -120,6 +120,7 @@ jobs:
           python scripts/search_index.py "web accessibility" --index dist/index/search.json --domain accessibility --limit 5
           python scripts/search_index.py "Terraform vs OpenTofu" --index dist/index/search.json --limit 5
           python scripts/search_index.py --comparison terraform-opentofu --index dist/index/search.json --json --limit 10 > /tmp/terraform-opentofu.json
+          python scripts/search_index.py --comparison terraform-ansible --index dist/index/search.json --json --limit 10 > /tmp/terraform-ansible-members.json
           python scripts/search_index.py --has-comparison --index dist/index/search.json --json --limit 100 > /tmp/comparison-linked.json
           python scripts/search_comparisons.py "state encryption" --index dist/comparisons/search.json --json > /tmp/comparison-state-encryption.json
           python scripts/search_comparisons.py "wal checkpoints" --index dist/comparisons/search.json --json > /tmp/comparison-wal.json
@@ -128,6 +129,8 @@ jobs:
           python scripts/search_comparisons.py --module cloud/grafana --index dist/comparisons/search.json --json > /tmp/comparison-grafana.json
           python scripts/search_comparisons.py "desired live comparison" --index dist/comparisons/search.json --json > /tmp/comparison-kubernetes-delivery.json
           python scripts/search_comparisons.py --module platform/argocd --index dist/comparisons/search.json --json > /tmp/comparison-argocd.json
+          python scripts/search_comparisons.py "inventory target selection" --index dist/comparisons/search.json --json > /tmp/comparison-terraform-ansible.json
+          python scripts/search_comparisons.py --module cloud/terraform --index dist/comparisons/search.json --json > /tmp/comparison-terraform-multi.json
           python - <<'PY'
           import json
           from pathlib import Path
@@ -140,8 +143,16 @@ jobs:
               for entry in members
           )
 
+          terraform_ansible_members = json.loads(Path('/tmp/terraform-ansible-members.json').read_text(encoding='utf-8'))
+          terraform_ansible_refs = {entry['ref'] for entry in terraform_ansible_members}
+          assert terraform_ansible_refs == {'cloud/terraform', 'cloud/ansible'}, terraform_ansible_refs
+          assert all(
+              any(item['id'] == 'terraform-ansible' for item in entry.get('comparisons', []))
+              for entry in terraform_ansible_members
+          )
+
           linked = json.loads(Path('/tmp/comparison-linked.json').read_text(encoding='utf-8'))
-          assert len(linked) >= 11, len(linked)
+          assert len(linked) >= 12, len(linked)
           assert all(entry.get('comparison_count', 0) > 0 for entry in linked)
 
           state = json.loads(Path('/tmp/comparison-state-encryption.json').read_text(encoding='utf-8'))
@@ -164,6 +175,12 @@ jobs:
 
           argocd = json.loads(Path('/tmp/comparison-argocd.json').read_text(encoding='utf-8'))
           assert [entry['id'] for entry in argocd] == ['kubernetes-helm-argocd'], argocd
+
+          terraform_ansible = json.loads(Path('/tmp/comparison-terraform-ansible.json').read_text(encoding='utf-8'))
+          assert terraform_ansible and terraform_ansible[0]['id'] == 'terraform-ansible', terraform_ansible
+
+          terraform_multi = json.loads(Path('/tmp/comparison-terraform-multi.json').read_text(encoding='utf-8'))
+          assert [entry['id'] for entry in terraform_multi] == ['terraform-ansible', 'terraform-opentofu'], terraform_multi
           PY
 
       - name: Publish build summary
