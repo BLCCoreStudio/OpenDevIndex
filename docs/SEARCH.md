@@ -37,20 +37,18 @@ Module search considers names, identifiers, categories, kinds, maturity, domains
 
 ### Comparison-aware module filters
 
-The module-search CLI can query the curated-comparison graph directly:
-
 ```bash
-# Every module that currently participates in at least one curated comparison
+# Every module that participates in at least one curated comparison
 python scripts/search_index.py \
   --has-comparison \
   --index dist/index/search.json
 
-# Exact members of one comparison, without needing a text query
+# Exact members of one comparison
 python scripts/search_index.py \
   --comparison terraform-opentofu \
   --index dist/index/search.json
 
-# Combine an exact comparison with normal text search
+# Combine comparison membership with text search
 python scripts/search_index.py \
   "state" \
   --comparison terraform-opentofu \
@@ -64,17 +62,13 @@ python scripts/search_index.py \
   --index dist/index/search.json
 ```
 
-`--has-comparison` returns only modules with at least one validated comparison backlink. `--comparison <id>` matches the exact normalized curated comparison id and implicitly selects only participating modules.
+`--has-comparison` returns only modules with at least one validated comparison backlink. `--comparison <id>` matches an exact normalized curated comparison id.
 
-The positional text query remains required for ordinary searches. It becomes optional only when `--has-comparison` or `--comparison` supplies an explicit discovery constraint, which prevents an accidental empty query from dumping the whole catalog.
+The positional text query remains required for ordinary searches. It becomes optional only when `--has-comparison` or `--comparison` supplies an explicit discovery constraint, preventing an accidental empty query from dumping the whole catalog.
 
-Comparison filters compose with existing category, kind, maturity, domain, deployment, license, and Technology Universe coverage filters. When no text query is supplied, matching modules are ordered deterministically by name/ref; when a query is supplied, normal relevance scoring still applies.
-
-Human-readable CLI results print linked comparison titles and URLs for matching modules, while `--json` preserves the full `comparisons[]` data for downstream tooling.
+Comparison filters compose with category, kind, maturity, domain, deployment, license, and Technology Universe coverage filters. Human-readable results print linked comparison titles/URLs; JSON mode preserves the full `comparisons[]` records.
 
 ## Build curated comparisons
-
-Comparison manifests under `comparisons/` can be validated and rendered with:
 
 ```bash
 python scripts/build_comparisons.py \
@@ -88,16 +82,16 @@ Generated files include:
 - `dist/comparisons/comparisons.json` — complete machine-readable comparison records;
 - `dist/comparisons/module-comparisons.json` — reverse module-to-comparison discovery payload;
 - `dist/comparisons/index.md` — comparison directory;
-- `dist/comparisons/by-module.md` — every compared module mapped to its containing comparison views;
+- `dist/comparisons/by-module.md` — compared modules mapped to containing comparisons;
 - `dist/comparisons/<comparison-id>.md` — one human-readable view per comparison.
 
-The comparison builder validates every referenced module against the catalog and joins module maturity metadata. Every declared dimension must contain a value for every module in the comparison, preventing asymmetric generated tables.
+The comparison builder validates every referenced module against the catalog and joins module maturity metadata. Every declared dimension must contain a value for every module in the comparison.
 
-The reverse index is derived from the same validated records, so contributors do not maintain a second manual module-to-comparison mapping. Modules and their containing comparison lists are emitted in deterministic order.
+The reverse index is derived from the same validated records, so contributors do not maintain a second manual module-to-comparison mapping.
 
 ## Build and search comparison records
 
-Curated comparisons are first-class searchable objects as well as backlinks on modules. Build the compact comparison search artifact after `comparisons.json`:
+Curated comparisons are first-class searchable objects as well as backlinks on modules:
 
 ```bash
 python scripts/build_comparison_search.py \
@@ -105,48 +99,36 @@ python scripts/build_comparison_search.py \
   --output dist/comparisons/search.json
 ```
 
-`dist/comparisons/search.json` contains one compact record per curated comparison with:
+`dist/comparisons/search.json` contains one compact record per comparison with id, title, summary, verification date, path/URL, module refs/names, dimension ids/labels, counts, and normalized `search_text` derived from reviewed comparison content.
 
-- comparison id, title, summary, verification date, path, and public URL;
-- module refs and names;
-- dimension ids and labels;
-- module/dimension/decision-rule counts;
-- normalized `search_text` derived from the full reviewed comparison content.
-
-The search text includes module summaries, dimension values, decision-rule conditions and reasons, and editorial notes. This means queries can discover comparisons through engineering trade-offs that may not appear in the title.
+The search text includes module summaries, dimension values, decision-rule conditions/reasons, and notes, so engineering phrases can discover a comparison even when they are absent from its title.
 
 Examples:
 
 ```bash
-# Finds Terraform vs OpenTofu through the state-security trade-off
 python scripts/search_comparisons.py \
   "state encryption" \
   --index dist/comparisons/search.json
 
-# Finds PostgreSQL vs MySQL vs SQLite through durability internals
 python scripts/search_comparisons.py \
   "wal checkpoints" \
   --index dist/comparisons/search.json
 
-# List every curated comparison containing one exact module ref
 python scripts/search_comparisons.py \
   --module database/sqlite \
   --index dist/comparisons/search.json
 
-# Combine module membership with a technical query
 python scripts/search_comparisons.py \
   "encryption" \
   --module tool/opentofu \
   --index dist/comparisons/search.json
 ```
 
-The comparison CLI ranks exact comparison ids/titles most strongly, then module identity, dimension identity/labels, summary, and the broader searchable technical content. `--module <ref>` is an exact normalized module-ref filter and can be used without a text query.
-
-Like module search, comparison search is deterministic and dependency-light. `--json` exposes the complete compact search records for downstream interfaces.
+The comparison CLI ranks exact ids/titles most strongly, then module identity, dimension identity/labels, summary, and broader reviewed technical content. `--module <ref>` is an exact normalized module-ref filter and may be used without a text query.
 
 ## Join comparisons into module discovery
 
-To produce the full discovery surface, build comparisons first and pass the generated reverse index into `build_index.py`:
+Build comparisons and their compact search artifact before the module index:
 
 ```bash
 python scripts/build_comparisons.py \
@@ -164,16 +146,40 @@ python scripts/build_index.py \
   --comparison-index dist/comparisons/module-comparisons.json
 ```
 
-When the reverse index is supplied, every generated module record gains:
+When the reverse index is supplied, every generated module record gains `comparison_count` plus `comparisons[]` with comparison id, title, summary, verification date, generated path, and public URL.
 
-- `comparison_count`;
-- `comparisons[]` with comparison id, title, summary, verification date, generated path, and public URL.
+Comparison ids and titles also enter module `search_text`, and the generated Markdown index adds a direct `Comparisons` column. The top-level catalog/search payloads expose `comparison_linked_module_count`.
 
-Comparison ids and titles are also included in module `search_text`, so searching for a comparison can surface its participating modules. The generated Markdown index adds a `Comparisons` column with direct links to the curated views.
+The comparison index is revalidated at the join boundary: unknown module refs, duplicate records/ids, and noncanonical paths are rejected instead of silently entering discovery artifacts.
 
-The top-level catalog and search payloads expose `comparison_linked_module_count`, making comparison coverage observable without parsing every entry.
+## Validate the complete comparison discovery graph
 
-The comparison index is validated again at the join boundary: unknown module refs, duplicate module records, duplicate comparison ids, and noncanonical comparison paths are rejected instead of silently entering the search artifacts.
+After all comparison and module search artifacts are built, run:
+
+```bash
+python scripts/validate_comparison_discovery.py \
+  --comparisons dist/comparisons/comparisons.json \
+  --reverse-index dist/comparisons/module-comparisons.json \
+  --comparison-search dist/comparisons/search.json \
+  --module-search dist/index/search.json \
+  --semantic-cases comparisons/search-smoke.yaml \
+  --output dist/comparisons/discovery-validation.json
+```
+
+The validator derives expected membership directly from `comparisons.json` and cross-checks it against every discovery surface. It verifies:
+
+- comparison/search id parity;
+- compact search record module identity;
+- exact id/title ranking;
+- comparison -> module membership through module search;
+- module -> comparison membership through the reverse index and comparison search;
+- deterministic ordering for modules that appear in multiple comparisons;
+- `comparison_count` backlinks in module search;
+- the top-level comparison-linked module count.
+
+Human search intent is kept separately in `comparisons/search-smoke.yaml`. Every comparison must have at least one reviewed query whose expected comparison ranks first. This avoids hard-coding comparison-specific shell/Python assertions into the GitHub Actions workflow.
+
+Successful validation writes `dist/comparisons/discovery-validation.json` with comparison, linked-module, multi-comparison-module, and semantic-case counts.
 
 ## Public discovery build
 
@@ -193,9 +199,9 @@ python scripts/build_index.py \
   --comparison-index dist/comparisons/module-comparisons.json
 ```
 
-The compact comparison `search.json` is a CI/downstream discovery artifact rather than a committed public Markdown file. The public comparison pages remain generated from the same validated manifests under `docs/comparisons/`.
+Compact comparison search and discovery-validation JSON are CI/downstream artifacts rather than committed public Markdown. Public comparison pages remain generated under `docs/comparisons/` from the same reviewed manifests.
 
-Comparison artifacts are intentionally curated rather than inferred from tags or generated from arbitrary module prose. See [`COMPARISONS.md`](COMPARISONS.md) for the editorial, validation, and bidirectional-discovery model.
+See [`COMPARISONS.md`](COMPARISONS.md) for the editorial, bidirectional-discovery, semantic-search, and validation model.
 
 ## Coverage progress
 
@@ -215,22 +221,22 @@ The report compares real mapped modules with the 10,000-module Technology Univer
 
 The **Build Search Index** workflow:
 
-1. validates catalog data through the shared loader;
-2. runs unit tests for module search, curated comparisons, reverse indexes, comparison joins/filters, and comparison search;
-3. builds complete comparison records plus the compact comparison-search artifact;
-4. builds module catalog/search artifacts with comparison backlinks joined in;
-5. builds coverage-progress artifacts;
-6. audits editorial quality;
-7. smoke-tests module discovery and real comparison-search queries, including `state encryption`, `wal checkpoints`, and exact SQLite membership;
-8. uploads module, comparison, quality, and coverage discovery output as workflow artifacts.
+1. runs unit tests for module search, curated comparisons, reverse indexes, joins/filters, comparison search, and discovery validation;
+2. builds full comparison records and the compact comparison-search artifact;
+3. builds module catalog/search artifacts with comparison backlinks joined in;
+4. runs the generic comparison discovery validator against all generated graph surfaces;
+5. executes every semantic rank-1 query registered in `comparisons/search-smoke.yaml`;
+6. builds coverage-progress artifacts and audits editorial quality;
+7. smoke-tests representative non-comparison module facets;
+8. uploads module, comparison, validation, quality, and coverage discovery output as workflow artifacts.
 
-The **Publish Public Index** workflow rebuilds `INDEX.md` plus generated `docs/comparisons/` views when their validated inputs change. Comparison-search artifacts are built and tested in the discovery workflow for API/UI consumers.
+The **Publish Public Index** workflow rebuilds `INDEX.md` plus generated `docs/comparisons/` views when their validated inputs change.
 
-This gives OpenDevIndex two complementary search surfaces:
+OpenDevIndex therefore exposes two complementary deterministic search surfaces:
 
 ```text
-module search      -> find technologies and their comparison backlinks
-comparison search  -> find curated trade-off views and their participating technologies
+module search      -> technologies + comparison backlinks
+comparison search  -> curated trade-off views + participating technologies
 ```
 
-Both are deterministic outputs from the same reviewed catalog/comparison graph rather than independent databases that can drift.
+A separate end-to-end validator ensures those surfaces remain one consistent graph rather than drifting independent indexes.
