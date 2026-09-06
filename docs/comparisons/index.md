@@ -4,6 +4,12 @@ Curated comparison views connect technologies that solve related problems withou
 
 [Browse comparisons by module](by-module.md)
 
+## [Kubernetes vs Helm vs Argo CD](kubernetes-helm-argocd.md)
+
+A control-plane- and ownership-first comparison of Kubernetes, Helm, and Argo CD, clarifying the difference between cluster reconciliation, package and release rendering, and continuous GitOps delivery.
+
+Compared modules: `cloud/kubernetes`, `cloud/helm`, `platform/argocd`
+
 ## [OpenTelemetry vs Prometheus vs Grafana](observability-roles.md)
 
 A role- and data-flow-first comparison of three observability technologies that often work together, clarifying which layer owns instrumentation, collection, metrics storage and query, visualization, and alert interaction.

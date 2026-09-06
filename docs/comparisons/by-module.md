@@ -4,11 +4,29 @@ This reverse index shows every OpenDevIndex module currently included in at leas
 
 [Browse all comparisons](index.md)
 
+## [Argo CD](https://github.com/BLCCoreStudio/OpenDevIndex/tree/platform/argocd/entry)
+
+`platform/argocd` — `deep-dive`
+
+- [Kubernetes vs Helm vs Argo CD](kubernetes-helm-argocd.md) — A control-plane- and ownership-first comparison of Kubernetes, Helm, and Argo CD, clarifying the difference between cluster reconciliation, package and release rendering, and continuous GitOps delivery.
+
 ## [Grafana](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/grafana/entry)
 
 `cloud/grafana` — `deep-dive`
 
 - [OpenTelemetry vs Prometheus vs Grafana](observability-roles.md) — A role- and data-flow-first comparison of three observability technologies that often work together, clarifying which layer owns instrumentation, collection, metrics storage and query, visualization, and alert interaction.
+
+## [Helm](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/helm/entry)
+
+`cloud/helm` — `deep-dive`
+
+- [Kubernetes vs Helm vs Argo CD](kubernetes-helm-argocd.md) — A control-plane- and ownership-first comparison of Kubernetes, Helm, and Argo CD, clarifying the difference between cluster reconciliation, package and release rendering, and continuous GitOps delivery.
+
+## [Kubernetes](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/kubernetes/entry)
+
+`cloud/kubernetes` — `deep-dive`
+
+- [Kubernetes vs Helm vs Argo CD](kubernetes-helm-argocd.md) — A control-plane- and ownership-first comparison of Kubernetes, Helm, and Argo CD, clarifying the difference between cluster reconciliation, package and release rendering, and continuous GitOps delivery.
 
 ## [MySQL](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/mysql/entry)
 
