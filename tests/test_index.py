@@ -11,7 +11,7 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from build_index import build  # noqa: E402
+from build_index import build, load_comparison_index  # noqa: E402
 from search_index import load_index, search  # noqa: E402
 
 
@@ -64,6 +64,29 @@ modules:
     note: Deep fixture used to verify index maturity discovery.
 """
 
+COMPARISON_INDEX = {
+    "schema_version": 1,
+    "module_count": 1,
+    "modules": [
+        {
+            "ref": "tool/example-tool",
+            "name": "Example Tool",
+            "url": "https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/example-tool/entry",
+            "maturity": "deep-dive",
+            "summary": "Example module reverse-index fixture.",
+            "comparisons": [
+                {
+                    "id": "example-alternatives",
+                    "title": "Example Tool vs Alternative",
+                    "summary": "A synthetic comparison used to verify module search and public-index backlinks.",
+                    "verified_at": "2026-08-31",
+                    "path": "example-alternatives.md",
+                }
+            ],
+        }
+    ],
+}
+
 
 class IndexTests(unittest.TestCase):
     def test_build_and_search(self) -> None:
@@ -73,12 +96,24 @@ class IndexTests(unittest.TestCase):
             output_dir = root / "dist"
             public_index = root / "INDEX.md"
             maturity_manifest = root / "maturity.yaml"
+            comparison_index = root / "module-comparisons.json"
             catalog_dir.mkdir()
             (catalog_dir / "test.yaml").write_text(CATALOG, encoding="utf-8")
             maturity_manifest.write_text(MATURITY, encoding="utf-8")
+            comparison_index.write_text(
+                json.dumps(COMPARISON_INDEX),
+                encoding="utf-8",
+            )
 
-            result = build(catalog_dir, output_dir, public_index, maturity_manifest)
+            result = build(
+                catalog_dir,
+                output_dir,
+                public_index,
+                maturity_manifest,
+                comparison_index,
+            )
             self.assertEqual(result["module_count"], 1)
+            self.assertEqual(result["comparison_linked_module_count"], 1)
             self.assertEqual(result["maturity_counts"], {"deep-dive": 1})
             self.assertTrue((output_dir / "catalog.json").is_file())
             self.assertTrue((output_dir / "search.json").is_file())
@@ -94,24 +129,33 @@ class IndexTests(unittest.TestCase):
             self.assertIn("developer-tools", matches[0]["domains"])
             self.assertEqual(matches[0]["coverage_area"], "developer-tools")
             self.assertEqual(matches[0]["coverage_topics"], ["developer-experience"])
+            self.assertEqual(matches[0]["comparison_count"], 1)
+            self.assertEqual(matches[0]["comparisons"][0]["id"], "example-alternatives")
+            self.assertTrue(matches[0]["comparisons"][0]["url"].endswith("docs/comparisons/example-alternatives.md"))
             self.assertGreater(matches[0]["score"], 0)
             self.assertEqual(search(entries, "example", maturity="deep-dive")[0]["ref"], "tool/example-tool")
             self.assertEqual(search(entries, "example", maturity="overview"), [])
+            self.assertEqual(search(entries, "alternative")[0]["ref"], "tool/example-tool")
 
             payload = json.loads((output_dir / "catalog.json").read_text(encoding="utf-8"))
             self.assertEqual(payload["schema_version"], 3)
             self.assertEqual(payload["module_count"], 1)
+            self.assertEqual(payload["comparison_linked_module_count"], 1)
             self.assertEqual(payload["address_category_counts"], {"tool": 1})
             self.assertEqual(payload["kind_counts"], {"tool": 1})
             self.assertEqual(payload["domain_counts"], {"cli": 1, "developer-tools": 1})
             self.assertEqual(payload["maturity_counts"], {"deep-dive": 1})
             self.assertEqual(payload["entries"][0]["maturity"], "deep-dive")
+            self.assertEqual(payload["entries"][0]["comparison_count"], 1)
+            self.assertEqual(payload["entries"][0]["comparisons"][0]["title"], "Example Tool vs Alternative")
             self.assertEqual(payload["coverage_area_counts"], {"developer-tools": 1})
             self.assertEqual(payload["coverage_topic_counts"], {"developer-tools/developer-experience": 1})
             rendered = public_index.read_text(encoding="utf-8")
             self.assertIn("/tree/tool/example-tool/entry", rendered)
             self.assertIn("## Content depth", rendered)
             self.assertIn("`deep-dive`", rendered)
+            self.assertIn("**Modules in curated comparisons:** 1", rendered)
+            self.assertIn("[Example Tool vs Alternative](docs/comparisons/example-alternatives.md)", rendered)
 
     def test_build_without_manifest_defaults_to_overview(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -122,8 +166,29 @@ class IndexTests(unittest.TestCase):
             (catalog_dir / "test.yaml").write_text(CATALOG, encoding="utf-8")
             result = build(catalog_dir, output_dir)
             self.assertEqual(result["maturity_counts"], {"overview": 1})
+            self.assertEqual(result["comparison_linked_module_count"], 0)
             payload = json.loads((output_dir / "catalog.json").read_text(encoding="utf-8"))
             self.assertEqual(payload["entries"][0]["maturity"], "overview")
+            self.assertEqual(payload["entries"][0]["comparison_count"], 0)
+            self.assertEqual(payload["entries"][0]["comparisons"], [])
+
+    def test_comparison_index_rejects_unknown_module(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "module-comparisons.json"
+            broken = json.loads(json.dumps(COMPARISON_INDEX))
+            broken["modules"][0]["ref"] = "tool/missing"
+            path.write_text(json.dumps(broken), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "unknown module"):
+                load_comparison_index(path, {"tool/example-tool"})
+
+    def test_comparison_index_rejects_noncanonical_path(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "module-comparisons.json"
+            broken = json.loads(json.dumps(COMPARISON_INDEX))
+            broken["modules"][0]["comparisons"][0]["path"] = "other.md"
+            path.write_text(json.dumps(broken), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "must use path example-alternatives.md"):
+                load_comparison_index(path, {"tool/example-tool"})
 
     def test_search_filters(self) -> None:
         entries = [

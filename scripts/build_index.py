@@ -25,6 +25,81 @@ def module_url(module_ref: str) -> str:
     return f"{REPOSITORY_URL}/tree/{module_ref}/entry"
 
 
+def comparison_url(path: str) -> str:
+    return f"{REPOSITORY_URL}/blob/main/docs/comparisons/{path}"
+
+
+def load_comparison_index(path: Path, known_refs: set[str]) -> dict[str, list[dict]]:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"invalid comparison index {path}: {exc}") from exc
+
+    if not isinstance(data, dict) or data.get("schema_version") != 1:
+        raise ValueError(f"{path}: comparison index schema_version must be 1")
+
+    modules = data.get("modules")
+    if not isinstance(modules, list):
+        raise ValueError(f"{path}: comparison index modules must be a list")
+
+    result: dict[str, list[dict]] = {}
+    for index, module in enumerate(modules, start=1):
+        if not isinstance(module, dict):
+            raise ValueError(f"{path}: module record {index} must be a mapping")
+        ref = module.get("ref")
+        if not isinstance(ref, str) or ref not in known_refs:
+            raise ValueError(f"{path}: module record {index} references unknown module {ref!r}")
+        if ref in result:
+            raise ValueError(f"{path}: duplicate module record {ref}")
+
+        comparisons = module.get("comparisons")
+        if not isinstance(comparisons, list) or not comparisons:
+            raise ValueError(f"{path}: module {ref} must contain at least one comparison")
+
+        normalized: list[dict] = []
+        seen_ids: set[str] = set()
+        for comparison_index, comparison in enumerate(comparisons, start=1):
+            if not isinstance(comparison, dict):
+                raise ValueError(
+                    f"{path}: comparison {comparison_index} for {ref} must be a mapping"
+                )
+            comparison_id = comparison.get("id")
+            title = comparison.get("title")
+            summary = comparison.get("summary")
+            verified_at = comparison.get("verified_at")
+            comparison_path = comparison.get("path")
+            if not isinstance(comparison_id, str) or not comparison_id:
+                raise ValueError(f"{path}: comparison {comparison_index} for {ref} has invalid id")
+            if comparison_id in seen_ids:
+                raise ValueError(f"{path}: duplicate comparison {comparison_id} for {ref}")
+            if not isinstance(title, str) or not title:
+                raise ValueError(f"{path}: comparison {comparison_id} for {ref} has invalid title")
+            if not isinstance(summary, str) or not summary:
+                raise ValueError(f"{path}: comparison {comparison_id} for {ref} has invalid summary")
+            if not isinstance(verified_at, str) or not verified_at:
+                raise ValueError(f"{path}: comparison {comparison_id} for {ref} has invalid verified_at")
+            if not isinstance(comparison_path, str) or comparison_path != f"{comparison_id}.md":
+                raise ValueError(
+                    f"{path}: comparison {comparison_id} for {ref} must use path {comparison_id}.md"
+                )
+            seen_ids.add(comparison_id)
+            normalized.append(
+                {
+                    "id": comparison_id,
+                    "title": title,
+                    "summary": summary,
+                    "verified_at": verified_at,
+                    "path": comparison_path,
+                    "url": comparison_url(comparison_path),
+                }
+            )
+
+        normalized.sort(key=lambda item: (item["title"].casefold(), item["id"]))
+        result[ref] = normalized
+
+    return result
+
+
 def coverage_area_counts(entries: list[dict]) -> dict[str, int]:
     counts: Counter[str] = Counter()
     for entry in entries:
@@ -46,8 +121,11 @@ def coverage_topic_counts(entries: list[dict]) -> dict[str, int]:
     return dict(sorted(counts.items()))
 
 
-def search_text(entry: dict, maturity: str = "overview") -> str:
+def search_text(entry: dict, maturity: str = "overview", comparisons: list[dict] | None = None) -> str:
     coverage = entry.get("coverage") or {}
+    comparison_values: list[str] = []
+    for comparison in comparisons or []:
+        comparison_values.extend([comparison["id"], comparison["title"]])
     values: list[str] = [
         entry["module_ref"],
         entry["id"],
@@ -64,12 +142,18 @@ def search_text(entry: dict, maturity: str = "overview") -> str:
         *coverage.get("topics", []),
         *entry.get("use_cases", []),
         *entry.get("key_points", []),
+        *comparison_values,
     ]
     return normalize_text(" ".join(values))
 
 
-def public_record(entry: dict, maturity: str = "overview") -> dict:
+def public_record(
+    entry: dict,
+    maturity: str = "overview",
+    comparisons: list[dict] | None = None,
+) -> dict:
     coverage = entry.get("coverage") or {}
+    comparison_records = list(comparisons or [])
     return {
         "ref": entry["module_ref"],
         "url": module_url(entry["module_ref"]),
@@ -92,12 +176,18 @@ def public_record(entry: dict, maturity: str = "overview") -> dict:
         "sources": entry.get("sources", []),
         "verified_at": entry["verified_at"],
         "milestone": entry["milestone"],
+        "comparison_count": len(comparison_records),
+        "comparisons": comparison_records,
     }
 
 
-def search_record(entry: dict, maturity: str = "overview") -> dict:
-    record = public_record(entry, maturity)
-    record["search_text"] = search_text(entry, maturity)
+def search_record(
+    entry: dict,
+    maturity: str = "overview",
+    comparisons: list[dict] | None = None,
+) -> dict:
+    record = public_record(entry, maturity, comparisons)
+    record["search_text"] = search_text(entry, maturity, comparisons)
     return record
 
 
@@ -107,7 +197,9 @@ def render_markdown(
     domains: dict[str, int],
     coverage_areas: dict[str, int],
     maturity_manifest: dict | None = None,
+    comparison_map: dict[str, list[dict]] | None = None,
 ) -> str:
+    comparison_map = comparison_map or {}
     depth_counts = maturity_counts([entry["module_ref"] for entry in entries], maturity_manifest)
     lines = [
         "# OpenDevIndex — Browse the Index",
@@ -115,6 +207,10 @@ def render_markdown(
         "This file is generated from validated OpenDevIndex catalogs. Each module link opens its independently versioned knowledge entry.",
         "",
         f"**Indexed modules:** {len(entries)}",
+        "",
+        f"**Modules in curated comparisons:** {len(comparison_map)}",
+        "",
+        "See [`docs/comparisons/index.md`](docs/comparisons/index.md) for comparison-first browsing or [`docs/comparisons/by-module.md`](docs/comparisons/by-module.md) for the reverse index.",
         "",
         "## Content depth",
         "",
@@ -149,8 +245,8 @@ def render_markdown(
                     "",
                     f"## {current}",
                     "",
-                    "| Module | Depth | Domains | Summary |",
-                    "| --- | --- | --- | --- |",
+                    "| Module | Depth | Domains | Comparisons | Summary |",
+                    "| --- | --- | --- | --- | --- |",
                 ]
             )
         domains_text = ", ".join(f"`{domain}`" for domain in entry.get("domains", []))
@@ -158,8 +254,12 @@ def render_markdown(
         name = entry["name"].replace("|", "\\|")
         ref = entry["module_ref"]
         maturity = module_level(ref, maturity_manifest)
+        comparisons = comparison_map.get(ref, [])
+        comparisons_text = "<br>".join(
+            f"[{item['title']}](docs/comparisons/{item['path']})" for item in comparisons
+        ) or "—"
         lines.append(
-            f"| [{name}]({module_url(ref)}) (`{ref}`) | `{maturity}` | {domains_text} | {summary} |"
+            f"| [{name}]({module_url(ref)}) (`{ref}`) | `{maturity}` | {domains_text} | {comparisons_text} | {summary} |"
         )
 
     lines.extend(
@@ -167,7 +267,7 @@ def render_markdown(
             "",
             "---",
             "",
-            "OpenDevIndex separates stable module addresses from taxonomy facets. Legacy addresses remain valid while `kind`, `domains`, schema-v3 coverage metadata, and independently reviewed maturity metadata provide consistent discovery and filtering.",
+            "OpenDevIndex separates stable module addresses from taxonomy facets. Legacy addresses remain valid while `kind`, `domains`, schema-v3 coverage metadata, independently reviewed maturity metadata, and curated comparison backlinks provide consistent discovery and filtering.",
             "",
         ]
     )
@@ -186,6 +286,7 @@ def build(
     output_dir: Path,
     public_index: Path | None = None,
     maturity_manifest_path: Path | None = None,
+    comparison_index_path: Path | None = None,
 ) -> dict:
     paths = discover_catalogs(catalog_dir)
     entries, catalogs = collect_entries(paths)
@@ -194,18 +295,23 @@ def build(
     domains = domain_counts(entries)
     coverage_areas = coverage_area_counts(entries)
     coverage_topics = coverage_topic_counts(entries)
+    known_refs = {entry["module_ref"] for entry in entries}
 
     maturity_manifest = None
     if maturity_manifest_path is not None:
-        known_refs = {entry["module_ref"] for entry in entries}
         maturity_manifest = load_maturity_manifest(maturity_manifest_path, known_refs)
     depth_counts = maturity_counts([entry["module_ref"] for entry in entries], maturity_manifest)
+
+    comparison_map: dict[str, list[dict]] = {}
+    if comparison_index_path is not None:
+        comparison_map = load_comparison_index(comparison_index_path, known_refs)
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
     catalog_payload = {
         "schema_version": 3,
         "module_count": len(entries),
+        "comparison_linked_module_count": len(comparison_map),
         "address_category_counts": categories,
         "kind_counts": kinds,
         "domain_counts": domains,
@@ -214,25 +320,41 @@ def build(
         "coverage_topic_counts": coverage_topics,
         "catalogs": catalogs,
         "entries": [
-            public_record(entry, module_level(entry["module_ref"], maturity_manifest))
+            public_record(
+                entry,
+                module_level(entry["module_ref"], maturity_manifest),
+                comparison_map.get(entry["module_ref"], []),
+            )
             for entry in entries
         ],
     }
     search_payload = {
         "schema_version": 3,
         "module_count": len(entries),
+        "comparison_linked_module_count": len(comparison_map),
         "kind_counts": kinds,
         "domain_counts": domains,
         "maturity_counts": depth_counts,
         "coverage_area_counts": coverage_areas,
         "coverage_topic_counts": coverage_topics,
         "entries": [
-            search_record(entry, module_level(entry["module_ref"], maturity_manifest))
+            search_record(
+                entry,
+                module_level(entry["module_ref"], maturity_manifest),
+                comparison_map.get(entry["module_ref"], []),
+            )
             for entry in entries
         ],
     }
 
-    markdown = render_markdown(entries, kinds, domains, coverage_areas, maturity_manifest)
+    markdown = render_markdown(
+        entries,
+        kinds,
+        domains,
+        coverage_areas,
+        maturity_manifest,
+        comparison_map,
+    )
     write_json(output_dir / "catalog.json", catalog_payload)
     write_json(output_dir / "search.json", search_payload)
     (output_dir / "catalog.md").write_text(markdown, encoding="utf-8")
@@ -241,6 +363,7 @@ def build(
 
     return {
         "module_count": len(entries),
+        "comparison_linked_module_count": len(comparison_map),
         "address_category_counts": categories,
         "kind_counts": kinds,
         "domain_counts": domains,
@@ -262,6 +385,10 @@ def main() -> int:
         default="quality/module-maturity.yaml",
         help="Validated Overview / Guide / Deep-dive quality manifest",
     )
+    parser.add_argument(
+        "--comparison-index",
+        help="Optional generated module-comparisons.json to join curated comparison backlinks",
+    )
     args = parser.parse_args()
 
     result = build(
@@ -269,10 +396,12 @@ def main() -> int:
         Path(args.output_dir),
         Path(args.public_index) if args.public_index else None,
         Path(args.maturity_manifest) if args.maturity_manifest else None,
+        Path(args.comparison_index) if args.comparison_index else None,
     )
     print(
         "OpenDevIndex search index built: "
-        f"{result['module_count']} modules -> {result['output_dir']}"
+        f"{result['module_count']} modules, "
+        f"{result['comparison_linked_module_count']} comparison-linked -> {result['output_dir']}"
     )
     for kind, count in result["kind_counts"].items():
         print(f"- {kind}: {count}")
