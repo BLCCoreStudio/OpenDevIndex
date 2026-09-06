@@ -11,7 +11,7 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from build_comparisons import build, load_comparison  # noqa: E402
+from build_comparisons import build, build_module_comparison_index, load_comparison  # noqa: E402
 
 
 CATALOG = """schema_version: 3
@@ -120,7 +120,7 @@ notes:
 
 
 class ComparisonTests(unittest.TestCase):
-    def test_build_generates_json_and_markdown(self) -> None:
+    def test_build_generates_json_markdown_and_reverse_index(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             catalog_dir = root / "catalog"
@@ -137,6 +137,7 @@ class ComparisonTests(unittest.TestCase):
             result = build(comparisons_dir, catalog_dir, output_dir, maturity, public_dir)
             self.assertEqual(result["comparison_count"], 1)
             self.assertEqual(result["comparison_ids"], ["alpha-vs-beta"])
+            self.assertEqual(result["module_count"], 2)
 
             payload = json.loads((output_dir / "comparisons.json").read_text(encoding="utf-8"))
             self.assertEqual(payload["schema_version"], 1)
@@ -145,6 +146,13 @@ class ComparisonTests(unittest.TestCase):
             self.assertEqual(record["modules"][0]["ref"], "tool/alpha")
             self.assertEqual(record["modules"][0]["maturity"], "deep-dive")
             self.assertEqual(record["modules"][1]["maturity"], "guide")
+
+            reverse = json.loads((output_dir / "module-comparisons.json").read_text(encoding="utf-8"))
+            self.assertEqual(reverse["schema_version"], 1)
+            self.assertEqual(reverse["module_count"], 2)
+            self.assertEqual(reverse["modules"][0]["ref"], "tool/alpha")
+            self.assertEqual(reverse["modules"][0]["comparisons"][0]["id"], "alpha-vs-beta")
+            self.assertEqual(reverse["modules"][1]["ref"], "tool/beta")
 
             rendered = (output_dir / "alpha-vs-beta.md").read_text(encoding="utf-8")
             self.assertIn("# Alpha vs Beta", rendered)
@@ -155,7 +163,66 @@ class ComparisonTests(unittest.TestCase):
                 rendered,
                 (public_dir / "alpha-vs-beta.md").read_text(encoding="utf-8"),
             )
-            self.assertTrue((public_dir / "index.md").is_file())
+
+            comparison_index = (output_dir / "index.md").read_text(encoding="utf-8")
+            self.assertIn("[Browse comparisons by module](by-module.md)", comparison_index)
+
+            by_module = (output_dir / "by-module.md").read_text(encoding="utf-8")
+            self.assertIn("# Comparisons by module", by_module)
+            self.assertIn("## [Alpha]", by_module)
+            self.assertIn("[Alpha vs Beta](alpha-vs-beta.md)", by_module)
+            self.assertEqual(
+                by_module,
+                (public_dir / "by-module.md").read_text(encoding="utf-8"),
+            )
+
+    def test_reverse_index_sorts_modules_and_comparisons(self) -> None:
+        records = [
+            {
+                "id": "zeta-view",
+                "title": "Zeta view",
+                "summary": "A sufficiently detailed synthetic comparison summary for deterministic ordering checks.",
+                "verified_at": "2026-08-31",
+                "modules": [
+                    {
+                        "ref": "tool/beta",
+                        "name": "Beta",
+                        "url": "https://example.com/beta",
+                        "maturity": "guide",
+                        "summary": "Beta summary",
+                    }
+                ],
+            },
+            {
+                "id": "alpha-view",
+                "title": "Alpha view",
+                "summary": "Another sufficiently detailed synthetic comparison summary for ordering checks.",
+                "verified_at": "2026-08-31",
+                "modules": [
+                    {
+                        "ref": "tool/alpha",
+                        "name": "Alpha",
+                        "url": "https://example.com/alpha",
+                        "maturity": "deep-dive",
+                        "summary": "Alpha summary",
+                    },
+                    {
+                        "ref": "tool/beta",
+                        "name": "Beta",
+                        "url": "https://example.com/beta",
+                        "maturity": "guide",
+                        "summary": "Beta summary",
+                    },
+                ],
+            },
+        ]
+
+        reverse = build_module_comparison_index(records)
+        self.assertEqual([module["ref"] for module in reverse], ["tool/alpha", "tool/beta"])
+        self.assertEqual(
+            [item["id"] for item in reverse[1]["comparisons"]],
+            ["alpha-view", "zeta-view"],
+        )
 
     def test_dimension_must_cover_every_module(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
