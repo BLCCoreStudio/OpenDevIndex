@@ -13,6 +13,8 @@ if str(SCRIPTS) not in sys.path:
 
 from build_comparison_coverage import (  # noqa: E402
     END_MARKER,
+    INDEX_END_MARKER,
+    INDEX_START_MARKER,
     START_MARKER,
     annotate_markdown,
     build,
@@ -65,6 +67,15 @@ INDEX_MARKDOWN = """# OpenDevIndex — Browse the Index
 See [`docs/comparisons/index.md`](docs/comparisons/index.md) for comparison-first browsing or [`docs/comparisons/by-module.md`](docs/comparisons/by-module.md) for the reverse index.
 """
 
+COMPARISON_INDEX_MARKDOWN = """# OpenDevIndex Comparisons
+
+Curated comparison views connect related technologies.
+
+[Browse comparisons by module](by-module.md)
+
+## Alpha vs Beta
+"""
+
 
 class ComparisonCoverageTests(unittest.TestCase):
     def test_calculate_counts_only_deep_dives(self) -> None:
@@ -86,11 +97,13 @@ class ComparisonCoverageTests(unittest.TestCase):
             catalog_markdown = root / "catalog.md"
             public_index = root / "INDEX.md"
             public_markdown = root / "public-coverage.md"
+            comparison_index = root / "comparison-index.md"
 
             module_search.write_text(json.dumps(MODULE_SEARCH), encoding="utf-8")
             catalog_json.write_text(json.dumps(MODULE_SEARCH), encoding="utf-8")
             catalog_markdown.write_text(INDEX_MARKDOWN, encoding="utf-8")
             public_index.write_text(INDEX_MARKDOWN, encoding="utf-8")
+            comparison_index.write_text(COMPARISON_INDEX_MARKDOWN, encoding="utf-8")
 
             report = build(
                 module_search,
@@ -101,6 +114,7 @@ class ComparisonCoverageTests(unittest.TestCase):
                 catalog_markdown=catalog_markdown,
                 public_index=public_index,
                 public_markdown=public_markdown,
+                comparison_index_markdown=comparison_index,
             )
 
             self.assertEqual(report["deep_dive_coverage_percent"], 50.0)
@@ -122,6 +136,12 @@ class ComparisonCoverageTests(unittest.TestCase):
                 self.assertEqual(text.count(END_MARKER), 1)
                 self.assertIn("**Deep-dive comparison coverage:** 1 / 2 (50.00%)", text)
                 self.assertIn("`tool/beta`", text)
+
+            comparison_text = comparison_index.read_text(encoding="utf-8")
+            self.assertEqual(comparison_text.count(INDEX_START_MARKER), 1)
+            self.assertEqual(comparison_text.count(INDEX_END_MARKER), 1)
+            self.assertIn("[View deep-dive comparison coverage](coverage.md)", comparison_text)
+            self.assertIn("1 / 2 deep dives linked (50.00%)", comparison_text)
 
     def test_markdown_annotation_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
