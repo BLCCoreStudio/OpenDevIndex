@@ -47,6 +47,8 @@ notes:
   - Recheck version-sensitive capabilities against the linked modules before production decisions.
 ```
 
+Metadata that supports comparison discovery but is not itself a comparison manifest lives under `comparisons/_meta/` so the top-level `comparisons/*.yaml` namespace remains unambiguous.
+
 ## Manifest validation invariants
 
 `scripts/build_comparisons.py` validates comparison manifests before rendering them.
@@ -109,7 +111,7 @@ These are graph invariants, so they apply automatically to every new comparison.
 
 ## Semantic search registry
 
-Structural consistency cannot prove that a human engineering phrase finds the intended comparison. Those expectations live in `comparisons/search-smoke.yaml`.
+Structural consistency cannot prove that a human engineering phrase finds the intended comparison. Those expectations live in `comparisons/_meta/search-smoke.yaml`.
 
 Example:
 
@@ -166,7 +168,7 @@ python scripts/validate_comparison_discovery.py \
   --reverse-index dist/comparisons/module-comparisons.json \
   --comparison-search dist/comparisons/search.json \
   --module-search dist/index/search.json \
-  --semantic-cases comparisons/search-smoke.yaml \
+  --semantic-cases comparisons/_meta/search-smoke.yaml \
   --output dist/comparisons/discovery-validation.json
 ```
 
@@ -221,7 +223,7 @@ When adding or changing a comparison:
 2. choose decision-relevant dimensions rather than feature-count trivia;
 3. update a module first if its current content cannot support the comparison claim;
 4. add or update the YAML manifest under `comparisons/`;
-5. add at least one meaningful rank-1 query to `comparisons/search-smoke.yaml`;
+5. add at least one meaningful rank-1 query to `comparisons/_meta/search-smoke.yaml`;
 6. run unit tests, comparison builds, and `validate_comparison_discovery.py`;
 7. review the generated comparison page and `by-module.md` for useful bidirectional navigation;
 8. update `verified_at` when the comparison has actually been re-reviewed.
