@@ -5,13 +5,13 @@ category: tool
 kind: tool
 domains:
 - developer-tools
-- version-control
+- software-development
 summary: Centralized version control system with server-authoritative repository history, globally ordered revisions, versioned properties, path-based authorization, and sparse working-copy support.
 homepage: https://subversion.apache.org/
 repository: https://github.com/apache/subversion
 deployment_types:
 - cli
-- server
+- self-hosted
 status: active
 verified_at: '2026-09-06'
 tags:
