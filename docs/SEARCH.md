@@ -1,8 +1,8 @@
-# Search index
+# Search and discovery artifacts
 
-OpenDevIndex can generate deterministic discovery artifacts from all validated catalog manifests under `catalog/`.
+OpenDevIndex generates deterministic discovery artifacts from validated catalog, maturity, coverage, and curated comparison data.
 
-## Build
+## Build the module index
 
 ```bash
 python -m pip install -r requirements-ci.txt
@@ -17,6 +17,8 @@ Generated files:
 
 Schema v3 records also expose `coverage_area` and `coverage_topics`, and the generated payload includes aggregate area/topic counts. Legacy schema v1/v2 modules remain searchable but are reported as coverage-unmapped until they receive explicit schema v3 mappings.
 
+The index builder also joins `quality/module-maturity.yaml`, so generated records expose reviewed `overview`, `guide`, or `deep-dive` maturity independently from catalog schema versions.
+
 The generator intentionally avoids timestamps in generated artifacts so the same validated inputs produce stable output.
 
 ## Search locally
@@ -29,7 +31,38 @@ python scripts/search_index.py "model" --coverage-area ai-ml --coverage-topic mo
 python scripts/search_index.py "security scanning" --json --index dist/index/search.json
 ```
 
-Search considers module names, identifiers, categories, kinds, domains, coverage areas/topics, tags, summaries, use cases, and key points. Results use deterministic scoring and ordering.
+Search considers module names, identifiers, categories, kinds, maturity, domains, coverage areas/topics, tags, summaries, deployment types, licensing metadata, use cases, and key points. Results use deterministic scoring and ordering.
+
+## Build curated comparisons
+
+Comparison manifests under `comparisons/` can be validated and rendered with:
+
+```bash
+python scripts/build_comparisons.py \
+  --comparisons-dir comparisons \
+  --catalog-dir catalog \
+  --output-dir dist/comparisons
+```
+
+Generated files include:
+
+- `dist/comparisons/comparisons.json` — machine-readable curated comparison payload;
+- `dist/comparisons/index.md` — comparison directory;
+- `dist/comparisons/<comparison-id>.md` — one human-readable view per comparison.
+
+The comparison builder validates every referenced module against the catalog and joins module maturity metadata. Every declared dimension must contain a value for every module in the comparison, preventing asymmetric generated tables.
+
+The public publisher can additionally render the Markdown set under `docs/comparisons/`:
+
+```bash
+python scripts/build_comparisons.py \
+  --comparisons-dir comparisons \
+  --catalog-dir catalog \
+  --output-dir dist/comparisons \
+  --public-dir docs/comparisons
+```
+
+Comparison artifacts are intentionally curated rather than inferred from tags or generated from arbitrary module prose. See [`COMPARISONS.md`](COMPARISONS.md) for the editorial and validation model.
 
 ## Coverage progress
 
@@ -50,11 +83,14 @@ The report compares real mapped modules with the 10,000-module Technology Univer
 The **Build Search Index** workflow:
 
 1. validates catalog data through the shared loader;
-2. runs unit tests;
-3. builds the search artifacts;
-4. builds coverage-progress artifacts;
-5. audits editorial quality;
-6. smoke-tests representative queries;
-7. uploads the generated discovery, quality, and coverage output as workflow artifacts.
+2. runs unit tests, including curated-comparison validation tests;
+3. builds module catalog and search artifacts;
+4. builds curated comparison artifacts;
+5. builds coverage-progress artifacts;
+6. audits editorial quality;
+7. smoke-tests representative searches;
+8. uploads discovery, comparison, quality, and coverage output as workflow artifacts.
 
-This makes the generated catalog suitable for future web search, APIs, editor integrations, coverage dashboards, and other downstream clients without requiring those consumers to parse YAML directly.
+The **Publish Public Index** workflow rebuilds `INDEX.md` and the generated `docs/comparisons/` Markdown views when their validated inputs change.
+
+This makes the structured discovery layer suitable for GitHub browsing, future web search, APIs, editor integrations, learning tools, comparison interfaces, coverage dashboards, and other downstream clients without requiring those consumers to parse the source YAML directly.
