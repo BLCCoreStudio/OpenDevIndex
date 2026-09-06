@@ -1,0 +1,135 @@
+schema_version: 1
+id: terraform-ansible
+title: Terraform vs Ansible
+summary: A lifecycle- and execution-model-first comparison of Terraform and Ansible, focused on persistent resource identity and planning versus inventory-targeted task execution, configuration management, and procedural orchestration.
+verified_at: '2026-09-06'
+modules:
+- cloud/terraform
+- cloud/ansible
+dimensions:
+- id: primary-role
+  label: Primary role
+  values:
+    cloud/terraform: Stateful infrastructure lifecycle engine that models managed resources and dependencies, binds configuration addresses to remote objects through state, computes plans, and applies provider-driven lifecycle changes.
+    cloud/ansible: Agentless automation engine that resolves inventory, variables, plays, roles, plugins, and collections into ordered tasks for configuration management, deployment, orchestration, and repeatable operations.
+- id: execution-model
+  label: Execution model
+  values:
+    cloud/terraform: Evaluates a declarative configuration into a dependency graph and executes resource operations when their dependencies permit. Source-file order is normally not the execution order.
+    cloud/ansible: Expands plays and roles into ordered tasks, then schedules those tasks across selected hosts according to strategy, forks, batches, delegation, and failure policy. Task order inside a play is semantically important.
+- id: resource-identity
+  label: Persistent resource identity
+  values:
+    cloud/terraform: Resource addresses and state form a durable identity mapping between configuration instances and provider-specific remote objects. Refactors can change lifecycle behavior unless moves or imports preserve that mapping.
+    cloud/ansible: Inventory host identities and task targets identify where automation runs, but Ansible does not maintain a Terraform-style persistent state database mapping every managed object to a durable configuration address.
+- id: state-model
+  label: State model
+  values:
+    cloud/terraform: Persistent state is a core correctness and planning input. It stores resource bindings and metadata, must be protected, and normally requires an authoritative backend and locking discipline for team use.
+    cloud/ansible: Runtime facts, inventory, variables, registered results, and optional caches influence execution, but ordinary playbook operation does not depend on a single persistent Terraform-style state lineage for all managed resources.
+- id: convergence-model
+  label: Convergence model
+  values:
+    cloud/terraform: Compares desired resource configuration, prior state, and refreshed remote reality to propose lifecycle operations intended to converge managed objects toward the declared configuration.
+    cloud/ansible: Convergence is usually expressed task by task through module semantics such as package state, file content, service state, or API operations. Idempotency depends on the chosen module, inputs, and external system behavior.
+- id: plan-review
+  label: Change planning and review
+  values:
+    cloud/terraform: Plan is a first-class artifact that can show create, update, destroy, replacement, import, and move effects before apply. Saved plans can bind review more closely to the exact later execution.
+    cloud/ansible: Check mode and diff support can preview many tasks, but coverage depends on individual modules and task behavior. There is no universal graph-wide plan artifact with Terraform's persistent resource-identity semantics.
+- id: dependency-order
+  label: Dependency and ordering model
+  values:
+    cloud/terraform: Dependencies are primarily inferred from expression references and represented as graph edges, with explicit depends_on available for hidden behavioral dependencies. Independent graph nodes may run in parallel.
+    cloud/ansible: Playbook task sequence provides explicit procedural ordering, while host concurrency is controlled separately through strategies, forks, serial batches, delegation, and task-level controls.
+- id: inventory-targeting
+  label: Inventory and target selection
+  values:
+    cloud/terraform: Configuration and provider data identify resource instances and APIs. It does not use an Ansible-style inventory as the central host grouping, connection, variable, and execution-target abstraction.
+    cloud/ansible: Inventory is a core execution boundary containing logical hosts, groups, connection information, and variables. Host patterns and limits determine which managed nodes receive a play or task.
+- id: plugin-ecosystem
+  label: Extensibility boundary
+  values:
+    cloud/terraform: Provider plugins define resource/data-source schemas and translate lifecycle operations into vendor APIs. Modules package reusable Terraform configuration, while provider versions and checksums are supply-chain concerns.
+    cloud/ansible: Collections package modules, plugins, roles, and related content. Action, connection, lookup, strategy, callback, and other plugins can execute code on the control node or shape remote execution.
+- id: procedural-control
+  label: Procedural and conditional automation
+  values:
+    cloud/terraform: Supports expressions, conditionals, iteration, lifecycle metadata, and dependency relationships, but is intentionally centered on managed resource lifecycle rather than arbitrary ordered operational runbooks.
+    cloud/ansible: Ordered tasks, conditionals, loops, handlers, blocks, delegation, retries, includes, roles, and failure controls make procedural orchestration and multi-step operational workflows a central capability.
+- id: drift
+  label: Drift and ownership
+  values:
+    cloud/terraform: Normal planning refreshes remote objects and can expose differences between desired configuration, state, and observed reality. Persistent recurring diffs often reveal overlapping ownership with another controller or automation system.
+    cloud/ansible: A later idempotent playbook run can detect and correct configuration differences through module checks, but Ansible does not continuously maintain one state graph or report Terraform-style resource drift between runs.
+- id: idempotency
+  label: Idempotency semantics
+  values:
+    cloud/terraform: Resource providers expose desired-state schemas and CRUD behavior used by the plan/apply lifecycle. Correct convergence still depends on provider normalization, API behavior, ownership, and stable identity.
+    cloud/ansible: Idempotency is not guaranteed by YAML. Purpose-built modules may converge toward declared state, while shell commands, scripts, custom modules, changed_when rules, and external side effects can be non-idempotent.
+- id: secrets
+  label: Sensitive-data boundary
+  values:
+    cloud/terraform: State and saved plans can physically contain sensitive values even when output is redacted. Backend access, plan artifacts, credentials, provider configuration, and state recovery therefore require strong protection.
+    cloud/ansible: The control node commonly holds SSH, privilege-escalation, API, inventory, and secret-manager access. Vault can protect encrypted values at rest, but decrypted secrets and privileged runtime context still require control-node security.
+- id: rollback-recovery
+  label: Rollback and recovery
+  values:
+    cloud/terraform: There is no universal transactional rollback of remote infrastructure. Recovery usually means inspect actual remote state, restore or repair Terraform state when necessary, change desired configuration, and apply a reviewed corrective plan.
+    cloud/ansible: Playbook task sequences are not automatically transactional. Recovery depends on module/task semantics, handlers, blocks, rescue logic, backups, service behavior, and explicit compensating operations where needed.
+- id: concurrency
+  label: Concurrency model
+  values:
+    cloud/terraform: Independent dependency-graph nodes can execute concurrently, while one state lineage should have controlled writer access. Provider API quotas and provider retry behavior constrain safe parallelism.
+    cloud/ansible: Executes across hosts using forks, strategies, serial batches, throttling, and delegation. Concurrency controls determine rollout blast radius and ordering but do not create a shared resource-state lock like Terraform backends.
+- id: failure-boundary
+  label: Typical failure boundary
+  values:
+    cloud/terraform: Provider/API errors, stale plans, state persistence failures, lock problems, dependency mistakes, partial remote changes, or identity/refactor mistakes can make the next plan operationally sensitive.
+    cloud/ansible: Connection failures, bad inventory or variables, privilege issues, collection/plugin defects, task failures, handler suppression, partial host batches, or non-idempotent commands can produce divergent host outcomes.
+- id: best-fit
+  label: Strong fit
+  values:
+    cloud/terraform: Durable lifecycle ownership of cloud, SaaS, and infrastructure API resources where persistent identity, dependency-aware planning, import/refactoring semantics, and reviewed create/update/destroy proposals matter.
+    cloud/ansible: Host and service configuration, agentless fleet operations, ordered deployment steps, procedural orchestration, repeatable runbooks, and automation that benefits from inventory, roles, handlers, and rich task control.
+- id: composition
+  label: Common composition
+  values:
+    cloud/terraform: Can provision networks, instances, managed services, identities, and other infrastructure, then expose selected outputs or inventory data to a downstream configuration-management stage.
+    cloud/ansible: Can consume provisioned hosts or dynamic inventory and configure operating systems, packages, files, services, applications, and operational workflows after infrastructure resources exist.
+- id: not-a-substitute
+  label: Do not assume
+  values:
+    cloud/terraform: Do not assume Terraform is the best replacement for every configuration-management or procedural runbook task merely because providers can call many APIs. Its strongest model is durable resource lifecycle and stateful planning.
+    cloud/ansible: Do not assume Ansible is a drop-in replacement for Terraform state, resource addresses, graph-wide plans, import/move semantics, or locked shared lifecycle ownership merely because modules can create infrastructure resources.
+decision_rules:
+- condition: The system needs durable ownership of cloud or SaaS resource identity with reviewed create, update, replacement, and destroy plans before lifecycle changes.
+  consider:
+  - cloud/terraform
+  reason: Terraform's state, resource addresses, dependency graph, providers, and plan/apply lifecycle directly model persistent infrastructure resource ownership.
+- condition: The main job is configuring operating systems and services across discovered hosts or executing ordered multi-step operational workflows.
+  consider:
+  - cloud/ansible
+  reason: Inventory targeting, playbook task order, modules, roles, handlers, delegation, and execution strategies directly model configuration management and procedural orchestration.
+- condition: Reviewers require a persistent resource graph and an explicit proposed lifecycle diff tied to current state before infrastructure mutation.
+  consider:
+  - cloud/terraform
+  reason: Terraform plan is a first-class lifecycle artifact built from configuration, state, provider schemas, dependencies, and refreshed remote reality.
+- condition: Automation requires handlers, conditionals, loops, host batches, delegation, retries, or task-level failure and recovery behavior across a fleet.
+  consider:
+  - cloud/ansible
+  reason: Those procedural execution controls are native parts of Ansible's playbook engine rather than incidental extensions around a resource graph.
+- condition: A platform team wants Terraform to provision infrastructure while Ansible configures the resulting hosts and services.
+  consider:
+  - cloud/terraform
+  - cloud/ansible
+  reason: The tools can compose cleanly when lifecycle ownership is separated, Terraform outputs or an authoritative inventory bridge the stages, and both systems avoid mutating the same fields without an explicit contract.
+- condition: A migration proposes replacing one tool with the other solely because both are called infrastructure automation or infrastructure as code.
+  consider:
+  - cloud/terraform
+  - cloud/ansible
+  reason: Compare state and identity ownership, plan semantics, inventory targeting, procedural control, idempotency guarantees, failure recovery, and drift expectations before treating their overlapping API capabilities as equivalent.
+notes:
+- Terraform and Ansible overlap in some cloud and infrastructure APIs, but their execution and ownership models remain materially different; overlap alone does not make them interchangeable.
+- Combining the tools is safest when one system owns a resource or mutable field at a time and the handoff between provisioning and configuration is explicit and reproducible.
+- Exact provider, collection, module, check-mode, backend, Vault, and execution behavior is version-sensitive; verify the linked deep dives before changing production automation architecture.
