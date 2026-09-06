@@ -4,6 +4,8 @@ OpenDevIndex generates deterministic discovery artifacts from validated catalog,
 
 ## Build the module index
 
+For a standalone catalog build:
+
 ```bash
 python -m pip install -r requirements-ci.txt
 python scripts/build_index.py --catalog-dir catalog --output-dir dist/index
@@ -15,7 +17,7 @@ Generated files:
 - `dist/index/search.json` — compact search-oriented records;
 - `dist/index/catalog.md` — human-readable catalog view.
 
-Schema v3 records also expose `coverage_area` and `coverage_topics`, and the generated payload includes aggregate area/topic counts. Legacy schema v1/v2 modules remain searchable but are reported as coverage-unmapped until they receive explicit schema v3 mappings.
+Schema v3 records expose `coverage_area` and `coverage_topics`, and the generated payload includes aggregate area/topic counts. Legacy schema v1/v2 modules remain searchable but are reported as coverage-unmapped until they receive explicit schema v3 mappings.
 
 The index builder also joins `quality/module-maturity.yaml`, so generated records expose reviewed `overview`, `guide`, or `deep-dive` maturity independently from catalog schema versions.
 
@@ -28,10 +30,10 @@ python scripts/search_index.py "local ai" --index dist/index/search.json
 python scripts/search_index.py "container" --category tool --index dist/index/search.json
 python scripts/search_index.py "security" --coverage-area cybersecurity-privacy --index dist/index/search.json
 python scripts/search_index.py "model" --coverage-area ai-ml --coverage-topic model-architectures --index dist/index/search.json
-python scripts/search_index.py "security scanning" --json --index dist/index/search.json
+python scripts/search_index.py "Terraform vs OpenTofu" --index dist/index/search.json
 ```
 
-Search considers module names, identifiers, categories, kinds, maturity, domains, coverage areas/topics, tags, summaries, deployment types, licensing metadata, use cases, and key points. Results use deterministic scoring and ordering.
+Search considers module names, identifiers, categories, kinds, maturity, domains, coverage areas/topics, tags, summaries, deployment types, licensing metadata, use cases, key points, and—when the comparison reverse index is joined—curated comparison ids and titles. Results use deterministic scoring and ordering.
 
 ## Build curated comparisons
 
@@ -56,7 +58,36 @@ The comparison builder validates every referenced module against the catalog and
 
 The reverse index is derived from the same validated records, so contributors do not maintain a second manual module-to-comparison mapping. Modules and their containing comparison lists are emitted in deterministic order.
 
-The public publisher can additionally render the Markdown set under `docs/comparisons/`:
+## Join comparisons into module discovery
+
+To produce the full discovery surface, build comparisons first and pass the generated reverse index into `build_index.py`:
+
+```bash
+python scripts/build_comparisons.py \
+  --comparisons-dir comparisons \
+  --catalog-dir catalog \
+  --output-dir dist/comparisons
+
+python scripts/build_index.py \
+  --catalog-dir catalog \
+  --output-dir dist/index \
+  --comparison-index dist/comparisons/module-comparisons.json
+```
+
+When the reverse index is supplied, every generated module record gains:
+
+- `comparison_count`;
+- `comparisons[]` with comparison id, title, summary, verification date, generated path, and public URL.
+
+Comparison ids and titles are also included in `search_text`, so searching for a comparison can surface its participating modules. The generated Markdown index adds a `Comparisons` column with direct links to the curated views.
+
+The top-level catalog and search payloads expose `comparison_linked_module_count`, making comparison coverage observable without parsing every entry.
+
+The comparison index is validated again at the join boundary: unknown module refs, duplicate module records, duplicate comparison ids, and noncanonical comparison paths are rejected instead of silently entering the search artifacts.
+
+## Public discovery build
+
+The public publisher renders comparison views first, then the comparison-aware module index:
 
 ```bash
 python scripts/build_comparisons.py \
@@ -64,7 +95,15 @@ python scripts/build_comparisons.py \
   --catalog-dir catalog \
   --output-dir dist/comparisons \
   --public-dir docs/comparisons
+
+python scripts/build_index.py \
+  --catalog-dir catalog \
+  --output-dir dist/index \
+  --public-index INDEX.md \
+  --comparison-index dist/comparisons/module-comparisons.json
 ```
+
+This ordering ensures `INDEX.md`, `catalog.json`, `search.json`, and `docs/comparisons/` are derived from the same comparison state.
 
 Comparison artifacts are intentionally curated rather than inferred from tags or generated from arbitrary module prose. See [`COMPARISONS.md`](COMPARISONS.md) for the editorial, validation, and bidirectional-discovery model.
 
@@ -87,14 +126,14 @@ The report compares real mapped modules with the 10,000-module Technology Univer
 The **Build Search Index** workflow:
 
 1. validates catalog data through the shared loader;
-2. runs unit tests, including curated-comparison and reverse-index tests;
-3. builds module catalog and search artifacts;
-4. builds comparison-first and module-first curated comparison artifacts;
+2. runs unit tests, including curated-comparison, reverse-index, and comparison-join tests;
+3. builds comparison-first and module-first comparison artifacts;
+4. builds module catalog/search artifacts with comparison backlinks joined in;
 5. builds coverage-progress artifacts;
 6. audits editorial quality;
-7. smoke-tests representative searches;
+7. smoke-tests representative searches, including comparison-title discovery;
 8. uploads discovery, comparison, quality, and coverage output as workflow artifacts.
 
-The **Publish Public Index** workflow rebuilds `INDEX.md` and the generated `docs/comparisons/` Markdown views—including the module-first reverse index—when their validated inputs change.
+The **Publish Public Index** workflow uses the same build order and rebuilds `INDEX.md` plus generated `docs/comparisons/` views when their validated inputs change.
 
 This makes the structured discovery layer suitable for GitHub browsing, future web search, APIs, editor integrations, learning tools, comparison interfaces, coverage dashboards, and other downstream clients without requiring those consumers to parse the source YAML directly or reconstruct comparison joins themselves.
