@@ -10,6 +10,8 @@ from pathlib import Path
 
 START_MARKER = "<!-- comparison-coverage:start -->"
 END_MARKER = "<!-- comparison-coverage:end -->"
+INDEX_START_MARKER = "<!-- comparison-coverage-link:start -->"
+INDEX_END_MARKER = "<!-- comparison-coverage-link:end -->"
 
 
 def _load_index(path: Path) -> dict:
@@ -129,6 +131,29 @@ def annotate_markdown(path: Path, report: dict) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def annotate_comparison_index(path: Path, report: dict) -> None:
+    text = path.read_text(encoding="utf-8")
+    block = "\n".join(
+        [
+            INDEX_START_MARKER,
+            f"[View deep-dive comparison coverage](coverage.md) — {report['deep_dive_linked']} / {report['deep_dive_total']} deep dives linked ({report['deep_dive_coverage_percent']:.2f}%).",
+            INDEX_END_MARKER,
+        ]
+    )
+    if INDEX_START_MARKER in text or INDEX_END_MARKER in text:
+        if text.count(INDEX_START_MARKER) != 1 or text.count(INDEX_END_MARKER) != 1:
+            raise ValueError(f"{path}: invalid comparison coverage link marker state")
+        start = text.index(INDEX_START_MARKER)
+        end = text.index(INDEX_END_MARKER) + len(INDEX_END_MARKER)
+        text = text[:start] + block + text[end:]
+    else:
+        anchor = "\n[Browse comparisons by module](by-module.md)"
+        if anchor not in text:
+            raise ValueError(f"{path}: comparison by-module anchor not found")
+        text = text.replace(anchor, "\n" + block + "\n" + anchor, 1)
+    path.write_text(text, encoding="utf-8")
+
+
 def annotate_json(path: Path, report: dict) -> None:
     data = _load_index(path)
     data["comparison_coverage"] = report
@@ -148,6 +173,7 @@ def build(
     catalog_markdown: Path | None = None,
     public_index: Path | None = None,
     public_markdown: Path | None = None,
+    comparison_index_markdown: Path | None = None,
 ) -> dict:
     module_search = _load_index(module_search_path)
     report = calculate(module_search["entries"])
@@ -170,6 +196,8 @@ def build(
     if public_markdown is not None:
         public_markdown.parent.mkdir(parents=True, exist_ok=True)
         public_markdown.write_text(markdown, encoding="utf-8")
+    if comparison_index_markdown is not None:
+        annotate_comparison_index(comparison_index_markdown, report)
 
     return report
 
@@ -184,6 +212,7 @@ def main() -> int:
     parser.add_argument("--catalog-markdown")
     parser.add_argument("--public-index")
     parser.add_argument("--public-markdown")
+    parser.add_argument("--comparison-index-markdown")
     args = parser.parse_args()
 
     try:
@@ -196,6 +225,9 @@ def main() -> int:
             catalog_markdown=Path(args.catalog_markdown) if args.catalog_markdown else None,
             public_index=Path(args.public_index) if args.public_index else None,
             public_markdown=Path(args.public_markdown) if args.public_markdown else None,
+            comparison_index_markdown=(
+                Path(args.comparison_index_markdown) if args.comparison_index_markdown else None
+            ),
         )
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"OpenDevIndex comparison coverage build failed: {exc}", file=sys.stderr)
