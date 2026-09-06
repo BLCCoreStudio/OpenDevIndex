@@ -54,7 +54,7 @@ dimensions:
   label: Rollback model
   values:
     cloud/kubernetes: Rollback semantics depend on the specific Kubernetes resource or controller. Some workload controllers expose rollout history, but there is no universal cluster-wide application package rollback primitive.
-    cloud/helm: `helm rollback` targets a prior recorded release revision and performs a new release operation based on Helm's stored release history and chart state.
+    cloud/helm: The helm rollback command targets a prior recorded release revision and performs a new release operation based on Helm's stored release history and chart state.
     platform/argocd: GitOps rollback commonly means selecting or reverting desired source state and synchronizing it. Argo CD can expose operation/history controls, but durable desired state should remain consistent with the authoritative source workflow.
 - id: crd-lifecycle
   label: CRD lifecycle
