@@ -2,9 +2,9 @@
 
 OpenDevIndex comparison views connect mature knowledge modules that solve related problems. They are designed to answer **which architectural and operational boundary fits a requirement**, not to produce popularity rankings, synthetic scores, or universal winners.
 
-The first comparison is `PostgreSQL vs MySQL vs SQLite`, built from the three independently maintained relational-database deep dives.
+Published comparisons currently include `PostgreSQL vs MySQL vs SQLite` and `Terraform vs OpenTofu`, built from independently maintained deep-dive modules.
 
-Generated public views are published under [`docs/comparisons/`](comparisons/index.md).
+Generated public views are published under [`docs/comparisons/`](comparisons/index.md). A generated [`by-module`](comparisons/by-module.md) reverse index lets readers start from a technology and discover every curated comparison that currently includes it.
 
 ## Design principles
 
@@ -35,7 +35,6 @@ verified_at: '2026-09-06'
 modules:
   - tool/example-a
   - tool/example-b
-
 dimensions:
   - id: deployment-model
     label: Deployment model
@@ -68,6 +67,30 @@ The current invariants include:
 
 These constraints prevent a comparison from silently omitting one technology on an inconvenient dimension or linking to placeholder/nonexistent modules.
 
+## Bidirectional discovery
+
+Comparison manifests are authored comparison-first, but discovery should work in both directions.
+
+The builder therefore derives a reverse index automatically:
+
+```text
+comparison manifest
+  -> compared modules
+  -> normalized comparison record
+  -> module-to-comparison reverse index
+```
+
+A module appears only once in the reverse index, with a deterministic list of every comparison that contains it. The reverse index is derived data; contributors never maintain a second manual mapping that could drift from the comparison manifests.
+
+This supports two navigation paths:
+
+```text
+comparison -> modules
+module -> comparisons
+```
+
+For example, `database/sqlite` can lead to the relational-database comparison, while `tool/opentofu` can lead to the Terraform/OpenTofu comparison.
+
 ## Build locally
 
 Install the normal CI dependencies, then run:
@@ -94,7 +117,9 @@ Generated artifacts include:
 ```text
 dist/comparisons/
 ├── comparisons.json
+├── module-comparisons.json
 ├── index.md
+├── by-module.md
 └── <comparison-id>.md
 ```
 
@@ -111,7 +136,13 @@ The public publisher writes the Markdown equivalents under `docs/comparisons/`.
 - curated decision rules;
 - editorial notes.
 
-This gives future web interfaces, APIs, editor integrations, and learning tools a deterministic comparison payload without forcing them to parse Markdown.
+`module-comparisons.json` contains the reverse discovery view:
+
+- one record per module currently present in at least one comparison;
+- stable module ref, name, URL, summary, and maturity;
+- every containing comparison's id, title, summary, verification date, and generated Markdown path.
+
+Both artifacts are deterministic. Future web interfaces, APIs, editor integrations, and learning tools can therefore traverse comparisons in either direction without parsing Markdown or reconstructing joins themselves.
 
 ## Source discipline
 
@@ -128,7 +159,7 @@ When adding or changing a comparison:
 3. update a module first if its current content cannot support the comparison claim;
 4. add or update the YAML manifest under `comparisons/`;
 5. run the comparison builder and unit tests;
-6. review the generated Markdown for symmetry, clarity, and unsupported ranking language;
+6. review the generated comparison page **and** `by-module.md` for correct bidirectional discovery;
 7. update `verified_at` when the comparison has actually been re-reviewed.
 
 A good comparison should help a reader decide **what to investigate next and why**, while preserving the nuance of the underlying technologies.
