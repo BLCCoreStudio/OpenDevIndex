@@ -50,7 +50,7 @@ dimensions:
 - id: rollback-model
   label: Rollback and recovery
   values:
-    tool/github-actions: Recovery is workflow-specific: rerun a job, deploy a prior artifact, invoke a rollback script, revert source, or execute another release workflow. There is no universal deployment rollback semantic across targets.
+    tool/github-actions: Recovery is workflow-specific and can mean rerunning a job, deploying a prior artifact, invoking a rollback script, reverting source, or executing another release workflow. There is no universal deployment rollback semantic across targets.
     platform/argocd: GitOps recovery commonly changes the authoritative desired revision and synchronizes it. Application history and sync operations assist recovery, while the durable source should remain consistent with intended state.
 - id: credentials
   label: Credentials and identity
