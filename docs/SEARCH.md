@@ -85,6 +85,8 @@ Generated files include:
 - `dist/comparisons/by-module.md` — compared modules mapped to containing comparisons;
 - `dist/comparisons/<comparison-id>.md` — one human-readable view per comparison.
 
+Only top-level `comparisons/*.yaml` files are comparison manifests. Supporting discovery metadata, including semantic-search cases, lives under `comparisons/_meta/` so it cannot be mistaken for a comparison record by the builder.
+
 The comparison builder validates every referenced module against the catalog and joins module maturity metadata. Every declared dimension must contain a value for every module in the comparison.
 
 The reverse index is derived from the same validated records, so contributors do not maintain a second manual module-to-comparison mapping.
@@ -162,7 +164,7 @@ python scripts/validate_comparison_discovery.py \
   --reverse-index dist/comparisons/module-comparisons.json \
   --comparison-search dist/comparisons/search.json \
   --module-search dist/index/search.json \
-  --semantic-cases comparisons/search-smoke.yaml \
+  --semantic-cases comparisons/_meta/search-smoke.yaml \
   --output dist/comparisons/discovery-validation.json
 ```
 
@@ -177,7 +179,7 @@ The validator derives expected membership directly from `comparisons.json` and c
 - `comparison_count` backlinks in module search;
 - the top-level comparison-linked module count.
 
-Human search intent is kept separately in `comparisons/search-smoke.yaml`. Every comparison must have at least one reviewed query whose expected comparison ranks first. This avoids hard-coding comparison-specific shell/Python assertions into the GitHub Actions workflow.
+Human search intent is kept separately in `comparisons/_meta/search-smoke.yaml`. Every comparison must have at least one reviewed query whose expected comparison ranks first. This avoids hard-coding comparison-specific shell/Python assertions into the GitHub Actions workflow.
 
 Successful validation writes `dist/comparisons/discovery-validation.json` with comparison, linked-module, multi-comparison-module, and semantic-case counts.
 
@@ -225,7 +227,7 @@ The **Build Search Index** workflow:
 2. builds full comparison records and the compact comparison-search artifact;
 3. builds module catalog/search artifacts with comparison backlinks joined in;
 4. runs the generic comparison discovery validator against all generated graph surfaces;
-5. executes every semantic rank-1 query registered in `comparisons/search-smoke.yaml`;
+5. executes every semantic rank-1 query registered in `comparisons/_meta/search-smoke.yaml`;
 6. builds coverage-progress artifacts and audits editorial quality;
 7. smoke-tests representative non-comparison module facets;
 8. uploads module, comparison, validation, quality, and coverage discovery output as workflow artifacts.
