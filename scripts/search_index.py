@@ -37,6 +37,11 @@ def comparison_search_fields(entry: dict) -> tuple[list[str], list[str]]:
     return ids, titles
 
 
+def has_curated_comparison(entry: dict) -> bool:
+    comparison_ids, _ = comparison_search_fields(entry)
+    return bool(comparison_ids)
+
+
 def score_entry(entry: dict, query: str) -> int:
     query_norm = normalize(query)
     query_tokens = tokens(query)
@@ -136,10 +141,16 @@ def search(
     license_value: str | None = None,
     coverage_area: str | None = None,
     coverage_topic: str | None = None,
+    has_comparison: bool = False,
+    comparison: str | None = None,
 ) -> list[dict]:
     ranked: list[tuple[int, dict]] = []
+    query_norm = normalize(query)
+    comparison_filter = normalize(comparison) if comparison else None
+
     for entry in entries:
         address_category = entry.get("address_category") or entry.get("category")
+        comparison_ids, _ = comparison_search_fields(entry)
         if category and address_category != category:
             continue
         if kind and entry.get("kind") != kind:
@@ -156,9 +167,18 @@ def search(
             continue
         if coverage_topic and coverage_topic not in entry.get("coverage_topics", []):
             continue
-        score = score_entry(entry, query)
-        if score:
-            ranked.append((score, entry))
+        if has_comparison and not comparison_ids:
+            continue
+        if comparison_filter and comparison_filter not in comparison_ids:
+            continue
+
+        if query_norm:
+            score = score_entry(entry, query)
+            if not score:
+                continue
+        else:
+            score = 1
+        ranked.append((score, entry))
 
     ranked.sort(key=lambda item: (-item[0], item[1].get("name", "").casefold(), item[1].get("ref", "")))
     return [dict(entry, score=score) for score, entry in ranked[:limit]]
@@ -178,7 +198,12 @@ def load_index(path: Path) -> list[dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("query", help="Search terms")
+    parser.add_argument(
+        "query",
+        nargs="?",
+        default="",
+        help="Search terms; optional when --has-comparison or --comparison is used",
+    )
     parser.add_argument("--index", default="dist/index/search.json")
     parser.add_argument("--category", help="Legacy/stable address namespace filter")
     parser.add_argument("--kind", help="Canonical taxonomy kind filter")
@@ -188,12 +213,23 @@ def main() -> int:
     parser.add_argument("--coverage-topic", help="Technology Universe topic filter")
     parser.add_argument("--deployment", help="Deployment-type filter")
     parser.add_argument("--license", dest="license_value", help="Exact license metadata filter")
+    parser.add_argument(
+        "--has-comparison",
+        action="store_true",
+        help="Return only modules that participate in at least one curated comparison",
+    )
+    parser.add_argument(
+        "--comparison",
+        help="Return only modules participating in the exact curated comparison id",
+    )
     parser.add_argument("--limit", type=int, default=10)
     parser.add_argument("--json", action="store_true", dest="as_json")
     args = parser.parse_args()
 
     if args.limit <= 0:
         parser.error("--limit must be greater than zero")
+    if not normalize(args.query) and not args.has_comparison and not args.comparison:
+        parser.error("query is required unless --has-comparison or --comparison is used")
 
     try:
         entries = load_index(Path(args.index))
@@ -213,6 +249,8 @@ def main() -> int:
         license_value=args.license_value,
         coverage_area=args.coverage_area,
         coverage_topic=args.coverage_topic,
+        has_comparison=args.has_comparison,
+        comparison=args.comparison,
     )
     if args.as_json:
         print(json.dumps(results, indent=2, ensure_ascii=False, sort_keys=True))
@@ -235,11 +273,11 @@ def main() -> int:
         print(f"   {entry['summary']}")
         if entry.get("url"):
             print(f"   module: {entry['url']}")
-        for comparison in entry.get("comparisons", []):
-            if not isinstance(comparison, dict):
+        for comparison_item in entry.get("comparisons", []):
+            if not isinstance(comparison_item, dict):
                 continue
-            title = comparison.get("title")
-            url = comparison.get("url")
+            title = comparison_item.get("title")
+            url = comparison_item.get("url")
             if title and url:
                 print(f"   comparison: {title} — {url}")
         if entry.get("homepage"):
