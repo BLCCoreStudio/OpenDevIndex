@@ -1,4 +1,4 @@
-schema_version: 2
+schema_version: 3
 id: opentofu
 name: OpenTofu
 category: tool
@@ -7,18 +7,39 @@ domains:
 - cloud
 - developer-tools
 - devops
-summary: Open-source infrastructure-as-code tool created as a community-driven Terraform-compatible implementation for declaratively managing infrastructure through providers.
+summary: Community-governed open-source infrastructure-as-code engine for declarative provisioning through provider plugins, dependency-aware plans, persistent state, and Terraform-compatible workflows, with independent governance and native state/plan encryption.
 homepage: https://opentofu.org/
 repository: https://github.com/opentofu/opentofu
+license: MPL-2.0
 deployment_types:
 - cli
 - local
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
+- infrastructure-as-code
 - iac
 - cloud
 - devops
+- providers
+- state
+- encryption
+- automation
+- open-source
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - infrastructure-as-code
+  - deployment
+  - platform-engineering
+relationships:
+- type: alternative-to
+  target: cloud/terraform
+  note: OpenTofu shares substantial Terraform language, provider, state, and workflow heritage but is independently governed, MPL-2.0 licensed, uses a separate registry, and can evolve features and compatibility boundaries independently.
+- type: integrates-with
+  target: cloud/kubernetes
+  note: OpenTofu providers can provision Kubernetes clusters and manage Kubernetes API resources, while continuous in-cluster reconciliation is usually owned by Kubernetes controllers or GitOps systems.
 sources:
 - title: OpenTofu official site
   url: https://opentofu.org/
@@ -26,3 +47,45 @@ sources:
 - title: OpenTofu source repository
   url: https://github.com/opentofu/opentofu
   type: repository
+- title: OpenTofu license
+  url: https://github.com/opentofu/opentofu/blob/main/LICENSE
+  type: repository
+- title: OpenTofu CLI workflow
+  url: https://opentofu.org/docs/cli/run/
+  type: documentation
+- title: OpenTofu providers
+  url: https://opentofu.org/docs/language/providers/
+  type: documentation
+- title: Provider requirements
+  url: https://opentofu.org/docs/language/providers/requirements/
+  type: documentation
+- title: OpenTofu modules
+  url: https://opentofu.org/docs/language/modules/
+  type: documentation
+- title: OpenTofu state
+  url: https://opentofu.org/docs/language/state/
+  type: documentation
+- title: State storage and locking
+  url: https://opentofu.org/docs/language/state/backends/
+  type: documentation
+- title: State locking
+  url: https://opentofu.org/docs/language/state/locking/
+  type: documentation
+- title: State and plan encryption
+  url: https://opentofu.org/docs/language/state/encryption/
+  type: documentation
+- title: Backend configuration
+  url: https://opentofu.org/docs/language/settings/backends/configuration/
+  type: documentation
+- title: Dependency lock file
+  url: https://opentofu.org/docs/language/files/dependency-lock/
+  type: documentation
+- title: OpenTofu v1.x compatibility promises
+  url: https://opentofu.org/docs/language/v1-compatibility-promises/
+  type: documentation
+- title: Migrating from Terraform
+  url: https://opentofu.org/docs/intro/migration/
+  type: documentation
+- title: OpenTofu language and compatibility settings
+  url: https://opentofu.org/docs/language/settings/
+  type: documentation
