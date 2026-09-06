@@ -1,23 +1,115 @@
-schema_version: 1
+schema_version: 3
 id: mysql
 name: MySQL
 category: database
 kind: database
 domains:
 - data
-summary: Widely used relational database management system implementing SQL for transactional and web workloads with a large ecosystem of tools and integrations.
+summary: Open-source client/server relational database whose SQL layer, InnoDB transactional storage engine, binary log, replication, and operational tooling support transactional and mixed application workloads.
 homepage: https://www.mysql.com/
 repository: https://github.com/mysql/mysql-server
+license: GPL-2.0 (Community Edition)
+deployment_types:
+- self-hosted
+- service
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - sql
 - relational
 - database
+- innodb
+- transactions
+- mvcc
+- indexing
+- replication
+- binary-log
+- query-optimizer
+- high-availability
+- deep-dive
+coverage:
+  area: databases-data
+  topics:
+  - relational-databases
+  - storage-engines
+  - query-engines
+relationships:
+- type: alternative-to
+  target: database/postgresql
+  note: MySQL and PostgreSQL are mature client/server relational databases with different storage architectures, SQL behavior, optimizer internals, extensibility, replication models, and operational ecosystems.
+- type: alternative-to
+  target: database/sqlite
+  note: MySQL is a networked multi-client database server with server-managed accounts, replication, and HA tooling; SQLite is an embedded database library with a single-file deployment model and different concurrency boundaries.
 sources:
-- title: MySQL official site
-  url: https://www.mysql.com/
-  type: official
-- title: MySQL server repository
+- title: MySQL Reference Manual
+  url: https://dev.mysql.com/doc/refman/en/
+  type: documentation
+- title: MySQL Server source repository
   url: https://github.com/mysql/mysql-server
   type: repository
+- title: MySQL Community Edition
+  url: https://www.mysql.com/products/community/
+  type: official
+- title: InnoDB storage engine
+  url: https://dev.mysql.com/doc/refman/en/innodb-storage-engine.html
+  type: documentation
+- title: InnoDB architecture
+  url: https://dev.mysql.com/doc/refman/en/innodb-architecture.html
+  type: documentation
+- title: InnoDB buffer pool
+  url: https://dev.mysql.com/doc/refman/en/innodb-buffer-pool.html
+  type: documentation
+- title: InnoDB indexes
+  url: https://dev.mysql.com/doc/refman/en/innodb-index-types.html
+  type: documentation
+- title: InnoDB undo logs
+  url: https://dev.mysql.com/doc/refman/en/innodb-undo-logs.html
+  type: documentation
+- title: InnoDB redo log
+  url: https://dev.mysql.com/doc/refman/en/innodb-redo-log.html
+  type: documentation
+- title: InnoDB locking and transaction model
+  url: https://dev.mysql.com/doc/refman/en/innodb-locking-transaction-model.html
+  type: documentation
+- title: InnoDB transaction isolation levels
+  url: https://dev.mysql.com/doc/refman/en/innodb-transaction-isolation-levels.html
+  type: documentation
+- title: InnoDB deadlocks
+  url: https://dev.mysql.com/doc/refman/en/innodb-deadlocks.html
+  type: documentation
+- title: Optimization and indexes
+  url: https://dev.mysql.com/doc/refman/en/optimization-indexes.html
+  type: documentation
+- title: Optimizing queries with EXPLAIN
+  url: https://dev.mysql.com/doc/refman/en/using-explain.html
+  type: documentation
+- title: Optimizer statistics
+  url: https://dev.mysql.com/doc/refman/en/optimizer-statistics.html
+  type: documentation
+- title: The binary log
+  url: https://dev.mysql.com/doc/refman/en/binary-log.html
+  type: documentation
+- title: Replication implementation
+  url: https://dev.mysql.com/doc/refman/en/replication-implementation.html
+  type: documentation
+- title: Group Replication
+  url: https://dev.mysql.com/doc/refman/en/group-replication.html
+  type: documentation
+- title: Point-in-time recovery using binary log
+  url: https://dev.mysql.com/doc/refman/en/point-in-time-recovery-binlog.html
+  type: documentation
+- title: Backup and recovery
+  url: https://dev.mysql.com/doc/refman/en/backup-and-recovery.html
+  type: documentation
+- title: Access control and account management
+  url: https://dev.mysql.com/doc/refman/en/access-control.html
+  type: documentation
+- title: Using roles
+  url: https://dev.mysql.com/doc/refman/en/roles.html
+  type: documentation
+- title: Encrypted connections
+  url: https://dev.mysql.com/doc/refman/en/encrypted-connections.html
+  type: documentation
+- title: Performance Schema
+  url: https://dev.mysql.com/doc/refman/en/performance-schema.html
+  type: documentation
