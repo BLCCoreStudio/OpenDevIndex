@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 3
 id: sqlite
 name: SQLite
 category: database
@@ -6,18 +6,106 @@ kind: database
 domains:
 - data
 - embedded
-summary: Embedded relational database engine that stores a complete database in ordinary files and requires no separate database server process.
+summary: Embedded relational database engine that compiles SQL into bytecode and stores transactional B-tree state in ordinary files through a pager, journaling layer, and pluggable VFS without a separate database server.
 homepage: https://www.sqlite.org/
+repository: https://sqlite.org/src/
+license: Public Domain
+deployment_types:
+- embedded
+- library
+- local
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - sql
-- embedded
+- relational
 - database
+- embedded
+- local-storage
+- b-tree
+- pager
+- wal
+- transactions
+- query-planner
+- single-writer
+- deep-dive
+coverage:
+  area: databases-data
+  topics:
+  - relational-databases
+  - storage-engines
+  - query-engines
+relationships:
+- type: alternative-to
+  target: database/postgresql
+  note: SQLite is an embedded single-file database library for local application-owned state, while PostgreSQL is a client/server database designed for shared networked workloads and higher concurrent write processing.
+- type: alternative-to
+  target: database/mysql
+  note: SQLite embeds the SQL engine directly in an application and serializes writers per database file; MySQL uses a separate server with InnoDB, server-managed clients, replication, and HA tooling.
 sources:
-- title: SQLite official site
-  url: https://www.sqlite.org/
-  type: official
 - title: SQLite documentation
   url: https://www.sqlite.org/docs.html
+  type: documentation
+- title: SQLite source repository
+  url: https://sqlite.org/src/
+  type: repository
+- title: SQLite public-domain dedication
+  url: https://www.sqlite.org/copyright.html
+  type: official
+- title: Architecture of SQLite
+  url: https://www.sqlite.org/arch.html
+  type: documentation
+- title: Database file format
+  url: https://www.sqlite.org/fileformat2.html
+  type: documentation
+- title: File locking and concurrency
+  url: https://www.sqlite.org/lockingv3.html
+  type: documentation
+- title: Write-ahead logging
+  url: https://www.sqlite.org/wal.html
+  type: documentation
+- title: WAL-mode file format
+  url: https://www.sqlite.org/walformat.html
+  type: documentation
+- title: Isolation in SQLite
+  url: https://www.sqlite.org/isolation.html
+  type: documentation
+- title: Transaction control
+  url: https://www.sqlite.org/lang_transaction.html
+  type: documentation
+- title: Query planning
+  url: https://www.sqlite.org/queryplanner.html
+  type: documentation
+- title: ANALYZE
+  url: https://www.sqlite.org/lang_analyze.html
+  type: documentation
+- title: PRAGMA reference
+  url: https://www.sqlite.org/pragma.html
+  type: documentation
+- title: WITHOUT ROWID tables
+  url: https://www.sqlite.org/withoutrowid.html
+  type: documentation
+- title: SQLite backup API
+  url: https://www.sqlite.org/backup.html
+  type: documentation
+- title: Appropriate uses for SQLite
+  url: https://www.sqlite.org/whentouse.html
+  type: documentation
+- title: Threading modes
+  url: https://www.sqlite.org/threadsafe.html
+  type: documentation
+- title: Implementation limits
+  url: https://www.sqlite.org/limits.html
+  type: documentation
+- title: Security guidance
+  url: https://www.sqlite.org/security.html
+  type: documentation
+- title: How SQLite databases become corrupt
+  url: https://www.sqlite.org/howtocorrupt.html
+  type: documentation
+- title: JSON functions and operators
+  url: https://www.sqlite.org/json1.html
+  type: documentation
+- title: FTS5 extension
+  url: https://www.sqlite.org/fts5.html
   type: documentation
