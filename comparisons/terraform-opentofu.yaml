@@ -1,0 +1,110 @@
+schema_version: 1
+id: terraform-opentofu
+title: Terraform vs OpenTofu
+summary: A compatibility- and lifecycle-first comparison of Terraform and OpenTofu, focused on their shared infrastructure-as-code model and the governance, licensing, registry, security, and migration boundaries that now distinguish them.
+verified_at: '2026-09-06'
+modules:
+- cloud/terraform
+- tool/opentofu
+dimensions:
+- id: core-model
+  label: Core execution model
+  values:
+    cloud/terraform: Stateful infrastructure reconciliation engine that evaluates declarative configuration, builds a dependency graph, coordinates provider plugins, compares state and remote reality, produces a plan, and applies lifecycle changes.
+    tool/opentofu: Uses the same broad stateful reconciliation and dependency-aware planning model—declarative configuration, provider plugins, persistent state, dependency graphs, plans, and apply-time lifecycle operations.
+- id: cli-workflow
+  label: CLI workflow
+  values:
+    cloud/terraform: The normal workflow centers on terraform init, validate, plan, apply, destroy, import, and state operations. Saved plans can bind review more closely to the exact artifact later applied.
+    tool/opentofu: Preserves the familiar workflow through tofu init, validate, plan, apply, destroy, import, and state operations, making operational concepts recognizable to Terraform users while the implementation evolves independently.
+- id: governance
+  label: Project governance
+  values:
+    cloud/terraform: Terraform Core is developed and distributed by HashiCorp. Project direction, release policy, product integration, licensing, and compatibility decisions follow HashiCorp's Terraform product and ecosystem strategy.
+    tool/opentofu: Independently governed open-source project in the Linux Foundation ecosystem. Its maintainers can evolve language, registry, security, and compatibility features independently from Terraform Core.
+- id: core-license
+  label: Core license
+  values:
+    cloud/terraform: Current Terraform Core source is licensed under BUSL-1.1. Teams with redistribution, competitive-service, embedding, or policy constraints should review the exact license terms that apply to their use case.
+    tool/opentofu: OpenTofu Core is licensed under MPL-2.0, an OSI-approved open-source license with file-level copyleft obligations rather than Terraform's current BUSL-1.1 licensing model.
+- id: configuration-compatibility
+  label: Configuration compatibility
+  values:
+    cloud/terraform: Defines the upstream Terraform language and CLI behavior used by the Terraform ecosystem. Exact compatibility across Terraform releases still depends on versioned language, provider, backend, and feature behavior.
+    tool/opentofu: Intentionally preserves broad Terraform configuration and workflow compatibility, including familiar .tf files and the terraform configuration block, while also supporting OpenTofu-specific syntax and features.
+- id: provider-ecosystem
+  label: Provider compatibility
+  values:
+    cloud/terraform: Uses separately distributed provider plugins through the Terraform Plugin Protocol and Terraform provider ecosystem. Provider versions, schemas, API behavior, and release cadence remain independent from Terraform Core.
+    tool/opentofu: Maintains broad compatibility with Terraform providers through compatible provider protocols and independently licensed provider packages. Exact provider versions should still be pinned and tested because future compatibility is not automatic.
+- id: registry-boundary
+  label: Registry boundary
+  values:
+    cloud/terraform: Provider and module discovery normally uses Terraform's registry ecosystem and Terraform-style source addresses, with registry behavior and distribution infrastructure controlled independently from OpenTofu.
+    tool/opentofu: Uses the Public OpenTofu Registry as its primary provider and module discovery service while retaining source-address and provider compatibility patterns familiar from Terraform workflows.
+- id: state-model
+  label: State and locking model
+  values:
+    cloud/terraform: State binds configuration addresses to remote object identities. Backends determine storage and may provide locking; safe teamwork requires one authoritative state lineage, access control, recovery discipline, and supported locking behavior.
+    tool/opentofu: Retains the same broad stateful ownership model and familiar terraform.tfstate naming for compatibility. Backends and locking capabilities still vary, and concurrent writers must be controlled around one authoritative state lineage.
+- id: state-plan-security
+  label: State and plan security
+  values:
+    cloud/terraform: Sensitive values can remain physically present in state or saved plans even when UI output is redacted. Teams must protect state backends, plan artifacts, credentials, access paths, and any supported ephemeral-value workflows.
+    tool/opentofu: Adds native application-level state and plan encryption with configurable key providers and migration paths, while still requiring backend access control, locking, versioning, key recovery, and transport security.
+- id: encryption-failure-boundary
+  label: Encryption failure boundary
+  values:
+    cloud/terraform: State confidentiality is primarily an operational storage and access-control responsibility unless another platform layer encrypts the artifact. Recovery planning must protect state versions and backend credentials.
+    tool/opentofu: Native state/plan encryption adds a cryptographic key lifecycle to the recovery model. Losing encryption keys can make state unreadable, so key backup, rotation, break-glass access, and migration fallback behavior become explicit operational concerns.
+- id: compatibility-promise
+  label: Compatibility promise
+  values:
+    cloud/terraform: Terraform compatibility is defined by HashiCorp's versioned Terraform behavior and release documentation; teams should verify changes across language, providers, backends, state, and automation when upgrading.
+    tool/opentofu: Publishes v1.x compatibility promises for a substantial stable surface including language, CLI workflows, provider wire protocol, and provider/module installation protocols, with documented exclusions for experimental or independently versioned behavior.
+- id: migration-boundary
+  label: Migration from Terraform
+  values:
+    cloud/terraform: Staying on Terraform avoids an engine migration but still requires ordinary upgrade testing for Terraform Core, providers, modules, backends, state, and automation integrations.
+    tool/opentofu: Provides an explicit Terraform migration path built around configuration/state backup, version compatibility, provider initialization, plan review, and reversibility. A clean tofu plan is stronger evidence than assuming compatibility from shared ancestry.
+- id: divergence-risk
+  label: Future divergence
+  values:
+    cloud/terraform: Terraform can add language, provider-protocol, state, registry, or product-integrated features on its own roadmap. New Terraform-specific features can become portability boundaries for teams that want engine interchangeability.
+    tool/opentofu: OpenTofu can independently add language, registry, encryption, or workflow features. Adopting OpenTofu-specific features can intentionally reduce the ability to move back to Terraform without migration work.
+- id: strong-fit
+  label: Strong fit
+  values:
+    cloud/terraform: Teams standardized on Terraform's current ecosystem, registry, product integrations, support model, or Terraform-specific capabilities and whose licensing requirements are compatible with BUSL-1.1.
+    tool/opentofu: Teams prioritizing MPL-2.0 open-source licensing, community governance, OpenTofu's registry and compatibility commitments, or native state/plan encryption while retaining broad Terraform workflow and provider familiarity.
+- id: portability-strategy
+  label: Portability strategy
+  values:
+    cloud/terraform: Portability improves when configurations avoid unnecessary product-specific features, providers/modules are pinned deliberately, state is backed up, and migration is tested rather than assumed.
+    tool/opentofu: Portability improves when Terraform-compatible language/provider surfaces are preferred where needed, OpenTofu-only features are adopted intentionally, state is backed up, and reverse migration constraints are tested before they become operational dependencies.
+decision_rules:
+- condition: Existing automation, support contracts, registry dependencies, or product integrations are explicitly standardized on Terraform and BUSL-1.1 is acceptable.
+  consider:
+  - cloud/terraform
+  reason: Staying on Terraform avoids an engine migration and preserves the exact ecosystem boundary the organization has already chosen; upgrade and provider testing are still required.
+- condition: Open-source licensing and community governance are hard requirements while broad Terraform-style workflows and provider compatibility should be retained.
+  consider:
+  - tool/opentofu
+  reason: OpenTofu combines MPL-2.0 licensing and independent community governance with deliberate compatibility across major Terraform configuration, provider, state, and CLI concepts.
+- condition: Native application-level encryption of state and saved plans is a requirement and the team can operate the associated key lifecycle safely.
+  consider:
+  - tool/opentofu
+  reason: OpenTofu documents native state and plan encryption with configurable key providers, but key recovery and rotation must be designed before enabling it.
+- condition: The organization wants to preserve the practical option to move between Terraform and OpenTofu later.
+  consider:
+  - cloud/terraform
+  - tool/opentofu
+  reason: Prefer the shared language/provider/state surface, minimize unnecessary engine-specific features, pin dependencies, keep recoverable state backups, and test migration in both directions rather than treating compatibility as permanent.
+- condition: A migration from Terraform to OpenTofu is being evaluated for existing production state.
+  consider:
+  - tool/opentofu
+  reason: Evaluate the exact Terraform/OpenTofu versions, providers, modules, backends, registry sources, state, and automation; back up state first and require a reviewed plan with no unexplained lifecycle changes before cutover.
+notes:
+- Terraform and OpenTofu share substantial infrastructure-as-code heritage, so the most important differences are increasingly governance, licensing, registry infrastructure, security features, compatibility policy, and deliberate feature divergence rather than the basic plan/apply mental model.
+- Provider packages are independently versioned software dependencies; compatibility with one provider release does not guarantee future provider behavior for either engine.
+- This comparison does not treat licensing as legal advice. Organizations with redistribution, hosted-service, embedding, or commercial-policy concerns should review the actual license texts and their own counsel or compliance process.
