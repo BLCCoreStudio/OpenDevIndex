@@ -41,3 +41,7 @@ modules:
     level: deep-dive
     reviewed_at: '2026-09-06'
     note: Observability interaction-layer deep-dive on data sources, dashboards, Explore, transformations, alerting, provisioning, permissions, plugin security, HA, query cost, and failure diagnosis.
+  cloud/opentelemetry:
+    level: deep-dive
+    reviewed_at: '2026-09-06'
+    note: Observability interoperability deep-dive on APIs/SDKs, Resources, semantic conventions, propagation, traces, metrics, logs, OTLP, Collector pipelines, sampling, durability, privacy, and backend integration.
