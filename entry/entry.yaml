@@ -35,10 +35,10 @@ coverage:
 relationships:
 - type: related-to
   target: cloud/terraform
-  note: Terraform focuses on declarative resource lifecycle through provider APIs and persistent state, while Ansible commonly handles host/service configuration and procedural orchestration; teams often combine them with explicit ownership boundaries.
+  note: Terraform centers on stateful resource lifecycle; Ansible commonly handles host and service configuration plus procedural orchestration. Teams often combine them with explicit ownership boundaries.
 - type: integrates-with
   target: cloud/kubernetes
-  note: Ansible collections can automate Kubernetes API resources and cluster-adjacent operations, though continuous reconciliation is normally owned by Kubernetes controllers or GitOps systems.
+  note: Ansible collections can automate Kubernetes resources and cluster-adjacent operations, while continuous reconciliation is normally owned by Kubernetes controllers or GitOps systems.
 sources:
 - title: Ansible Community Documentation
   url: https://docs.ansible.com/projects/ansible/latest/
