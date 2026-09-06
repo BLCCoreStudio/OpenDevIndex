@@ -1,0 +1,23 @@
+schema_version: 2
+milestone: v0.5
+verified_at: '2026-09-06'
+target_modules: 1
+expected_categories:
+  tool: 1
+entries:
+- category: tool
+  id: subversion
+  name: Apache Subversion
+  summary: Centralized version control system that stores authoritative repository history on a server and supports versioned files, directories, properties, path-based authorization, and repository-wide revision numbers.
+  homepage: https://subversion.apache.org/
+  repository: https://github.com/apache/subversion
+  tags: [version-control, scm, centralized]
+  sources:
+  - {title: Apache Subversion official site, url: https://subversion.apache.org/, type: official}
+  - {title: Apache Subversion documentation, url: https://subversion.apache.org/docs/, type: documentation}
+  - {title: Apache Subversion source mirror, url: https://github.com/apache/subversion, type: repository}
+  use_cases: [Maintain centrally authoritative source and asset history, Apply path-based repository access controls, Use sparse working copies and lock-oriented workflows for large centralized trees]
+  key_points: [Commits create globally ordered repository revisions, Branches and tags are conventionally implemented as cheap repository copies, Working copies keep local administrative state while authoritative history remains server-side]
+  kind: tool
+  domains: [developer-tools, version-control]
+  deployment_types: [cli, server]
