@@ -77,15 +77,19 @@ jobs:
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
 
-      - name: Build deterministic catalog and search artifacts
-        run: python scripts/build_index.py --catalog-dir catalog --output-dir dist/index
-
       - name: Build curated comparison artifacts
         run: |
           python scripts/build_comparisons.py \
             --comparisons-dir comparisons \
             --catalog-dir catalog \
             --output-dir dist/comparisons
+
+      - name: Build deterministic catalog and search artifacts
+        run: |
+          python scripts/build_index.py \
+            --catalog-dir catalog \
+            --output-dir dist/index \
+            --comparison-index dist/comparisons/module-comparisons.json
 
       - name: Build Technology Universe coverage progress
         run: |
@@ -104,6 +108,7 @@ jobs:
           python scripts/search_index.py "machine learning" --index dist/index/search.json --kind framework --limit 5
           python scripts/search_index.py "api testing" --index dist/index/search.json --domain api --limit 5
           python scripts/search_index.py "web accessibility" --index dist/index/search.json --domain accessibility --limit 5
+          python scripts/search_index.py "Terraform vs OpenTofu" --index dist/index/search.json --limit 5
 
       - name: Publish build summary
         run: |
@@ -112,11 +117,13 @@ jobs:
           from pathlib import Path
           data = json.loads(Path('dist/index/catalog.json').read_text(encoding='utf-8'))
           comparisons = json.loads(Path('dist/comparisons/comparisons.json').read_text(encoding='utf-8'))
+          module_comparisons = json.loads(Path('dist/comparisons/module-comparisons.json').read_text(encoding='utf-8'))
           coverage = json.loads(Path('dist/coverage/coverage.json').read_text(encoding='utf-8'))
           print('# OpenDevIndex Search Index')
           print()
           print(f"Generated **{data['module_count']}** validated modules.")
           print(f"Generated **{comparisons['comparison_count']}** curated comparison view(s).")
+          print(f"Comparison-linked modules: **{module_comparisons['module_count']}**.")
           print(f"Coverage-mapped modules: **{coverage['mapped_modules']} / {coverage['target_modules']}**.")
           print()
           print('| Maturity | Modules |')
