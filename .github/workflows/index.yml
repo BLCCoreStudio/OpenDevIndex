@@ -11,12 +11,14 @@ on:
       - 'quality/module-maturity.yaml'
       - 'taxonomy/**'
       - 'schema/**'
+      - 'scripts/build_comparison_search.py'
       - 'scripts/build_comparisons.py'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/coverage_metadata.py'
       - 'scripts/coverage_progress.py'
       - 'scripts/module_maturity.py'
+      - 'scripts/search_comparisons.py'
       - 'scripts/search_index.py'
       - 'scripts/taxonomy.py'
       - 'scripts/audit_quality.py'
@@ -34,12 +36,14 @@ on:
       - 'quality/module-maturity.yaml'
       - 'taxonomy/**'
       - 'schema/**'
+      - 'scripts/build_comparison_search.py'
       - 'scripts/build_comparisons.py'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/coverage_metadata.py'
       - 'scripts/coverage_progress.py'
       - 'scripts/module_maturity.py'
+      - 'scripts/search_comparisons.py'
       - 'scripts/search_index.py'
       - 'scripts/taxonomy.py'
       - 'scripts/audit_quality.py'
@@ -84,6 +88,12 @@ jobs:
             --catalog-dir catalog \
             --output-dir dist/comparisons
 
+      - name: Build curated comparison search artifact
+        run: |
+          python scripts/build_comparison_search.py \
+            --input dist/comparisons/comparisons.json \
+            --output dist/comparisons/search.json
+
       - name: Build deterministic catalog and search artifacts
         run: |
           python scripts/build_index.py \
@@ -111,6 +121,9 @@ jobs:
           python scripts/search_index.py "Terraform vs OpenTofu" --index dist/index/search.json --limit 5
           python scripts/search_index.py --comparison terraform-opentofu --index dist/index/search.json --json --limit 10 > /tmp/terraform-opentofu.json
           python scripts/search_index.py --has-comparison --index dist/index/search.json --json --limit 100 > /tmp/comparison-linked.json
+          python scripts/search_comparisons.py "state encryption" --index dist/comparisons/search.json --json > /tmp/comparison-state-encryption.json
+          python scripts/search_comparisons.py "wal checkpoints" --index dist/comparisons/search.json --json > /tmp/comparison-wal.json
+          python scripts/search_comparisons.py --module database/sqlite --index dist/comparisons/search.json --json > /tmp/comparison-sqlite.json
           python - <<'PY'
           import json
           from pathlib import Path
@@ -126,6 +139,15 @@ jobs:
           linked = json.loads(Path('/tmp/comparison-linked.json').read_text(encoding='utf-8'))
           assert len(linked) >= 5, len(linked)
           assert all(entry.get('comparison_count', 0) > 0 for entry in linked)
+
+          state = json.loads(Path('/tmp/comparison-state-encryption.json').read_text(encoding='utf-8'))
+          assert state and state[0]['id'] == 'terraform-opentofu', state
+
+          wal = json.loads(Path('/tmp/comparison-wal.json').read_text(encoding='utf-8'))
+          assert wal and wal[0]['id'] == 'relational-databases', wal
+
+          sqlite = json.loads(Path('/tmp/comparison-sqlite.json').read_text(encoding='utf-8'))
+          assert [entry['id'] for entry in sqlite] == ['relational-databases'], sqlite
           PY
 
       - name: Publish build summary
@@ -135,12 +157,14 @@ jobs:
           from pathlib import Path
           data = json.loads(Path('dist/index/catalog.json').read_text(encoding='utf-8'))
           comparisons = json.loads(Path('dist/comparisons/comparisons.json').read_text(encoding='utf-8'))
+          comparison_search = json.loads(Path('dist/comparisons/search.json').read_text(encoding='utf-8'))
           module_comparisons = json.loads(Path('dist/comparisons/module-comparisons.json').read_text(encoding='utf-8'))
           coverage = json.loads(Path('dist/coverage/coverage.json').read_text(encoding='utf-8'))
           print('# OpenDevIndex Search Index')
           print()
           print(f"Generated **{data['module_count']}** validated modules.")
           print(f"Generated **{comparisons['comparison_count']}** curated comparison view(s).")
+          print(f"Searchable comparison records: **{comparison_search['comparison_count']}**.")
           print(f"Comparison-linked modules: **{module_comparisons['module_count']}**.")
           print(f"Coverage-mapped modules: **{coverage['mapped_modules']} / {coverage['target_modules']}**.")
           print()
