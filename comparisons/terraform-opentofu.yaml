@@ -11,7 +11,7 @@ dimensions:
   label: Core execution model
   values:
     cloud/terraform: Stateful infrastructure reconciliation engine that evaluates declarative configuration, builds a dependency graph, coordinates provider plugins, compares state and remote reality, produces a plan, and applies lifecycle changes.
-    tool/opentofu: Uses the same broad stateful reconciliation and dependency-aware planning model: declarative configuration, provider plugins, persistent state, dependency graphs, plans, and apply-time lifecycle operations.
+    tool/opentofu: Uses the same broad stateful reconciliation and dependency-aware planning model—declarative configuration, provider plugins, persistent state, dependency graphs, plans, and apply-time lifecycle operations.
 - id: cli-workflow
   label: CLI workflow
   values:
