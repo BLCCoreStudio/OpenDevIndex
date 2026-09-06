@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 3
 id: helm
 name: Helm
 category: cloud
@@ -6,19 +6,66 @@ kind: tool
 domains:
 - cloud
 - devops
-summary: Package manager for Kubernetes that bundles templated resource manifests into versioned charts for installation, upgrades, and reuse.
+- containers
+summary: Kubernetes package manager and release-management tool that renders versioned charts into Kubernetes resources, applies them through the API, and records release history for upgrades and rollbacks.
 homepage: https://helm.sh/
 repository: https://github.com/helm/helm
+license: Apache-2.0
+deployment_types:
+- cli
+- local
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-05'
 tags:
 - kubernetes
 - packages
 - cloud-native
+- charts
+- templating
+- releases
+- oci
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - orchestration
+  - deployment
+  - ci-cd
+  - platform-engineering
+relationships:
+- type: integrates-with
+  target: cloud/kubernetes
+  note: Helm renders charts into Kubernetes API resources and performs install, upgrade, rollback, and uninstall operations through Kubernetes credentials and APIs.
 sources:
-- title: Helm official site
-  url: https://helm.sh/
+- title: Helm official documentation
+  url: https://helm.sh/docs/
   type: official
-- title: Helm repository
+- title: Helm source repository
   url: https://github.com/helm/helm
   type: repository
+- title: Introduction to Helm
+  url: https://helm.sh/docs/intro/introduction/
+  type: documentation
+- title: Helm Charts
+  url: https://helm.sh/docs/topics/charts/
+  type: documentation
+- title: Chart Template Guide
+  url: https://helm.sh/docs/chart_template_guide/
+  type: documentation
+- title: Chart Hooks
+  url: https://helm.sh/docs/topics/charts_hooks/
+  type: documentation
+- title: Helm Provenance and Integrity
+  url: https://helm.sh/docs/topics/provenance/
+  type: documentation
+- title: OCI Registries
+  url: https://helm.sh/docs/topics/registries/
+  type: documentation
+- title: Helm Plugins
+  url: https://helm.sh/docs/topics/plugins/
+  type: documentation
+- title: Helm Version Support Policy
+  url: https://helm.sh/docs/topics/version_skew/
+  type: documentation
+- title: Helm 4 Overview
+  url: https://helm.sh/docs/overview/
+  type: documentation
