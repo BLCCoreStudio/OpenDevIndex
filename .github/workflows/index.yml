@@ -110,7 +110,7 @@ jobs:
             --reverse-index dist/comparisons/module-comparisons.json \
             --comparison-search dist/comparisons/search.json \
             --module-search dist/index/search.json \
-            --semantic-cases comparisons/search-smoke.yaml \
+            --semantic-cases comparisons/_meta/search-smoke.yaml \
             --output dist/comparisons/discovery-validation.json
 
       - name: Build Technology Universe coverage progress
