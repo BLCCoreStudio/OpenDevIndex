@@ -126,6 +126,8 @@ jobs:
           python scripts/search_comparisons.py --module database/sqlite --index dist/comparisons/search.json --json > /tmp/comparison-sqlite.json
           python scripts/search_comparisons.py "application instrumentation" --index dist/comparisons/search.json --json > /tmp/comparison-observability.json
           python scripts/search_comparisons.py --module cloud/grafana --index dist/comparisons/search.json --json > /tmp/comparison-grafana.json
+          python scripts/search_comparisons.py "desired live comparison" --index dist/comparisons/search.json --json > /tmp/comparison-kubernetes-delivery.json
+          python scripts/search_comparisons.py --module platform/argocd --index dist/comparisons/search.json --json > /tmp/comparison-argocd.json
           python - <<'PY'
           import json
           from pathlib import Path
@@ -139,7 +141,7 @@ jobs:
           )
 
           linked = json.loads(Path('/tmp/comparison-linked.json').read_text(encoding='utf-8'))
-          assert len(linked) >= 8, len(linked)
+          assert len(linked) >= 11, len(linked)
           assert all(entry.get('comparison_count', 0) > 0 for entry in linked)
 
           state = json.loads(Path('/tmp/comparison-state-encryption.json').read_text(encoding='utf-8'))
@@ -156,6 +158,12 @@ jobs:
 
           grafana = json.loads(Path('/tmp/comparison-grafana.json').read_text(encoding='utf-8'))
           assert [entry['id'] for entry in grafana] == ['observability-roles'], grafana
+
+          kubernetes_delivery = json.loads(Path('/tmp/comparison-kubernetes-delivery.json').read_text(encoding='utf-8'))
+          assert kubernetes_delivery and kubernetes_delivery[0]['id'] == 'kubernetes-helm-argocd', kubernetes_delivery
+
+          argocd = json.loads(Path('/tmp/comparison-argocd.json').read_text(encoding='utf-8'))
+          assert [entry['id'] for entry in argocd] == ['kubernetes-helm-argocd'], argocd
           PY
 
       - name: Publish build summary
