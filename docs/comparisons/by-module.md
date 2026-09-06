@@ -17,6 +17,24 @@ This reverse index shows every OpenDevIndex module currently included in at leas
 - [GitHub Actions vs Argo CD](github-actions-argocd.md) — An execution- and ownership-first comparison of GitHub Actions and Argo CD, focused on event-triggered CI/CD jobs versus continuous Kubernetes GitOps reconciliation and where the two commonly compose.
 - [Kubernetes vs Helm vs Argo CD](kubernetes-helm-argocd.md) — A control-plane- and ownership-first comparison of Kubernetes, Helm, and Argo CD, clarifying the difference between cluster reconciliation, package and release rendering, and continuous GitOps delivery.
 
+## [containerd](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/containerd/entry)
+
+`tool/containerd` — `deep-dive`
+
+- [Containers vs Docker vs containerd](containers-docker-containerd.md) — An abstraction- and runtime-boundary comparison of Linux containers, Docker, and containerd, clarifying the difference between the underlying isolation model, developer-facing container workflows, and node-level container lifecycle management.
+
+## [Containers](https://github.com/BLCCoreStudio/OpenDevIndex/tree/concept/containers/entry)
+
+`concept/containers` — `deep-dive`
+
+- [Containers vs Docker vs containerd](containers-docker-containerd.md) — An abstraction- and runtime-boundary comparison of Linux containers, Docker, and containerd, clarifying the difference between the underlying isolation model, developer-facing container workflows, and node-level container lifecycle management.
+
+## [Docker](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/docker/entry)
+
+`tool/docker` — `deep-dive`
+
+- [Containers vs Docker vs containerd](containers-docker-containerd.md) — An abstraction- and runtime-boundary comparison of Linux containers, Docker, and containerd, clarifying the difference between the underlying isolation model, developer-facing container workflows, and node-level container lifecycle management.
+
 ## [GitHub Actions](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/github-actions/entry)
 
 `tool/github-actions` — `deep-dive`

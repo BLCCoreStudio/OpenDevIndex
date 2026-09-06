@@ -4,6 +4,12 @@ Curated comparison views connect technologies that solve related problems withou
 
 [Browse comparisons by module](by-module.md)
 
+## [Containers vs Docker vs containerd](containers-docker-containerd.md)
+
+An abstraction- and runtime-boundary comparison of Linux containers, Docker, and containerd, clarifying the difference between the underlying isolation model, developer-facing container workflows, and node-level container lifecycle management.
+
+Compared modules: `concept/containers`, `tool/docker`, `tool/containerd`
+
 ## [GitHub Actions vs Argo CD](github-actions-argocd.md)
 
 An execution- and ownership-first comparison of GitHub Actions and Argo CD, focused on event-triggered CI/CD jobs versus continuous Kubernetes GitOps reconciliation and where the two commonly compose.
