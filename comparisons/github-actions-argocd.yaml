@@ -1,0 +1,131 @@
+schema_version: 1
+id: github-actions-argocd
+title: GitHub Actions vs Argo CD
+summary: An execution- and ownership-first comparison of GitHub Actions and Argo CD, focused on event-triggered CI/CD jobs versus continuous Kubernetes GitOps reconciliation and where the two commonly compose.
+verified_at: '2026-09-06'
+modules:
+- tool/github-actions
+- platform/argocd
+dimensions:
+- id: primary-role
+  label: Primary role
+  values:
+    tool/github-actions: Repository-native workflow automation platform that reacts to GitHub events and dispatches jobs to runners for CI, build, test, packaging, release, deployment, and general repository automation.
+    platform/argocd: Kubernetes GitOps continuous-delivery platform that resolves versioned desired application state, compares it with live clusters, and reconciles drift through controlled synchronization.
+- id: execution-trigger
+  label: Execution trigger
+  values:
+    tool/github-actions: Workflows start from configured events, schedules, manual dispatches, reusable workflow calls, or other supported triggers. A run has a bounded job lifecycle and eventually completes.
+    platform/argocd: Controllers continuously or periodically refresh application sources and live cluster state. Reconciliation is persistent rather than a one-shot event job that ends after deployment.
+- id: execution-runtime
+  label: Execution runtime
+  values:
+    tool/github-actions: Jobs execute on GitHub-hosted or self-hosted runners. Steps run actions, scripts, containers, or commands inside the runner environment with workflow-scoped credentials and filesystem state.
+    platform/argocd: Argo CD runs as long-lived Kubernetes services and controllers. Repository, application, and cluster controllers generate manifests, diff desired/live state, assess health, and perform sync operations.
+- id: desired-state-owner
+  label: Desired-state ownership
+  values:
+    tool/github-actions: Workflow YAML defines automation logic, but a deployment job does not inherently make the repository revision the continuously enforced desired state of a target cluster after the run finishes.
+    platform/argocd: Application source revision and destination configuration define desired Kubernetes state that Argo CD repeatedly compares with live resources and can keep synchronized over time.
+- id: build-test
+  label: Build and test responsibility
+  values:
+    tool/github-actions: Building source, running unit/integration tests, linting, security scanning, matrix jobs, packaging, and publishing artifacts are central workflow use cases.
+    platform/argocd: Does not replace a general CI build/test runner. It normally consumes already versioned deployment sources or artifacts and focuses on rendering, diffing, health, and Kubernetes delivery.
+- id: artifact-boundary
+  label: Artifact boundary
+  values:
+    tool/github-actions: Workflow artifacts, caches, packages, container images, and release outputs can be produced or transferred between jobs, with trust and retention controls forming part of the CI supply-chain boundary.
+    platform/argocd: Primarily consumes desired deployment sources such as Git revisions, Helm charts, or generated manifests. It does not act as the build runner that compiles application source into release artifacts.
+- id: deployment-model
+  label: Deployment model
+  values:
+    tool/github-actions: A workflow can push a deployment directly by invoking cloud, Kubernetes, Helm, SSH, or other APIs. The deployment operation is tied to the workflow run and its credentials.
+    platform/argocd: Pull-style controllers inside the delivery environment observe configured sources and apply desired Kubernetes resources through Argo CD synchronization, separating build automation from continuous deployment ownership.
+- id: drift-detection
+  label: Drift detection
+  values:
+    tool/github-actions: A completed deployment workflow does not automatically continue comparing live Kubernetes resources with the source revision unless another scheduled or event-driven workflow explicitly implements that behavior.
+    platform/argocd: Desired/live comparison and OutOfSync detection are core responsibilities. Argo CD can surface and optionally self-heal drift after the original source change or sync operation.
+- id: rollback-model
+  label: Rollback and recovery
+  values:
+    tool/github-actions: Recovery is workflow-specific: rerun a job, deploy a prior artifact, invoke a rollback script, revert source, or execute another release workflow. There is no universal deployment rollback semantic across targets.
+    platform/argocd: GitOps recovery commonly changes the authoritative desired revision and synchronizes it. Application history and sync operations assist recovery, while the durable source should remain consistent with intended state.
+- id: credentials
+  label: Credentials and identity
+  values:
+    tool/github-actions: Jobs may use GITHUB_TOKEN, environment secrets, repository or organization secrets, OIDC federation, runner credentials, and environment protections. Each workflow/job permission boundary affects deployment authority.
+    platform/argocd: Argo CD holds repository credentials and target-cluster access for reconciliation, with Projects and Argo CD RBAC constraining application scope while Kubernetes RBAC and admission remain final enforcement layers.
+- id: oidc
+  label: Cloud identity federation
+  values:
+    tool/github-actions: OIDC can let a workflow exchange GitHub-issued identity claims for short-lived cloud credentials, reducing the need to store long-lived deployment secrets when trust policies are configured correctly.
+    platform/argocd: Argo CD has its own authentication and repository/cluster credential model; GitHub Actions OIDC job identity is not a substitute for Argo CD's persistent controller credentials and target-cluster authorization.
+- id: approvals
+  label: Promotion and approvals
+  values:
+    tool/github-actions: Environments, required reviewers, branch protections, workflow conditions, reusable workflows, and repository processes can gate a deployment job before privileged steps execute.
+    platform/argocd: Sync can be manual or automated, Projects constrain sources/destinations/resources, and promotion is commonly expressed by changing versioned desired state that Argo CD later reconciles.
+- id: concurrency
+  label: Concurrency and serialization
+  values:
+    tool/github-actions: Workflow concurrency groups, job dependencies, runner availability, matrices, and cancellation policies control how event-driven runs overlap or serialize.
+    platform/argocd: Application/controller reconciliation queues, sync operations, resource ordering, sync phases/waves, and Kubernetes API behavior govern delivery concurrency rather than runner job slots.
+- id: failure-boundary
+  label: Typical failure boundary
+  values:
+    tool/github-actions: Runner unavailability, action or script failures, permission mistakes, secret/OIDC errors, cache or artifact trust issues, dependency failures, and external deployment API errors can fail a workflow run.
+    platform/argocd: Repository resolution, manifest generation, diffing, cluster credentials, sync policy, controller availability, Kubernetes API errors, or resource health problems can block or degrade reconciliation.
+- id: audit-history
+  label: Audit and history model
+  values:
+    tool/github-actions: Workflow runs, jobs, logs, artifacts, environment deployments, commits, and pull requests provide event/run-oriented execution history for CI/CD automation.
+    platform/argocd: Application status, source revisions, desired/live diffs, sync history, operation history, resource health, and Git history provide reconciliation-oriented deployment evidence.
+- id: composition
+  label: Common composition
+  values:
+    tool/github-actions: Can build and test code, publish a container image, update a deployment repository or image tag, and then stop without directly mutating the production cluster.
+    platform/argocd: Can observe the versioned deployment change produced by CI and continuously reconcile the target Kubernetes cluster, creating a clean CI-to-GitOps handoff.
+- id: best-fit
+  label: Choose or add when
+  values:
+    tool/github-actions: You need repository-event automation, runners, build/test matrices, packaging, release workflows, artifact production, OIDC-enabled deployment jobs, or other bounded CI/CD tasks.
+    platform/argocd: You need Kubernetes desired/live comparison, continuous GitOps reconciliation, drift visibility, application health, source-driven promotion, controlled synchronization, or multi-cluster delivery.
+- id: not-a-substitute
+  label: Do not assume
+  values:
+    tool/github-actions: Do not assume a workflow that applies Kubernetes manifests replaces a persistent GitOps controller. When the run ends, continuous desired/live reconciliation and drift ownership require another mechanism.
+    platform/argocd: Do not assume Argo CD replaces CI runners, source compilation, test matrices, package publishing, or general repository-event automation merely because it performs continuous delivery.
+decision_rules:
+- condition: Repository events should trigger bounded jobs that build, test, scan, package, publish, or execute arbitrary automation on runners.
+  consider:
+  - tool/github-actions
+  reason: GitHub Actions is designed around event-triggered workflow runs, jobs, runner execution, actions, artifacts, permissions, and repository-native CI/CD automation.
+- condition: A Kubernetes environment should remain continuously compared with a versioned desired source and drift should be visible or self-healed after deployment.
+  consider:
+  - platform/argocd
+  reason: Argo CD owns source resolution, desired/live comparison, health, sync policy, and persistent GitOps reconciliation rather than one-time deployment execution.
+- condition: CI should build and test an image but production cluster credentials should not be exposed to the CI runner.
+  consider:
+  - tool/github-actions
+  - platform/argocd
+  reason: GitHub Actions can produce and publish the artifact or update deployment source, while Argo CD can hold the persistent target-cluster delivery authority and reconcile the approved desired revision.
+- condition: A team wants GitHub-native approval and OIDC controls for direct deployment jobs and does not require continuous source-to-live drift reconciliation.
+  consider:
+  - tool/github-actions
+  reason: Environment protections, workflow permissions, OIDC federation, and runner jobs can provide a bounded direct-deployment path when continuous GitOps ownership is not required.
+- condition: A team is replacing Argo CD with GitHub Actions because both can deploy to Kubernetes.
+  consider:
+  - tool/github-actions
+  - platform/argocd
+  reason: Compare lifecycle ownership first. Actions executes event-triggered jobs; Argo CD continuously reconciles versioned desired state with live Kubernetes resources after the original deployment event has ended.
+- condition: A team is replacing GitHub Actions with Argo CD because both participate in continuous delivery.
+  consider:
+  - tool/github-actions
+  - platform/argocd
+  reason: Argo CD does not provide a general runner-based CI engine for source builds, test matrices, arbitrary scripts, package production, and repository automation, so CI and GitOps delivery often remain separate stages.
+notes:
+- GitHub Actions and Argo CD often compose cleanly when CI produces immutable artifacts or reviewed deployment-source changes and Argo CD owns continuous Kubernetes reconciliation.
+- Direct deployment from GitHub Actions can still be appropriate; the architectural question is whether deployment authority should be bounded to a workflow run or persist as a GitOps controller with drift ownership.
+- Runner security, action supply chain, OIDC policies, Argo CD repository/cluster credentials, Kubernetes RBAC, and version-specific sync behavior should be reviewed from the linked deep dives before production changes.
