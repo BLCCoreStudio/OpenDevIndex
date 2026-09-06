@@ -35,6 +35,43 @@ python scripts/search_index.py "Terraform vs OpenTofu" --index dist/index/search
 
 Search considers module names, identifiers, categories, kinds, maturity, domains, coverage areas/topics, tags, summaries, deployment types, licensing metadata, use cases, key points, and—when the comparison reverse index is joined—curated comparison ids and titles. Results use deterministic scoring and ordering.
 
+### Comparison-aware filters
+
+The search CLI can query the curated-comparison graph directly:
+
+```bash
+# Every module that currently participates in at least one curated comparison
+python scripts/search_index.py \
+  --has-comparison \
+  --index dist/index/search.json
+
+# Exact members of one comparison, without needing a text query
+python scripts/search_index.py \
+  --comparison terraform-opentofu \
+  --index dist/index/search.json
+
+# Combine an exact comparison with normal text search
+python scripts/search_index.py \
+  "state" \
+  --comparison terraform-opentofu \
+  --index dist/index/search.json
+
+# Combine comparison coverage with ordinary facets
+python scripts/search_index.py \
+  --has-comparison \
+  --maturity deep-dive \
+  --domain data \
+  --index dist/index/search.json
+```
+
+`--has-comparison` returns only modules with at least one validated comparison backlink. `--comparison <id>` matches the exact normalized curated comparison id and implicitly selects only participating modules.
+
+The positional text query remains required for ordinary searches. It becomes optional only when `--has-comparison` or `--comparison` supplies an explicit discovery constraint, which prevents an accidental empty query from dumping the whole catalog.
+
+Comparison filters compose with existing category, kind, maturity, domain, deployment, license, and Technology Universe coverage filters. When no text query is supplied, matching modules are ordered deterministically by name/ref; when a query is supplied, normal relevance scoring still applies.
+
+Human-readable CLI results print linked comparison titles and URLs for matching modules, while `--json` preserves the full `comparisons[]` data for downstream tooling.
+
 ## Build curated comparisons
 
 Comparison manifests under `comparisons/` can be validated and rendered with:
@@ -126,12 +163,12 @@ The report compares real mapped modules with the 10,000-module Technology Univer
 The **Build Search Index** workflow:
 
 1. validates catalog data through the shared loader;
-2. runs unit tests, including curated-comparison, reverse-index, and comparison-join tests;
+2. runs unit tests, including curated-comparison, reverse-index, comparison-join, and comparison-filter tests;
 3. builds comparison-first and module-first comparison artifacts;
 4. builds module catalog/search artifacts with comparison backlinks joined in;
 5. builds coverage-progress artifacts;
 6. audits editorial quality;
-7. smoke-tests representative searches, including comparison-title discovery;
+7. smoke-tests representative searches, comparison-title discovery, exact comparison membership, and comparison-coverage filtering;
 8. uploads discovery, comparison, quality, and coverage output as workflow artifacts.
 
 The **Publish Public Index** workflow uses the same build order and rebuilds `INDEX.md` plus generated `docs/comparisons/` views when their validated inputs change.
