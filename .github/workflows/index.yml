@@ -7,12 +7,14 @@ on:
     paths:
       - 'catalog/**'
       - 'coverage/**'
+      - 'quality/module-maturity.yaml'
       - 'taxonomy/**'
       - 'schema/**'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/coverage_metadata.py'
       - 'scripts/coverage_progress.py'
+      - 'scripts/module_maturity.py'
       - 'scripts/search_index.py'
       - 'scripts/taxonomy.py'
       - 'scripts/audit_quality.py'
@@ -26,12 +28,14 @@ on:
     paths:
       - 'catalog/**'
       - 'coverage/**'
+      - 'quality/module-maturity.yaml'
       - 'taxonomy/**'
       - 'schema/**'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/coverage_metadata.py'
       - 'scripts/coverage_progress.py'
+      - 'scripts/module_maturity.py'
       - 'scripts/search_index.py'
       - 'scripts/taxonomy.py'
       - 'scripts/audit_quality.py'
@@ -101,6 +105,11 @@ jobs:
           print()
           print(f"Generated **{data['module_count']}** validated modules.")
           print(f"Coverage-mapped modules: **{coverage['mapped_modules']} / {coverage['target_modules']}**.")
+          print()
+          print('| Maturity | Modules |')
+          print('| --- | ---: |')
+          for level, count in data['maturity_counts'].items():
+              print(f'| `{level}` | {count} |')
           print()
           print('| Kind | Modules |')
           print('| --- | ---: |')
