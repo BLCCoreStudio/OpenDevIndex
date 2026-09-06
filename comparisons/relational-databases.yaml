@@ -1,0 +1,114 @@
+schema_version: 1
+id: relational-databases
+title: PostgreSQL vs MySQL vs SQLite
+summary: A deployment- and architecture-first comparison of three mature relational databases, focused on where the engine runs, how concurrency and durability work, and which operational boundary fits the application.
+verified_at: '2026-09-06'
+modules:
+- database/postgresql
+- database/mysql
+- database/sqlite
+dimensions:
+- id: engine-boundary
+  label: Engine boundary
+  values:
+    database/postgresql: Separate client/server database process architecture. Applications connect to a PostgreSQL server instance that owns shared database state, transactions, authentication, and storage operations.
+    database/mysql: Separate client/server SQL server. The server layer handles sessions, SQL, privileges, binary logging, and replication coordination while storage engines such as InnoDB implement transactional row and index storage.
+    database/sqlite: Embedded database library linked into the application process. SQL execution and file I/O happen in-process; there is no separate database daemon or native remote database protocol.
+- id: primary-storage-model
+  label: Primary storage model
+  values:
+    database/postgresql: Heap-organized table storage with separate index access methods. Row versions participate in PostgreSQL MVCC, while indexes reference table tuples and require maintenance as table state changes.
+    database/mysql: InnoDB normally organizes table rows by the clustered primary-key B-tree; secondary-index entries carry the primary-key identity, making primary-key width and insertion locality important physical design choices.
+    database/sqlite: Ordinary rowid tables use a table B-tree keyed by integer rowid; secondary indexes identify rows through rowid. WITHOUT ROWID tables instead use the declared primary key as the table B-tree key.
+- id: concurrency-model
+  label: Concurrency model
+  values:
+    database/postgresql: MVCC allows concurrent readers and writers while row/table locks and serialization rules coordinate conflicting changes. Many write transactions can progress concurrently when they do not conflict on the same resources.
+    database/mysql: InnoDB combines MVCC with record, gap, and next-key locking. Many writers can progress concurrently on different data, while lock ordering, range access, and isolation semantics can produce waits or deadlocks.
+    database/sqlite: Multiple readers can coexist, but only one write transaction can modify a database file at a time. WAL mode allows readers and a writer to overlap, but it does not create multiple simultaneous writers.
+- id: durability-journal
+  label: Durability and journal model
+  values:
+    database/postgresql: Write-ahead logging records changes before data pages need to reach final storage; checkpoints and crash recovery reconcile WAL with relation files. WAL also underpins physical replication and PITR workflows.
+    database/mysql: InnoDB redo supports storage-engine crash recovery and undo supports rollback/MVCC history. The server binary log is a separate logical history used for replication and point-in-time recovery workflows.
+    database/sqlite: Uses either rollback-journal transactions or a write-ahead log. The pager coordinates atomic commit and locking; WAL checkpoints copy committed frames back into the main database file.
+- id: remote-access
+  label: Remote client access
+  values:
+    database/postgresql: Designed for networked clients connecting to a database server. Authentication, TLS, roles, connection limits, pooling, and server exposure are explicit operational concerns.
+    database/mysql: Designed for networked clients connecting to a database server. Accounts, authentication plugins, TLS, connection handling, privileges, and server routing are part of the normal deployment boundary.
+    database/sqlite: Has no built-in client/server listener. The application using SQLite should normally be on the same machine as the database file; remote clients should talk to an application service rather than the live file.
+- id: replication-ha
+  label: Replication and HA primitives
+  values:
+    database/postgresql: Provides physical streaming and logical replication primitives. Production automatic failover, routing, fencing, multi-region policy, and topology management are completed by external tooling or managed services.
+    database/mysql: Provides binary-log replication and Group Replication primitives; the wider InnoDB Cluster ecosystem adds management and routing components. Application HA still depends on tested topology and failover behavior.
+    database/sqlite: Core SQLite does not provide built-in multi-node replication, consensus, automatic failover, or remote topology management. Replication or sync must be added at another layer when required.
+- id: recovery-model
+  label: Backup and point-in-time recovery
+  values:
+    database/postgresql: Supports logical and physical backup approaches plus WAL archiving and replay for point-in-time recovery. Recovery design depends on retaining a valid base backup and the required WAL history.
+    database/mysql: Supports logical/physical backup approaches and point-in-time recovery by restoring a known-good backup and replaying required binary-log history. Retention and restore verification are part of the design.
+    database/sqlite: Provides safe online backup and file-copy/rebuild mechanisms such as the backup API and VACUUM INTO. Core WAL is not a long-term PITR archive; historical recovery points require an explicit application or snapshot strategy.
+- id: operations
+  label: Main operational responsibilities
+  values:
+    database/postgresql: Server capacity, connections, planner statistics, vacuum/autovacuum, WAL, checkpoints, locks, replication, backup/restore, upgrades, security policy, and incident diagnosis all require ongoing operational ownership.
+    database/mysql: Server capacity, connections, InnoDB buffer/redo behavior, optimizer statistics, locks, binary logs, replication, backup/restore, upgrades, privileges, and HA routing require ongoing operational ownership.
+    database/sqlite: No server fleet is required, but the application owns migrations, transaction duration, busy handling, journal/WAL settings, checkpoints, backups, live-file handling, filesystem assumptions, and corruption recovery.
+- id: extensibility
+  label: Extensibility model
+  values:
+    database/postgresql: Rich server extensibility includes types, functions, operators, extensions, index/access methods, procedural languages, foreign data wrappers, and a broad extension ecosystem.
+    database/mysql: Extensibility includes plugins/components, functions, authentication integrations, and a pluggable storage-engine architecture, with capabilities and availability depending on edition and deployment environment.
+    database/sqlite: Extensible in-process through application-defined functions and collations, virtual tables, loadable extensions when enabled, and bundled capabilities such as FTS5 and JSON support in appropriate builds.
+- id: primary-key-consequences
+  label: Primary-key storage consequences
+  values:
+    database/postgresql: A primary-key constraint normally creates a unique index but does not make the table itself a permanently primary-key-clustered structure. Heap layout and index maintenance are separate concerns.
+    database/mysql: InnoDB uses the primary key as the clustered table key. Wide or random keys can increase secondary-index size, page churn, and storage/write amplification because secondary indexes include primary-key identity.
+    database/sqlite: INTEGER PRIMARY KEY aliases rowid in ordinary tables, while other primary keys are not automatically the rowid storage key. WITHOUT ROWID changes this by storing the table according to its declared primary key.
+- id: best-fit
+  label: Strong fit
+  values:
+    database/postgresql: Shared networked application data where concurrent transactions, advanced SQL, extensibility, strong operational tooling, and PostgreSQL-specific capabilities justify a dedicated database server boundary.
+    database/mysql: Shared networked application data where the MySQL protocol/ecosystem, InnoDB operational model, replication tooling, managed-service compatibility, or existing organizational expertise are important constraints.
+    database/sqlite: Application-owned local state, mobile/desktop/embedded storage, single-file application data, offline-first caches, or server-local workloads whose write concurrency fits the one-writer-per-database-file model.
+- id: poor-fit
+  label: Reconsider when
+  values:
+    database/postgresql: The application only needs simple local embedded persistence and introducing a separately operated database service would add more operational surface than the workload warrants.
+    database/mysql: The application only needs simple local embedded persistence and introducing a separately operated database service would add more operational surface than the workload warrants.
+    database/sqlite: Many machines must directly share one live database file, many concurrent writers cannot queue, or the system requires built-in server-side replication/failover and centralized remote database administration.
+- id: licensing
+  label: Core licensing boundary
+  values:
+    database/postgresql: PostgreSQL is distributed under the permissive PostgreSQL License.
+    database/mysql: MySQL Community Edition is distributed under GPL-2.0, while Oracle also offers commercial licensing and products around MySQL.
+    database/sqlite: SQLite's deliverable code and documentation are dedicated to the public domain.
+decision_rules:
+- condition: The data belongs to one application or device and should remain usable without deploying or reaching a separate database service.
+  consider:
+  - database/sqlite
+  reason: SQLite removes the server/network boundary and is designed for local application-owned storage, provided the workload fits its write-concurrency and filesystem model.
+- condition: Many remote application instances need to share one authoritative relational database and concurrent writes are a normal part of the workload.
+  consider:
+  - database/postgresql
+  - database/mysql
+  reason: A client/server engine provides a central transaction coordinator, remote protocol, account model, and substantially more concurrent write capacity than one shared SQLite file.
+- condition: The application depends on PostgreSQL-specific SQL behavior, extensions, access methods, or an existing PostgreSQL operational platform.
+  consider:
+  - database/postgresql
+  reason: Product-specific semantics and operational expertise are stronger selection criteria than generic claims about one relational database being universally faster or more scalable.
+- condition: The application depends on the MySQL protocol/ecosystem, InnoDB behavior, MySQL-compatible managed services, or an existing MySQL operational platform.
+  consider:
+  - database/mysql
+  reason: Compatibility requirements, replication/HA tooling, and existing expertise can make MySQL the correct boundary even when another engine offers overlapping SQL features.
+- condition: A remote service architecture is still desired, but the database itself can remain server-local and writes can be serialized efficiently by the application service.
+  consider:
+  - database/sqlite
+  reason: SQLite can sit behind an application-specific network API while remaining local to that server; remote clients do not need direct access to the database file.
+notes:
+- This view compares architectural and operational boundaries rather than declaring a universal winner.
+- Exact SQL syntax, defaults, limits, extension availability, replication behavior, and managed-service capabilities are version-sensitive; use the linked deep-dive modules and primary sources before production decisions.
+- Benchmark results are workload- and hardware-specific and are intentionally not used as ranking criteria here.
