@@ -19,5 +19,5 @@ entries:
   use_cases: [Maintain centrally authoritative source and asset history, Apply path-based repository access controls, Use sparse working copies and lock-oriented workflows for large centralized trees]
   key_points: [Commits create globally ordered repository revisions, Branches and tags are conventionally implemented as cheap repository copies, Working copies keep local administrative state while authoritative history remains server-side]
   kind: tool
-  domains: [developer-tools, version-control]
-  deployment_types: [cli, server]
+  domains: [developer-tools, software-development]
+  deployment_types: [cli, self-hosted]
