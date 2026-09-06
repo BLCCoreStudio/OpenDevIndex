@@ -109,6 +109,24 @@ jobs:
           python scripts/search_index.py "api testing" --index dist/index/search.json --domain api --limit 5
           python scripts/search_index.py "web accessibility" --index dist/index/search.json --domain accessibility --limit 5
           python scripts/search_index.py "Terraform vs OpenTofu" --index dist/index/search.json --limit 5
+          python scripts/search_index.py --comparison terraform-opentofu --index dist/index/search.json --json --limit 10 > /tmp/terraform-opentofu.json
+          python scripts/search_index.py --has-comparison --index dist/index/search.json --json --limit 100 > /tmp/comparison-linked.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          members = json.loads(Path('/tmp/terraform-opentofu.json').read_text(encoding='utf-8'))
+          refs = {entry['ref'] for entry in members}
+          assert refs == {'cloud/terraform', 'tool/opentofu'}, refs
+          assert all(
+              any(item['id'] == 'terraform-opentofu' for item in entry.get('comparisons', []))
+              for entry in members
+          )
+
+          linked = json.loads(Path('/tmp/comparison-linked.json').read_text(encoding='utf-8'))
+          assert len(linked) >= 5, len(linked)
+          assert all(entry.get('comparison_count', 0) > 0 for entry in linked)
+          PY
 
       - name: Publish build summary
         run: |
