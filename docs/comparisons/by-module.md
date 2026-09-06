@@ -1,0 +1,35 @@
+# Comparisons by module
+
+This reverse index shows every OpenDevIndex module currently included in at least one curated comparison.
+
+[Browse all comparisons](index.md)
+
+## [MySQL](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/mysql/entry)
+
+`database/mysql` — `deep-dive`
+
+- [PostgreSQL vs MySQL vs SQLite](relational-databases.md) — A deployment- and architecture-first comparison of three mature relational databases, focused on where the engine runs, how concurrency and durability work, and which operational boundary fits the application.
+
+## [OpenTofu](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/opentofu/entry)
+
+`tool/opentofu` — `deep-dive`
+
+- [Terraform vs OpenTofu](terraform-opentofu.md) — A compatibility- and lifecycle-first comparison of Terraform and OpenTofu, focused on their shared infrastructure-as-code model and the governance, licensing, registry, security, and migration boundaries that now distinguish them.
+
+## [PostgreSQL](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/postgresql/entry)
+
+`database/postgresql` — `deep-dive`
+
+- [PostgreSQL vs MySQL vs SQLite](relational-databases.md) — A deployment- and architecture-first comparison of three mature relational databases, focused on where the engine runs, how concurrency and durability work, and which operational boundary fits the application.
+
+## [SQLite](https://github.com/BLCCoreStudio/OpenDevIndex/tree/database/sqlite/entry)
+
+`database/sqlite` — `deep-dive`
+
+- [PostgreSQL vs MySQL vs SQLite](relational-databases.md) — A deployment- and architecture-first comparison of three mature relational databases, focused on where the engine runs, how concurrency and durability work, and which operational boundary fits the application.
+
+## [Terraform](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/terraform/entry)
+
+`cloud/terraform` — `deep-dive`
+
+- [Terraform vs OpenTofu](terraform-opentofu.md) — A compatibility- and lifecycle-first comparison of Terraform and OpenTofu, focused on their shared infrastructure-as-code model and the governance, licensing, registry, security, and migration boundaries that now distinguish them.
