@@ -4,7 +4,7 @@ This file is generated from validated OpenDevIndex catalogs. Each module link op
 
 **Indexed modules:** 253
 
-**Modules in curated comparisons:** 11
+**Modules in curated comparisons:** 12
 
 See [`docs/comparisons/index.md`](docs/comparisons/index.md) for comparison-first browsing or [`docs/comparisons/by-module.md`](docs/comparisons/by-module.md) for the reverse index.
 
@@ -101,7 +101,7 @@ Depth describes how far a module has progressed beyond its source-backed overvie
 | Module | Depth | Domains | Comparisons | Summary |
 | --- | --- | --- | --- | --- |
 | [age](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/age/entry) (`security/age`) | `overview` | `cli`, `security` | — | Simple file-encryption format and tool designed as a modern, composable way to encrypt files to public-key or passphrase recipients. |
-| [Ansible](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/ansible/entry) (`cloud/ansible`) | `deep-dive` | `cloud`, `devops` | — | Automation system for configuration management, application deployment, orchestration, and infrastructure tasks using agentless remote execution. |
+| [Ansible](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/ansible/entry) (`cloud/ansible`) | `deep-dive` | `cloud`, `devops` | [Terraform vs Ansible](docs/comparisons/terraform-ansible.md) | Automation system for configuration management, application deployment, orchestration, and infrastructure tasks using agentless remote execution. |
 | [Apache Airflow](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/apache-airflow/entry) (`tool/apache-airflow`) | `overview` | `data`, `devops`, `python` | — | Workflow orchestration platform for defining, scheduling, and monitoring data pipelines as code using Python-based directed acyclic graphs. |
 | [Apache Maven](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/maven/entry) (`tool/maven`) | `overview` | `build`, `developer-tools`, `software-development` | — | Build and project-management tool for Java and JVM ecosystems that uses declarative project models, dependency coordinates, lifecycle phases, and a large plugin repository. |
 | [bat](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/bat/entry) (`tool/bat`) | `overview` | `cli`, `developer-experience` | — | Command-line text viewer inspired by cat that adds syntax highlighting, Git-aware changes, line numbers, and paging while remaining pipeline friendly. |
@@ -168,7 +168,7 @@ Depth describes how far a module has progressed beyond its source-backed overvie
 | [Sigstore](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/sigstore/entry) (`security/sigstore`) | `overview` | `security`, `supply-chain` | — | Open-source ecosystem for signing and verifying software artifacts using short-lived identities, transparency logs, and supply-chain security tooling. |
 | [Suricata](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/suricata/entry) (`security/suricata`) | `overview` | `networking`, `security` | — | Open-source network threat detection engine supporting intrusion detection, intrusion prevention, network security monitoring, protocol analysis, and rule-based traffic inspection. |
 | [SWC](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/swc/entry) (`tool/swc`) | `overview` | `build`, `developer-tools`, `web` | — | Rust-based platform for fast JavaScript and TypeScript compilation, minification, transformation, and extensible tooling used by modern web frameworks. |
-| [Terraform](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/terraform/entry) (`cloud/terraform`) | `deep-dive` | `cloud`, `devops` | [Terraform vs OpenTofu](docs/comparisons/terraform-opentofu.md) | Infrastructure-as-code tool for declaring and applying resource graphs through provider plugins across cloud, SaaS, and infrastructure platforms. |
+| [Terraform](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/terraform/entry) (`cloud/terraform`) | `deep-dive` | `cloud`, `devops` | [Terraform vs Ansible](docs/comparisons/terraform-ansible.md)<br>[Terraform vs OpenTofu](docs/comparisons/terraform-opentofu.md) | Infrastructure-as-code tool for declaring and applying resource graphs through provider plugins across cloud, SaaS, and infrastructure platforms. |
 | [tmux](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/tmux/entry) (`tool/tmux`) | `overview` | `developer-tools` | — | Terminal multiplexer that creates persistent shell sessions and supports multiple windows and panes inside a single terminal connection. |
 | [Traefik Proxy](https://github.com/BLCCoreStudio/OpenDevIndex/tree/tool/traefik/entry) (`tool/traefik`) | `overview` | `cloud`, `containers`, `devops`, `networking` | — | Cloud-native reverse proxy and application proxy that discovers services dynamically and configures routing for containers and orchestration platforms. |
 | [Trivy](https://github.com/BLCCoreStudio/OpenDevIndex/tree/security/trivy/entry) (`security/trivy`) | `overview` | `containers`, `security` | — | Open-source security scanner for container images, filesystems, repositories, infrastructure configuration, dependencies, and software supply chains. |

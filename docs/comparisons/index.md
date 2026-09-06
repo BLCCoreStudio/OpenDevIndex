@@ -22,6 +22,12 @@ A deployment- and architecture-first comparison of three mature relational datab
 
 Compared modules: `database/postgresql`, `database/mysql`, `database/sqlite`
 
+## [Terraform vs Ansible](terraform-ansible.md)
+
+A lifecycle- and execution-model-first comparison of Terraform and Ansible, focused on persistent resource identity and planning versus inventory-targeted task execution, configuration management, and procedural orchestration.
+
+Compared modules: `cloud/terraform`, `cloud/ansible`
+
 ## [Terraform vs OpenTofu](terraform-opentofu.md)
 
 A compatibility- and lifecycle-first comparison of Terraform and OpenTofu, focused on their shared infrastructure-as-code model and the governance, licensing, registry, security, and migration boundaries that now distinguish them.

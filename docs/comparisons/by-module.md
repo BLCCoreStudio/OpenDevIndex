@@ -4,6 +4,12 @@ This reverse index shows every OpenDevIndex module currently included in at leas
 
 [Browse all comparisons](index.md)
 
+## [Ansible](https://github.com/BLCCoreStudio/OpenDevIndex/tree/cloud/ansible/entry)
+
+`cloud/ansible` — `deep-dive`
+
+- [Terraform vs Ansible](terraform-ansible.md) — A lifecycle- and execution-model-first comparison of Terraform and Ansible, focused on persistent resource identity and planning versus inventory-targeted task execution, configuration management, and procedural orchestration.
+
 ## [Argo CD](https://github.com/BLCCoreStudio/OpenDevIndex/tree/platform/argocd/entry)
 
 `platform/argocd` — `deep-dive`
@@ -68,4 +74,5 @@ This reverse index shows every OpenDevIndex module currently included in at leas
 
 `cloud/terraform` — `deep-dive`
 
+- [Terraform vs Ansible](terraform-ansible.md) — A lifecycle- and execution-model-first comparison of Terraform and Ansible, focused on persistent resource identity and planning versus inventory-targeted task execution, configuration management, and procedural orchestration.
 - [Terraform vs OpenTofu](terraform-opentofu.md) — A compatibility- and lifecycle-first comparison of Terraform and OpenTofu, focused on their shared infrastructure-as-code model and the governance, licensing, registry, security, and migration boundaries that now distinguish them.
