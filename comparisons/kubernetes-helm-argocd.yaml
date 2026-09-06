@@ -1,0 +1,133 @@
+schema_version: 1
+id: kubernetes-helm-argocd
+title: Kubernetes vs Helm vs Argo CD
+summary: A control-plane- and ownership-first comparison of Kubernetes, Helm, and Argo CD, clarifying the difference between cluster reconciliation, package and release rendering, and continuous GitOps delivery.
+verified_at: '2026-09-06'
+modules:
+- cloud/kubernetes
+- cloud/helm
+- platform/argocd
+dimensions:
+- id: primary-role
+  label: Primary role
+  values:
+    cloud/kubernetes: Declarative container orchestration platform whose API, controllers, scheduler, and node agents continuously reconcile workload and infrastructure objects across a cluster.
+    cloud/helm: Kubernetes package and release-management tool that combines charts, templates, and values into Kubernetes resources, applies them through the API, and records release history.
+    platform/argocd: GitOps continuous-delivery platform that resolves versioned application sources, renders desired Kubernetes manifests, compares them with live cluster state, and reconciles drift through sync operations.
+- id: desired-state-source
+  label: Desired-state source
+  values:
+    cloud/kubernetes: Desired state enters through Kubernetes API objects regardless of how those manifests were authored or delivered. The API server persists accepted object state for controllers to reconcile.
+    cloud/helm: Desired resources are produced from a chart plus selected values and release inputs at render or upgrade time. Helm itself is not a continuously watched Git source of truth.
+    platform/argocd: Desired application state is resolved from configured versioned sources such as Git repositories or Helm sources at selected revisions, then compared continuously or on refresh with live cluster resources.
+- id: reconciliation-owner
+  label: Reconciliation owner
+  values:
+    cloud/kubernetes: Kubernetes controllers continuously reconcile cluster objects toward their declared specifications; workload controllers, scheduler, kubelet, and other control loops own runtime convergence.
+    cloud/helm: Helm performs install, upgrade, rollback, and uninstall operations when invoked, but it is not a continuously running general-purpose controller that keeps every release equal to a chart source forever.
+    platform/argocd: Argo CD continuously evaluates desired versus live application state and can automatically or manually synchronize drift, while Kubernetes remains responsible for reconciling the applied runtime objects themselves.
+- id: manifest-generation
+  label: Manifest generation
+  values:
+    cloud/kubernetes: Consumes API objects; it does not provide Helm-style package templating as a native authoring layer. Manifest generation normally happens before resources reach the API.
+    cloud/helm: Chart templating is central. Helm renders templates using chart metadata, dependencies, built-in objects, values, and functions into concrete Kubernetes manifests.
+    platform/argocd: Delegates generation to supported source types and tools, including Helm rendering, then treats the generated output as desired application state for diff and synchronization.
+- id: package-model
+  label: Package model
+  values:
+    cloud/kubernetes: Kubernetes defines API resources and controllers rather than an application package format comparable to a Helm chart.
+    cloud/helm: Charts are versioned Kubernetes packages that can carry templates, defaults, metadata, dependencies, CRDs, and related files and can be distributed through chart repositories or OCI registries.
+    platform/argocd: Applications and ApplicationSets model delivery intent and source-to-destination relationships. Argo CD can consume Helm charts but does not replace the chart package format with a competing template language.
+- id: release-history
+  label: Release history
+  values:
+    cloud/kubernetes: Kubernetes retains object state and revision behavior for particular controllers, but it does not provide one universal Helm-style package release history for arbitrary application bundles.
+    cloud/helm: Release state and revisions are first-class. Helm records release history so operators can inspect revisions and perform Helm-aware upgrades and rollbacks.
+    platform/argocd: Tracks application sync, health, source revisions, operation history, and desired/live state. Its delivery history is GitOps/application-oriented rather than identical to Helm's release-revision model.
+- id: drift-detection
+  label: Drift detection
+  values:
+    cloud/kubernetes: Controllers detect and correct drift for the fields and objects they own, but Kubernetes does not know that a whole application should match a particular Git commit or Helm source revision.
+    cloud/helm: A normal Helm release does not continuously watch the cluster and chart source to report arbitrary out-of-band drift after an operation completes.
+    platform/argocd: Desired/live comparison and OutOfSync detection are core behaviors. Argo CD can surface and optionally reconcile application drift relative to the configured source revision.
+- id: rollback-model
+  label: Rollback model
+  values:
+    cloud/kubernetes: Rollback semantics depend on the specific Kubernetes resource or controller. Some workload controllers expose rollout history, but there is no universal cluster-wide application package rollback primitive.
+    cloud/helm: The helm rollback command targets a prior recorded release revision and performs a new release operation based on Helm's stored release history and chart state.
+    platform/argocd: GitOps rollback commonly means selecting or reverting desired source state and synchronizing it. Argo CD can expose operation/history controls, but durable desired state should remain consistent with the authoritative source workflow.
+- id: crd-lifecycle
+  label: CRD lifecycle
+  values:
+    cloud/kubernetes: CustomResourceDefinitions extend the Kubernetes API. Once installed, the API server and custom controllers own the resulting custom-resource runtime semantics.
+    cloud/helm: Charts can ship CRDs, but CRD install, upgrade, deletion, and ordering require special care because CRDs have lifecycle and compatibility constraints beyond ordinary templated resources.
+    platform/argocd: Can synchronize CRDs and custom resources and can order work with sync phases or waves, but it does not remove the underlying CRD/controller compatibility and upgrade responsibilities.
+- id: multi-cluster
+  label: Multi-cluster responsibility
+  values:
+    cloud/kubernetes: One Kubernetes control plane manages its configured cluster scope. Multi-cluster architecture is built by composing multiple clusters and higher-level management or federation mechanisms.
+    cloud/helm: A Helm invocation targets whichever Kubernetes cluster and namespace its credentials/context select. Helm does not by itself provide a persistent fleet-wide desired-state controller.
+    platform/argocd: Can register and continuously deliver applications to multiple target clusters, with Projects, Applications, and ApplicationSets providing policy and generation boundaries for fleet-oriented GitOps workflows.
+- id: credentials-boundary
+  label: Credentials and authority
+  values:
+    cloud/kubernetes: Kubernetes authentication, authorization, admission, service accounts, and RBAC ultimately decide what API actions are allowed inside the cluster.
+    cloud/helm: Helm acts with the Kubernetes credentials available to the invoking process. Chart rendering can create privileged resources only if those credentials and admission policy allow them.
+    platform/argocd: Argo CD holds repository and cluster access needed for reconciliation and adds its own Projects/RBAC/application controls, while target Kubernetes RBAC and admission remain final enforcement layers.
+- id: gitops-boundary
+  label: GitOps boundary
+  values:
+    cloud/kubernetes: Declarative APIs enable GitOps but Kubernetes does not inherently watch Git repositories or enforce that live objects match a selected Git revision.
+    cloud/helm: Charts work well inside GitOps workflows, but running Helm commands alone is release automation rather than continuous source-to-live reconciliation.
+    platform/argocd: GitOps reconciliation is the product boundary. Versioned desired sources, diffing, sync policy, health, resource tracking, and application status are central responsibilities.
+- id: failure-boundary
+  label: Typical failure boundary
+  values:
+    cloud/kubernetes: Control-plane, etcd, scheduler, networking, storage, node, admission, or controller failures can stop workload scheduling or convergence even if delivery tooling is healthy.
+    cloud/helm: Rendering errors, invalid values, hook failures, API errors, incompatible charts, or interrupted release operations can leave a Helm operation failed while the underlying cluster continues running.
+    platform/argocd: Repository resolution, manifest generation, diffing, cluster credentials, sync policy, controller availability, or application health evaluation can fail while Kubernetes may continue running the last applied resources.
+- id: best-fit
+  label: Choose or add when
+  values:
+    cloud/kubernetes: You need the runtime orchestration substrate that schedules containers, exposes declarative APIs, manages service discovery and storage integrations, and continuously reconciles cluster resources.
+    cloud/helm: You need reusable parameterized Kubernetes packages, chart distribution, templated manifest generation, dependency packaging, and explicit install, upgrade, rollback, or uninstall release operations.
+    platform/argocd: You need continuous desired/live comparison, GitOps drift detection, controlled synchronization, application health and history, multi-cluster delivery, and source-driven promotion workflows.
+- id: not-a-substitute
+  label: Do not assume
+  values:
+    cloud/kubernetes: Do not assume Kubernetes replaces package templating or GitOps delivery control. It reconciles API objects after they exist; it does not decide how a Git repository or chart should map to the application release process.
+    cloud/helm: Do not assume Helm replaces Kubernetes or a continuous GitOps controller. Helm generates and applies Kubernetes resources, but the cluster runs them and a separate controller is needed for continuous source-to-live reconciliation.
+    platform/argocd: Do not assume Argo CD replaces Kubernetes or Helm's chart format. Argo CD depends on Kubernetes as the target control plane and can use Helm as a manifest-generation source inside its own reconciliation loop.
+decision_rules:
+- condition: The system needs a control plane that schedules container workloads and continuously reconciles runtime resources across nodes.
+  consider:
+  - cloud/kubernetes
+  reason: Kubernetes owns the cluster API, controllers, scheduler, and node-agent runtime reconciliation that Helm and Argo CD ultimately target rather than replace.
+- condition: Teams need a reusable parameterized package for Kubernetes resources with explicit install, upgrade, release history, and rollback operations.
+  consider:
+  - cloud/helm
+  reason: Helm charts and release revisions directly model that package-management workflow without requiring a continuously running GitOps controller.
+- condition: Git or another versioned source should remain the authoritative desired state and out-of-band cluster drift should be detected and optionally reconciled continuously.
+  consider:
+  - platform/argocd
+  reason: Argo CD is built around source resolution, desired/live comparison, sync policy, application health, and continuous Kubernetes delivery.
+- condition: A team wants reusable Helm charts but also wants continuous GitOps drift detection and source-driven promotion.
+  consider:
+  - cloud/helm
+  - platform/argocd
+  reason: Argo CD can render Helm charts as a source while retaining Argo CD application reconciliation, so chart packaging and GitOps ownership can be composed rather than forced into one tool.
+- condition: The goal is a complete Kubernetes application-delivery path from runtime substrate through packaging to continuous source reconciliation.
+  consider:
+  - cloud/kubernetes
+  - cloud/helm
+  - platform/argocd
+  reason: A common composition uses Kubernetes as the execution control plane, Helm for reusable package rendering, and Argo CD for GitOps desired/live reconciliation; exact ownership should still be defined explicitly.
+- condition: A team is replacing Argo CD with Helm because both can apply Kubernetes manifests.
+  consider:
+  - cloud/helm
+  - platform/argocd
+  reason: Compare lifecycle ownership first. Helm executes release operations, whereas Argo CD continuously compares configured source state with live resources and can reconcile drift after the original apply has finished.
+notes:
+- Kubernetes, Helm, and Argo CD commonly compose in one delivery architecture; the comparison is about ownership boundaries rather than declaring one product the replacement for the other two.
+- Helm charts used through Argo CD are primarily a manifest-generation input to Argo CD's application reconciliation model, so Helm release behavior and direct Helm CLI workflows should not be assumed to map one-to-one.
+- Kubernetes, Helm, and Argo CD behavior evolves independently; verify version-sensitive APIs, chart semantics, sync options, security controls, and upgrade behavior against the linked deep dives before production changes.
