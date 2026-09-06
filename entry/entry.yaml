@@ -68,6 +68,18 @@ sources:
 - title: Sync phases and waves
   url: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/
   type: documentation
+- title: Diffing customization
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
+  type: documentation
+- title: Resource tracking
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/resource_tracking/
+  type: documentation
+- title: Resource health
+  url: https://argo-cd.readthedocs.io/en/stable/operator-manual/health/
+  type: documentation
+- title: Argo CD Helm integration
+  url: https://argo-cd.readthedocs.io/en/stable/user-guide/helm/
+  type: documentation
 - title: Projects
   url: https://argo-cd.readthedocs.io/en/stable/user-guide/projects/
   type: documentation
