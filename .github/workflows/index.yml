@@ -24,6 +24,7 @@ on:
       - 'scripts/audit_quality.py'
       - 'scripts/url_safety.py'
       - 'scripts/validate_catalog.py'
+      - 'scripts/validate_comparison_discovery.py'
       - 'tests/**'
       - '.github/workflows/index.yml'
   push:
@@ -49,6 +50,7 @@ on:
       - 'scripts/audit_quality.py'
       - 'scripts/url_safety.py'
       - 'scripts/validate_catalog.py'
+      - 'scripts/validate_comparison_discovery.py'
       - 'tests/**'
       - '.github/workflows/index.yml'
   workflow_dispatch:
@@ -101,6 +103,16 @@ jobs:
             --output-dir dist/index \
             --comparison-index dist/comparisons/module-comparisons.json
 
+      - name: Validate comparison discovery graph
+        run: |
+          python scripts/validate_comparison_discovery.py \
+            --comparisons dist/comparisons/comparisons.json \
+            --reverse-index dist/comparisons/module-comparisons.json \
+            --comparison-search dist/comparisons/search.json \
+            --module-search dist/index/search.json \
+            --semantic-cases comparisons/search-smoke.yaml \
+            --output dist/comparisons/discovery-validation.json
+
       - name: Build Technology Universe coverage progress
         run: |
           mkdir -p dist/coverage
@@ -113,75 +125,11 @@ jobs:
       - name: Audit editorial quality
         run: python scripts/audit_quality.py --catalog-dir catalog --minimum 80
 
-      - name: Smoke-test search facets
+      - name: Smoke-test module search facets
         run: |
           python scripts/search_index.py "machine learning" --index dist/index/search.json --kind framework --limit 5
           python scripts/search_index.py "api testing" --index dist/index/search.json --domain api --limit 5
           python scripts/search_index.py "web accessibility" --index dist/index/search.json --domain accessibility --limit 5
-          python scripts/search_index.py "Terraform vs OpenTofu" --index dist/index/search.json --limit 5
-          python scripts/search_index.py --comparison terraform-opentofu --index dist/index/search.json --json --limit 10 > /tmp/terraform-opentofu.json
-          python scripts/search_index.py --comparison terraform-ansible --index dist/index/search.json --json --limit 10 > /tmp/terraform-ansible-members.json
-          python scripts/search_index.py --has-comparison --index dist/index/search.json --json --limit 100 > /tmp/comparison-linked.json
-          python scripts/search_comparisons.py "state encryption" --index dist/comparisons/search.json --json > /tmp/comparison-state-encryption.json
-          python scripts/search_comparisons.py "wal checkpoints" --index dist/comparisons/search.json --json > /tmp/comparison-wal.json
-          python scripts/search_comparisons.py --module database/sqlite --index dist/comparisons/search.json --json > /tmp/comparison-sqlite.json
-          python scripts/search_comparisons.py "application instrumentation" --index dist/comparisons/search.json --json > /tmp/comparison-observability.json
-          python scripts/search_comparisons.py --module cloud/grafana --index dist/comparisons/search.json --json > /tmp/comparison-grafana.json
-          python scripts/search_comparisons.py "desired live comparison" --index dist/comparisons/search.json --json > /tmp/comparison-kubernetes-delivery.json
-          python scripts/search_comparisons.py --module platform/argocd --index dist/comparisons/search.json --json > /tmp/comparison-argocd.json
-          python scripts/search_comparisons.py "inventory target selection" --index dist/comparisons/search.json --json > /tmp/comparison-terraform-ansible.json
-          python scripts/search_comparisons.py --module cloud/terraform --index dist/comparisons/search.json --json > /tmp/comparison-terraform-multi.json
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          members = json.loads(Path('/tmp/terraform-opentofu.json').read_text(encoding='utf-8'))
-          refs = {entry['ref'] for entry in members}
-          assert refs == {'cloud/terraform', 'tool/opentofu'}, refs
-          assert all(
-              any(item['id'] == 'terraform-opentofu' for item in entry.get('comparisons', []))
-              for entry in members
-          )
-
-          terraform_ansible_members = json.loads(Path('/tmp/terraform-ansible-members.json').read_text(encoding='utf-8'))
-          terraform_ansible_refs = {entry['ref'] for entry in terraform_ansible_members}
-          assert terraform_ansible_refs == {'cloud/terraform', 'cloud/ansible'}, terraform_ansible_refs
-          assert all(
-              any(item['id'] == 'terraform-ansible' for item in entry.get('comparisons', []))
-              for entry in terraform_ansible_members
-          )
-
-          linked = json.loads(Path('/tmp/comparison-linked.json').read_text(encoding='utf-8'))
-          assert len(linked) >= 12, len(linked)
-          assert all(entry.get('comparison_count', 0) > 0 for entry in linked)
-
-          state = json.loads(Path('/tmp/comparison-state-encryption.json').read_text(encoding='utf-8'))
-          assert state and state[0]['id'] == 'terraform-opentofu', state
-
-          wal = json.loads(Path('/tmp/comparison-wal.json').read_text(encoding='utf-8'))
-          assert wal and wal[0]['id'] == 'relational-databases', wal
-
-          sqlite = json.loads(Path('/tmp/comparison-sqlite.json').read_text(encoding='utf-8'))
-          assert [entry['id'] for entry in sqlite] == ['relational-databases'], sqlite
-
-          observability = json.loads(Path('/tmp/comparison-observability.json').read_text(encoding='utf-8'))
-          assert observability and observability[0]['id'] == 'observability-roles', observability
-
-          grafana = json.loads(Path('/tmp/comparison-grafana.json').read_text(encoding='utf-8'))
-          assert [entry['id'] for entry in grafana] == ['observability-roles'], grafana
-
-          kubernetes_delivery = json.loads(Path('/tmp/comparison-kubernetes-delivery.json').read_text(encoding='utf-8'))
-          assert kubernetes_delivery and kubernetes_delivery[0]['id'] == 'kubernetes-helm-argocd', kubernetes_delivery
-
-          argocd = json.loads(Path('/tmp/comparison-argocd.json').read_text(encoding='utf-8'))
-          assert [entry['id'] for entry in argocd] == ['kubernetes-helm-argocd'], argocd
-
-          terraform_ansible = json.loads(Path('/tmp/comparison-terraform-ansible.json').read_text(encoding='utf-8'))
-          assert terraform_ansible and terraform_ansible[0]['id'] == 'terraform-ansible', terraform_ansible
-
-          terraform_multi = json.loads(Path('/tmp/comparison-terraform-multi.json').read_text(encoding='utf-8'))
-          assert [entry['id'] for entry in terraform_multi] == ['terraform-ansible', 'terraform-opentofu'], terraform_multi
-          PY
 
       - name: Publish build summary
         run: |
@@ -192,6 +140,7 @@ jobs:
           comparisons = json.loads(Path('dist/comparisons/comparisons.json').read_text(encoding='utf-8'))
           comparison_search = json.loads(Path('dist/comparisons/search.json').read_text(encoding='utf-8'))
           module_comparisons = json.loads(Path('dist/comparisons/module-comparisons.json').read_text(encoding='utf-8'))
+          discovery = json.loads(Path('dist/comparisons/discovery-validation.json').read_text(encoding='utf-8'))
           coverage = json.loads(Path('dist/coverage/coverage.json').read_text(encoding='utf-8'))
           print('# OpenDevIndex Search Index')
           print()
@@ -199,6 +148,8 @@ jobs:
           print(f"Generated **{comparisons['comparison_count']}** curated comparison view(s).")
           print(f"Searchable comparison records: **{comparison_search['comparison_count']}**.")
           print(f"Comparison-linked modules: **{module_comparisons['module_count']}**.")
+          print(f"Multi-comparison modules: **{discovery['multi_comparison_module_count']}**.")
+          print(f"Semantic comparison search cases: **{discovery['semantic_case_count']}**.")
           print(f"Coverage-mapped modules: **{coverage['mapped_modules']} / {coverage['target_modules']}**.")
           print()
           print('| Maturity | Modules |')
