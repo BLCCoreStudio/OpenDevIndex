@@ -7,3 +7,9 @@ Curated comparison views connect technologies that solve related problems withou
 A deployment- and architecture-first comparison of three mature relational databases, focused on where the engine runs, how concurrency and durability work, and which operational boundary fits the application.
 
 Compared modules: `database/postgresql`, `database/mysql`, `database/sqlite`
+
+## [Terraform vs OpenTofu](terraform-opentofu.md)
+
+A compatibility- and lifecycle-first comparison of Terraform and OpenTofu, focused on their shared infrastructure-as-code model and the governance, licensing, registry, security, and migration boundaries that now distinguish them.
+
+Compared modules: `cloud/terraform`, `tool/opentofu`
