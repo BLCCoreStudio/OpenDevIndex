@@ -214,6 +214,36 @@ def comparison_record(comparison: dict, entries_by_ref: dict[str, dict], maturit
     return {**comparison, "modules": modules}
 
 
+def build_module_comparison_index(records: list[dict]) -> list[dict]:
+    modules: dict[str, dict] = {}
+    for record in records:
+        comparison_link = {
+            "id": record["id"],
+            "title": record["title"],
+            "summary": record["summary"],
+            "verified_at": record["verified_at"],
+            "path": f"{record['id']}.md",
+        }
+        for module in record["modules"]:
+            item = modules.setdefault(
+                module["ref"],
+                {
+                    "ref": module["ref"],
+                    "name": module["name"],
+                    "url": module["url"],
+                    "maturity": module["maturity"],
+                    "summary": module["summary"],
+                    "comparisons": [],
+                },
+            )
+            item["comparisons"].append(dict(comparison_link))
+
+    result = sorted(modules.values(), key=lambda item: (item["name"].casefold(), item["ref"]))
+    for module in result:
+        module["comparisons"].sort(key=lambda item: (item["title"].casefold(), item["id"]))
+    return result
+
+
 def _escape_table(value: str) -> str:
     return value.replace("|", "\\|").replace("\n", "<br>")
 
@@ -275,6 +305,8 @@ def render_index(records: list[dict]) -> str:
         "",
         "Curated comparison views connect technologies that solve related problems without reducing them to popularity rankings or generic scorecards.",
         "",
+        "[Browse comparisons by module](by-module.md)",
+        "",
     ]
     for record in records:
         lines.extend(
@@ -290,15 +322,42 @@ def render_index(records: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def render_module_index(modules: list[dict]) -> str:
+    lines = [
+        "# Comparisons by module",
+        "",
+        "This reverse index shows every OpenDevIndex module currently included in at least one curated comparison.",
+        "",
+        "[Browse all comparisons](index.md)",
+        "",
+    ]
+    for module in modules:
+        lines.extend(
+            [
+                f"## [{module['name']}]({module['url']})",
+                "",
+                f"`{module['ref']}` — `{module['maturity']}`",
+                "",
+            ]
+        )
+        for comparison in module["comparisons"]:
+            lines.append(
+                f"- [{comparison['title']}]({comparison['path']}) — {comparison['summary']}"
+            )
+        lines.append("")
+    return "\n".join(lines)
+
+
 def write_json(path: Path, payload: object) -> None:
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def _write_markdown_set(target_dir: Path, records: list[dict]) -> None:
+def _write_markdown_set(target_dir: Path, records: list[dict], modules: list[dict]) -> None:
     target_dir.mkdir(parents=True, exist_ok=True)
     for stale in target_dir.glob("*.md"):
         stale.unlink()
     (target_dir / "index.md").write_text(render_index(records), encoding="utf-8")
+    (target_dir / "by-module.md").write_text(render_module_index(modules), encoding="utf-8")
     for record in records:
         (target_dir / f"{record['id']}.md").write_text(render_comparison(record), encoding="utf-8")
 
@@ -331,18 +390,25 @@ def build(
         seen_ids.add(comparison["id"])
         records.append(comparison_record(comparison, entries_by_ref, maturity_manifest))
 
+    module_index = build_module_comparison_index(records)
+
     output_dir.mkdir(parents=True, exist_ok=True)
     write_json(
         output_dir / "comparisons.json",
         {"schema_version": 1, "comparison_count": len(records), "comparisons": records},
     )
-    _write_markdown_set(output_dir, records)
+    write_json(
+        output_dir / "module-comparisons.json",
+        {"schema_version": 1, "module_count": len(module_index), "modules": module_index},
+    )
+    _write_markdown_set(output_dir, records, module_index)
     if public_dir is not None:
-        _write_markdown_set(public_dir, records)
+        _write_markdown_set(public_dir, records, module_index)
 
     return {
         "comparison_count": len(records),
         "comparison_ids": [record["id"] for record in records],
+        "module_count": len(module_index),
         "output_dir": output_dir.as_posix(),
     }
 
@@ -370,7 +436,7 @@ def main() -> int:
 
     print(
         "OpenDevIndex comparisons built: "
-        f"{result['comparison_count']} view(s) -> {result['output_dir']}"
+        f"{result['comparison_count']} view(s), {result['module_count']} indexed module(s) -> {result['output_dir']}"
     )
     for comparison_id in result["comparison_ids"]:
         print(f"- {comparison_id}")
