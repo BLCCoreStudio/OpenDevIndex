@@ -52,4 +52,4 @@ modules:
   tool/opentofu:
     level: deep-dive
     reviewed_at: '2026-09-06'
-    note: Open-source infrastructure-as-code deep-dive on provider compatibility, resource identity, state and locking, native state/plan encryption, registry and supply chain, Terraform migration, compatibility promises, recovery, and portability trade-offs.
+    note: Open-source IaC deep-dive on provider compatibility, state and locking, native state/plan encryption, registry security, Terraform migration, compatibility promises, recovery, and portability.
