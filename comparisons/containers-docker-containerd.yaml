@@ -1,0 +1,150 @@
+schema_version: 1
+id: containers-docker-containerd
+title: Containers vs Docker vs containerd
+summary: An abstraction- and runtime-boundary comparison of Linux containers, Docker, and containerd, clarifying the difference between the underlying isolation model, developer-facing container workflows, and node-level container lifecycle management.
+verified_at: '2026-09-06'
+modules:
+- concept/containers
+- tool/docker
+- tool/containerd
+dimensions:
+- id: abstraction-level
+  label: Abstraction level
+  values:
+    concept/containers: A systems concept and execution model built from operating-system primitives such as namespaces, cgroups, capabilities, filesystems, and process isolation, with OCI standards defining portable image and runtime boundaries.
+    tool/docker: A developer-facing container platform and toolchain that packages image build, distribution, container creation, networking, volumes, CLI workflows, and daemon APIs into an integrated experience.
+    tool/containerd: A long-running container runtime daemon and API layer that manages content, images, snapshots, containers, tasks, shims, and lower-level runtime execution on a node.
+- id: primary-responsibility
+  label: Primary responsibility
+  values:
+    concept/containers: Explain and provide the isolated process model itself, including what is and is not isolated, how resources are constrained, and how image/runtime standards map onto kernel behavior.
+    tool/docker: Turn container primitives into practical build, run, inspect, publish, networking, storage, and local-development workflows with a cohesive CLI and platform UX.
+    tool/containerd: Provide reliable node-local lifecycle services for pulling and unpacking images, preparing root filesystems, starting tasks, supervising runtime processes, and exposing runtime APIs to higher layers.
+- id: process-isolation
+  label: Process isolation
+  values:
+    concept/containers: Namespaces, cgroups, capabilities, seccomp, mount behavior, and other kernel mechanisms form the real isolation and resource-control boundary. Containers are still host processes rather than virtual machines.
+    tool/docker: Configures and invokes underlying runtime mechanisms to create isolated container processes, while exposing higher-level flags and defaults rather than implementing kernel isolation primitives itself.
+    tool/containerd: Coordinates task creation through OCI-compatible lower-level runtimes and shims, relying on the host kernel and runtime implementation for the actual namespace, cgroup, capability, and seccomp isolation.
+- id: image-build
+  label: Image build responsibility
+  values:
+    concept/containers: OCI image concepts define layers, manifests, configuration, and root filesystem materialization, but the container concept itself is not an image build engine.
+    tool/docker: Image construction is a major workflow through Dockerfile and BuildKit-based build tooling, cache management, multi-stage builds, build contexts, and registry publication.
+    tool/containerd: Consumes and manages image/content artifacts but is not primarily a developer image-authoring system. Image build normally happens in Docker, BuildKit, CI tooling, or another builder before containerd consumes the result.
+- id: image-storage
+  label: Image and content storage
+  values:
+    concept/containers: The portable model is content-addressed OCI image data and unpacked root filesystem layers, while concrete local content stores are implementation choices made by tools and runtimes.
+    tool/docker: Maintains local image and build state behind Docker workflows and exposes familiar image commands, tags, pulls, pushes, pruning, and build cache behavior.
+    tool/containerd: Has explicit content and image metadata stores keyed by digests and references, plus snapshotter-managed unpacked filesystem state used to prepare runnable root filesystems.
+- id: container-object
+  label: Container versus running process object
+  values:
+    concept/containers: Conceptually separates image/root filesystem, container configuration, and the running process even though user-facing tools may hide those layers behind one command.
+    tool/docker: Presents containers as high-level lifecycle objects through create, start, run, stop, exec, inspect, logs, and remove workflows, abstracting several lower-level runtime objects.
+    tool/containerd: Distinguishes container metadata from tasks. A container describes configuration and resources, while a task represents the live runtime process managed through a shim and lower-level runtime.
+- id: daemon-api
+  label: Daemon and API boundary
+  values:
+    concept/containers: The container abstraction does not require one universal daemon API. Different engines and orchestrators can implement the model through different control planes while sharing OCI contracts.
+    tool/docker: Docker Engine exposes a higher-level daemon API and CLI-oriented workflow surface that covers build, image, container, network, volume, and related platform operations.
+    tool/containerd: Exposes a runtime-focused gRPC API used by clients and higher-level systems, with namespaces and plugins organizing node-local resources and services.
+- id: lower-runtime
+  label: Lower-level runtime boundary
+  values:
+    concept/containers: OCI runtime specifications define the contract for creating and running a container bundle, while implementations such as runc translate that contract into kernel process setup.
+    tool/docker: Normally delegates runtime execution through lower layers rather than directly implementing every OCI runtime primitive in the Docker CLI or high-level daemon workflow.
+    tool/containerd: Manages task lifecycle and delegates low-level process creation to OCI runtime implementations through runtime v2 shims, keeping task supervision separate from the containerd daemon process.
+- id: networking
+  label: Networking responsibility
+  values:
+    concept/containers: Network namespaces, virtual interfaces, routing, bridges, firewall or policy rules, and higher-level network plugins determine how isolated processes communicate.
+    tool/docker: Provides user-facing container networking with bridge and other network drivers, port publishing, DNS/service-name behavior, and Docker-managed network objects.
+    tool/containerd: Core containerd is not a Docker-style end-user network UX. In orchestrated environments networking is commonly coordinated through CRI and CNI or another higher-level integration around runtime task creation.
+- id: persistent-storage
+  label: Persistent storage responsibility
+  values:
+    concept/containers: Writable container layers are usually ephemeral relative to workload lifecycle, while durable application data belongs on explicitly managed mounts, volumes, or external storage systems.
+    tool/docker: Exposes volumes, bind mounts, tmpfs options, copy-on-write image layers, and storage-driver behavior through developer and operator workflows.
+    tool/containerd: Uses snapshotters to materialize and manage container root filesystem snapshots; durable application data and orchestration-level volume semantics are generally owned by higher layers.
+- id: kubernetes-boundary
+  label: Kubernetes boundary
+  values:
+    concept/containers: Kubernetes schedules and reconciles containerized workloads but depends on a concrete runtime implementation and networking/storage integrations to turn pod specifications into running isolated processes.
+    tool/docker: Docker is widely used to build and test images used by Kubernetes, but modern Kubernetes nodes do not require the Docker Engine as their Container Runtime Interface implementation.
+    tool/containerd: Commonly serves Kubernetes nodes through its CRI plugin, translating pod sandbox and container lifecycle requests into image, snapshot, task, shim, and runtime operations.
+- id: developer-workflow
+  label: Developer workflow
+  values:
+    concept/containers: Supplies the mental model needed to reason about images, namespaces, cgroups, root filesystems, isolation, and lifecycle regardless of which concrete tool is used.
+    tool/docker: Optimized for direct developer interaction through commands such as build, run, compose-oriented workflows, logs, exec, inspect, image management, networking, and local iteration.
+    tool/containerd: Usually sits below higher-level tooling. Direct clients such as ctr or nerdctl may be used for diagnostics or specialized workflows, but containerd itself is primarily infrastructure rather than a complete developer UX.
+- id: security-boundary
+  label: Security boundary
+  values:
+    concept/containers: Security depends on the shared-kernel threat model, namespace boundaries, Linux capabilities, seccomp, LSM policy, user namespaces, filesystem mounts, image provenance, and host hardening.
+    tool/docker: Security additionally includes daemon/socket authority, build-context and Dockerfile trust, registry provenance, privileged flags, bind mounts, secrets handling, and Desktop or Engine configuration.
+    tool/containerd: Security additionally includes daemon socket access, plugin and runtime configuration, content provenance, shim/runtime binaries, snapshotter behavior, CRI privileges, and node-level filesystem/socket permissions.
+- id: failure-boundary
+  label: Typical failure boundary
+  values:
+    concept/containers: Failures arise from kernel limits, cgroup pressure, namespace or mount assumptions, filesystem exhaustion, network policy, capability restrictions, image incompatibility, or misunderstanding shared-host behavior.
+    tool/docker: Failures commonly involve build cache or context issues, daemon availability, image pulls, storage pressure, network and port configuration, volume ownership, registry access, or container configuration.
+    tool/containerd: Failures commonly involve content pulls, unpacking, snapshotters, task and shim lifecycle, runtime binaries, CRI integration, namespace selection, disk pressure, or node-level daemon/plugin health.
+- id: upgrade-boundary
+  label: Upgrade and compatibility boundary
+  values:
+    concept/containers: Stable OCI contracts and kernel interfaces reduce coupling, but application compatibility can still depend on architecture, kernel features, cgroup versions, security policy, and image assumptions.
+    tool/docker: Upgrades can affect Engine, CLI, BuildKit, Compose integrations, storage/network behavior, API versions, Desktop components, and defaults that shape developer workflows.
+    tool/containerd: Upgrades can affect daemon plugins, CRI behavior, snapshotters, runtime v2 shims, configuration versions, Kubernetes compatibility, and lower-runtime integration on production nodes.
+- id: best-fit
+  label: Choose or learn when
+  values:
+    concept/containers: You need to understand the fundamental execution, isolation, filesystem, resource-control, security, and OCI model that remains valid across Docker, containerd, Kubernetes, and other container systems.
+    tool/docker: You need a cohesive developer and operator toolchain for building images, running and debugging containers, publishing artifacts, managing local networks and volumes, or providing an approachable container UX.
+    tool/containerd: You need a production-oriented node runtime daemon, CRI-compatible Kubernetes runtime, embeddable container lifecycle API, explicit snapshotter/content management, or a stable layer beneath higher-level platforms.
+- id: composition
+  label: Common composition
+  values:
+    concept/containers: Defines the process and image model that concrete tools implement and compose around.
+    tool/docker: Can use containerd and OCI runtimes internally while presenting a broader developer-facing Engine and CLI experience above them.
+    tool/containerd: Can sit beneath Docker or Kubernetes, managing images and running tasks while higher layers own build UX, application orchestration, policy, and user-facing workflows.
+- id: not-a-substitute
+  label: Do not assume
+  values:
+    concept/containers: Do not treat containers as a product that can replace Docker or containerd. Containers are the systems model and standards boundary those tools implement or expose.
+    tool/docker: Do not assume Docker and containerd are interchangeable just because both run containers. Docker provides a broader developer platform and higher-level workflow surface around lower runtime services.
+    tool/containerd: Do not assume containerd is a drop-in replacement for Docker's full build, Compose, network, volume, and developer experience. Its core responsibility is narrower node-level runtime lifecycle management.
+decision_rules:
+- condition: The goal is to understand why container isolation works, what shares the host kernel, and how namespaces, cgroups, capabilities, filesystems, and OCI contracts fit together.
+  consider:
+  - concept/containers
+  reason: The containers deep dive owns the technology-independent systems model that remains useful even when the concrete engine or orchestrator changes.
+- condition: Developers need one approachable workflow for building images, running local containers, inspecting logs, publishing images, and managing common networks and volumes.
+  consider:
+  - tool/docker
+  reason: Docker packages those developer-facing workflows behind a cohesive CLI and Engine rather than exposing only the lower runtime lifecycle primitives.
+- condition: A Kubernetes node or platform component needs a stable daemon that manages image content, snapshots, tasks, shims, and OCI runtime execution through CRI or another API.
+  consider:
+  - tool/containerd
+  reason: containerd is designed around that node-local lifecycle and runtime service boundary and is commonly used underneath Kubernetes.
+- condition: A team is replacing Docker with containerd because Docker uses containerd internally.
+  consider:
+  - tool/docker
+  - tool/containerd
+  reason: First separate the developer-platform features from the runtime-daemon features. containerd can replace a lower runtime role without automatically replacing Docker build, Compose, networking, volume, and user-experience workflows.
+- condition: A platform uses Docker for image authoring while production Kubernetes nodes use containerd for execution.
+  consider:
+  - concept/containers
+  - tool/docker
+  - tool/containerd
+  reason: OCI image and runtime standards allow those layers to compose, while the container systems model explains why an image built through Docker can run through a different node runtime stack.
+- condition: Security review is treating a container as equivalent to a virtual machine boundary.
+  consider:
+  - concept/containers
+  reason: Containers normally share the host kernel, so the correct threat model must include kernel attack surface, privilege configuration, namespaces, capabilities, seccomp, LSM policy, mounts, and host hardening.
+notes:
+- This comparison intentionally mixes one foundational concept with two concrete tools because the main source of confusion is the abstraction boundary between them, not product feature parity.
+- Docker, containerd, runc, OCI specifications, Kubernetes CRI, and CNI can compose in different ways across platforms and versions; verify concrete runtime stacks rather than assuming one universal layering diagram.
+- Tool internals and defaults evolve, but the distinction between container systems primitives, a developer-facing platform, and a node-level runtime service remains a useful architecture model.
