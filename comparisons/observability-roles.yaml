@@ -1,0 +1,126 @@
+schema_version: 1
+id: observability-roles
+title: OpenTelemetry vs Prometheus vs Grafana
+summary: A role- and data-flow-first comparison of three observability technologies that often work together, clarifying which layer owns instrumentation, collection, metrics storage and query, visualization, and alert interaction.
+verified_at: '2026-09-06'
+modules:
+- cloud/opentelemetry
+- cloud/prometheus
+- cloud/grafana
+dimensions:
+- id: primary-role
+  label: Primary role
+  values:
+    cloud/opentelemetry: Vendor-neutral telemetry framework and specification for instrumentation, context propagation, signal generation, collection, processing, and export across traces, metrics, logs, and evolving signals.
+    cloud/prometheus: Metrics monitoring and alerting platform centered on labeled time series, pull-oriented scraping, local TSDB storage, PromQL, recording rules, and alert-rule evaluation.
+    cloud/grafana: Observability interaction and visualization platform that connects to external data sources, runs their query languages, transforms results, renders dashboards and Explore views, and manages alerting workflows.
+- id: application-instrumentation
+  label: Application instrumentation
+  values:
+    cloud/opentelemetry: A core responsibility. APIs, SDKs, automatic instrumentation, semantic conventions, Resources, Instrumentation Scope, and propagation provide a vendor-neutral way to produce correlated telemetry.
+    cloud/prometheus: Supports metrics instrumentation through Prometheus client-library and exposition conventions, but it is not a general cross-signal instrumentation framework for traces, logs, and context propagation.
+    cloud/grafana: Usually consumes telemetry already available through configured data sources. It is not the primary application instrumentation API or SDK layer.
+- id: collection-pipeline
+  label: Collection and processing pipeline
+  values:
+    cloud/opentelemetry: The Collector provides receiver, processor, exporter, connector, and extension pipelines for routing, transforming, batching, sampling, filtering, and exporting telemetry to one or more backends.
+    cloud/prometheus: Discovers targets and scrapes metrics directly, applies relabeling, stores local time series, and can federate or remote-write data. It is specialized around the Prometheus metrics model rather than a general telemetry pipeline.
+    cloud/grafana: Queries configured data sources and can transform query results for presentation. It does not normally replace a telemetry collection pipeline such as the OpenTelemetry Collector or Prometheus scraping layer.
+- id: native-storage
+  label: Native telemetry storage
+  values:
+    cloud/opentelemetry: The specification and Collector are not a durable observability database. Telemetry is normally exported to backends that provide long-term storage, indexing, query, and retention policy.
+    cloud/prometheus: Includes a local time-series database and WAL for metrics. Long-term, globally distributed, or very large retention architectures commonly add remote storage or compatible systems around Prometheus.
+    cloud/grafana: Generally queries external observability databases and APIs rather than acting as the primary durable store for metrics, traces, or logs. Its own application database holds Grafana configuration and state, not the monitored telemetry corpus.
+- id: metrics-query
+  label: Metrics query language
+  values:
+    cloud/opentelemetry: Defines telemetry data models and transport semantics but does not provide a universal backend query language comparable to PromQL. Query behavior belongs to the selected observability backend.
+    cloud/prometheus: PromQL is a central capability for selecting, aggregating, transforming, and reasoning over labeled time series stored or exposed through Prometheus-compatible query APIs.
+    cloud/grafana: Uses the query language of each configured data source. With Prometheus it commonly sends PromQL through the Prometheus data-source integration rather than inventing a replacement metrics language.
+- id: traces
+  label: Distributed traces
+  values:
+    cloud/opentelemetry: First-class trace instrumentation, context propagation, span processing, sampling, and OTLP export are core parts of the model.
+    cloud/prometheus: Core Prometheus is a metrics system, not a distributed trace storage and query backend. Trace correlation can be connected through exemplars and external tracing systems.
+    cloud/grafana: Can visualize and explore traces when connected to a tracing data source, but the trace records are normally produced and stored elsewhere.
+- id: logs
+  label: Logs
+  values:
+    cloud/opentelemetry: Defines log signal concepts and collection/export pipelines so logs can share Resource, context, and semantic-convention concepts with other telemetry.
+    cloud/prometheus: Core Prometheus does not provide general log ingestion and storage; its primary data model is metrics time series.
+    cloud/grafana: Can query and visualize logs through log-capable data sources, but Grafana itself is normally not the durable log store.
+- id: dashboards-exploration
+  label: Dashboards and exploration
+  values:
+    cloud/opentelemetry: Does not define a primary human dashboard or exploratory analysis UI. Its responsibility is getting well-described telemetry from producers through interoperable pipelines to analysis backends.
+    cloud/prometheus: Provides metrics query and basic operational interfaces, but rich cross-team dashboard composition is commonly delegated to visualization systems such as Grafana.
+    cloud/grafana: Dashboards, panels, variables, transformations, Explore workflows, and cross-data-source visualization are central product responsibilities.
+- id: alerting
+  label: Alerting responsibility
+  values:
+    cloud/opentelemetry: Can transport and process telemetry that later drives alerts, but it is not itself the canonical end-user alert-rule and notification-management system for all backends.
+    cloud/prometheus: Evaluates Prometheus alerting rules over metrics and sends alert instances into downstream notification handling, commonly through Alertmanager or compatible integrations.
+    cloud/grafana: Provides Grafana Alerting for evaluating supported data-source queries and expressions and for routing notifications, silences, contact points, and alert-management workflows.
+- id: protocol-boundary
+  label: Protocol and interoperability boundary
+  values:
+    cloud/opentelemetry: OTLP, semantic conventions, context propagation, signal data models, and Collector components are designed explicitly to reduce instrumentation and pipeline coupling to one observability vendor.
+    cloud/prometheus: Prometheus exposition, scraping, HTTP query APIs, remote write, and its metrics data model form a widely integrated metrics interoperability boundary.
+    cloud/grafana: Integrates through data-source plugins and backend APIs. Its interoperability strength is presenting and correlating data from many systems rather than defining one telemetry transport protocol.
+- id: scaling-pressure
+  label: Main scaling pressure
+  values:
+    cloud/opentelemetry: Collector throughput, queueing, backpressure, retry behavior, sampling cost, processor complexity, exporter health, and telemetry volume determine pipeline capacity and loss risk.
+    cloud/prometheus: Series cardinality, scrape volume, ingestion rate, query cost, retention, WAL and TSDB I/O, rule evaluation, remote-write queues, and HA topology dominate capacity planning.
+    cloud/grafana: Dashboard fan-out, expensive backend queries, concurrent users, alert-evaluation load, plugin behavior, metadata/database availability, and data-source latency dominate interactive performance and HA design.
+- id: failure-boundary
+  label: Typical failure boundary
+  values:
+    cloud/opentelemetry: A failed or overloaded collector/export path can delay or drop telemetry even while the application remains healthy, so queues, retries, memory limits, and pipeline observability matter.
+    cloud/prometheus: Scrape failures, cardinality explosions, disk pressure, slow queries, rule overload, remote-write backlog, or TSDB/WAL problems can reduce metrics visibility or alert reliability.
+    cloud/grafana: Data-source outages, query failures, dashboard mistakes, alerting configuration, plugin issues, or Grafana service/database failures can impair the operator view even while source telemetry still exists elsewhere.
+- id: best-fit
+  label: Choose or add when
+  values:
+    cloud/opentelemetry: You need portable instrumentation, trace context, multi-signal telemetry pipelines, collector-side processing, or the ability to export the same application telemetry toward different backends.
+    cloud/prometheus: You need pull-oriented metrics collection, a strong labeled time-series model, PromQL, local metric storage, recording rules, and metrics-driven alert evaluation.
+    cloud/grafana: You need human-facing dashboards, ad hoc exploration, multi-data-source views, visual correlation, presentation-layer transformations, and centralized alert interaction or notification workflows.
+- id: not-a-substitute
+  label: Do not assume
+  values:
+    cloud/opentelemetry: Do not assume OpenTelemetry replaces a durable metrics, trace, or log backend or a dashboard UI. It standardizes instrumentation and telemetry movement more than long-term analysis storage.
+    cloud/prometheus: Do not assume Prometheus replaces a general multi-signal instrumentation standard or a full cross-backend visualization layer. Its strongest native boundary is metrics monitoring and alerting.
+    cloud/grafana: Do not assume Grafana replaces the telemetry producer, collector, or durable observability backend. A dashboard can disappear while the underlying Prometheus or other source data remains intact.
+decision_rules:
+- condition: The application must emit correlated traces, metrics, and logs without hard-coding one backend vendor throughout the codebase.
+  consider:
+  - cloud/opentelemetry
+  reason: OpenTelemetry provides the cross-signal APIs, SDKs, propagation, semantic conventions, OTLP, and Collector pipeline boundary designed for portable telemetry generation and export.
+- condition: The primary requirement is labeled infrastructure or application metrics with scraping, PromQL, recording rules, local TSDB behavior, and metric alert evaluation.
+  consider:
+  - cloud/prometheus
+  reason: Prometheus owns that metrics lifecycle directly rather than acting only as an instrumentation transport or visualization client.
+- condition: Operators need dashboards and exploratory views across Prometheus and other observability backends from one interaction layer.
+  consider:
+  - cloud/grafana
+  reason: Grafana is designed to query external data sources and present their results through dashboards, Explore, transformations, and alerting interfaces.
+- condition: The goal is an end-to-end open observability path from application instrumentation through metrics storage to operator dashboards.
+  consider:
+  - cloud/opentelemetry
+  - cloud/prometheus
+  - cloud/grafana
+  reason: A common architecture can use OpenTelemetry for instrumentation and pipeline processing, Prometheus for metrics collection or storage and PromQL, and Grafana for visualization and operator interaction; the exact integration path remains workload-specific.
+- condition: A team is replacing Prometheus with OpenTelemetry because both mention metrics.
+  consider:
+  - cloud/opentelemetry
+  - cloud/prometheus
+  reason: Compare responsibilities before migrating. OpenTelemetry can generate and move metrics while Prometheus supplies a metrics database, scraper, PromQL engine, rules, and operational semantics that are not automatically replaced by an SDK or Collector.
+- condition: A team is replacing its telemetry backend with Grafana because dashboards already show the data.
+  consider:
+  - cloud/grafana
+  reason: Verify the actual data-source boundary first. Grafana commonly queries telemetry stored in another system, so the visible dashboard layer and the durable source of truth are different operational components.
+notes:
+- These technologies frequently complement one another; this comparison is primarily about ownership boundaries and composition, not selecting a universal winner.
+- Exact supported signals, Collector components, Prometheus interoperability paths, Grafana data-source capabilities, and alerting behavior are version-sensitive and should be checked against the linked deep dives before production changes.
+- A real observability architecture may use only one or two of these technologies or combine them with other storage and analysis backends; the comparison does not prescribe a mandatory stack.
