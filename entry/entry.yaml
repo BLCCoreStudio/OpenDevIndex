@@ -1,4 +1,4 @@
-schema_version: 2
+schema_version: 3
 id: github-actions
 name: GitHub Actions
 category: tool
@@ -6,7 +6,7 @@ kind: tool
 domains:
 - ci-cd
 - devops
-summary: GitHub-native automation platform for continuous integration, delivery, scheduled jobs, and repository workflows defined as versioned YAML files.
+summary: GitHub-native workflow automation platform that turns repository events, reusable YAML workflows, permissions, runners, environments, actions, artifacts, caches, and identity tokens into CI/CD and repository automation jobs.
 homepage: https://docs.github.com/actions
 repository: https://github.com/actions/runner
 license: MIT
@@ -14,15 +14,89 @@ deployment_types:
 - saas
 - self-hosted
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - ci
 - cd
 - automation
+- workflows
+- runners
+- deployments
+- oidc
+- supply-chain
+- devops
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - ci-cd
+  - deployment
+  - platform-engineering
+relationships:
+- type: related-to
+  target: tool/git
+  note: GitHub Actions workflows are versioned with repositories and commonly react to Git history and collaboration events, while Git remains the underlying distributed version-control system.
+- type: integrates-with
+  target: cloud/kubernetes
+  note: Actions can deploy Kubernetes workloads, and Actions Runner Controller is GitHub's recommended Kubernetes-based autoscaling solution for self-hosted runner scale sets.
 sources:
 - title: GitHub Actions documentation
   url: https://docs.github.com/actions
   type: documentation
+- title: GitHub Actions workflow syntax
+  url: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+  type: documentation
+- title: Events that trigger workflows
+  url: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+  type: documentation
+- title: Contexts reference
+  url: https://docs.github.com/en/actions/reference/workflows-and-actions/contexts
+  type: documentation
+- title: Expressions reference
+  url: https://docs.github.com/en/actions/reference/workflows-and-actions/expressions
+  type: documentation
+- title: Secure use reference
+  url: https://docs.github.com/en/actions/reference/security/secure-use
+  type: documentation
+- title: GITHUB_TOKEN authentication
+  url: https://docs.github.com/en/actions/how-tos/security-for-github-actions/security-guides/automatic-token-authentication
+  type: documentation
+- title: OpenID Connect
+  url: https://docs.github.com/en/actions/concepts/security/openid-connect
+  type: documentation
+- title: OpenID Connect reference
+  url: https://docs.github.com/en/actions/reference/security/oidc
+  type: documentation
+- title: Deployment environments
+  url: https://docs.github.com/en/actions/concepts/workflows-and-actions/deployment-environments
+  type: documentation
+- title: Reusing workflow configurations
+  url: https://docs.github.com/en/actions/concepts/workflows-and-actions/reusing-workflow-configurations
+  type: documentation
+- title: Dependency caching
+  url: https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+  type: documentation
+- title: Store and share data with workflow artifacts
+  url: https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
+  type: documentation
+- title: GitHub-hosted runners
+  url: https://docs.github.com/en/actions/concepts/runners/github-hosted-runners
+  type: documentation
+- title: Self-hosted runners
+  url: https://docs.github.com/en/actions/concepts/runners/self-hosted-runners
+  type: documentation
+- title: Self-hosted runners reference
+  url: https://docs.github.com/en/actions/reference/runners/self-hosted-runners
+  type: documentation
+- title: Actions Runner Controller
+  url: https://docs.github.com/en/actions/concepts/runners/actions-runner-controller
+  type: documentation
+- title: Runner groups
+  url: https://docs.github.com/en/actions/concepts/runners/runner-groups
+  type: documentation
 - title: GitHub Actions runner repository
   url: https://github.com/actions/runner
+  type: repository
+- title: GitHub Actions runner MIT license
+  url: https://github.com/actions/runner/blob/main/LICENSE
   type: repository
