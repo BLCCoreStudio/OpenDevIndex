@@ -68,8 +68,8 @@ modules:
   database/mysql:
     level: deep-dive
     reviewed_at: '2026-09-06'
-    note: Relational database deep-dive on MySQL's SQL/storage-engine boundary, InnoDB clustered indexes, buffer pool, redo/undo, MVCC and locking, optimizer statistics, binary-log replication, GTIDs, Group Replication, PITR, security, HA boundaries, and failure diagnosis.
+    note: MySQL deep-dive on SQL/storage-engine boundaries, InnoDB indexes and buffer pool, redo/undo, MVCC and locking, optimizer statistics, binlog replication, GTIDs, Group Replication, PITR, security, HA, and failure diagnosis.
   database/sqlite:
     level: deep-dive
     reviewed_at: '2026-09-06'
-    note: Embedded relational database deep-dive on SQL-to-VDBE execution, B-tree/pager/VFS architecture, rowid storage, rollback journals and WAL, single-writer concurrency, checkpoints, query planning, backup, filesystem safety, security, and corruption diagnosis.
+    note: SQLite deep-dive on VDBE execution, B-tree/pager/VFS architecture, rowid storage, rollback journals and WAL, single-writer concurrency, checkpoints, query planning, backup, filesystem safety, security, and corruption diagnosis.
