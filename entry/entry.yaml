@@ -7,7 +7,7 @@ domains:
 - cloud
 - developer-tools
 - devops
-summary: Community-governed open-source infrastructure-as-code engine that evaluates declarative configuration, coordinates provider plugins, tracks resource identity in state, plans dependency-aware lifecycle changes, and applies them through cloud, SaaS, and infrastructure APIs while maintaining broad Terraform workflow compatibility.
+summary: Community-governed open-source infrastructure-as-code engine for declarative provisioning through provider plugins, dependency-aware plans, persistent state, and Terraform-compatible workflows, with independent governance and native state/plan encryption.
 homepage: https://opentofu.org/
 repository: https://github.com/opentofu/opentofu
 license: MPL-2.0
