@@ -1,23 +1,83 @@
-schema_version: 1
+schema_version: 3
 id: grafana
 name: Grafana
 category: cloud
 kind: platform
 domains:
 - observability
-summary: Observability visualization platform used to query, explore, dashboard, and alert on metrics, logs, traces, and other operational data sources.
-homepage: https://grafana.com/
+- devops
+summary: Open-source observability visualization and alerting platform that connects to external data sources, executes their query languages, transforms results, renders dashboards and Explore views, and manages alert evaluation and notification workflows.
+homepage: https://grafana.com/grafana/
 repository: https://github.com/grafana/grafana
+license: AGPL-3.0-only
+deployment_types:
+- self-hosted
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - observability
 - dashboards
+- visualization
 - monitoring
+- alerting
+- data-sources
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - observability
+  - sre
+  - platform-engineering
+relationships:
+- type: integrates-with
+  target: cloud/prometheus
+  note: Grafana has a built-in Prometheus data source and commonly uses PromQL over the Prometheus HTTP API for metric dashboards, Explore workflows, exemplars, and alert queries.
 sources:
-- title: Grafana official site
-  url: https://grafana.com/
+- title: Grafana documentation
+  url: https://grafana.com/docs/grafana/latest/
   type: official
-- title: Grafana repository
+- title: Grafana source repository
   url: https://github.com/grafana/grafana
   type: repository
+- title: Grafana data sources
+  url: https://grafana.com/docs/grafana/latest/datasources/
+  type: documentation
+- title: Prometheus data source
+  url: https://grafana.com/docs/grafana/latest/datasources/prometheus/
+  type: documentation
+- title: Grafana dashboards
+  url: https://grafana.com/docs/grafana/latest/dashboards/
+  type: documentation
+- title: Grafana Explore
+  url: https://grafana.com/docs/grafana/latest/explore/
+  type: documentation
+- title: Grafana variables
+  url: https://grafana.com/docs/grafana/latest/dashboards/variables/
+  type: documentation
+- title: Grafana transformations
+  url: https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/
+  type: documentation
+- title: Grafana Alerting fundamentals
+  url: https://grafana.com/docs/grafana/latest/alerting/fundamentals/
+  type: documentation
+- title: Grafana notification configuration
+  url: https://grafana.com/docs/grafana/latest/alerting/configure-notifications/
+  type: documentation
+- title: Provision Grafana
+  url: https://grafana.com/docs/grafana/latest/administration/provisioning/
+  type: documentation
+- title: Grafana authentication
+  url: https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/
+  type: documentation
+- title: Grafana dashboard permissions
+  url: https://grafana.com/docs/grafana/latest/administration/user-management/manage-dashboard-permissions/
+  type: documentation
+- title: Grafana plugin management
+  url: https://grafana.com/docs/grafana/latest/administration/plugin-management/
+  type: documentation
+- title: Grafana high availability
+  url: https://grafana.com/docs/grafana/latest/setup-grafana/set-up-for-high-availability/
+  type: documentation
+- title: Back up Grafana
+  url: https://grafana.com/docs/grafana/latest/administration/back-up-grafana/
+  type: documentation
