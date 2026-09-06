@@ -65,3 +65,7 @@ modules:
     level: deep-dive
     reviewed_at: '2026-09-06'
     note: Relational database deep-dive on MVCC, WAL, vacuum, planner statistics, indexes, locks, replication, PITR, HA boundaries, security, migrations, observability, and failure diagnosis.
+  database/mysql:
+    level: deep-dive
+    reviewed_at: '2026-09-06'
+    note: Relational database deep-dive on MySQL's SQL/storage-engine boundary, InnoDB clustered indexes, buffer pool, redo/undo, MVCC and locking, optimizer statistics, binary-log replication, GTIDs, Group Replication, PITR, security, HA boundaries, and failure diagnosis.
