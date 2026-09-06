@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 3
 id: ansible
 name: Ansible
 category: cloud
@@ -6,19 +6,97 @@ kind: tool
 domains:
 - cloud
 - devops
-summary: Automation system for configuration management, application deployment, orchestration, and infrastructure tasks using agentless remote execution.
+summary: Agentless automation system whose control node resolves inventory, variables, playbooks, plugins, and collections into ordered tasks executed across managed nodes for configuration management, deployment, orchestration, and repeatable operations.
 homepage: https://docs.ansible.com/
 repository: https://github.com/ansible/ansible
+license: GPL-3.0-or-later
+deployment_types:
+- cli
+- local
 status: active
-verified_at: '2026-08-31'
+verified_at: '2026-09-06'
 tags:
 - automation
 - configuration-management
+- orchestration
+- deployment
+- inventory
+- playbooks
+- collections
+- agentless
 - devops
+- deep-dive
+coverage:
+  area: cloud-devops-sre
+  topics:
+  - configuration-management
+  - deployment
+  - platform-engineering
+relationships:
+- type: related-to
+  target: cloud/terraform
+  note: Terraform focuses on declarative resource lifecycle through provider APIs and persistent state, while Ansible commonly handles host/service configuration and procedural orchestration; teams often combine them with explicit ownership boundaries.
+- type: integrates-with
+  target: cloud/kubernetes
+  note: Ansible collections can automate Kubernetes API resources and cluster-adjacent operations, though continuous reconciliation is normally owned by Kubernetes controllers or GitOps systems.
 sources:
-- title: Ansible documentation
-  url: https://docs.ansible.com/
+- title: Ansible Community Documentation
+  url: https://docs.ansible.com/projects/ansible/latest/
   type: documentation
-- title: Ansible repository
+- title: ansible-core source repository
   url: https://github.com/ansible/ansible
   type: repository
+- title: ansible-core project metadata and license declaration
+  url: https://github.com/ansible/ansible/blob/devel/pyproject.toml
+  type: repository
+- title: ansible-core license
+  url: https://github.com/ansible/ansible/blob/devel/COPYING
+  type: repository
+- title: Installing Ansible and package distinction
+  url: https://docs.ansible.com/projects/ansible-core/devel/installation_guide/intro_installation.html
+  type: documentation
+- title: Ansible basic concepts
+  url: https://docs.ansible.com/projects/ansible-core/devel/getting_started/basic_concepts.html
+  type: documentation
+- title: Playbooks
+  url: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks.html
+  type: documentation
+- title: Dynamic inventory
+  url: https://docs.ansible.com/projects/ansible/latest/inventory_guide/intro_dynamic_inventory.html
+  type: documentation
+- title: Connection plugins
+  url: https://docs.ansible.com/projects/ansible/latest/plugins/connection.html
+  type: documentation
+- title: Module architecture
+  url: https://docs.ansible.com/projects/ansible/latest/dev_guide/developing_program_flow_modules.html
+  type: documentation
+- title: Strategy plugins
+  url: https://docs.ansible.com/projects/ansible/latest/plugins/strategy.html
+  type: documentation
+- title: Playbook execution strategies
+  url: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_strategies.html
+  type: documentation
+- title: Using variables
+  url: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html
+  type: documentation
+- title: Roles
+  url: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_reuse_roles.html
+  type: documentation
+- title: Collections
+  url: https://docs.ansible.com/projects/ansible/latest/collections_guide/index.html
+  type: documentation
+- title: Error handling
+  url: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_error_handling.html
+  type: documentation
+- title: Executing playbooks
+  url: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_execution.html
+  type: documentation
+- title: Ansible Vault
+  url: https://docs.ansible.com/projects/ansible/latest/vault_guide/vault.html
+  type: documentation
+- title: Lookup plugins
+  url: https://docs.ansible.com/projects/ansible/latest/plugins/lookup.html
+  type: documentation
+- title: Release and maintenance model
+  url: https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html
+  type: documentation
