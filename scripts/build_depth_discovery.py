@@ -65,6 +65,17 @@ def discovery_counts(records: list[dict]) -> tuple[Counter, Counter, Counter]:
     return maturity_counts, kind_counts, domain_counts
 
 
+def module_links(records: list[dict]) -> str:
+    ordered = sorted(
+        records,
+        key=lambda item: (item["name"].casefold(), item["ref"]),
+    )
+    return ", ".join(
+        f"[{record['name'].replace('|', '\\|')}]({record['url']})"
+        for record in ordered
+    )
+
+
 def render_markdown(records: list[dict]) -> str:
     counts, kind_counts, domain_counts = discovery_counts(records)
     lines = [
@@ -78,14 +89,32 @@ def render_markdown(records: list[dict]) -> str:
     ]
 
     if kind_counts:
-        lines.extend(["", "## Reviewed depth by kind", "", "| Kind | Modules |", "| --- | ---: |"]) 
+        lines.extend(
+            [
+                "",
+                "## Reviewed depth by kind",
+                "",
+                "| Kind | Modules | Browse |",
+                "| --- | ---: | --- |",
+            ]
+        )
         for kind, count in sorted(kind_counts.items()):
-            lines.append(f"| `{kind}` | {count} |")
+            matching = [record for record in records if record["kind"] == kind]
+            lines.append(f"| `{kind}` | {count} | {module_links(matching)} |")
 
     if domain_counts:
-        lines.extend(["", "## Reviewed depth by domain", "", "| Domain | Modules |", "| --- | ---: |"]) 
+        lines.extend(
+            [
+                "",
+                "## Reviewed depth by domain",
+                "",
+                "| Domain | Modules | Browse |",
+                "| --- | ---: | --- |",
+            ]
+        )
         for domain, count in sorted(domain_counts.items()):
-            lines.append(f"| `{domain}` | {count} |")
+            matching = [record for record in records if domain in record.get("domains", [])]
+            lines.append(f"| `{domain}` | {count} | {module_links(matching)} |")
 
     for level, heading in (("deep-dive", "Deep dives"), ("guide", "Guides")):
         level_records = [record for record in records if record["maturity"] == level]
