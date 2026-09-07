@@ -43,6 +43,8 @@ Each independently versioned module contains:
 7. Mark rapidly changing information with a verification date.
 8. Keep entries concise enough to scan but detailed enough to teach.
 
+For practical guidance on choosing evidence, version-scoping sources, and reviewing comparison or security-sensitive claims, see [`docs/SOURCE_QUALITY.md`](docs/SOURCE_QUALITY.md).
+
 ## Local checks
 
 Before opening a pull request that changes core tooling or catalogs, run:
