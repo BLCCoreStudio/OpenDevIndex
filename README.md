@@ -10,6 +10,7 @@
 
 <p align="center">
   <a href="INDEX.md">Browse the Index</a> ·
+  <a href="docs/depth.md">Browse Reviewed Depth</a> ·
   <a href="docs/COMPARISONS.md">Compare Technologies</a> ·
   <a href="docs/COVERAGE.md">Explore Technology Areas</a> ·
   <a href="docs/MODULE_STANDARD.md">Module Standard</a> ·
@@ -31,7 +32,7 @@ A module can grow from a concise source-backed overview into a full technical de
 
 ## Start exploring
 
-The generated [`INDEX.md`](INDEX.md) is the main directory. It groups modules by what they are and shows the domains they belong to.
+The generated [`INDEX.md`](INDEX.md) is the main directory. It groups modules by what they are and shows the domains they belong to. The generated [`docs/depth.md`](docs/depth.md) view focuses specifically on reviewed guide and deep-dive modules, with kind and domain facets for faster depth-oriented browsing.
 
 A few examples:
 
@@ -180,11 +181,12 @@ OpenDevIndex generates machine-readable search and comparison artifacts alongsid
 
 ```bash
 python scripts/build_index.py --catalog-dir catalog --output-dir dist/index --public-index INDEX.md
+python scripts/build_depth_discovery.py --catalog-dir catalog --maturity-manifest quality/module-maturity.yaml --output-dir dist/depth
 python scripts/search_index.py "local ai" --index dist/index/search.json
 python scripts/build_comparisons.py --comparisons-dir comparisons --catalog-dir catalog --output-dir dist/comparisons
 ```
 
-Search can use taxonomy-aware fields including maturity, kind, domains, tags, deployment type, licensing metadata, and Technology Universe coverage facets. Comparison artifacts expose reviewed dimensions, module metadata, and requirement-oriented decision guidance for downstream interfaces.
+Search can use taxonomy-aware fields including maturity, kind, domains, tags, deployment type, licensing metadata, and Technology Universe coverage facets. Reviewed-depth artifacts provide a focused machine-readable and Markdown view of guide/deep-dive modules without redefining maturity. Comparison artifacts expose reviewed dimensions, module metadata, and requirement-oriented decision guidance for downstream interfaces.
 
 The structured model is intended to work for:
 
@@ -262,6 +264,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/EDITORIAL_POLICY.md`](docs/E
 ## Documentation
 
 - [`docs/MODULE_STANDARD.md`](docs/MODULE_STANDARD.md) — module depth and editorial expectations
+- [`docs/DEPTH_DISCOVERY.md`](docs/DEPTH_DISCOVERY.md) — reviewed guide/deep-dive discovery generation and source-of-truth rules
 - [`docs/COMPARISONS.md`](docs/COMPARISONS.md) — curated comparison manifests, validation, and publication model
 - [`docs/COVERAGE.md`](docs/COVERAGE.md) — technology-area coverage model
 - [`docs/TAXONOMY.md`](docs/TAXONOMY.md) — stable addresses, kinds, domains, and relationships
