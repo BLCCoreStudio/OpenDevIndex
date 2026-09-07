@@ -43,6 +43,8 @@ Each independently versioned module contains:
 7. Mark rapidly changing information with a verification date.
 8. Keep entries concise enough to scan but detailed enough to teach.
 
+For subject-specific review prompts, use the [`kind-specific editorial checklists`](docs/KIND_EDITORIAL_CHECKLISTS.md) after applying the general module standard.
+
 ## Local checks
 
 Before opening a pull request that changes core tooling or catalogs, run:
