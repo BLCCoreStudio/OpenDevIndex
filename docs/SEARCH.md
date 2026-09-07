@@ -23,6 +23,26 @@ The index builder also joins `quality/module-maturity.yaml`, so generated record
 
 The generator intentionally avoids timestamps in generated artifacts so the same validated inputs produce stable output.
 
+## Build reviewed-depth discovery
+
+To generate the focused guide/deep-dive discovery view from the same reviewed maturity source of truth:
+
+```bash
+python scripts/build_depth_discovery.py \
+  --catalog-dir catalog \
+  --maturity-manifest quality/module-maturity.yaml \
+  --output-dir dist/depth
+```
+
+Generated files:
+
+- `dist/depth/depth.json` — machine-readable reviewed guide/deep-dive records plus deterministic maturity, kind, and domain facets;
+- `dist/depth/depth.md` — human-readable reviewed-depth view with direct module navigation.
+
+The trusted public publisher uses the same renderer to produce `docs/depth.md`. Overview modules are deliberately excluded from this focused view; that is a discovery filter, not a lower-quality classification. Maturity remains owned by `quality/module-maturity.yaml`, and generated depth files are never an editorial source of truth.
+
+See [`DEPTH_DISCOVERY.md`](DEPTH_DISCOVERY.md) for the generation contract and source-of-truth boundary.
+
 ## Search modules locally
 
 ```bash
@@ -185,7 +205,7 @@ Successful validation writes `dist/comparisons/discovery-validation.json` with c
 
 ## Public discovery build
 
-The public publisher renders comparison views first, then the comparison-aware module index:
+The public publisher renders comparison views first, then the comparison-aware module index and reviewed-depth view:
 
 ```bash
 python scripts/build_comparisons.py \
@@ -199,11 +219,17 @@ python scripts/build_index.py \
   --output-dir dist/index \
   --public-index INDEX.md \
   --comparison-index dist/comparisons/module-comparisons.json
+
+python scripts/build_depth_discovery.py \
+  --catalog-dir catalog \
+  --maturity-manifest quality/module-maturity.yaml \
+  --output-dir dist/depth \
+  --public-markdown docs/depth.md
 ```
 
-Compact comparison search and discovery-validation JSON are CI/downstream artifacts rather than committed public Markdown. Public comparison pages remain generated under `docs/comparisons/` from the same reviewed manifests.
+Compact comparison search and discovery-validation JSON are CI/downstream artifacts rather than committed public Markdown. Public comparison pages remain generated under `docs/comparisons/`, while `docs/depth.md` is generated from the reviewed maturity manifest and catalog through the same deterministic depth renderer used by CI.
 
-See [`COMPARISONS.md`](COMPARISONS.md) for the editorial, bidirectional-discovery, semantic-search, and validation model.
+See [`COMPARISONS.md`](COMPARISONS.md) for the editorial, bidirectional-discovery, semantic-search, and validation model, and [`DEPTH_DISCOVERY.md`](DEPTH_DISCOVERY.md) for the reviewed-depth publication contract.
 
 ## Coverage progress
 
@@ -223,22 +249,24 @@ The report compares real mapped modules with the 10,000-module Technology Univer
 
 The **Build Search Index** workflow:
 
-1. runs unit tests for module search, curated comparisons, reverse indexes, joins/filters, comparison search, and discovery validation;
+1. runs unit tests for module search, curated comparisons, reverse indexes, joins/filters, comparison search, discovery validation, and reviewed-depth generation;
 2. builds full comparison records and the compact comparison-search artifact;
 3. builds module catalog/search artifacts with comparison backlinks joined in;
 4. runs the generic comparison discovery validator against all generated graph surfaces;
 5. executes every semantic rank-1 query registered in `comparisons/_meta/search-smoke.yaml`;
-6. builds coverage-progress artifacts and audits editorial quality;
-7. smoke-tests representative non-comparison module facets;
-8. uploads module, comparison, validation, quality, and coverage discovery output as workflow artifacts.
+6. builds the reviewed-depth JSON/Markdown artifacts from the reviewed maturity manifest;
+7. builds coverage-progress artifacts and audits editorial quality;
+8. smoke-tests representative non-comparison module facets;
+9. uploads module, comparison, depth, validation, quality, and coverage discovery output as workflow artifacts.
 
-The **Publish Public Index** workflow rebuilds `INDEX.md` plus generated `docs/comparisons/` views when their validated inputs change.
+The **Publish Public Index** workflow rebuilds `INDEX.md`, generated `docs/comparisons/` views, and `docs/depth.md` when their validated inputs change.
 
-OpenDevIndex therefore exposes two complementary deterministic search surfaces:
+OpenDevIndex therefore exposes three complementary deterministic discovery surfaces:
 
 ```text
 module search      -> technologies + comparison backlinks
 comparison search  -> curated trade-off views + participating technologies
+reviewed depth     -> reviewed guides/deep dives + kind/domain facets
 ```
 
-A separate end-to-end validator ensures those surfaces remain one consistent graph rather than drifting independent indexes.
+Separate validation and generation contracts keep those surfaces consistent with their reviewed source data rather than allowing generated discovery files to become independent sources of truth.
