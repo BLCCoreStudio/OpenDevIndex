@@ -13,6 +13,7 @@ on:
       - 'schema/**'
       - 'scripts/build_comparison_search.py'
       - 'scripts/build_comparisons.py'
+      - 'scripts/build_depth_discovery.py'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/coverage_metadata.py'
@@ -39,6 +40,7 @@ on:
       - 'schema/**'
       - 'scripts/build_comparison_search.py'
       - 'scripts/build_comparisons.py'
+      - 'scripts/build_depth_discovery.py'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/coverage_metadata.py'
@@ -103,6 +105,13 @@ jobs:
             --output-dir dist/index \
             --comparison-index dist/comparisons/module-comparisons.json
 
+      - name: Build reviewed depth discovery artifacts
+        run: |
+          python scripts/build_depth_discovery.py \
+            --catalog-dir catalog \
+            --maturity-manifest quality/module-maturity.yaml \
+            --output-dir dist/depth
+
       - name: Validate comparison discovery graph
         run: |
           python scripts/validate_comparison_discovery.py \
@@ -141,10 +150,12 @@ jobs:
           comparison_search = json.loads(Path('dist/comparisons/search.json').read_text(encoding='utf-8'))
           module_comparisons = json.loads(Path('dist/comparisons/module-comparisons.json').read_text(encoding='utf-8'))
           discovery = json.loads(Path('dist/comparisons/discovery-validation.json').read_text(encoding='utf-8'))
+          depth = json.loads(Path('dist/depth/depth.json').read_text(encoding='utf-8'))
           coverage = json.loads(Path('dist/coverage/coverage.json').read_text(encoding='utf-8'))
           print('# OpenDevIndex Search Index')
           print()
           print(f"Generated **{data['module_count']}** validated modules.")
+          print(f"Reviewed depth discovery: **{depth['maturity_counts'].get('deep-dive', 0)}** deep dive(s), **{depth['maturity_counts'].get('guide', 0)}** guide(s).")
           print(f"Generated **{comparisons['comparison_count']}** curated comparison view(s).")
           print(f"Searchable comparison records: **{comparison_search['comparison_count']}**.")
           print(f"Comparison-linked modules: **{module_comparisons['module_count']}**.")
@@ -162,6 +173,8 @@ jobs:
           for kind, count in data['kind_counts'].items():
               print(f'| `{kind}` | {count} |')
           print()
+          print(Path('dist/depth/depth.md').read_text(encoding='utf-8'))
+          print()
           print(Path('dist/coverage/coverage.md').read_text(encoding='utf-8'))
           print()
           print(Path('dist/quality/quality-report.md').read_text(encoding='utf-8'))
@@ -174,6 +187,7 @@ jobs:
           path: |
             dist/index
             dist/comparisons
+            dist/depth
             dist/coverage
             dist/quality
           if-no-files-found: error
