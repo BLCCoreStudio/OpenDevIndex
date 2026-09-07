@@ -11,6 +11,7 @@ on:
       - 'quality/module-maturity.yaml'
       - 'taxonomy/**'
       - 'scripts/build_comparisons.py'
+      - 'scripts/build_depth_discovery.py'
       - 'scripts/build_index.py'
       - 'scripts/catalog_utils.py'
       - 'scripts/module_maturity.py'
@@ -53,6 +54,14 @@ jobs:
             --output-dir dist/comparisons \
             --public-dir docs/comparisons
 
+      - name: Generate reviewed depth view
+        run: |
+          python scripts/build_depth_discovery.py \
+            --catalog-dir catalog \
+            --maturity-manifest quality/module-maturity.yaml \
+            --output-dir dist/depth \
+            --public-file docs/depth.md
+
       - name: Generate comparison-aware public module index
         run: |
           python scripts/build_index.py \
@@ -63,13 +72,13 @@ jobs:
 
       - name: Publish only when discovery views changed
         run: |
-          if [ -z "$(git status --porcelain -- INDEX.md docs/comparisons)" ]; then
-            echo 'Public index and comparison views are already current.' >> "$GITHUB_STEP_SUMMARY"
+          if [ -z "$(git status --porcelain -- INDEX.md docs/comparisons docs/depth.md)" ]; then
+            echo 'Public index, comparison views, and reviewed depth view are already current.' >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           git config user.name "OpenDevIndex Publisher"
           git config user.email "207100624+BLCCoreStudio@users.noreply.github.com"
-          git add INDEX.md docs/comparisons
+          git add INDEX.md docs/comparisons docs/depth.md
           git commit -m "docs: refresh public discovery views [skip ci]"
           git push origin HEAD:main
-          echo 'Published updated INDEX.md and comparison views.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Published updated INDEX.md, comparison views, and reviewed depth view.' >> "$GITHUB_STEP_SUMMARY"
