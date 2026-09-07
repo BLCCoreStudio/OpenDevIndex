@@ -23,6 +23,12 @@ from catalog_utils import collect_entries, discover_catalogs
 USER_AGENT = "OpenDevIndex-SourceHealth/1.0 (+https://github.com/BLCCoreStudio/OpenDevIndex)"
 RESTRICTED_CODES = {401, 403, 407, 423, 425, 429, 451}
 BROKEN_CODES = {404, 410}
+HEALTH_SEVERITY = {
+    "healthy": 0,
+    "restricted": 1,
+    "transient": 2,
+    "broken": 3,
+}
 
 
 def static_public_https_url(url: str) -> tuple[bool, str]:
@@ -186,17 +192,46 @@ def collect_urls(entries: list[dict]) -> dict[str, set[str]]:
     return contexts
 
 
+def module_health_summary(results: list[dict]) -> Counter[str]:
+    """Count modules by their worst source-health classification."""
+    worst_by_module: dict[str, str] = {}
+    for result in results:
+        classification = result.get("classification")
+        if classification not in HEALTH_SEVERITY:
+            continue
+        for context in result.get("contexts", []):
+            if not isinstance(context, str) or ":" not in context:
+                continue
+            module_ref, _ = context.rsplit(":", 1)
+            current = worst_by_module.get(module_ref)
+            if current is None or HEALTH_SEVERITY[classification] > HEALTH_SEVERITY[current]:
+                worst_by_module[module_ref] = classification
+    return Counter(worst_by_module.values())
+
+
 def render_markdown(results: list[dict], checked_at: str) -> str:
     counts = Counter(result["classification"] for result in results)
+    module_counts = module_health_summary(results)
     lines = [
         "# OpenDevIndex Source Health",
         "",
         f"Checked at **{checked_at}**.",
         "",
+        "## URL results",
+        "",
         f"- Healthy: **{counts.get('healthy', 0)}**",
         f"- Restricted/anti-bot: **{counts.get('restricted', 0)}**",
         f"- Transient: **{counts.get('transient', 0)}**",
         f"- Broken: **{counts.get('broken', 0)}**",
+        "",
+        "## Module impact",
+        "",
+        "Each module is counted once using the worst classification among its homepage, repository, and source URLs.",
+        "",
+        f"- Healthy: **{module_counts.get('healthy', 0)}**",
+        f"- Restricted/anti-bot: **{module_counts.get('restricted', 0)}**",
+        f"- Transient: **{module_counts.get('transient', 0)}**",
+        f"- Broken: **{module_counts.get('broken', 0)}**",
         "",
     ]
 
