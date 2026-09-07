@@ -29,16 +29,25 @@ entries:
   coverage:
     area: developer-tools
     topics: [developer-experience]
-  summary: Alpha deep-dive fixture.
+  summary: Alpha is a reviewed deep-dive fixture used for deterministic discovery tests.
   homepage: https://example.com/alpha
   repository: https://github.com/example/alpha
-  tags: [alpha]
+  tags: [alpha, discovery, testing]
   sources:
   - title: Alpha docs
     url: https://example.com/alpha/docs
     type: documentation
-  use_cases: [Test deep-dive discovery]
-  key_points: [Reviewed deep-dive fixture]
+  - title: Alpha repository
+    url: https://github.com/example/alpha
+    type: repository
+  use_cases:
+  - Exercise reviewed deep-dive discovery behavior
+  - Verify deterministic deep-dive report ordering
+  - Confirm reviewed maturity metadata is preserved
+  key_points:
+  - Represents an explicitly reviewed deep-dive module
+  - Supplies valid schema version three catalog metadata
+  - Remains stable across repeated discovery report builds
 - category: tool
   id: beta
   name: Beta
@@ -47,16 +56,25 @@ entries:
   coverage:
     area: developer-tools
     topics: [developer-experience]
-  summary: Beta guide fixture.
+  summary: Beta is a reviewed guide fixture used to verify focused discovery output behavior.
   homepage: https://example.com/beta
   repository: https://github.com/example/beta
-  tags: [beta]
+  tags: [beta, discovery, testing]
   sources:
   - title: Beta docs
     url: https://example.com/beta/docs
     type: documentation
-  use_cases: [Test guide discovery]
-  key_points: [Reviewed guide fixture]
+  - title: Beta repository
+    url: https://github.com/example/beta
+    type: repository
+  use_cases:
+  - Exercise reviewed guide discovery behavior
+  - Verify guides remain visible beside deep dives
+  - Confirm guide review metadata is preserved
+  key_points:
+  - Represents an explicitly reviewed guide module
+  - Supplies valid schema version three catalog metadata
+  - Remains stable across repeated discovery report builds
 - category: tool
   id: gamma
   name: Gamma
@@ -65,16 +83,25 @@ entries:
   coverage:
     area: developer-tools
     topics: [developer-experience]
-  summary: Gamma overview fixture.
+  summary: Gamma is an overview fixture used to verify focused depth discovery exclusions.
   homepage: https://example.com/gamma
   repository: https://github.com/example/gamma
-  tags: [gamma]
+  tags: [gamma, discovery, testing]
   sources:
   - title: Gamma docs
     url: https://example.com/gamma/docs
     type: documentation
-  use_cases: [Test overview exclusion]
-  key_points: [Overview fixture]
+  - title: Gamma repository
+    url: https://github.com/example/gamma
+    type: repository
+  use_cases:
+  - Exercise overview exclusion from depth discovery
+  - Verify overview modules remain outside focused output
+  - Confirm default maturity behavior stays unchanged
+  key_points:
+  - Represents a valid overview module fixture
+  - Supplies valid schema version three catalog metadata
+  - Must not appear in reviewed depth discovery output
 """
 
 MATURITY = """schema_version: 1
