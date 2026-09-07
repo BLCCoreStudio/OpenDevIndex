@@ -57,6 +57,8 @@ python scripts/search_index.py "your query" --index dist/index/search.json
 
 Network source-health checks run separately in GitHub Actions so pull requests do not make arbitrary outbound requests.
 
+When changing catalogs, maturity metadata, comparisons, or discovery-related fields, also review the generated public effect before opening the PR. See [`docs/GENERATED_PREVIEW.md`](docs/GENERATED_PREVIEW.md) for a focused index/search preview workflow and regression checklist.
+
 ## Pull requests
 
 Changes to the core schema, automation, catalog data, search tooling, or project documentation belong in normal feature branches and pull requests. Independently versioned knowledge modules should remain understandable and maintainable over time.
