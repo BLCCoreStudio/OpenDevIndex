@@ -101,7 +101,12 @@ def render_markdown(records: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def build(catalog_dir: Path, maturity_manifest_path: Path, output_dir: Path) -> dict:
+def build(
+    catalog_dir: Path,
+    maturity_manifest_path: Path,
+    output_dir: Path,
+    public_file: Path | None = None,
+) -> dict:
     records = build_records(catalog_dir, maturity_manifest_path)
     counts = Counter(record["maturity"] for record in records)
     payload = {
@@ -113,12 +118,16 @@ def build(catalog_dir: Path, maturity_manifest_path: Path, output_dir: Path) -> 
         "entries": records,
     }
 
+    rendered = render_markdown(records)
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "depth.json").write_text(
         json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
         encoding="utf-8",
     )
-    (output_dir / "depth.md").write_text(render_markdown(records), encoding="utf-8")
+    (output_dir / "depth.md").write_text(rendered, encoding="utf-8")
+    if public_file is not None:
+        public_file.parent.mkdir(parents=True, exist_ok=True)
+        public_file.write_text(rendered, encoding="utf-8")
     return payload
 
 
@@ -127,6 +136,10 @@ def main() -> int:
     parser.add_argument("--catalog-dir", default="catalog")
     parser.add_argument("--maturity-manifest", default="quality/module-maturity.yaml")
     parser.add_argument("--output-dir", default="dist/depth")
+    parser.add_argument(
+        "--public-file",
+        help="Optional generated Markdown path for the public reviewed-depth view",
+    )
     args = parser.parse_args()
 
     try:
@@ -134,6 +147,7 @@ def main() -> int:
             Path(args.catalog_dir),
             Path(args.maturity_manifest),
             Path(args.output_dir),
+            Path(args.public_file) if args.public_file else None,
         )
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
