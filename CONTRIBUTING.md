@@ -43,6 +43,12 @@ Each independently versioned module contains:
 7. Mark rapidly changing information with a verification date.
 8. Keep entries concise enough to scan but detailed enough to teach.
 
+## Choose a contribution path
+
+You do not need to add a new module to make a useful contribution. Existing knowledge can be improved through focused corrections, stronger sources, practical examples, architecture explanations, meaningful graph links, module deepening, or discovery improvements.
+
+Start with [`docs/CONTRIBUTION_PATHS.md`](docs/CONTRIBUTION_PATHS.md) and choose the narrowest path that matches the change you can support. Keeping the pull request focused makes factual and generated-output review easier.
+
 ## Local checks
 
 Before opening a pull request that changes core tooling or catalogs, run:
