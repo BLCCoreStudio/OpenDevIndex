@@ -56,8 +56,17 @@ def build_records(catalog_dir: Path, maturity_manifest_path: Path) -> list[dict]
     return records
 
 
+def discovery_counts(records: list[dict]) -> tuple[Counter, Counter, Counter]:
+    maturity_counts = Counter(record["maturity"] for record in records)
+    kind_counts = Counter(record["kind"] for record in records)
+    domain_counts = Counter(
+        domain for record in records for domain in record.get("domains", [])
+    )
+    return maturity_counts, kind_counts, domain_counts
+
+
 def render_markdown(records: list[dict]) -> str:
-    counts = Counter(record["maturity"] for record in records)
+    counts, kind_counts, domain_counts = discovery_counts(records)
     lines = [
         "# OpenDevIndex — Reviewed Depth",
         "",
@@ -67,6 +76,16 @@ def render_markdown(records: list[dict]) -> str:
         "",
         f"**Guides:** {counts['guide']}",
     ]
+
+    if kind_counts:
+        lines.extend(["", "## Reviewed depth by kind", "", "| Kind | Modules |", "| --- | ---: |"]) 
+        for kind, count in sorted(kind_counts.items()):
+            lines.append(f"| `{kind}` | {count} |")
+
+    if domain_counts:
+        lines.extend(["", "## Reviewed depth by domain", "", "| Domain | Modules |", "| --- | ---: |"]) 
+        for domain, count in sorted(domain_counts.items()):
+            lines.append(f"| `{domain}` | {count} |")
 
     for level, heading in (("deep-dive", "Deep dives"), ("guide", "Guides")):
         level_records = [record for record in records if record["maturity"] == level]
@@ -108,13 +127,15 @@ def build(
     public_file: Path | None = None,
 ) -> dict:
     records = build_records(catalog_dir, maturity_manifest_path)
-    counts = Counter(record["maturity"] for record in records)
+    counts, kind_counts, domain_counts = discovery_counts(records)
     payload = {
         "schema_version": 1,
         "module_count": len(records),
         "maturity_counts": {
             level: counts[level] for level in DISCOVERABLE_LEVELS if counts[level]
         },
+        "kind_counts": dict(sorted(kind_counts.items())),
+        "domain_counts": dict(sorted(domain_counts.items())),
         "entries": records,
     }
 
