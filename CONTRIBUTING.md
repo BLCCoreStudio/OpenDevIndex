@@ -43,7 +43,7 @@ Each independently versioned module contains:
 7. Mark rapidly changing information with a verification date.
 8. Keep entries concise enough to scan but detailed enough to teach.
 
-For deeper editorial review, use [`docs/MODULE_DEEPENING_CHECKLIST.md`](docs/MODULE_DEEPENING_CHECKLIST.md) together with the [`kind-specific editorial checklists`](docs/KIND_EDITORIAL_CHECKLISTS.md). Source selection and claim support are covered separately in [`docs/SOURCE_QUALITY.md`](docs/SOURCE_QUALITY.md).
+For subject-specific review prompts, use the [`kind-specific editorial checklists`](docs/KIND_EDITORIAL_CHECKLISTS.md) after applying the general module standard.
 
 ## Local checks
 
