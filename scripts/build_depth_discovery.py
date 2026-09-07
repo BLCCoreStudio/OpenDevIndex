@@ -83,9 +83,9 @@ def render_markdown(records: list[dict]) -> str:
         "",
         "This generated view highlights modules that have progressed beyond overview maturity after explicit editorial review.",
         "",
-        f"**Deep dives:** {counts['deep-dive']}",
+        f"**[Deep dives](#deep-dives):** {counts['deep-dive']}",
         "",
-        f"**Guides:** {counts['guide']}",
+        f"**[Guides](#guides):** {counts['guide']}",
     ]
 
     if kind_counts:
