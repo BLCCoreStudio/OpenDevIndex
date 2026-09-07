@@ -146,6 +146,24 @@ class DepthDiscoveryTests(unittest.TestCase):
             json_payload = json.loads((output_dir / "depth.json").read_text(encoding="utf-8"))
             self.assertEqual(json_payload, payload)
 
+    def test_build_can_write_public_markdown_view(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            catalog_dir = root / "catalog"
+            output_dir = root / "dist"
+            public_file = root / "docs" / "depth.md"
+            manifest = root / "maturity.yaml"
+            catalog_dir.mkdir()
+            (catalog_dir / "test.yaml").write_text(CATALOG, encoding="utf-8")
+            manifest.write_text(MATURITY, encoding="utf-8")
+
+            build(catalog_dir, manifest, output_dir, public_file)
+
+            self.assertEqual(
+                public_file.read_text(encoding="utf-8"),
+                (output_dir / "depth.md").read_text(encoding="utf-8"),
+            )
+
     def test_build_is_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
