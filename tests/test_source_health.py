@@ -9,7 +9,12 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from check_source_health import classify_http_code, static_public_https_url  # noqa: E402
+from check_source_health import (  # noqa: E402
+    classify_http_code,
+    module_health_summary,
+    render_markdown,
+    static_public_https_url,
+)
 from url_safety import is_safe_https_url  # noqa: E402
 
 
@@ -41,6 +46,57 @@ class SourceHealthTests(unittest.TestCase):
         self.assertEqual(classify_http_code(404), "broken")
         self.assertEqual(classify_http_code(410), "broken")
         self.assertEqual(classify_http_code(503), "transient")
+
+    def test_module_health_uses_worst_classification_once_per_module(self) -> None:
+        results = [
+            {
+                "classification": "healthy",
+                "contexts": ["tool/git:homepage", "tool/docker:homepage"],
+            },
+            {
+                "classification": "restricted",
+                "contexts": ["tool/git:repository"],
+            },
+            {
+                "classification": "transient",
+                "contexts": ["tool/docker:source"],
+            },
+            {
+                "classification": "broken",
+                "contexts": ["tool/git:source"],
+            },
+        ]
+
+        summary = module_health_summary(results)
+
+        self.assertEqual(summary["broken"], 1)
+        self.assertEqual(summary["transient"], 1)
+        self.assertEqual(summary["healthy"], 0)
+        self.assertEqual(summary["restricted"], 0)
+
+    def test_markdown_reports_module_impact(self) -> None:
+        results = [
+            {
+                "url": "https://example.com/a",
+                "classification": "healthy",
+                "http_status": 200,
+                "contexts": ["tool/git:homepage"],
+                "detail": "reachable",
+            },
+            {
+                "url": "https://example.com/b",
+                "classification": "broken",
+                "http_status": 404,
+                "contexts": ["tool/git:source", "tool/docker:source"],
+                "detail": "Not Found",
+            },
+        ]
+
+        markdown = render_markdown(results, "2026-09-07T00:00:00+00:00")
+
+        self.assertIn("## Module impact", markdown)
+        self.assertIn("Each module is counted once", markdown)
+        self.assertIn("- Broken: **2**", markdown)
 
 
 if __name__ == "__main__":
