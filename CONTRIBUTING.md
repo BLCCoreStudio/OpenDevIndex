@@ -43,6 +43,16 @@ Each independently versioned module contains:
 7. Mark rapidly changing information with a verification date.
 8. Keep entries concise enough to scan but detailed enough to teach.
 
+## Contribution paths and editorial guidance
+
+Use the narrowest contribution path that fits the change. Improvements to existing knowledge are as valuable as new modules when they strengthen accuracy, depth, evidence, or discovery.
+
+- [Contribution paths](docs/CONTRIBUTION_PATHS.md) — corrections, source upgrades, examples, architecture, relationships, deepening, and discovery work.
+- [Source quality guidance](docs/SOURCE_QUALITY.md) — claim-level evidence hierarchy, freshness, security-sensitive sourcing, and comparison discipline.
+- [Kind-specific editorial checklists](docs/KIND_EDITORIAL_CHECKLISTS.md) — review prompts for tools, languages, frameworks, infrastructure, databases, security, protocols, AI/ML, concepts, and open-source ecosystems.
+- [Relationship suggestions and validation](docs/RELATIONSHIP_SUGGESTIONS.md) — precise graph-edge selection, directionality, evidence, and anti-inflation rules.
+- [Generated index/search preview](docs/GENERATED_PREVIEW.md) — deterministic local preview and representative search checks before review.
+
 ## Local checks
 
 Before opening a pull request that changes core tooling or catalogs, run:
