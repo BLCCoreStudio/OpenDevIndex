@@ -4,6 +4,8 @@ cases:
   query: image build responsibility
 - comparison: github-actions-argocd
   query: runner jobs drift reconciliation
+- comparison: git-subversion
+  query: centralized revision path authorization
 - comparison: kubernetes-helm-argocd
   query: desired live comparison
 - comparison: observability-roles
