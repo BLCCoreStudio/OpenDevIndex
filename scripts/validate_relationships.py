@@ -71,13 +71,21 @@ def validate_entry_relationships(entry: dict, schema_version: int, taxonomy: dic
     return errors
 
 
-def validate_catalog(path: Path) -> list[str]:
+def _load_catalog(path: Path) -> tuple[dict | None, list[str]]:
     try:
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
     except Exception as exc:
-        return [f"{path}: invalid YAML: {exc}"]
+        return None, [f"{path}: invalid YAML: {exc}"]
     if not isinstance(data, dict):
-        return [f"{path}: top level must be a mapping"]
+        return None, [f"{path}: top level must be a mapping"]
+    return data, []
+
+
+def validate_catalog(path: Path) -> list[str]:
+    data, load_errors = _load_catalog(path)
+    if load_errors:
+        return load_errors
+    assert data is not None
 
     schema_version = data.get("schema_version")
     if not isinstance(schema_version, int):
@@ -96,6 +104,50 @@ def validate_catalog(path: Path) -> list[str]:
     return [f"{path}: {error}" for error in errors]
 
 
+def validate_relationship_targets(paths: list[Path]) -> list[str]:
+    """Require valid relationship targets to resolve within the supplied catalog set."""
+    loaded: list[tuple[Path, dict]] = []
+    module_refs: set[str] = set()
+
+    for path in paths:
+        data, load_errors = _load_catalog(path)
+        if load_errors or data is None:
+            continue
+        entries = data.get("entries")
+        if not isinstance(entries, list):
+            continue
+        loaded.append((path, data))
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            category = entry.get("category")
+            module_id = entry.get("id")
+            if isinstance(category, str) and isinstance(module_id, str):
+                module_refs.add(f"{category}/{module_id}")
+
+    errors: list[str] = []
+    for path, data in loaded:
+        for entry in data.get("entries", []):
+            if not isinstance(entry, dict):
+                continue
+            relationships = entry.get("relationships")
+            if not isinstance(relationships, list):
+                continue
+            module_ref = f"{entry.get('category')}/{entry.get('id')}"
+            for number, relationship in enumerate(relationships, start=1):
+                if not isinstance(relationship, dict):
+                    continue
+                target = relationship.get("target")
+                if not isinstance(target, str) or target.count("/") != 1:
+                    continue
+                if target not in module_refs:
+                    errors.append(
+                        f"{path}: {module_ref}: relationship #{number} target {target!r} "
+                        "does not exist in the supplied catalogs"
+                    )
+    return errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("catalogs", nargs="+", type=Path)
@@ -104,6 +156,7 @@ def main() -> int:
     errors: list[str] = []
     for path in args.catalogs:
         errors.extend(validate_catalog(path))
+    errors.extend(validate_relationship_targets(args.catalogs))
 
     if errors:
         print("OpenDevIndex relationship validation failed:", file=sys.stderr)
