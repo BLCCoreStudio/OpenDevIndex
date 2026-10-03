@@ -24,6 +24,8 @@ class ValidateEntryRefTests(unittest.TestCase):
             "ci/validation",
             "refactor/index-builder",
             "release/v1.0",
+            "quality/relationship-targets",
+            "test/validator-regression",
         ):
             with self.subTest(ref=ref):
                 self.assertTrue(is_non_module_ref(ref))

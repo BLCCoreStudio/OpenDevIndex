@@ -15,7 +15,17 @@ from coverage_metadata import validate_coverage_metadata
 from taxonomy import load_taxonomy, supported_address_categories, supported_relationship_types
 from url_safety import is_safe_https_url
 
-CORE_PREFIXES = ("feat/", "fix/", "docs/", "chore/", "ci/", "refactor/", "release/")
+CORE_PREFIXES = (
+    "feat/",
+    "fix/",
+    "docs/",
+    "chore/",
+    "ci/",
+    "refactor/",
+    "release/",
+    "quality/",
+    "test/",
+)
 AUTOMATION_PREFIXES = ("dependabot/",)
 NON_MODULE_PREFIXES = CORE_PREFIXES + AUTOMATION_PREFIXES
 REQUIRED_FILES = (
