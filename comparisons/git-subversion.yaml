@@ -1,0 +1,144 @@
+schema_version: 1
+id: git-subversion
+title: Git vs Subversion
+summary: A repository-model- and workflow-first comparison of Git and Apache Subversion, focused on distributed object history versus centralized versioned-filesystem revisions, local/offline operations, branching, merge tracking, authorization, and migration boundaries.
+verified_at: '2026-09-06'
+modules:
+- tool/git
+- tool/subversion
+dimensions:
+- id: repository-authority
+  label: Repository authority
+  values:
+    tool/git: Every full clone normally contains its own local object database and repository history. Remotes coordinate exchange and policy, but the data model is distributed rather than inherently centered on one authoritative server.
+    tool/subversion: One repository is normally the authoritative project history. Working copies contain checked-out content and administrative state, while commits and many history operations depend on repository access.
+- id: history-model
+  label: History model
+  values:
+    tool/git: History is a directed acyclic graph of immutable commit objects. Commits point to tree state and parent commits, and branch or tag refs name object IDs.
+    tool/subversion: History is a sequence of globally ordered repository revisions applied to a versioned filesystem. Each committed transaction creates one new repository revision and tree state.
+- id: revision-identity
+  label: Revision identity
+  values:
+    tool/git: Commits are identified by cryptographic object IDs derived from object content and type. User-facing history normally refers to hashes, refs, ancestry expressions, and tags.
+    tool/subversion: Revisions use repository-global monotonically increasing numbers such as r4187. A revision identifies a committed repository transaction, not an independent version number for one file.
+- id: local-state-model
+  label: Local working state
+  values:
+    tool/git: Local state is split among the working tree, staging index, HEAD/current ref, refs, and the local object database. The index is an explicit proposed next-tree boundary.
+    tool/subversion: A working copy contains user files plus `.svn` administrative metadata, base/pristine state, node revisions, properties, and scheduling/conflict information. There is no Git-style staging index.
+- id: commit-path
+  label: Commit path
+  values:
+    tool/git: A commit is created locally from the index and becomes part of the local repository immediately. Publishing it to collaborators is a separate push/fetch/ref-update operation.
+    tool/subversion: A commit is sent to the authoritative repository, validated as a repository transaction, and atomically becomes a new global revision on successful server-side commit.
+- id: offline-work
+  label: Offline history and commits
+  values:
+    tool/git: Most log, diff, branch, merge, rebase, commit, and history inspection operations work against the local clone without contacting a remote server.
+    tool/subversion: Editing and many working-copy inspections can work offline, but creating authoritative revisions and many repository-history operations require repository access because the full history is not normally stored in the working copy.
+- id: branching
+  label: Branch model
+  values:
+    tool/git: Branches are lightweight refs pointing to commits. Creating or moving a branch usually changes only reference metadata while sharing the same commit/object graph.
+    tool/subversion: Branches are normally cheap repository copies of paths such as `/trunk` into `/branches/name`. The branch is a versioned repository path with copy ancestry rather than a distinct branch-ref object.
+- id: tags
+  label: Tag model
+  values:
+    tool/git: Tags are refs, optionally annotated objects, that normally name a specific object ID. Protected hosting policy can restrict mutation, but the object/ref model is separate from ordinary directory content.
+    tool/subversion: Tags are conventionally cheap copies into a path such as `/tags/v2.0.0`. They are technically mutable unless server authorization or hooks enforce immutability.
+- id: merge-tracking
+  label: Merge tracking
+  values:
+    tool/git: Merge ancestry is represented directly in the commit DAG through parent relationships. Merge-base and graph ancestry are core inputs to later history and merge reasoning.
+    tool/subversion: Merge history is tracked through repository/path ancestry plus versioned `svn:mergeinfo`, which records merged revision ranges and can become complex with subtree mergeinfo or long-lived branches.
+- id: rewrite-history
+  label: History rewriting
+  values:
+    tool/git: Local history can be rewritten through amend, rebase, filter-style tooling, or ref replacement before or even after publication, subject to team and hosting policy.
+    tool/subversion: Committed revision history is normally append-oriented. Ordinary clients do not rewrite old repository revisions; migrations or administrative reconstruction use repository-level procedures such as dump/load or filtering workflows.
+- id: authorization
+  label: Authorization granularity
+  values:
+    tool/git: Common Git hosting authorization is repository/ref/workflow oriented. Fine-grained path confidentiality inside one repository is difficult because clones and object transfer can expose repository history to authorized readers.
+    tool/subversion: Centralized access supports path-based authorization within one repository, allowing different users or groups to receive different read/write permissions for repository subtrees.
+- id: sparse-access
+  label: Partial and sparse access
+  values:
+    tool/git: Sparse checkout and partial-clone mechanisms can reduce working-tree population or object transfer, but Git's core model remains a repository object graph and server/client support affects partial workflows.
+    tool/subversion: Sparse working copies and depth controls can check out only selected directories or levels without copying complete repository history, fitting very large centralized trees with narrow working sets.
+- id: binary-locking
+  label: Binary and locking workflows
+  values:
+    tool/git: Git is primarily merge-oriented. Locking for large or merge-hostile assets normally requires hosting features, Git LFS locking, or external workflow conventions rather than core branch semantics.
+    tool/subversion: Repository locks and `svn:needs-lock` directly support edit-lock-unlock workflows for binary or otherwise poorly mergeable files.
+- id: metadata
+  label: Versioned metadata
+  values:
+    tool/git: File content and tree structure are versioned in objects, while behavior such as attributes and ignore policy is usually represented through normal files such as `.gitattributes` and `.gitignore` plus repository/config metadata.
+    tool/subversion: Files and directories can carry versioned properties such as `svn:ignore`, `svn:eol-style`, `svn:externals`, `svn:needs-lock`, and `svn:mergeinfo` in addition to content.
+- id: server-dependency
+  label: Server dependency
+  values:
+    tool/git: A hosting service can be critical for collaboration, CI, review, and protected refs, but local clones retain substantial repository history and can continue local commit/history work during an outage.
+    tool/subversion: The repository server is on the commit path and is the normal authoritative-history boundary, so repository/server availability has a more direct effect on collaborative write operations.
+- id: backup-recovery
+  label: Backup and recovery
+  values:
+    tool/git: Every full clone can contain much of the object history, but production hosting still needs backups for refs, server metadata, permissions, hooks, issues, CI state, and any objects not replicated elsewhere.
+    tool/subversion: The central repository requires repository-aware backup and restore such as hot copy, dump/load, or coordinated snapshots, plus protection of hooks, authz, server configuration, and related operational state.
+- id: large-central-tree
+  label: Large centralized tree behavior
+  values:
+    tool/git: Very large repositories can require sparse checkout, partial clone, LFS, server optimization, and workflow discipline because object history and repository-wide operations may be expensive.
+    tool/subversion: Centralized path checkout and depth controls can make selective access to huge repository trees natural, especially when users should not download all history or all paths.
+- id: ci-release-identity
+  label: Build and release identity
+  values:
+    tool/git: CI commonly records commit object IDs, refs, tags, and repository URL so a build can be tied to an immutable source graph state.
+    tool/subversion: CI commonly records repository URL plus global revision and, where relevant, branch/tag path so a build can be reconstructed from the authoritative repository state.
+- id: migration-boundary
+  label: Migration boundary
+  values:
+    tool/git: Importing Subversion requires mapping trunk/branches/tags, authors, properties, empty directories, externals, merge information, path authz, binary strategy, and global revision traceability into Git semantics.
+    tool/subversion: Importing Git requires deciding how DAG branches/tags map to repository paths, how commit identities/authors are retained, what history is linearized, and which centralized authz/locking policies replace Git-hosting behavior.
+- id: best-fit
+  label: Strong fit
+  values:
+    tool/git: Teams that value local commits and history, lightweight local branches, distributed clones, DAG-based integration, modern Git hosting/review ecosystems, and flexible offline development.
+    tool/subversion: Teams that value one central authority, path-based access control, sparse access to huge trees, global revision numbers, lock-oriented binary workflows, and mature centralized repository administration.
+- id: not-a-substitute
+  label: Do not assume
+  values:
+    tool/git: Do not assume a Git server makes Git equivalent to a centralized VCS. Clone-local history, refs, object identity, local commits, and DAG semantics remain fundamental.
+    tool/subversion: Do not assume Subversion is merely Git with fewer local features. Its repository revisions, versioned filesystem, path copies, properties, working-copy state, authz, and server transaction model are different architectural choices.
+decision_rules:
+- condition: Developers need local commits, local branching, history inspection, rebasing or merging while disconnected from the central hosting service.
+  consider:
+  - tool/git
+  reason: Git's local object database, refs, index, and commit DAG make most repository-history operations independent of remote availability.
+- condition: One repository must expose different subtrees to different users without giving every authorized client the complete repository history.
+  consider:
+  - tool/subversion
+  reason: Subversion's centralized repository and path-based authorization naturally support subtree-level visibility and write policy within one repository.
+- condition: A very large centralized tree should be checked out selectively and many users need only narrow paths rather than full repository history.
+  consider:
+  - tool/subversion
+  reason: Sparse working copies and depth controls fit selective centralized access without requiring every client to clone all repository history.
+- condition: The team depends heavily on pull-request-style Git hosting, local topic branches, distributed mirrors, and commit-DAG tooling.
+  consider:
+  - tool/git
+  reason: Those workflows align directly with Git's local refs, object transfer, ancestry graph, and modern hosting ecosystem.
+- condition: Merge-hostile binary assets require explicit central locking before editing.
+  consider:
+  - tool/subversion
+  reason: Core repository locks and `svn:needs-lock` directly model lock-oriented asset workflows, whereas Git normally needs an additional locking mechanism or convention.
+- condition: A migration is being proposed because one system is considered categorically newer or older rather than because collaboration, authorization, offline, branching, storage, or operational requirements changed.
+  consider:
+  - tool/git
+  - tool/subversion
+  reason: Compare repository authority, identity, branch/tag semantics, path authz, local history, locking, metadata, backup, and migration cost before replacing one architecture with the other.
+notes:
+- This comparison does not treat distributed version control as universally superior to centralized version control; it focuses on how repository authority and history representation change engineering workflows and operations.
+- Exact hosting capabilities, sparse/partial behavior, protocol support, credential handling, hooks, and administrative commands are version- and platform-sensitive; consult the linked deep dives and authoritative sources before migration decisions.
+- Existing organizational expertise, repository size, regulatory controls, binary workflows, and tooling integrations can outweigh generic feature comparisons.
